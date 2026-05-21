@@ -1,0 +1,343 @@
+/* =====================================================================
+   BRIEFING AI · ZIV CREATIVO
+   Estilos del modal del generador. Diseño editorial coherente con el
+   resto del sitio (paleta paper / ink / purple / lime / coral).
+   ===================================================================== */
+
+/* ---------- Body lock ---------- */
+body.bai-locked { overflow: hidden; }
+
+/* ---------- Backdrop ---------- */
+.bai-backdrop {
+  position: fixed; inset: 0;
+  background: rgba(24, 24, 32, 0.78);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 9999;
+  display: none;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 36px 18px;
+  overflow-y: auto;
+}
+.bai-backdrop.open { display: flex; }
+
+/* ---------- Modal ---------- */
+.bai-modal {
+  background: #efe6d3;
+  color: #181820;
+  width: 100%;
+  max-width: 980px;
+  border-radius: 22px;
+  border: 2px solid #181820;
+  box-shadow: 14px 14px 0 #181820, 0 50px 80px rgba(0,0,0,0.35);
+  position: relative;
+  padding: 36px 32px 32px;
+  font-family: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+  animation: bai-pop .25s cubic-bezier(.16,1,.3,1);
+}
+@keyframes bai-pop {
+  from { opacity: 0; transform: translateY(20px) scale(.97); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.bai-close {
+  position: absolute; top: 14px; right: 14px;
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  border: 2px solid #181820;
+  background: #fff;
+  font-size: 22px; line-height: 1;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: all .2s;
+}
+.bai-close:hover { background: #181820; color: #fff; transform: rotate(90deg); }
+
+/* ---------- Head ---------- */
+.bai-head { margin-bottom: 24px; padding-right: 50px; }
+.bai-head-title {
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 8px;
+  font-family: 'Archivo Black', sans-serif;
+  letter-spacing: -0.01em;
+  font-size: 22px;
+}
+.bai-spark {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 32px; height: 32px;
+  background: #8e58f0; color: #fff;
+  border-radius: 50%;
+  font-size: 18px;
+}
+.bai-head-name { color: #181820; }
+.bai-head-tag {
+  background: #d4f550;
+  color: #181820;
+  padding: 3px 10px;
+  border-radius: 99px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+.bai-head-sub {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  color: #3a3340;
+  font-size: 16px;
+  line-height: 1.5;
+  max-width: 680px;
+}
+
+/* ---------- Body ---------- */
+.bai-body { position: relative; }
+
+/* ---------- Stages ---------- */
+.bai-stage { display: block; }
+
+/* ---------- Form / Textarea ---------- */
+.bai-label {
+  display: block;
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.5px;
+  margin-bottom: 10px;
+  color: #181820;
+}
+.bai-textarea {
+  width: 100%;
+  background: #fff;
+  border: 2px solid #181820;
+  border-radius: 14px;
+  padding: 16px 18px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 16px;
+  line-height: 1.55;
+  color: #181820;
+  resize: vertical;
+  min-height: 110px;
+  transition: box-shadow .2s, transform .2s;
+  outline: none;
+}
+.bai-textarea:focus {
+  box-shadow: 6px 6px 0 #8e58f0;
+  transform: translate(-2px,-2px);
+}
+.bai-textarea::placeholder { color: #7a7280; font-style: italic; }
+.bai-textarea-small { min-height: 60px; font-size: 14px; }
+
+.bai-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: 16px;
+}
+.bai-mini {
+  font-family: 'Caveat', cursive;
+  font-weight: 700;
+  font-size: 16px;
+  color: #8e58f0;
+}
+
+/* ---------- Botones ---------- */
+.bai-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 24px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  border-radius: 50px;
+  border: 2px solid #181820;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all .25s cubic-bezier(.16,1,.3,1);
+  line-height: 1;
+  white-space: nowrap;
+}
+.bai-btn-primary {
+  background: #181820;
+  color: #efe6d3;
+}
+.bai-btn-primary:hover {
+  background: #8e58f0;
+  border-color: #8e58f0;
+  transform: translate(-2px,-2px);
+  box-shadow: 5px 5px 0 #181820;
+}
+.bai-btn-ghost {
+  background: transparent;
+  color: #181820;
+}
+.bai-btn-ghost:hover {
+  background: #181820;
+  color: #efe6d3;
+  transform: translate(-2px,-2px);
+  box-shadow: 5px 5px 0 #8e58f0;
+}
+
+/* ---------- Loader ---------- */
+.bai-loader {
+  text-align: center;
+  padding: 50px 20px 40px;
+}
+.bai-spinner {
+  width: 56px; height: 56px;
+  border: 4px solid rgba(24,24,32,0.12);
+  border-top-color: #8e58f0;
+  border-radius: 50%;
+  margin: 0 auto 24px;
+  animation: bai-spin 1s linear infinite;
+}
+@keyframes bai-spin { to { transform: rotate(360deg); } }
+.bai-loader-title {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-weight: 900;
+  font-size: 26px;
+  color: #181820;
+  margin-bottom: 10px;
+}
+.bai-loader-sub {
+  font-size: 14px;
+  color: #3a3340;
+  max-width: 480px;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+
+/* ---------- Preview ---------- */
+.bai-preview-wrap {
+  background: #fff;
+  border: 2px solid #181820;
+  border-radius: 14px;
+  overflow: hidden;
+  margin-bottom: 18px;
+}
+.bai-preview-bar {
+  background: #e4d7c0;
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-bottom: 1.5px solid rgba(24,24,32,0.12);
+}
+.bai-preview-dot {
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  background: #f5604c;
+}
+.bai-preview-dot-y { background: #f5b53c; }
+.bai-preview-dot-g { background: #5ac177; }
+.bai-preview-url {
+  margin-left: 14px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 12px;
+  color: #3a3340;
+  letter-spacing: 0.5px;
+}
+.bai-iframe {
+  width: 100%;
+  height: 540px;
+  border: 0;
+  background: #fff;
+  display: block;
+}
+
+/* ---------- Actions ---------- */
+.bai-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ---------- Editor ---------- */
+.bai-edit {
+  margin-top: 22px;
+  padding: 18px;
+  background: rgba(142,88,240,0.06);
+  border: 1.5px dashed #8e58f0;
+  border-radius: 14px;
+}
+
+/* ---------- Error ---------- */
+.bai-error {
+  text-align: center;
+  padding: 40px 20px;
+}
+.bai-error-title {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-weight: 900;
+  font-size: 26px;
+  color: #f5604c;
+  margin-bottom: 8px;
+}
+.bai-error-msg {
+  color: #3a3340;
+  font-size: 14px;
+  margin-bottom: 22px;
+  max-width: 520px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.5;
+}
+.bai-error .bai-btn { margin: 0 6px; }
+
+/* ---------- FAB flotante (definido en index.html, estilos aquí) ---------- */
+.bai-fab {
+  position: fixed;
+  right: 22px; bottom: 22px;
+  z-index: 80;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #8e58f0;
+  color: #fff;
+  border: 2px solid #181820;
+  border-radius: 99px;
+  padding: 12px 18px 12px 14px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: 5px 5px 0 #181820;
+  transition: all .2s cubic-bezier(.16,1,.3,1);
+}
+.bai-fab:hover {
+  background: #181820;
+  color: #d4f550;
+  transform: translate(-2px,-2px);
+  box-shadow: 7px 7px 0 #8e58f0;
+}
+.bai-fab-dot {
+  display: inline-block;
+  width: 8px; height: 8px;
+  background: #d4f550;
+  border-radius: 50%;
+  animation: bai-pulse 2s infinite;
+}
+@keyframes bai-pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
+.bai-fab-icon { font-size: 16px; line-height: 1; }
+
+/* ---------- Mobile ---------- */
+@media (max-width: 720px) {
+  .bai-backdrop { padding: 20px 12px; }
+  .bai-modal { padding: 28px 20px 22px; border-radius: 18px; box-shadow: 10px 10px 0 #181820; }
+  .bai-head-title { font-size: 18px; }
+  .bai-head-sub { font-size: 14px; }
+  .bai-iframe { height: 420px; }
+  .bai-actions { flex-direction: column; align-items: stretch; }
+  .bai-actions .bai-btn { justify-content: center; }
+  .bai-fab { right: 14px; bottom: 14px; padding: 11px 16px 11px 12px; font-size: 11px; }
+}
