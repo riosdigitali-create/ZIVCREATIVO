@@ -1,0 +1,1590 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ZIV CREATIVO · 10 Carruseles Informativos · 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Space+Grotesk:wght@400;500;600;700&family=Archivo+Black&family=Bebas+Neue&family=Caveat:wght@500;700&family=DM+Mono:wght@400;500&family=Cormorant+Garamond:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<style>
+:root{
+  --brat:#d4f550; --cherry:#ff2a3d; --cobalt:#1d4ed8; --pink:#ff3d8a; --orange:#ff6b1a;
+  --cream:#f5ecd6; --cream-2:#ede0c0; --paper:#f0e7d0; --paper-soft:#e9dcbe;
+  --ink:#0e0e12; --black:#050507; --night:#13131a; --char:#1e1e26;
+  --gold:#c9a961; --gold-bright:#e6c878; --gold-deep:#8a7340;
+  --purple:#8e58f0; --muted:#7a7280;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Space Grotesk',sans-serif;background:#0a0a0e;color:var(--cream);padding:32px 16px 80px;min-height:100vh}
+
+.page-head{max-width:1280px;margin:0 auto 36px;text-align:center}
+.kicker{font-size:12px;letter-spacing:6px;color:var(--brat);text-transform:uppercase;font-weight:700;margin-bottom:14px;display:inline-block;padding:6px 14px;border:1px solid var(--brat);border-radius:99px}
+.page-head h1{font-family:'Playfair Display',serif;font-style:italic;font-weight:900;font-size:clamp(2rem,5.2vw,3.6rem);line-height:1.05;margin-bottom:14px;color:var(--cream)}
+.page-head h1 .sans{font-family:'Archivo Black',sans-serif;font-style:normal}
+.page-head h1 .gold-grad{background:linear-gradient(135deg,var(--gold-bright),var(--gold) 60%,var(--gold-deep));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.page-head p{color:#aaa;font-size:14px;max-width:740px;margin:0 auto;line-height:1.6}
+
+.toc{max-width:1280px;margin:24px auto 56px;background:#15151c;border:1px solid #25252e;border-radius:14px;padding:24px 28px}
+.toc h3{font-family:'Playfair Display',serif;font-style:italic;color:var(--brat);font-size:20px;margin-bottom:16px}
+.toc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:8px 28px;color:#cfcfd5;font-size:13.5px}
+.toc-grid a{color:#cfcfd5;text-decoration:none;display:block;padding:6px 0;border-bottom:1px dotted #333}
+.toc-grid a:hover{color:var(--brat)}
+.toc-grid .badge{display:inline-block;font-size:10px;font-weight:700;letter-spacing:2px;padding:2px 8px;border-radius:4px;margin-right:8px;vertical-align:middle}
+.toc-grid .badge.luxe{background:rgba(201,169,97,.15);color:var(--gold-bright);border:1px solid rgba(201,169,97,.4)}
+.toc-grid .badge.elec{background:rgba(212,245,80,.12);color:var(--brat);border:1px solid var(--brat)}
+.toc small{color:var(--muted);display:block;margin-top:16px;font-size:12px;font-style:italic}
+
+/* Section */
+.carrusel-section{max-width:1280px;margin:0 auto 70px;padding:24px 0 8px;border-top:1px solid #25252e}
+.carrusel-section .head{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:14px;margin-bottom:6px}
+.carrusel-section h2{font-family:'Playfair Display',serif;font-style:italic;font-weight:900;font-size:28px;color:var(--brat)}
+.carrusel-section h2 .num{font-family:'Archivo Black',sans-serif;color:var(--cherry);font-style:normal;margin-right:8px}
+.carrusel-section.luxe h2{color:var(--gold-bright)}
+.carrusel-section.luxe h2 .num{color:var(--gold)}
+.carrusel-section .meta{font-size:11px;color:var(--muted);letter-spacing:3px;text-transform:uppercase;font-weight:700}
+.carrusel-section .meta b{color:var(--brat)}
+.carrusel-section.luxe .meta b{color:var(--gold-bright)}
+.carrusel-section .desc{color:#aaa;font-size:13px;margin-bottom:20px;font-style:italic;max-width:920px;line-height:1.55}
+.sources{color:var(--muted);font-size:11px;margin-top:8px;font-style:italic;max-width:920px}
+.sources b{color:#bbb;font-style:normal;text-transform:uppercase;letter-spacing:2px;font-size:10px;margin-right:6px}
+
+/* Slides scroll */
+.slides{display:flex;gap:22px;overflow-x:auto;padding:10px 4px 26px;scrollbar-color:var(--brat) #2a2a30}
+.slides::-webkit-scrollbar{height:10px}
+.slides::-webkit-scrollbar-track{background:#1a1a22;border-radius:5px}
+.slides::-webkit-scrollbar-thumb{background:var(--brat);border-radius:5px}
+.slide-wrap{flex-shrink:0;display:flex;flex-direction:column;gap:10px;align-items:center}
+.slide-cap{font-size:11px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;font-weight:600}
+.slide-cap b{color:var(--brat)}
+
+.slide-frame{width:324px;height:405px;position:relative;border-radius:14px;overflow:hidden;box-shadow:0 18px 50px rgba(0,0,0,.5),0 0 0 1px rgba(212,245,80,.12)}
+.slide{width:1080px;height:1350px;transform:scale(0.30);transform-origin:top left;position:relative;font-family:'Space Grotesk',sans-serif;color:var(--ink);overflow:hidden;flex-shrink:0;background:var(--cream)}
+.slide::before{content:'';position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");background-size:240px;opacity:.13;mix-blend-mode:multiply;pointer-events:none;z-index:1}
+
+/* Backgrounds */
+.bg-brat{background:var(--brat);color:var(--ink)}
+.bg-cherry{background:var(--cherry);color:#fff}
+.bg-cobalt{background:var(--cobalt);color:#fff}
+.bg-pink{background:var(--pink);color:#fff}
+.bg-orange{background:var(--orange);color:#fff}
+.bg-cream{background:var(--cream);color:var(--ink)}
+.bg-paper{background:var(--paper);color:var(--ink)}
+.bg-night{background:var(--night);color:var(--cream)}
+.bg-black{background:var(--black);color:var(--cream)}
+.bg-char{background:var(--char);color:var(--cream)}
+.bg-luxe{background:radial-gradient(circle at 30% 25%,rgba(201,169,97,.18),transparent 55%),radial-gradient(circle at 70% 80%,rgba(142,88,240,.10),transparent 55%),var(--black);color:var(--cream)}
+.bg-luxe-cream{background:linear-gradient(180deg,var(--cream) 0%,var(--paper-soft) 100%);color:var(--ink)}
+.bg-luxe::before,.bg-night::before,.bg-black::before,.bg-char::before{opacity:.06}
+
+.inner{position:relative;z-index:2;width:100%;height:100%;padding:90px 80px;display:flex;flex-direction:column;justify-content:space-between}
+.inner.center{justify-content:center;align-items:center;text-align:center;gap:36px}
+.inner.tight{padding:80px 70px}
+
+/* Type */
+.tag{font-size:22px;letter-spacing:7px;font-weight:700;text-transform:uppercase}
+.tag.brat{color:var(--brat)}.tag.gold{color:var(--gold-bright)}.tag.cherry{color:var(--cherry)}.tag.dark{color:var(--ink)}
+.tag.chip{display:inline-block;padding:14px 26px;border-radius:99px;border:2px solid currentColor;font-size:20px}
+.tag.solid-dark{background:var(--ink);color:var(--brat);padding:14px 26px;border-radius:99px;display:inline-block}
+.tag.solid-brat{background:var(--brat);color:var(--ink);padding:14px 26px;border-radius:99px;display:inline-block}
+.tag.solid-gold{background:var(--gold-bright);color:var(--ink);padding:14px 26px;border-radius:99px;display:inline-block}
+.tag.solid-cherry{background:var(--cherry);color:#fff;padding:14px 26px;border-radius:99px;display:inline-block}
+
+.h-display{font-family:'Playfair Display',serif;font-style:italic;font-weight:900;line-height:.94;letter-spacing:-.025em}
+.h-cormorant{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:700;line-height:.96;letter-spacing:-.015em}
+.h-archivo{font-family:'Archivo Black',sans-serif;font-style:normal;line-height:.92;letter-spacing:-.025em}
+.h-bebas{font-family:'Bebas Neue',sans-serif;font-style:normal;line-height:.88;letter-spacing:.005em}
+
+.sz-massive{font-size:230px}.sz-huge{font-size:170px}.sz-xl{font-size:130px}.sz-lg{font-size:100px}.sz-md{font-size:74px}.sz-sm{font-size:54px}.sz-xs{font-size:38px}
+
+.script{font-family:'Caveat',cursive;font-weight:700;color:var(--cherry);font-size:60px;display:inline-block;transform:rotate(-2deg)}
+.script.gold{color:var(--gold-bright)}.script.brat{color:var(--brat)}.script.cobalt{color:var(--cobalt)}
+.mono{font-family:'DM Mono',monospace;font-weight:500}
+
+.strike{position:relative;display:inline-block}
+.strike::after{content:'';position:absolute;left:-.04em;right:-.04em;top:55%;height:12px;background:var(--cherry);transform:rotate(-2deg);border-radius:6px;z-index:0}
+.strike.thick::after{height:22px}
+.strike.brat::after{background:var(--brat)}.strike.gold::after{background:var(--gold-bright)}
+
+.hl{position:relative;display:inline-block;padding:0 .12em;z-index:1}
+.hl::before{content:'';position:absolute;inset:.16em -.04em;background:var(--brat);z-index:-1;transform:rotate(-1deg)}
+.hl-cherry::before{background:var(--cherry)}.hl-pink::before{background:var(--pink)}.hl-cobalt::before{background:var(--cobalt)}
+.hl-orange::before{background:var(--orange)}.hl-gold::before{background:var(--gold-bright)}.hl-cream::before{background:var(--cream)}
+.hl-black::before{background:var(--ink)}
+.hl.white{color:#fff}
+
+.gold-text{background:linear-gradient(135deg,var(--gold-bright),var(--gold) 55%,var(--gold-deep));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+
+.aster{position:absolute;font-family:'Playfair Display',serif;font-size:90px;line-height:1;font-style:italic;pointer-events:none;z-index:3}
+.aster.tl{top:50px;left:70px;color:var(--cherry)}
+.aster.tr{top:60px;right:80px;color:var(--cobalt);font-size:70px}
+.aster.bl{bottom:140px;left:70px;color:var(--brat);font-size:80px}
+.aster.br{bottom:160px;right:80px;color:var(--pink);font-size:60px}
+.aster.gold{color:var(--gold-bright)!important}
+
+.slide-num{position:absolute;top:46px;right:54px;font-family:'Archivo Black',sans-serif;font-size:38px;color:var(--ink);background:var(--brat);width:80px;height:80px;border-radius:50%;display:flex;align-items:center;justify-content:center;z-index:5;border:4px solid var(--ink)}
+.slide-num.dark{background:var(--gold-bright);color:var(--ink);border-color:var(--ink)}
+.slide-num.cherry{background:var(--cherry);color:#fff;border-color:#fff}
+.slide-num.cream{background:var(--cream);color:var(--ink);border-color:var(--ink)}
+.slide-num.gold{background:var(--gold-bright);color:var(--ink);border-color:var(--gold-deep)}
+
+.bottom{display:flex;justify-content:space-between;align-items:flex-end;border-top:2px solid currentColor;padding-top:22px;font-size:20px;font-weight:700;letter-spacing:3px;text-transform:uppercase;opacity:.85}
+.bottom .swipe{display:flex;align-items:center;gap:10px}
+.bottom .swipe::after{content:'→';font-size:28px;font-family:'Archivo Black',sans-serif}
+.bottom .brand{font-family:'Archivo Black',sans-serif;letter-spacing:1px}
+
+/* Stat card */
+.stat-card{background:var(--ink);color:var(--brat);padding:36px 40px;border-radius:18px;display:flex;flex-direction:column;gap:8px;border:2px solid var(--brat)}
+.stat-card.gold{background:var(--black);color:var(--gold-bright);border-color:var(--gold-bright)}
+.stat-card .label{font-size:18px;letter-spacing:4px;text-transform:uppercase;font-weight:700;color:var(--gold-bright);opacity:.85}
+.stat-card .num{font-family:'Archivo Black',sans-serif;font-size:140px;line-height:.9;color:var(--cream);letter-spacing:-.03em}
+.stat-card .num.gold-grad{background:linear-gradient(135deg,var(--gold-bright),var(--gold-deep));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.stat-card .desc{font-size:24px;color:#fff;line-height:1.3;margin-top:4px}
+.stat-card .src{font-size:14px;color:var(--muted);font-style:italic;margin-top:8px;font-family:'DM Mono',monospace}
+
+/* Bullet list (educational) */
+.bul-list{display:flex;flex-direction:column;gap:18px;width:100%}
+.bul{display:flex;gap:18px;align-items:flex-start;padding:18px 22px;border-radius:14px;background:rgba(0,0,0,.04)}
+.slide.bg-night .bul,.slide.bg-black .bul,.slide.bg-luxe .bul,.slide.bg-char .bul{background:rgba(255,255,255,.05);border:1px solid rgba(201,169,97,.15)}
+.bul .n{font-family:'Archivo Black',sans-serif;font-size:42px;line-height:1;color:var(--cherry);min-width:60px}
+.slide.bg-luxe .bul .n,.slide.bg-black .bul .n,.slide.bg-night .bul .n{color:var(--gold-bright)}
+.bul .body{flex:1}
+.bul .ttl{font-family:'Playfair Display',serif;font-style:italic;font-weight:700;font-size:32px;line-height:1.1;margin-bottom:4px}
+.bul .txt{font-size:20px;line-height:1.35;opacity:.85}
+
+/* Bento grid (trends) */
+.bento{display:grid;grid-template-columns:1.4fr 1fr;grid-template-rows:auto auto;gap:14px;width:100%}
+.bento .cell{background:rgba(0,0,0,.04);border-radius:14px;padding:24px 26px}
+.slide.bg-night .bento .cell,.slide.bg-luxe .bento .cell{background:rgba(255,255,255,.04);border:1px solid rgba(201,169,97,.15)}
+.bento .cell h5{font-family:'Archivo Black',sans-serif;font-size:24px;letter-spacing:-.01em;margin-bottom:6px}
+.bento .cell p{font-size:18px;line-height:1.3;opacity:.85}
+.bento .cell.span-2{grid-column:span 2}
+.bento .cell.accent{background:var(--gold-bright);color:var(--ink)}
+.bento .cell.brat{background:var(--brat);color:var(--ink)}
+.bento .cell.cherry{background:var(--cherry);color:#fff}
+
+/* CTA luxe card */
+.luxe-card{background:var(--black);color:var(--cream);padding:60px 50px;border-radius:24px;text-align:center;border:6px solid var(--gold-bright);position:relative;width:100%}
+.luxe-card::before{content:'';position:absolute;inset:8px;border:1px solid rgba(201,169,97,.3);border-radius:18px;pointer-events:none}
+.luxe-card .pre{font-size:20px;letter-spacing:8px;color:var(--gold-bright);text-transform:uppercase;font-weight:700;margin-bottom:20px}
+.luxe-card .url{font-family:'Archivo Black',sans-serif;font-size:90px;line-height:1;color:var(--cream);letter-spacing:-.02em;margin-bottom:20px}
+.luxe-card .post{font-family:'Playfair Display',serif;font-style:italic;font-size:28px;color:var(--gold-bright);line-height:1.4}
+
+/* Pricing table (carrusel 02) */
+.price-row{display:flex;justify-content:space-between;align-items:center;padding:24px 28px;border-radius:12px;background:rgba(201,169,97,.08);border:1px solid rgba(201,169,97,.25)}
+.price-row .name{font-family:'Playfair Display',serif;font-style:italic;font-weight:700;font-size:30px}
+.price-row .name span{display:block;font-family:'Space Grotesk',sans-serif;font-style:normal;font-size:16px;font-weight:500;color:var(--muted);margin-top:4px;letter-spacing:1px;text-transform:uppercase}
+.price-row .price{font-family:'Archivo Black',sans-serif;font-size:38px;color:var(--gold-bright)}
+
+/* Checklist */
+.check{display:flex;align-items:flex-start;gap:14px;padding:14px 18px;background:rgba(212,245,80,.08);border-left:4px solid var(--brat);border-radius:0 10px 10px 0;margin-bottom:10px}
+.check.cherry{background:rgba(255,42,61,.08);border-color:var(--cherry)}
+.check.gold{background:rgba(201,169,97,.08);border-color:var(--gold-bright)}
+.check .mark{font-family:'Archivo Black',sans-serif;font-size:30px;line-height:1;color:var(--brat);min-width:30px}
+.check.cherry .mark{color:var(--cherry)}
+.check.gold .mark{color:var(--gold-bright)}
+.check .lbl{flex:1;font-size:22px;line-height:1.35;font-weight:500}
+.check .lbl b{font-weight:800}
+
+/* Comparison row (2 cols) */
+.vs{display:flex;gap:14px;width:100%}
+.vs .col{flex:1;border-radius:14px;padding:24px;min-height:200px}
+.vs .col.bad{background:#2a2a30;color:var(--cream);border:2px dashed var(--cherry)}
+.vs .col.good{background:var(--ink);color:var(--gold-bright);border:2px solid var(--gold-bright)}
+.vs .col h5{font-size:16px;letter-spacing:3px;text-transform:uppercase;font-weight:800;margin-bottom:10px}
+.vs .col.bad h5{color:var(--cherry)}
+.vs .col p{font-family:'Playfair Display',serif;font-style:italic;font-weight:700;font-size:28px;line-height:1.15}
+
+/* Number ladder (for stats) */
+.ladder{display:flex;flex-direction:column;gap:16px;width:100%}
+.rung{display:flex;justify-content:space-between;align-items:center;padding:18px 24px;background:var(--ink);border-radius:12px;color:var(--cream)}
+.rung .pct{font-family:'Archivo Black',sans-serif;font-size:50px;color:var(--brat);line-height:1;min-width:160px}
+.rung .pct.gold{color:var(--gold-bright)}
+.rung .pct.cherry{color:var(--cherry)}
+.rung .desc{flex:1;font-size:20px;font-weight:500;line-height:1.3;padding-left:20px;text-align:right}
+
+/* DL buttons */
+.dl-btn{padding:8px 18px;background:#15151c;color:var(--brat);border:1px solid var(--brat);font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;border-radius:6px;cursor:pointer;font-family:'Space Grotesk',sans-serif}
+.dl-btn:hover{background:var(--brat);color:var(--ink)}
+
+.foot{max-width:1280px;margin:60px auto 0;padding-top:40px;border-top:1px solid #25252e;text-align:center;color:var(--muted);font-size:12px;letter-spacing:2px;text-transform:uppercase;line-height:1.8}
+.foot a{color:var(--brat);text-decoration:none}
+</style>
+</head>
+<body>
+
+<div class="page-head">
+  <span class="kicker">ZIV CREATIVO · Strategy 2026</span>
+  <h1>10 carruseles <span class="gold-grad">informativos</span><br><span class="sans">con datos frescos 2026</span></h1>
+  <p>Cinco en paleta <b style="color:var(--gold-bright)">LUXE</b> (autoridad / educación) y cinco en paleta <b style="color:var(--brat)">ELÉCTRICA</b> (viral / impacto). Todas las cifras citadas con fuente — verificable. Formato 1080×1350 px.</p>
+</div>
+
+<div class="toc">
+  <h3>Los 10 carruseles</h3>
+  <div class="toc-grid">
+    <a href="#c1"><span class="badge luxe">LUXE</span>01. Diseño web 2026 · lo que ya no es opcional</a>
+    <a href="#c6"><span class="badge elec">ELEC</span>06. El e-commerce mexicano explotó · $941B</a>
+    <a href="#c2"><span class="badge luxe">LUXE</span>02. Cuánto cuesta una web en México 2026</a>
+    <a href="#c7"><span class="badge elec">ELEC</span>07. Google ya no es Google · era IA</a>
+    <a href="#c3"><span class="badge luxe">LUXE</span>03. Cómo elegir agencia sin que te estafen</a>
+    <a href="#c8"><span class="badge elec">ELEC</span>08. 5 razones por las que tu web NO vende</a>
+    <a href="#c4"><span class="badge luxe">LUXE</span>04. WhatsApp Business + tu web · 92% PyMES</a>
+    <a href="#c9"><span class="badge elec">ELEC</span>09. 99.8% son PyMES. Solo 10% vende online</a>
+    <a href="#c5"><span class="badge luxe">LUXE</span>05. 5 señales de que tu web ya no funciona</a>
+    <a href="#c10"><span class="badge elec">ELEC</span>10. 5 cosas que tu web debe tener en 2026</a>
+  </div>
+  <small>Pro tip: Publica 1 LUXE entre cada 2 eléctricos. La rotación construye autoridad sin perder alcance viral.</small>
+</div>
+
+<!-- ============================================================
+     CARRUSEL 01 LUXE — DISEÑO WEB 2026
+     ============================================================ -->
+<section class="carrusel-section luxe" id="c1">
+  <div class="head">
+    <h2><span class="num">01.</span>Diseño web 2026 · lo que ya no es opcional</h2>
+    <div class="meta">Estilo: <b>LUXE</b> · 6 slides · tendencias</div>
+  </div>
+  <p class="desc">Las cinco tendencias de diseño que separarán a las webs que venden de las que se ven viejas en 2026.</p>
+
+  <div class="slides">
+
+    <div class="slide-wrap">
+      <div class="slide-frame">
+        <div class="slide bg-luxe">
+          <div class="slide-num gold">1</div>
+          <div class="aster tl gold">✦</div>
+          <div class="aster br gold">✱</div>
+          <div class="inner center">
+            <span class="tag solid-gold">tendencias 2026</span>
+            <div class="h-display" style="font-size:120px;color:#fff;line-height:.9">5 cosas que tu web<br><span class="gold-text">YA no puede ignorar</span></div>
+            <div class="script gold">en 2026 ↘</div>
+            <div class="bottom" style="margin-top:20px;color:var(--gold-bright);border-color:var(--gold-bright)"><span class="brand">ZIV CREATIVO</span><span class="swipe">desliza</span></div>
+          </div>
+        </div>
+      </div>
+      <span class="slide-cap">slide <b>1/6</b> · hook</span>
+      <button class="dl-btn" onclick="dl(this)">descargar</button>
+    </div>
+
+    <div class="slide-wrap">
+      <div class="slide-frame">
+        <div class="slide bg-luxe-cream">
+          <div class="slide-num cream">2</div>
+          <div class="inner">
+            <span class="tag" style="color:var(--gold-deep)">tendencia · 01</span>
+            <div class="h-display sz-lg" style="margin-top:12px">Bento grids.</div>
+            <div class="bento" style="margin-top:32px">
+              <div class="cell"><h5>Inspirado en Apple</h5><p>Bloques modulares tipo lonchera japonesa que muestran mucho en poco espacio.</p></div>
+              <div class="cell accent"><h5>+ legible</h5><p>El ojo escanea por bloques, no por scroll.</p></div>
+              <div class="cell span-2 brat"><h5>Por qué importa</h5><p>Los visitantes deciden en 7 segundos. El grid bento les da 5 puntos de impacto al mismo tiempo.</p></div>
+            </div>
+            <div class="bottom"><span class="brand">ZIV · 01/05</span><span class="swipe">sigue</span></div>
+          </div>
+        </div>
+      </div>
+      <span class="slide-cap">slide <b>2/6</b> · bento</span>
+      <button class="dl-btn" onclick="dl(this)">descargar</button>
+    </div>
+
+    <div class="slide-wrap">
+      <div class="slide-frame">
+        <div class="slide bg-black">
+          <div class="slide-num gold">3</div>
+          <div class="inner">
+            <span class="tag gold">tendencia · 02</span>
+            <div class="h-display sz-lg" style="color:#fff;margin-top:12px">Brutalismo<br><span class="gold-text">como contra-IA.</span></div>
+            <div class="bul-list" style="margin-top:30px">
+              <div class="bul"><div class="n">▸</div><div class="body"><div class="ttl" style="color:var(--gold-bright)">Layouts crudos</div><div class="txt">Tipografía pesada, columnas obvias, cero decoración tonta.</div></div></div>
+              <div class="bul"><div class="n">▸</div><div class="body"><div class="ttl" style="color:var(--gold-bright)">Reacción contra IA</div><div class="txt">Lo que se ve "demasiado pulido" parece hecho por máquina.</div></div></div>
+              <div class="bul"><div class="n">▸</div><div class="body"><div class="ttl" style="color:var(--gold-bright)">Construye marca</div><div class="txt">Una web brutal es memorable. Una web bonita es invisible.</div></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <span class="slide-cap">slide <b>3/6</b> · brutalismo</span>
+      <button class="dl-btn" onclick="dl(this)">descargar</button>
+    </div>
+
+    <div class="slide-wrap">
+      <div class="slide-frame">
+        <div class="slide bg-luxe-cream">
+          <div class="slide-num cream">4</div>
+          <div class="inner">
+            <span class="tag" style="color:var(--gold-deep)">tendencia · 03</span>
+            <div class="h-display sz-lg" style="margin-top:12px">Ilustración<br>hecha a mano.</div>
+            <div style="margin-top:32px;padding:32px;background:var(--ink);color:var(--cream);border-radius:16px;text-align:center">
+              <div class="h-cormorant" style="font-size:54px;color:var(--gold-bright);font-style:italic">"En el año del IA-everywhere, lo dibujado a mano es el nuevo lujo."</div>
+              <div style="font-size:16px;color:var(--muted);margin-top:18px;letter-spacing:3px;text-transform:uppercase;font-weight:700">— Figma Resource Library, 2026</div>
+            </div>
+            <div class="bul" style="background:rgba(201,169,97,.12);margin-top:24px"><div class="n" style="color:var(--gold-deep)">▸</div><div class="body"><div class="ttl">Diferencia visual instantánea</div><div class="txt">Cuando el feed está saturado de visuales AI, una ilustración humana detiene el scroll por contraste.</div></div></div>
+          </div>
+        </div>
+      </div>
+      <span class="slide-cap">slide <b>4/6</b> · ilustración</span>
+      <button class="dl-btn" onclick="dl(this)">descargar</button>
+    </div>
+
+    <div class="slide-wrap">
+      <div class="slide-frame">
+        <div class="slide bg-black">
+          <div class="slide-num gold">5</div>
+          <div class="inner">
+            <span class="tag gold">tendencias · 04 + 05</span>
+            <div class="h-display sz-lg" style="color:#fff;margin-top:12px"><span class="gold-text">Tu web</span> tiene<br>que ser <span style="font-family:'DM Mono',monospace;font-style:normal;font-size:80px">AI-readable.</span></div>
+            <div class="bul-list" style="margin-top:30px">
+              <div class="bul"><div class="n">04</div><div class="body"><div class="ttl" style="color:var(--gold-bright)">Schema markup</div><div class="txt">Etiquetas que le dicen a la IA "yo soy un negocio, vendo X, ubicado en Y". Sin esto, ChatGPT/Perplexity no te citan.</div></div></div>
+              <div class="bul"><div class="n">05</div><div class="body"><div class="ttl" style="color:var(--gold-bright)">archivo llms.txt</div><div class="txt">El "robots.txt" para LLMs. Te permite controlar cómo te lee la IA. Nuevo estándar 2026.</div></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <span class="slide-cap">slide <b>5/6</b> · AI-readable</span>
+      <button class="dl-btn" onclick="dl(this)">descargar</button>
+    </div>
+
+    <div class="slide-wrap">
+      <div class="slide-frame">
+        <div class="slide bg-luxe">
+          <div class="slide-num gold">6</div>
+          <div class="aster tl gold">✦</div>
+          <div class="aster tr gold">✱</div>
+          <div class="aster bl gold">✱</div>
+          <div class="aster br gold">✦</div>
+          <div class="inner center">
+            <span class="tag solid-gold">resumen</span>
+            <div class="h-display tight" style="font-size:78px"><span style="color:#fff">Tu web</span><br><span class="gold-text">2026-ready</span><br><span style="color:#fff">en 48 horas.</span></div>
+            <div class="luxe-card" style="padding:40px">
+              <div class="pre">empieza con DM</div>
+              <div class="url" style="font-size:80px;color:var(--cream)">ZIV CREATIVO</div>
+              <div class="post">Tu web con bento, schema y <br>todo lo de 2026.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <span class="slide-cap">slide <b>6/6</b> · CTA</span>
+      <button class="dl-btn" onclick="dl(this)">descargar</button>
+    </div>
+
+  </div>
+  <p class="sources"><b>fuentes</b> Figma Resource Library 2026 · Fireart Studio Web Trends 2026 · Search Engine Land "Mastering GEO 2026"</p>
+</section>
+
+<!-- ============================================================
+     CARRUSEL 02 LUXE — CUÁNTO CUESTA UNA WEB EN MÉXICO 2026
+     ============================================================ -->
+<section class="carrusel-section luxe" id="c2">
+  <div class="head">
+    <h2><span class="num">02.</span>Cuánto cuesta una página web en México 2026</h2>
+    <div class="meta">Estilo: <b>LUXE</b> · 6 slides · educación</div>
+  </div>
+  <p class="desc">La pregunta que todo dueño de negocio se hace. Aquí los rangos reales del mercado mexicano en 2026 y qué deberías esperar a cada nivel.</p>
+
+  <div class="slides">
+
+    <div class="slide-wrap">
+      <div class="slide-frame">
+        <div class="slide bg-luxe">
+          <div class="slide-num gold">1</div>
+          <div class="aster tl gold">¿</div>
+          <div class="aster br gold">?</div>
+          <div class="inner center">
+            <span class="tag solid-gold">pregunta honesta</span>
+            <div class="h-display tight" style="font-size:88px;color:#fff">¿Cuánto<br><span class="gold-text">debería costar</span><br>tu página web<br>en 2026?</div>
+            <div class="script gold" style="font-size:54px">los rangos reales ↘</div>
+            <div class="bottom" style="color:var(--gold-bright);border-color:var(--gold-bright)"><span class="brand">ZIV · MÉXICO</span><span class="swipe">desliza</span></div>
+          </div>
+        </div>
+      </div>
+      <span class="slide-cap">slide <b>1/6</b> · hook</span>
+      <button class="dl-btn" onclick="dl(this)">descargar</button>
+    </div>
+
+    <div class="slide-wrap">
+      <div class="slide-frame">
+        <div class="slide bg-luxe-cream">
+          <div class="slide-num cream">2</div>
+          <div class="inner">
+            <span class="tag" style="color:var(--gold-deep)">primero · el contexto</span>
+            <div class="h-display sz-lg" style="margin-top:12px">Depende<br>de 3 cosas.</div>
+            <div class="bul-list" style="margin-top:30px">
+              <div class="bul"><div class="n">01</div><div class="body"><div class="ttl">¿Cuántas páginas?</div><div class="txt">Una landing (1 página) ≠ sitio completo (8-15 páginas).</div></div></div>
+              <div class="bul"><div class="n">02</div><div class="body"><div class="ttl">¿Vende o informa?</div><div class="txt">Catálogo informativo es más simple. E-commerce con pagos y envíos sube el costo.</div></div></div>
+              <div class="bul"><div class="n">03</div><div class="body"><div class="ttl">¿Diseño plantilla o a la medida?</div><div class="txt">Plantilla = más barata pero genérica. A la medida = tu marca, tu identidad.</div></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <span class="slide-cap">slide <b>2/6</b> · 3 variables</span>
+      <button class="dl-btn" onclick="dl(this)">descargar</button>
+    </div>
+
+    <div class="slide-wrap">
+      <div class="slide-frame">
+        <div class="slide bg-black">
+          <div class="slide-num gold">3</div>
+          <div class="inner">
+            <span class="tag gold">rangos · MX 2026</span>
+            <div class="h-display sz-md" style="color:#fff;margin-top:12px">Los <span class="gold-text">3 niveles.</span></div>
+            <div style="display:flex;flex-direction:column;gap:18px;margin-top:30px">
+              <div class="price-row"><div class="name">Básico<span>landing · 1-3 secciones</span></div><div class="price">$5k-15k</div></div>
+              <div class="price-row" style="background:rgba(212,245,80,.08);border-color:var(--brat)"><div class="name" style="color:var(--brat)">Profesional<span style="color:var(--brat);opacity:.7">sitio completo · 5-8 páginas</span></div><div class="price" style="color:var(--brat)">$15k-40k</div></div>
+              <div class="price-row"><div class="name">E-commerce<span>tienda online · pagos · catálogo</span></div><div class="price">$40k-120k</div></div>
+            </div>
+            <div style="font-size:14px;color:var(--muted);margin-top:20px;font-style:italic;text-align:center">* Rango promedio agencias mexicanas 2026</div>
+          </div>
+        </div>
+      </div>
+      <span class="slide-cap">slide <b>3/6</b> · rangos</span>
+      <button class="dl-btn" onclick="dl(this)">descargar</button>
+    </div>
+
+    <div class="slide-wrap">
+      <div class="slide-frame">
+        <div class="slide bg-luxe-cream">
+          <div class="slide-num cream">4</div>
+          <div class="inner">
+            <span class="tag" style="color:var(--gold-deep)">señales de alarma</span>
+            <div class="h-display sz-lg" style="margin-top:12px">Cuidado<br><span style="color:var(--cherry)">con esto.</span></div>
+            <div style="margin-top:30px">
+              <div class="check cherry"><div class="mark">✕</div><div class="lbl"><b>Menos de $3,000</b> con diseño "a la medida" — casi siempre es plantilla con tu logo pegado.</div></div>
+              <div class="check cherry"><div class="mark">✕</div><div class="lbl"><b>Más de 3 meses</b> de entrega — en 2026 hay herramientas para entregar en días, no meses.</div></div>
+              <div class="check cherry"><div class="mark">✕</div><div class="lbl"><b>Sin contrato</b> ni alcance escrito — abre la puerta a cobros sorpresa.</div></div>
+              <div class="check cherry"><div class="mark">✕</div><div class="lbl"><b>"Mensualidad obligatoria"</b> sin que sea hosting o mantenimiento claro.</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <span class="slide-cap">slide <b>4/6</b> · red flags</span>
+      <button class="dl-btn" onclick="dl(this)">descargar</button>
+    </div>
+
+    <div class="slide-wrap">
+      <div class="slide-frame">
+        <div class="slide bg-black">
+          <div class="slide-num gold">5</div>
+          <div class="inner center">
+            <span class="tag solid-gold">la pregunta correcta</span>
+            <div class="h-display" style="font-size:60px;color:#fff;line-height:1.05">No preguntes<br><span class="strike thick"><span class="gold-text">"¿cuánto cuesta?"</span></span></div>
+            <div class="h-display" style="font-size:80px;color:var(--gold-bright);margin-top:20px;line-height:1">Pregunta:<br><span style="font-style:normal;font-family:'Archivo Black',sans-serif">¿en cuánto<br>tiempo recupero<br>la inversión?</span></div>
+            <div style="background:rgba(201,169,97,.12);padding:24px 30px;border-radius:14px;border:1px solid rgba(201,169,97,.3);width:100%">
+              <div class="h-cormorant" style="font-size:32px;color:var(--gold-bright);font-style:italic;text-align:center">Una web profesional que cierre 2 ventas adicionales al mes se paga sola en 6-12 meses.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <span class="slide-cap">slide <b>5/6</b> · framing</span>
+      <button class="dl-btn" onclick="dl(this)">descargar</button>
+    </div>
+
+    <div class="slide-wrap">
+      <div class="slide-frame">
+        <div class="slide bg-luxe">
+          <div class="slide-num gold">6</div>
+          <div class="aster tl gold">✦</div>
+          <div class="aster br gold">✦</div>
+          <div class="inner center">
+            <div class="luxe-card">
+              <div class="pre">cotización transparente</div>
+              <div class="url" style="font-size:84px">ZIV<br>CREATIVO</div>
+              <div class="post">Rango fijo. Tiempo fijo: <b style="color:var(--brat)">48 horas</b>.<br>Sin sorpresas. DM "COTIZA".</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <span class="slide-cap">slide <b>6/6</b> · CTA</span>
+      <button class="dl-btn" onclick="dl(this)">descargar</button>
+    </div>
+
+  </div>
+  <p class="sources"><b>fuentes</b> Promedio agencias web México 2026 · referencia BlackSip / Marketing4eCommerce</p>
+</section>
+
+<!-- ============================================================
+     CARRUSEL 03 LUXE — CÓMO ELEGIR AGENCIA SIN QUE TE ESTAFEN
+     ============================================================ -->
+<section class="carrusel-section luxe" id="c3">
+  <div class="head">
+    <h2><span class="num">03.</span>Cómo elegir agencia de diseño web sin que te estafen</h2>
+    <div class="meta">Estilo: <b>LUXE</b> · 6 slides · educación cliente</div>
+  </div>
+  <p class="desc">Checklist práctico para que el dueño de negocio sepa exactamente qué preguntar antes de firmar.</p>
+
+  <div class="slides">
+
+    <div class="slide-wrap">
+      <div class="slide-frame">
+        <div class="slide bg-luxe">
+          <div class="slide-num gold">1</div>
+          <div class="aster tl gold">✦</div>
+          <div class="aster br gold">✱</div>
+          <div class="inner center">
+            <span class="tag solid-gold">guía honesta</span>
+            <div class="h-display tight" style="font-size:84px;color:#fff">7 preguntas<br>antes de pagar<br><span class="gold-text">un solo peso.</span></div>
+            <div class="script gold" style="font-size:50px">a tu agencia web ↘</div>
+            <div class="bottom" style="color:var(--gold-bright);border-color:var(--gold-bright)"><span class="brand">ZIV CREATIVO</span><span class="swipe">desliza</span></div>
+          </div>
+        </div>
+      </div>
+      <span class="slide-cap">slide <b>1/6</b> · hook</span>
+      <button class="dl-btn" onclick="dl(this)">descargar</button>
+    </div>
+
+    <div class="slide-wrap">
+      <div class="slide-frame">
+        <div class="slide bg-luxe-cream">
+          <div class="slide-num cream">2</div>
+          <div class="inner">
+            <span class="tag" style="color:var(--gold-deep)">preguntas · 01-03</span>
+            <div class="h-display sz-md" style="margin-top:12px">Lo esencial.</div>
+            <div class="bul-list" style="margin-top:30px">
+              <div class="bul"><div class="n">01</div><div class="body"><div class="ttl">¿Puedo ver 3 webs que hayan hecho?</div><div class="txt">No screenshots, links reales que pueda abrir. Si dicen "confidencial", desconfía.</div></div></div>
+              <div class="bul"><div class="n">02</div><div class="body"><div class="ttl">¿La web será MÍA al final?</div><div class="txt">Dominio, hosting y código a tu nombre. Si te dicen "mientras pagues..." → huye.</div></div></div>
+              <div class="bul"><div class="n">03</div><div class="body"><div class="ttl">¿Quién la actualiza después?</div><div class="txt">Debes poder cambiar precios y fotos sin pagar a un dev cada vez.</div></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <span class="slide-cap">slide <b>2/6</b> · preg 1-3</span>
+      <button class="dl-btn" onclick="dl(this)">descargar</button>
+    </div>
+
+    <div class="slide-wrap">
+      <div class="slide-frame">
+        <div class="slide bg-black">
+          <div class="slide-num gold">3</div>
+          <div class="inner">
+            <span class="tag gold">preguntas · 04-05</span>
+            <div class="h-display sz-md" style="color:#fff;margin-top:12px"><span class="gold-text">El tema</span><br>de la entrega.</div>
+            <div class="bul-list" style="margin-top:30px">
+              <div class="bul"><div class="n">04</div><div class="body"><div class="ttl" style="color:var(--gold-bright)">¿Cuánto tarda en estar publicada?</div><div class="txt">Respuesta vaga = sin proceso definido. Una agencia seria te da fecha exacta.</div></div></div>
+              <div class="bul"><div class="n">05</div><div class="body"><div class="ttl" style="color:var(--gold-bright)">¿Qué pasa si me retraso con info o fotos?</div><div class="txt">Debe tener cláusula clara: cuánto se extiende el tiempo, si hay costo extra.</div></div></div>
+            </div>
+            <div style="background:rgba(212,245,80,.1);padding:18px 22px;border-radius:12px;border-left:4px solid var(--brat);margin-top:24px"><div style="font-size:20px;color:var(--brat);font-weight:700">⚠ Bandera roja: "depende del cliente"</div><div style="font-size:18px;color:#fff;margin-top:4px;opacity:.85">significa "no tengo proceso, voy improvisando."</div></div>
+          </div>
+        </div>
+      </div>
+      <span class="slide-cap">slide <b>3/6</b> · preg 4-5</span>
+      <button class="dl-btn" onclick="dl(this)">descargar</button>
+    </div>
+
+    <div class="slide-wrap">
+      <div class="slide-frame">
+        <div class="slide bg-luxe-cream">
+          <div class="slide-num cream">4</div>
+          <div class="inner">
+            <span class="tag" style="color:var(--gold-deep)">preguntas · 06-07</span>
+            <div class="h-display sz-md" style="margin-top:12px">Lo que casi<br>nadie pregunta.</div>
+            <div class="bul-list" style="margin-top:30px">
+              <div class="bul"><div class="n">06</div><div class="body"><div class="ttl">¿Mi web va a aparecer en Google?</div><div class="txt">Una web bonita sin SEO es un folleto invisible. Debe incluir mínimo: títulos optimizados, schema, sitemap.</div></div></div>
+              <div class="bul"><div class="n">07</div><div class="body"><div class="ttl">¿Cómo se conecta con mi WhatsApp?</div><div class="txt">Botón flotante WA + link directo desde catálogo. En México sin esto, no vendes.</div></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <span class="slide-cap">slide <b>4/6</b> · preg 6-7</span>
+      <button class="dl-btn" onclick="dl(this)">descargar</button>
+    </div>
+
+    <div class="slide-wrap">
+      <div class="slide-frame">
+        <div class="slide bg-black">
+          <div class="slide-num gold">5</div>
+          <div class="inner center">
+            <span class="tag solid-gold">resumen</span>
+            <div class="h-display tight" style="font-size:64px;color:#fff">Las 7 respuestas<br>te dicen <span class="gold-text">todo.</span></div>
+            <div style="background:rgba(201,169,97,.12);padding:30px;border-radius:16px;border:1px solid rgba(201,169,97,.3);width:100%">
+              <div class="h-cormorant" style="font-size:42px;color:var(--gold-bright);font-style:italic;line-height:1.15;text-align:center">"Si responden con seguridad, claridad y por escrito → contrata.<br><br>Si responden con 'depende' y verbal → corre."</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <span class="slide-cap">slide <b>5/6</b> · cierre</span>
+      <button class="dl-btn" onclick="dl(this)">descargar</button>
+    </div>
+
+    <div class="slide-wrap">
+      <div class="slide-frame">
+        <div class="slide bg-luxe">
+          <div class="slide-num gold">6</div>
+          <div class="aster tl gold">✦</div>
+          <div class="aster br gold">✦</div>
+          <div class="inner center">
+            <div class="luxe-card">
+              <div class="pre">respuesta a las 7</div>
+              <div class="url" style="font-size:84px">ZIV<br>CREATIVO</div>
+              <div class="post">Contrato por escrito. Web tuya. <br>SEO incluido. <b style="color:var(--brat)">48 horas</b>.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <span class="slide-cap">slide <b>6/6</b> · CTA</span>
+      <button class="dl-btn" onclick="dl(this)">descargar</button>
+    </div>
+
+  </div>
+  <p class="sources"><b>basado en</b> Best practices Profeco · referencias agencias certificadas Meta Business Partners</p>
+</section>
+
+<!-- ============================================================
+     CARRUSEL 04 LUXE — WHATSAPP BUSINESS + TU WEB
+     ============================================================ -->
+<section class="carrusel-section luxe" id="c4">
+  <div class="head">
+    <h2><span class="num">04.</span>WhatsApp Business + tu web · el combo que ya usan 92% de PyMES</h2>
+    <div class="meta">Estilo: <b>LUXE</b> · 6 slides · how-to</div>
+  </div>
+  <p class="desc">El 92% de las MiPyMEs mexicanas ya usan WhatsApp Business, pero solo una fracción lo conecta a su sitio. El combo correcto multiplica las ventas.</p>
+
+  <div class="slides">
+
+    <div class="slide-wrap">
+      <div class="slide-frame">
+        <div class="slide bg-luxe">
+          <div class="slide-num gold">1</div>
+          <div class="aster tl gold">✦</div>
+          <div class="aster br gold">✱</div>
+          <div class="inner center">
+            <span class="tag solid-gold">dato sorprendente</span>
+            <div class="h-display tight" style="font-size:88px;color:#fff">El combo<br>que <span class="gold-text">92% de PyMES</span><br>ya tiene en MX.</div>
+            <div class="script gold" style="font-size:50px">(y casi nadie usa bien) ↘</div>
+            <div class="bottom" style="color:var(--gold-bright);border-color:var(--gold-bright)"><span class="brand">ZIV CREATIVO</span><span class="swipe">desliza</span></div>
+          </div>
+        </div>
+      </div>
+      <span class="slide-cap">slide <b>1/6</b> · hook</span>
+      <button class="dl-btn" onclick="dl(this)">descargar</button>
+    </div>
+
+    <div class="slide-wrap">
+      <div class="slide-frame">
+        <div class="slide bg-luxe-cream">
+          <div class="slide-num cream">2</div>
+          <div class="inner">
+            <span class="tag" style="color:var(--gold-deep)">el dato 2025</span>
+            <div class="h-display sz-md" style="margin-top:12px">Lo que dice<br>la realidad.</div>
+            <div style="display:flex;flex-direction:column;gap:14px;margin-top:30px">
+              <div class="stat-card" style="background:#1a1a22"><div class="label">PyMES MX que usan WhatsApp Business</div><div class="num gold-grad">92%</div><div class="desc">Y 88% afirma que les genera nuevas oportunidades.</div><div class="src">— Meta / Mobile Time, feb 2025</div></div>
+              <div class="stat-card" style="background:#1a1a22"><div class="label">Crecimiento de transacciones por chat WA</div><div class="num gold-grad">+85%</div><div class="desc">En LatAm durante 2025.</div><div class="src">— Meta · Aurora Inbox, 2026</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <span class="slide-cap">slide <b>2/6</b> · datos</span>
+      <button class="dl-btn" onclick="dl(this)">descargar</button>
+    </div>
+
+    <div class="slide-wrap">
+      <div class="slide-frame">
+        <div class="slide bg-black">
+          <div class="slide-num gold">3</div>
+          <div class="inner">
+            <span class="tag gold">el problema</span>
+            <div class="h-display sz-md" style="color:#fff;margin-top:12px">Tener WA<br><span class="gold-text">no es suficiente.</span></div>
+            <div class="vs" style="margin-top:30px">
+              <div class="col bad"><h5>SIN web</h5><p>"Mándame foto del producto"</p><div style="font-size:18px;margin-top:14px;opacity:.85;line-height:1.4">Cada cliente pregunta lo mismo. Cada respuesta es manual. Pierdes tiempo y consistencia.</div></div>
+              <div class="col good"><h5>CON web + WA</h5><p>"Mira el catálogo y me escribes"</p><div style="font-size:18px;margin-top:14px;opacity:.85;line-height:1.4;color:#fff">El cliente decide solo. Solo escribe cuando ya quiere comprar. Cierras en una sola respuesta.</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <span class="slide-cap">slide <b>3/6</b> · vs</span>
+      <button class="dl-btn" onclick="dl(this)">descargar</button>
+    </div>
+
+    <div class="slide-wrap">
+      <div class="slide-frame">
+        <div class="slide bg-luxe-cream">
+          <div class="slide-num cream">4</div>
+          <div class="inner">
+            <span class="tag" style="color:var(--gold-deep)">el combo correcto</span>
+            <div class="h-display sz-md" style="margin-top:12px">Cómo se ve.</div>
+            <div class="bul-list" style="margin-top:30px">
+              <div class="bul"><div class="n">01</div><div class="body"><div class="ttl">Botón flotante de WA</div><div class="txt">Visible en TODAS las páginas de tu web. Click → chat directo con mensaje pre-cargado.</div></div></div>
+              <div class="bul"><div class="n">02</div><div class="body"><div class="ttl">Catálogo enlazado</div><div class="txt">Cada producto/servicio tiene un botón "Pedir por WhatsApp" que abre chat con el nombre del item ya escrito.</div></div></div>
+              <div class="bul"><div class="n">03</div><div class="body"><div class="ttl">Auto-respuestas con link</div><div class="txt">WA Business → respuesta automática fuera de horario con link a tu web. Vendes dormido.</div></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <span class="slide-cap">slide <b>4/6</b> · setup</span>
+      <button class="dl-btn" onclick="dl(this)">descargar</button>
+    </div>
+
+    <div class="slide-wrap">
+      <div class="slide-frame">
+        <div class="slide bg-black">
+          <div class="slide-num gold">5</div>
+          <div class="inner center">
+            <span class="tag solid-gold">el resultado</span>
+            <div class="h-display tight" style="font-size:78px;color:#fff">Menos<br><span style="color:var(--cherry)">"¿cuánto?"</span></div>
+            <div class="h-display tight" style="font-size:78px;color:var(--gold-bright)">Más<br>"¿cuándo me lo<br>entregan?"</div>
+            <div style="background:rgba(201,169,97,.1);padding:24px 30px;border-radius:14px;width:100%;border:1px solid rgba(201,169,97,.3)">
+              <div class="h-cormorant" style="font-size:32px;color:var(--gold-bright);font-style:italic;text-align:center">Web + WA = filtro automático.<br>Solo te escriben quienes ya están listos.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <span class="slide-cap">slide <b>5/6</b> · resultado</span>
+      <button class="dl-btn" onclick="dl(this)">descargar</button>
+    </div>
+
+    <div class="slide-wrap">
+      <div class="slide-frame">
+        <div class="slide bg-luxe">
+          <div class="slide-num gold">6</div>
+          <div class="aster tl gold">✦</div>
+          <div class="aster br gold">✦</div>
+          <div class="inner center">
+            <div class="luxe-card">
+              <div class="pre">tu combo en 48h</div>
+              <div class="url" style="font-size:80px">WEB +<br><span class="gold-text">WHATSAPP</span></div>
+              <div class="post">Catálogo conectado, botón flotante,<br>auto-respuestas. Todo incluido.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <span class="slide-cap">slide <b>6/6</b> · CTA</span>
+      <button class="dl-btn" onclick="dl(this)">descargar</button>
+    </div>
+
+  </div>
+  <p class="sources"><b>fuentes</b> Meta · Mobile Time (feb 2025) · Aurora Inbox WhatsApp Business 2025 Stats · Sinch WhatsApp México</p>
+</section>
+
+<!-- ============================================================
+     CARRUSEL 05 LUXE — 5 SEÑALES DE QUE TU WEB YA NO FUNCIONA
+     ============================================================ -->
+<section class="carrusel-section luxe" id="c5">
+  <div class="head">
+    <h2><span class="num">05.</span>5 señales de que tu web ya no funciona</h2>
+    <div class="meta">Estilo: <b>LUXE</b> · 6 slides · educación</div>
+  </div>
+  <p class="desc">Diagnóstico rápido para que tu cliente identifique si su sitio actual está perdiendo dinero sin que lo note.</p>
+
+  <div class="slides">
+
+    <div class="slide-wrap">
+      <div class="slide-frame">
+        <div class="slide bg-luxe">
+          <div class="slide-num gold">1</div>
+          <div class="aster tl gold">✦</div>
+          <div class="aster br gold">✱</div>
+          <div class="inner center">
+            <span class="tag solid-gold">diagnóstico rápido</span>
+            <div class="h-display tight" style="font-size:84px;color:#fff">5 señales<br>de que <span class="gold-text">tu web</span><br>ya no funciona.</div>
+            <div class="script gold" style="font-size:50px">(y tú no te has dado cuenta) ↘</div>
+            <div class="bottom" style="color:var(--gold-bright);border-color:var(--gold-bright)"><span class="brand">ZIV CREATIVO</span><span class="swipe">desliza</span></div>
+          </div>
+        </div>
+      </div>
+      <span class="slide-cap">slide <b>1/6</b> · hook</span>
+      <button class="dl-btn" onclick="dl(this)">descargar</button>
+    </div>
+
+    <div class="slide-wrap">
+      <div class="slide-frame">
+        <div class="slide bg-luxe-cream">
+          <div class="slide-num cream">2</div>
+          <div class="inner">
+            <span class="tag" style="color:var(--gold-deep)">señales · 01-02</span>
+            <div class="h-display sz-md" style="margin-top:12px">Lo técnico.</div>
+            <div class="bul-list" style="margin-top:30px">
+              <div class="bul"><div class="n">01</div><div class="body"><div class="ttl">Tarda más de 3 segundos en cargar</div><div class="txt">Cada segundo extra = -12% conversiones. Si tarda 5s, perdiste 60% de clientes antes de mostrar nada.</div></div></div>
+              <div class="bul"><div class="n">02</div><div class="body"><div class="ttl">Se ve mal en celular</div><div class="txt">56% del tráfico mexicano es móvil. Si no se ve perfecto en iPhone, te ven mal a ti.</div></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <span class="slide-cap">slide <b>2/6</b> · 01-02</span>
+      <button class="dl-btn" onclick="dl(this)">descargar</button>
+    </div>
+
+    <div class="slide-wrap">
+      <div class="slide-frame">
+        <div class="slide bg-black">
+          <div class="slide-num gold">3</div>
+          <div class="inner">
+            <span class="tag gold">señales · 03-04</span>
+            <div class="h-display sz-md" style="color:#fff;margin-top:12px"><span class="gold-text">Lo</span> visible.</div>
+            <div class="bul-list" style="margin-top:30px">
+              <div class="bul"><div class="n">03</div><div class="body"><div class="ttl" style="color:var(--gold-bright)">No tienes botón de WhatsApp</div><div class="txt">En México sin WA = sin ventas. Debe estar flotante en todas las páginas.</div></div></div>
+              <div class="bul"><div class="n">04</div><div class="body"><div class="ttl" style="color:var(--gold-bright)">Tu copyright dice 2022 o antes</div><div class="txt">El cliente piensa: "esta web está abandonada, ¿estarán aún operando?"</div></div></div>
+            </div>
+            <div style="background:rgba(212,245,80,.1);padding:18px 22px;border-radius:12px;border-left:4px solid var(--brat);margin-top:24px"><div style="font-size:18px;color:var(--brat);font-weight:700">Test rápido: abre tu web ahora desde tu celular. ¿Te encantaría comprarte algo?</div></div>
+          </div>
+        </div>
+      </div>
+      <span class="slide-cap">slide <b>3/6</b> · 03-04</span>
+      <button class="dl-btn" onclick="dl(this)">descargar</button>
+    </div>
+
+    <div class="slide-wrap">
+      <div class="slide-frame">
+        <div class="slide bg-luxe-cream">
+          <div class="slide-num cream">5</div>
+          <div class="inner">
+            <span class="tag" style="color:var(--gold-deep)">señal · 05</span>
+            <div class="h-display sz-md" style="margin-top:12px">La más<br>importante.</div>
+            <div style="background:var(--ink);color:var(--cream);padding:38px;border-radius:16px;text-align:center;margin-top:30px">
+              <div style="font-size:18px;letter-spacing:5px;text-transform:uppercase;font-weight:700;color:var(--gold-bright);margin-bottom:16px">señal 05</div>
+              <div class="h-display" style="font-size:54px;color:#fff;line-height:1.05;font-style:italic;font-weight:900">No te encuentras cuando buscas tu propio negocio + tu ciudad en Google.</div>
+            </div>
+            <div class="h-cormorant" style="font-size:34px;color:var(--gold-deep);font-style:italic;text-align:center;margin-top:24px">Si TÚ no te encuentras, tu cliente tampoco.</div>
+          </div>
+        </div>
+      </div>
+      <span class="slide-cap">slide <b>4/6</b> · 05</span>
+      <button class="dl-btn" onclick="dl(this)">descargar</button>
+    </div>
+
+    <div class="slide-wrap">
+      <div class="slide-frame">
+        <div class="slide bg-black">
+          <div class="slide-num gold">5</div>
+          <div class="inner center">
+            <span class="tag solid-gold">tu diagnóstico</span>
+            <div class="h-display" style="font-size:60px;color:#fff;line-height:1.05">¿Marcaste<br><span class="gold-text">3 o más?</span></div>
+            <div class="bignum" style="font-family:'Archivo Black',sans-serif;font-size:300px;line-height:.85;background:linear-gradient(135deg,var(--gold-bright),var(--gold-deep));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;filter:drop-shadow(6px 6px 0 rgba(0,0,0,.4))">3+</div>
+            <div class="h-display" style="font-size:60px;color:var(--gold-bright);line-height:1">Es hora de<br>rehacerla.</div>
+          </div>
+        </div>
+      </div>
+      <span class="slide-cap">slide <b>5/6</b> · veredicto</span>
+      <button class="dl-btn" onclick="dl(this)">descargar</button>
+    </div>
+
+    <div class="slide-wrap">
+      <div class="slide-frame">
+        <div class="slide bg-luxe">
+          <div class="slide-num gold">6</div>
+          <div class="aster tl gold">✦</div>
+          <div class="aster br gold">✦</div>
+          <div class="inner center">
+            <div class="luxe-card">
+              <div class="pre">diagnóstico gratis</div>
+              <div class="url" style="font-size:80px">DM<br><span class="gold-text">"DIAGNÓSTICO"</span></div>
+              <div class="post">Te revisamos tu web actual<br>y te decimos qué arreglar. Sin compromiso.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <span class="slide-cap">slide <b>6/6</b> · CTA</span>
+      <button class="dl-btn" onclick="dl(this)">descargar</button>
+    </div>
+
+  </div>
+  <p class="sources"><b>fuentes</b> Google/Deloitte Core Web Vitals 2025 · Statcounter Mexico mobile share · Web Almanac 2025</p>
+</section>
+
+<!-- ============================================================
+     CARRUSEL 06 ELECTRIC — E-COMMERCE MX EXPLOTÓ
+     ============================================================ -->
+<section class="carrusel-section" id="c6">
+  <div class="head">
+    <h2><span class="num">06.</span>El e-commerce mexicano explotó · $941 mil millones</h2>
+    <div class="meta">Estilo: <b>ELÉCTRICO</b> · 6 slides · tendencia 2026</div>
+  </div>
+  <p class="desc">México es ya el 8º país más grande del mundo en e-commerce. Los números de AMVO 2026 son demoledores. Carrusel pensado para hacer que cualquier dueño de negocio sienta FOMO.</p>
+
+  <div class="slides">
+
+    <div class="slide-wrap">
+      <div class="slide-frame">
+        <div class="slide bg-brat">
+          <div class="slide-num">1</div>
+          <div class="aster tl">✦</div>
+          <div class="aster br" style="color:var(--cherry)">✱</div>
+          <div class="inner">
+            <div>
+              <span class="tag dark">e-commerce méxico 2026</span>
+              <div class="h-archivo tight mt-sm" style="font-size:160px">
+                El<br>e-commerce<br>en MX <span class="hl hl-cherry white">EXPLOTÓ</span>.
+              </div>
+            </div>
+            <div>
+              <span class="script">y tú sin web... ↘</span>
+              <div class="bottom" style="margin-top:24px"><span class="brand">ZIV CREATIVO</span><span class="swipe">desliza</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <span class="slide-cap">slide <b>1/6</b> · hook</span>
+      <button class="dl-btn" onclick="dl(this)">descargar</button>
+    </div>
+
+    <div class="slide-wrap">
+      <div class="slide-frame">
+        <div class="slide bg-cherry">
+          <div class="slide-num cherry">2</div>
+          <div class="inner center">
+            <span class="tag" style="color:var(--brat)">el número grande</span>
+            <div class="h-archivo tight" style="font-size:80px;color:#fff">El mercado<br>e-commerce<br>mexicano vale:</div>
+            <div class="h-archivo" style="font-size:200px;color:#fff;line-height:.85;filter:drop-shadow(6px 6px 0 var(--ink))">$941<span style="font-size:80px">mil M</span></div>
+            <div class="h-display" style="font-size:48px;color:#fff;font-style:italic">de pesos mexicanos. en 2025.</div>
+            <div style="font-size:14px;color:rgba(255,255,255,.7);font-family:'DM Mono',monospace;letter-spacing:2px">— AMVO · Estudio Venta Online 2026</div>
+          </div>
+        </div>
+      </div>
+      <span class="slide-cap">slide <b>2/6</b> · $941B</span>
+      <button class="dl-btn" onclick="dl(this)">descargar</button>
+    </div>
+
+    <div class="slide-wrap">
+      <div class="slide-frame">
+        <div class="slide bg-cobalt">
+          <div class="slide-num">3</div>
+          <div class="inner">
+            <div>
+              <span class="tag" style="color:var(--brat)">creció en 2025</span>
+              <div class="h-archivo tight mt-sm" style="font-size:170px;color:#fff">
+                <span class="hl hl-brat" style="color:var(--ink)">+19.2%</span>
+              </div>
+              <div class="h-display" style="font-size:54px;color:#fff;font-style:italic;line-height:1.05;margin-top:16px">de un año al otro.<br>Más rápido que la inflación.<br>Más rápido que tu sueldo.</div>
+            </div>
+            <div style="background:rgba(0,0,0,.4);padding:18px 22px;border-radius:12px;color:#fff"><div style="font-size:18px;font-weight:600;line-height:1.3">▸ Mientras tú lo piensas, otros mexicanos cobran $941 mil millones online.</div></div>
+          </div>
+        </div>
+      </div>
+      <span class="slide-cap">slide <b>3/6</b> · +19.2%</span>
+      <button class="dl-btn" onclick="dl(this)">descargar</button>
+    </div>
+
+    <div class="slide-wrap">
+      <div class="slide-frame">
+        <div class="slide bg-pink">
+          <div class="slide-num">4</div>
+          <div class="inner center">
+            <span class="tag" style="color:#fff">posición mundial</span>
+            <div class="h-display tight" style="font-size:60px;color:#fff">México es ahora el</div>
+            <div class="h-archivo" style="font-size:380px;color:#fff;line-height:.8;filter:drop-shadow(8px 8px 0 var(--ink))">8º</div>
+            <div class="h-archivo" style="font-size:60px;color:var(--ink);background:#fff;padding:12px 28px;border-radius:99px">PAÍS DEL MUNDO</div>
+            <div class="h-display" style="font-size:40px;color:#fff;font-style:italic">en e-commerce retail.</div>
+            <div style="font-size:14px;color:rgba(255,255,255,.85);font-family:'DM Mono',monospace;letter-spacing:2px">— AMVO 2026 · Insider Latam</div>
+          </div>
+        </div>
+      </div>
+      <span class="slide-cap">slide <b>4/6</b> · #8 mundo</span>
+      <button class="dl-btn" onclick="dl(this)">descargar</button>
+    </div>
+
+    <div class="slide-wrap">
+      <div class="slide-frame">
+        <div class="slide bg-orange">
+          <div class="slide-num">5</div>
+          <div class="inner">
+            <span class="tag" style="color:#fff">y tú... ¿dónde estás?</span>
+            <div class="h-archivo tight mt-sm" style="font-size:130px;color:#fff">
+              <span class="hl hl-black white">77.2M</span><br>
+              mexicanos<br>compran<br><span class="hl hl-brat" style="color:var(--ink)">ONLINE</span>.
+            </div>
+            <div style="background:var(--ink);color:var(--brat);padding:22px 26px;border-radius:12px;margin-top:24px"><div style="font-size:22px;font-weight:700;line-height:1.3">▸ Sin web, eres invisible para 2 de cada 3 mexicanos conectados.</div></div>
+          </div>
+        </div>
+      </div>
+      <span class="slide-cap">slide <b>5/6</b> · 77.2M</span>
+      <button class="dl-btn" onclick="dl(this)">descargar</button>
+    </div>
+
+    <div class="slide-wrap">
+      <div class="slide-frame">
+        <div class="slide bg-luxe">
+          <div class="slide-num gold">6</div>
+          <div class="aster tl gold">✦</div>
+          <div class="aster br gold">✱</div>
+          <div class="inner center">
+            <span class="tag solid-gold">súbete a la ola</span>
+            <div class="h-display tight" style="font-size:74px"><span style="color:#fff">Si no estás</span><br><span class="gold-text">en e-commerce</span><br><span style="color:#fff">en 2026...</span></div>
+            <div class="h-archivo" style="font-size:80px;color:var(--cherry);line-height:1">no estás.</div>
+            <div class="luxe-card" style="padding:40px">
+              <div class="pre">tu turno</div>
+              <div class="url" style="font-size:74px;color:var(--cream)">ZIV · 48H</div>
+              <div class="post">Te ponemos online esta semana.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <span class="slide-cap">slide <b>6/6</b> · CTA LUXE</span>
+      <button class="dl-btn" onclick="dl(this)">descargar</button>
+    </div>
+
+  </div>
+  <p class="sources"><b>fuentes</b> AMVO Estudio Venta Online 2026 · Insider Latam · marketing4ecommerce.mx</p>
+</section>
+
+<!-- ============================================================
+     CARRUSEL 07 ELECTRIC — GOOGLE YA NO ES GOOGLE (ERA IA)
+     ============================================================ -->
+<section class="carrusel-section" id="c7">
+  <div class="head">
+    <h2><span class="num">07.</span>Google ya no es Google · la era IA en búsquedas</h2>
+    <div class="meta">Estilo: <b>ELÉCTRICO</b> · 6 slides · tendencia</div>
+  </div>
+  <p class="desc">Las búsquedas cambiaron para siempre. Si tu web no está optimizada para IA en 2026, desapareces. Datos directos de Ahrefs y SparkToro.</p>
+
+  <div class="slides">
+
+    <div class="slide-wrap">
+      <div class="slide-frame">
+        <div class="slide bg-cherry">
+          <div class="slide-num cherry">1</div>
+          <div class="aster tl" style="color:#fff">✦</div>
+          <div class="aster br" style="color:var(--brat)">✱</div>
+          <div class="inner">
+            <div>
+              <span class="tag" style="color:#fff;background:var(--ink);padding:14px 26px;border-radius:99px;display:inline-block">2026 · breaking</span>
+              <div class="h-archivo tight mt-sm" style="font-size:200px;color:#fff">Google<br>ya <span class="hl hl-brat" style="color:var(--ink)">NO</span><br>es<br>Google.</div>
+            </div>
+            <div class="bottom" style="color:#fff;border-color:#fff"><span class="brand">ZIV CREATIVO</span><span class="swipe">desliza</span></div>
+          </div>
+        </div>
+      </div>
+      <span class="slide-cap">slide <b>1/6</b> · hook</span>
+      <button class="dl-btn" onclick="dl(this)">descargar</button>
+    </div>
+
+    <div class="slide-wrap">
+      <div class="slide-frame">
+        <div class="slide bg-cobalt">
+          <div class="slide-num">2</div>
+          <div class="inner center">
+            <span class="tag" style="color:var(--brat)">el dato brutal</span>
+            <div class="h-display tight" style="font-size:50px;color:#fff;font-style:italic">Cuando Google<br>te muestra un<br>AI Overview,<br>tu click cae:</div>
+            <div class="h-archivo" style="font-size:280px;color:var(--brat);line-height:.85;filter:drop-shadow(6px 6px 0 var(--ink))">-58%</div>
+            <div class="h-display" style="font-size:40px;color:#fff;font-style:italic">aunque estés en posición #1.</div>
+            <div style="font-size:14px;color:rgba(255,255,255,.7);font-family:'DM Mono',monospace;letter-spacing:2px">— Ahrefs · diciembre 2025</div>
+          </div>
+        </div>
+      </div>
+      <span class="slide-cap">slide <b>2/6</b> · -58%</span>
+      <button class="dl-btn" onclick="dl(this)">descargar</button>
+    </div>
+
+    <div class="slide-wrap">
+      <div class="slide-frame">
+        <div class="slide bg-orange">
+          <div class="slide-num">3</div>
+          <div class="inner">
+            <span class="tag" style="color:#fff">el nuevo competidor</span>
+            <div class="h-archivo tight mt-sm" style="font-size:120px;color:#fff">
+              ChatGPT<br>procesa <span class="hl hl-black white">500M</span><br>búsquedas<br>por semana.
+            </div>
+            <div class="ladder" style="margin-top:24px">
+              <div class="rung"><div class="pct gold">17%</div><div class="desc">share de mercado de queries digitales en 2026</div></div>
+              <div class="rung"><div class="pct">+370%</div><div class="desc">creció Perplexity año vs año</div></div>
+            </div>
+            <div style="font-size:12px;color:rgba(255,255,255,.85);font-family:'DM Mono',monospace;letter-spacing:2px;margin-top:14px">— First Page Sage Q2 2026</div>
+          </div>
+        </div>
+      </div>
+      <span class="slide-cap">slide <b>3/6</b> · ChatGPT</span>
+      <button class="dl-btn" onclick="dl(this)">descargar</button>
+    </div>
+
+    <div class="slide-wrap">
+      <div class="slide-frame">
+        <div class="slide bg-pink">
+          <div class="slide-num">4</div>
+          <div class="inner center">
+            <span class="tag" style="color:#fff">la peor parte</span>
+            <div class="h-display" style="font-size:46px;color:#fff;font-style:italic;line-height:1.05">De cada 1,000<br>búsquedas en Google,<br>solo:</div>
+            <div class="h-archivo" style="font-size:260px;color:#fff;line-height:.85;filter:drop-shadow(6px 6px 0 var(--ink))">360</div>
+            <div class="h-display" style="font-size:40px;color:#fff;font-style:italic">llevan a un click<br>a una web real.</div>
+            <div style="background:var(--ink);padding:14px 22px;border-radius:8px;color:var(--brat);font-weight:700;font-size:18px;letter-spacing:2px;text-transform:uppercase">El resto es zero-click</div>
+            <div style="font-size:12px;color:rgba(255,255,255,.85);font-family:'DM Mono',monospace;letter-spacing:2px">— SparkToro 2024-25</div>
+          </div>
+        </div>
+      </div>
+      <span class="slide-cap">slide <b>4/6</b> · zero-click</span>
+      <button class="dl-btn" onclick="dl(this)">descargar</button>
+    </div>
+
+    <div class="slide-wrap">
+      <div class="slide-frame">
+        <div class="slide bg-brat">
+          <div class="slide-num">5</div>
+          <div class="inner">
+            <div>
+              <span class="tag dark">qué hacer</span>
+              <div class="h-archivo tight mt-sm" style="font-size:110px">
+                La <span class="hl hl-cherry white">nueva</span><br>regla:
+              </div>
+              <div class="h-display" style="font-size:48px;font-style:italic;margin-top:18px">No optimizes para Google.<br><span style="color:var(--cherry)">Optimiza para que la IA<br>te cite.</span></div>
+            </div>
+            <div style="background:var(--ink);color:var(--brat);padding:22px 26px;border-radius:12px">
+              <div style="font-size:18px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gold-bright);margin-bottom:10px">se llama GEO</div>
+              <div style="font-size:20px;line-height:1.4;color:#fff">Generative Engine Optimization. Schema, llms.txt, contenido conciso. Lo que tu web necesita en 2026.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <span class="slide-cap">slide <b>5/6</b> · GEO</span>
+      <button class="dl-btn" onclick="dl(this)">descargar</button>
+    </div>
+
+    <div class="slide-wrap">
+      <div class="slide-frame">
+        <div class="slide bg-luxe">
+          <div class="slide-num gold">6</div>
+          <div class="aster tl gold">✦</div>
+          <div class="aster br gold">✱</div>
+          <div class="inner center">
+            <span class="tag solid-gold">tu web AI-ready</span>
+            <div class="h-display tight" style="font-size:74px;color:#fff">Que <span class="gold-text">ChatGPT</span><br>y <span class="gold-text">Google</span><br>te recomienden.</div>
+            <div class="luxe-card" style="padding:40px">
+              <div class="pre">tu web 2026-ready</div>
+              <div class="url" style="font-size:74px;color:var(--cream)">ZIV · 48H</div>
+              <div class="post">Schema + llms.txt + SEO. Incluido.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <span class="slide-cap">slide <b>6/6</b> · CTA LUXE</span>
+      <button class="dl-btn" onclick="dl(this)">descargar</button>
+    </div>
+
+  </div>
+  <p class="sources"><b>fuentes</b> Ahrefs AI Overviews dec 2025 · Seer Interactive sept 2025 · First Page Sage Q2 2026 · SparkToro 2024-25 zero-click study</p>
+</section>
+
+<!-- ============================================================
+     CARRUSEL 08 ELECTRIC — 5 RAZONES POR LAS QUE TU WEB NO VENDE
+     ============================================================ -->
+<section class="carrusel-section" id="c8">
+  <div class="head">
+    <h2><span class="num">08.</span>5 razones por las que tu web NO vende</h2>
+    <div class="meta">Estilo: <b>ELÉCTRICO</b> · 6 slides · errores</div>
+  </div>
+  <p class="desc">Diagnóstico viral con causas concretas y datos. Cada slide diferente color, alto contraste, formato para devorar.</p>
+
+  <div class="slides">
+
+    <div class="slide-wrap">
+      <div class="slide-frame">
+        <div class="slide bg-cherry">
+          <div class="slide-num cherry">1</div>
+          <div class="aster tl" style="color:#fff">✦</div>
+          <div class="aster br" style="color:var(--brat)">✱</div>
+          <div class="inner">
+            <div>
+              <span class="tag" style="color:#fff;background:var(--ink);padding:14px 26px;border-radius:99px;display:inline-block">verdad incómoda</span>
+              <div class="h-archivo tight mt-sm" style="font-size:200px;color:#fff">
+                5 razones<br>por las que<br>tu web <span class="hl hl-brat" style="color:var(--ink)">NO</span><br>vende.
+              </div>
+            </div>
+            <div class="bottom" style="color:#fff;border-color:#fff"><span class="brand">ZIV CREATIVO</span><span class="swipe">desliza</span></div>
+          </div>
+        </div>
+      </div>
+      <span class="slide-cap">slide <b>1/6</b> · hook</span>
+      <button class="dl-btn" onclick="dl(this)">descargar</button>
+    </div>
+
+    <div class="slide-wrap">
+      <div class="slide-frame">
+        <div class="slide bg-cobalt">
+          <div class="slide-num">2</div>
+          <div class="inner">
+            <span class="tag" style="color:var(--brat)">razón · 01</span>
+            <div class="h-archivo tight mt-sm" style="font-size:110px;color:#fff">Es <span class="hl hl-brat" style="color:var(--ink)">LENTA</span>.</div>
+            <div style="background:rgba(0,0,0,.4);padding:26px;border-radius:12px;margin-top:24px">
+              <div class="h-display" style="font-size:40px;color:#fff;font-style:italic;line-height:1.1">"Cada segundo extra de carga = <span style="color:var(--brat)">-12% conversiones</span>"</div>
+              <div style="font-size:14px;color:rgba(255,255,255,.7);font-family:'DM Mono',monospace;letter-spacing:2px;margin-top:14px">— Google · Deloitte 2025</div>
+            </div>
+            <div class="check"><div class="mark">▸</div><div class="lbl" style="color:#fff">75% de sitios móviles fallan los Core Web Vitals (Web Almanac, jul 2025). ¿El tuyo?</div></div>
+          </div>
+        </div>
+      </div>
+      <span class="slide-cap">slide <b>2/6</b> · 01 lenta</span>
+      <button class="dl-btn" onclick="dl(this)">descargar</button>
+    </div>
+
+    <div class="slide-wrap">
+      <div class="slide-frame">
+        <div class="slide bg-orange">
+          <div class="slide-num">3</div>
+          <div class="inner">
+            <span class="tag" style="color:#fff">razón · 02</span>
+            <div class="h-archivo tight mt-sm" style="font-size:110px;color:#fff">No se ve<br>en <span class="hl hl-black white">CELULAR</span>.</div>
+            <div style="background:rgba(0,0,0,.5);padding:26px;border-radius:12px;margin-top:24px;color:#fff">
+              <div class="h-display" style="font-size:38px;font-style:italic;line-height:1.1;color:var(--brat)">56% del tráfico web mexicano viene de móvil.</div>
+              <div style="font-size:20px;margin-top:14px;line-height:1.4">Si tu web no es mobile-first, ya perdiste a más de la mitad de tus clientes antes de mostrar nada.</div>
+              <div style="font-size:14px;color:rgba(255,255,255,.7);font-family:'DM Mono',monospace;letter-spacing:2px;margin-top:14px">— Statcounter México 2025</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <span class="slide-cap">slide <b>3/6</b> · 02 mobile</span>
+      <button class="dl-btn" onclick="dl(this)">descargar</button>
+    </div>
+
+    <div class="slide-wrap">
+      <div class="slide-frame">
+        <div class="slide bg-pink">
+          <div class="slide-num">4</div>
+          <div class="inner">
+            <span class="tag" style="color:#fff">razón · 03 + 04</span>
+            <div class="h-archivo tight mt-sm" style="font-size:90px;color:#fff">
+              Sin <span class="hl hl-black white">SEO local</span>.<br>
+              Sin <span class="hl hl-brat" style="color:var(--ink)">WhatsApp</span>.
+            </div>
+            <div class="bul-list" style="margin-top:24px">
+              <div class="bul" style="background:rgba(0,0,0,.4);color:#fff"><div class="n" style="color:var(--brat)">03</div><div class="body"><div class="ttl" style="color:var(--brat);font-size:26px">46% de búsquedas son LOCALES</div><div class="txt" style="color:#fff">Si no estás en Google Business + tu ciudad en títulos, no apareces. (SeoProfy 2026)</div></div></div>
+              <div class="bul" style="background:rgba(0,0,0,.4);color:#fff"><div class="n" style="color:var(--brat)">04</div><div class="body"><div class="ttl" style="color:var(--brat);font-size:26px">Sin botón WA = sin venta</div><div class="txt" style="color:#fff">En MX, 92% de PyMES usan WA Business. Si tu web no se conecta, mueres.</div></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <span class="slide-cap">slide <b>4/6</b> · 03-04</span>
+      <button class="dl-btn" onclick="dl(this)">descargar</button>
+    </div>
+
+    <div class="slide-wrap">
+      <div class="slide-frame">
+        <div class="slide bg-brat">
+          <div class="slide-num">5</div>
+          <div class="inner">
+            <span class="tag dark">razón · 05 (la peor)</span>
+            <div class="h-archivo tight mt-sm" style="font-size:100px">
+              <span class="hl hl-cherry white">No tiene CTA</span><br>claro.
+            </div>
+            <div style="background:var(--ink);color:var(--cream);padding:30px;border-radius:14px;margin-top:30px">
+              <div class="h-display" style="font-size:36px;color:var(--brat);font-style:italic;line-height:1.1">"Si tu visitante no sabe en 3 segundos qué hacer en tu web, se va."</div>
+              <div style="font-size:20px;margin-top:14px;line-height:1.4">CTA = Call to Action. UN botón obvio: "Pedir cita", "Comprar", "Cotizar". No 8. UNO.</div>
+            </div>
+            <div class="check"><div class="mark">✓</div><div class="lbl"><b>Test</b>: ¿En tu home, dónde quiero que el cliente haga click? Si no hay UNA respuesta clara, hay que rediseñar.</div></div>
+          </div>
+        </div>
+      </div>
+      <span class="slide-cap">slide <b>5/6</b> · 05 CTA</span>
+      <button class="dl-btn" onclick="dl(this)">descargar</button>
+    </div>
+
+    <div class="slide-wrap">
+      <div class="slide-frame">
+        <div class="slide bg-luxe">
+          <div class="slide-num gold">6</div>
+          <div class="aster tl gold">✦</div>
+          <div class="aster br gold">✱</div>
+          <div class="inner center">
+            <span class="tag solid-gold">arregla las 5</span>
+            <div class="h-display tight" style="font-size:74px;color:#fff">Web que <span class="gold-text">vende.</span><br>En 48 horas.</div>
+            <div class="luxe-card" style="padding:40px">
+              <div class="pre">los 5 puntos arreglados</div>
+              <div class="url" style="font-size:74px;color:var(--cream)">ZIV · 48H</div>
+              <div class="post">Velocidad + mobile + SEO local +<br>WA + CTA claro. Listo.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <span class="slide-cap">slide <b>6/6</b> · CTA</span>
+      <button class="dl-btn" onclick="dl(this)">descargar</button>
+    </div>
+
+  </div>
+  <p class="sources"><b>fuentes</b> Google/Deloitte 2025 · Web Almanac jul 2025 · Statcounter MX · SeoProfy local SEO 2026 · Meta/Mobile Time WA Business</p>
+</section>
+
+<!-- ============================================================
+     CARRUSEL 09 ELECTRIC — 99.8% PYMES SOLO 10% VENDE ONLINE
+     ============================================================ -->
+<section class="carrusel-section" id="c9">
+  <div class="head">
+    <h2><span class="num">09.</span>99.8% son PyMES. Solo 10% vende online</h2>
+    <div class="meta">Estilo: <b>ELÉCTRICO</b> · 6 slides · oportunidad</div>
+  </div>
+  <p class="desc">El contraste más brutal del 2026 mexicano. Convertirlo en oportunidad evidente para tu cliente.</p>
+
+  <div class="slides">
+
+    <div class="slide-wrap">
+      <div class="slide-frame">
+        <div class="slide bg-brat">
+          <div class="slide-num">1</div>
+          <div class="inner">
+            <div>
+              <span class="tag dark">contraste brutal · MX 2026</span>
+              <div class="h-archivo tight mt-sm" style="font-size:240px">
+                <span class="hl hl-cherry white">99.8%</span>
+              </div>
+              <div class="h-display sz-md" style="margin-top:14px;font-style:italic">de las empresas en México<br>son PyMES.</div>
+            </div>
+            <div>
+              <span class="script">¿la sorpresa? ↘</span>
+              <div class="bottom" style="margin-top:24px"><span class="brand">ZIV CREATIVO</span><span class="swipe">desliza</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <span class="slide-cap">slide <b>1/6</b> · hook</span>
+      <button class="dl-btn" onclick="dl(this)">descargar</button>
+    </div>
+
+    <div class="slide-wrap">
+      <div class="slide-frame">
+        <div class="slide bg-cherry">
+          <div class="slide-num cherry">2</div>
+          <div class="inner center">
+            <span class="tag" style="color:#fff;background:var(--ink);padding:14px 26px;border-radius:99px">pero...</span>
+            <div class="h-display" style="font-size:44px;color:#fff;font-style:italic">de esas 5.45 millones<br>de PyMES mexicanas,</div>
+            <div class="h-archivo" style="font-size:340px;color:#fff;line-height:.85;filter:drop-shadow(8px 8px 0 var(--ink))">10%</div>
+            <div class="h-display" style="font-size:50px;color:#fff;font-style:italic">vende en línea.</div>
+            <div style="font-size:12px;color:rgba(255,255,255,.85);font-family:'DM Mono',monospace;letter-spacing:2px">— Revista Consultoría 2025 · INEGI MiPyMEs 2025</div>
+          </div>
+        </div>
+      </div>
+      <span class="slide-cap">slide <b>2/6</b> · 10%</span>
+      <button class="dl-btn" onclick="dl(this)">descargar</button>
+    </div>
+
+    <div class="slide-wrap">
+      <div class="slide-frame">
+        <div class="slide bg-cobalt">
+          <div class="slide-num">3</div>
+          <div class="inner">
+            <span class="tag" style="color:var(--brat)">traducción</span>
+            <div class="h-archivo tight mt-sm" style="font-size:90px;color:#fff">
+              <span class="hl hl-brat" style="color:var(--ink)">90%</span> de tus<br>competidores<br>todavía NO<br>venden online.
+            </div>
+            <div style="background:rgba(0,0,0,.4);padding:26px;border-radius:12px;margin-top:24px">
+              <div class="h-display" style="font-size:34px;color:var(--brat);font-style:italic;line-height:1.1">Mientras tanto, 77.2 millones de mexicanos YA compran online.</div>
+              <div style="font-size:18px;color:#fff;margin-top:10px;line-height:1.4">¿Quién va a captar esa demanda? Spoiler: el primero que monte su web.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <span class="slide-cap">slide <b>3/6</b> · traducción</span>
+      <button class="dl-btn" onclick="dl(this)">descargar</button>
+    </div>
+
+    <div class="slide-wrap">
+      <div class="slide-frame">
+        <div class="slide bg-pink">
+          <div class="slide-num">4</div>
+          <div class="inner center">
+            <span class="tag" style="color:#fff">la oportunidad</span>
+            <div class="h-display tight" style="font-size:54px;color:#fff;font-style:italic">El mercado vale</div>
+            <div class="h-archivo" style="font-size:170px;color:#fff;line-height:.85;filter:drop-shadow(6px 6px 0 var(--ink))">$941k M</div>
+            <div class="h-display" style="font-size:40px;color:#fff;font-style:italic">de pesos · y crece +19.2%/año.</div>
+            <div style="background:var(--ink);padding:18px 26px;border-radius:99px;color:var(--brat);font-weight:700;font-size:22px">9 de cada 10 PyMES no compiten ahí.</div>
+          </div>
+        </div>
+      </div>
+      <span class="slide-cap">slide <b>4/6</b> · mercado</span>
+      <button class="dl-btn" onclick="dl(this)">descargar</button>
+    </div>
+
+    <div class="slide-wrap">
+      <div class="slide-frame">
+        <div class="slide bg-orange">
+          <div class="slide-num">5</div>
+          <div class="inner">
+            <div>
+              <span class="tag" style="color:#fff">la elección</span>
+              <div class="h-archivo tight mt-sm" style="font-size:130px;color:#fff">¿Cuál<br>quieres<br>ser?</div>
+            </div>
+            <div class="vs">
+              <div class="col bad" style="background:rgba(0,0,0,.5);border-color:#fff;color:#fff"><h5 style="color:#fff">▸ el 90%</h5><p style="color:#fff">"Cuando tenga tiempo le hago."</p><div style="font-size:18px;margin-top:14px;opacity:.85">Sigue perdiendo clientes con la competencia.</div></div>
+              <div class="col good" style="background:var(--brat);color:var(--ink);border-color:var(--ink)"><h5 style="color:var(--ink)">▸ el 10%</h5><p style="color:var(--ink)">"Lo hago esta semana."</p><div style="font-size:18px;margin-top:14px;color:var(--ink);font-weight:600">Captura la demanda del mercado de $941k millones.</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <span class="slide-cap">slide <b>5/6</b> · elección</span>
+      <button class="dl-btn" onclick="dl(this)">descargar</button>
+    </div>
+
+    <div class="slide-wrap">
+      <div class="slide-frame">
+        <div class="slide bg-luxe">
+          <div class="slide-num gold">6</div>
+          <div class="aster tl gold">✦</div>
+          <div class="aster br gold">✱</div>
+          <div class="inner center">
+            <span class="tag solid-gold">súbete al 10%</span>
+            <div class="h-display tight" style="font-size:74px;color:#fff">Sé el negocio<br>que <span class="gold-text">ya vende online.</span></div>
+            <div class="luxe-card" style="padding:40px">
+              <div class="pre">en 48h estás vendiendo</div>
+              <div class="url" style="font-size:74px;color:var(--cream)">ZIV · 48H</div>
+              <div class="post">Web profesional + WA + SEO local. Todo incluido.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <span class="slide-cap">slide <b>6/6</b> · CTA</span>
+      <button class="dl-btn" onclick="dl(this)">descargar</button>
+    </div>
+
+  </div>
+  <p class="sources"><b>fuentes</b> INEGI MiPyMEs jun 2025 · Revista Consultoría 2025 · AMVO EVO 2026 · GoDaddy PyMES 2025</p>
+</section>
+
+<!-- ============================================================
+     CARRUSEL 10 ELECTRIC — 5 COSAS QUE TU WEB DEBE TENER EN 2026
+     ============================================================ -->
+<section class="carrusel-section" id="c10">
+  <div class="head">
+    <h2><span class="num">10.</span>5 cosas que tu web debe tener en 2026</h2>
+    <div class="meta">Estilo: <b>ELÉCTRICO</b> · 6 slides · how-to</div>
+  </div>
+  <p class="desc">El checklist no-negociable para una web que venda hoy. Cada slide un item, color distinto, máximo impacto.</p>
+
+  <div class="slides">
+
+    <div class="slide-wrap">
+      <div class="slide-frame">
+        <div class="slide bg-brat">
+          <div class="slide-num">1</div>
+          <div class="aster tl">✦</div>
+          <div class="aster br" style="color:var(--cherry)">✱</div>
+          <div class="inner">
+            <div>
+              <span class="tag dark">checklist · MX 2026</span>
+              <div class="h-archivo tight mt-sm" style="font-size:180px">
+                5 cosas<br>que tu web<br><span class="hl hl-cherry white">DEBE</span><br>tener.
+              </div>
+            </div>
+            <div>
+              <span class="script">si falta una, no vendes ↘</span>
+              <div class="bottom" style="margin-top:24px"><span class="brand">ZIV CREATIVO</span><span class="swipe">desliza</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <span class="slide-cap">slide <b>1/6</b> · hook</span>
+      <button class="dl-btn" onclick="dl(this)">descargar</button>
+    </div>
+
+    <div class="slide-wrap">
+      <div class="slide-frame">
+        <div class="slide bg-cobalt">
+          <div class="slide-num">2</div>
+          <div class="inner">
+            <span class="tag" style="color:var(--brat)">item · 01</span>
+            <div class="h-archivo tight mt-sm" style="font-size:130px;color:#fff">Mobile<br>first.</div>
+            <div style="background:rgba(0,0,0,.4);padding:26px;border-radius:12px;margin-top:24px;color:#fff">
+              <div class="h-display" style="font-size:36px;color:var(--brat);font-style:italic;line-height:1.1">"Mobile primero, desktop después."</div>
+              <div style="font-size:20px;margin-top:14px;line-height:1.4">El 56% del tráfico mexicano es móvil. El 96.5% tiene celular. Si no se ve perfecto en iPhone, no se ve.</div>
+            </div>
+            <div class="check"><div class="mark">▸</div><div class="lbl" style="color:#fff">Test gratis: <b>pagespeed.web.dev</b> — métete y mide la tuya.</div></div>
+          </div>
+        </div>
+      </div>
+      <span class="slide-cap">slide <b>2/6</b> · mobile</span>
+      <button class="dl-btn" onclick="dl(this)">descargar</button>
+    </div>
+
+    <div class="slide-wrap">
+      <div class="slide-frame">
+        <div class="slide bg-cherry">
+          <div class="slide-num cherry">3</div>
+          <div class="inner">
+            <span class="tag" style="color:#fff;background:var(--ink);padding:14px 26px;border-radius:99px;display:inline-block">item · 02</span>
+            <div class="h-archivo tight mt-sm" style="font-size:110px;color:#fff">SEO<br><span class="hl hl-brat" style="color:var(--ink)">LOCAL</span>.</div>
+            <div style="background:rgba(0,0,0,.4);padding:26px;border-radius:12px;margin-top:24px;color:#fff">
+              <div class="h-display" style="font-size:36px;color:var(--brat);font-style:italic;line-height:1.1">El 46% de búsquedas son locales. El 76% que busca "cerca de mí" visita la tienda en 24h.</div>
+              <div style="font-size:18px;margin-top:14px;line-height:1.4">→ Google Business Profile activo<br>→ Ciudad y zona en títulos<br>→ Reseñas reales</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <span class="slide-cap">slide <b>3/6</b> · SEO local</span>
+      <button class="dl-btn" onclick="dl(this)">descargar</button>
+    </div>
+
+    <div class="slide-wrap">
+      <div class="slide-frame">
+        <div class="slide bg-pink">
+          <div class="slide-num">4</div>
+          <div class="inner">
+            <span class="tag" style="color:#fff">item · 03 + 04</span>
+            <div class="h-archivo tight mt-sm" style="font-size:80px;color:#fff">
+              <span class="hl hl-black white">WA flotante</span>.<br>
+              <span class="hl hl-brat" style="color:var(--ink)">CTA único</span>.
+            </div>
+            <div class="bul-list" style="margin-top:24px">
+              <div class="bul" style="background:rgba(0,0,0,.5);color:#fff"><div class="n" style="color:var(--brat)">03</div><div class="body"><div class="ttl" style="color:var(--brat);font-size:26px">WhatsApp visible en todas las páginas</div><div class="txt" style="color:#fff">Botón flotante. Click → chat con mensaje pre-cargado.</div></div></div>
+              <div class="bul" style="background:rgba(0,0,0,.5);color:#fff"><div class="n" style="color:var(--brat)">04</div><div class="body"><div class="ttl" style="color:var(--brat);font-size:26px">UN solo CTA principal</div><div class="txt" style="color:#fff">"Agendar" o "Cotizar" o "Comprar". UNO. Repetido 3 veces. No 8 distintos.</div></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <span class="slide-cap">slide <b>4/6</b> · 03-04</span>
+      <button class="dl-btn" onclick="dl(this)">descargar</button>
+    </div>
+
+    <div class="slide-wrap">
+      <div class="slide-frame">
+        <div class="slide bg-orange">
+          <div class="slide-num">5</div>
+          <div class="inner">
+            <span class="tag" style="color:#fff">item · 05 (el nuevo)</span>
+            <div class="h-archivo tight mt-sm" style="font-size:90px;color:#fff">
+              <span class="hl hl-black white">AI-readable</span><br>(2026)
+            </div>
+            <div style="background:rgba(0,0,0,.5);padding:26px;border-radius:12px;margin-top:24px;color:#fff">
+              <div class="h-display" style="font-size:36px;color:var(--brat);font-style:italic;line-height:1.1">"Que ChatGPT y Perplexity te puedan citar."</div>
+              <div style="font-size:18px;margin-top:14px;line-height:1.4">→ Schema markup (Business, Service, FAQ)<br>→ archivo llms.txt<br>→ Contenido conciso y estructurado</div>
+              <div style="font-size:14px;color:rgba(255,255,255,.7);font-family:'DM Mono',monospace;letter-spacing:2px;margin-top:14px">— Search Engine Land · GEO 2026</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <span class="slide-cap">slide <b>5/6</b> · 05 AI</span>
+      <button class="dl-btn" onclick="dl(this)">descargar</button>
+    </div>
+
+    <div class="slide-wrap">
+      <div class="slide-frame">
+        <div class="slide bg-luxe">
+          <div class="slide-num gold">6</div>
+          <div class="aster tl gold">✦</div>
+          <div class="aster br gold">✱</div>
+          <div class="inner center">
+            <span class="tag solid-gold">los 5 incluidos</span>
+            <div class="h-display tight" style="font-size:64px;color:#fff">Mobile + SEO local + WA<br>+ CTA + <span class="gold-text">AI-readable.</span></div>
+            <div class="luxe-card" style="padding:40px">
+              <div class="pre">tu web 2026-ready</div>
+              <div class="url" style="font-size:74px;color:var(--cream)">ZIV · 48H</div>
+              <div class="post">Los 5 puntos incluidos por default.<br>Sin sumar costos.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <span class="slide-cap">slide <b>6/6</b> · CTA</span>
+      <button class="dl-btn" onclick="dl(this)">descargar</button>
+    </div>
+
+  </div>
+  <p class="sources"><b>fuentes</b> Statcounter MX · We Are Social Digital 2025 MX · SeoProfy 2026 · BrightLocal 2025 · Search Engine Land GEO 2026</p>
+</section>
+
+<div class="foot">
+  ZIV CREATIVO · 10 carruseles informativos · 60 slides · formato 1080×1350 px · listos para Instagram feed<br>
+  Datos verificados al 24 mayo 2026 · todas las fuentes citadas
+</div>
+
+<script>
+function dl(btn){
+  const wrap = btn.closest('.slide-wrap');
+  const frame = wrap.querySelector('.slide-frame');
+  const slide = frame.querySelector('.slide');
+  const cap = wrap.querySelector('.slide-cap').innerText.replace(/[^a-z0-9]+/gi,'_');
+  const section = wrap.closest('.carrusel-section').id || 'c';
+  const original = slide.style.transform;
+  slide.style.transform = 'none';
+  html2canvas(slide,{width:1080,height:1350,scale:2,backgroundColor:null,useCORS:true,logging:false}).then(canvas=>{
+    slide.style.transform = original;
+    const a = document.createElement('a');
+    a.download = `ziv_${section}_${cap}.png`;
+    a.href = canvas.toDataURL('image/png');
+    a.click();
+  }).catch(err=>{
+    slide.style.transform = original;
+    alert('Error: '+err.message);
+  });
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog ZIV — Estrategia y negocio para emprendedores que sí cierran.</title>
+<meta name="description" content="Lectura corta, valor alto. Cómo hacer un negocio rentable, casos reales de automatización y por qué tu página web no convierte. Estrategias reales, sin relleno.">
+<meta name="theme-color" content="#181820">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Caveat:wght@500;700&family=Space+Grotesk:wght@300;400;500;600;700&family=Archivo+Black&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --paper:#efe6d3; --paper-2:#e4d7c0; --paper-3:#d9caaf;
+  --ink:#181820; --ink-soft:#3a3340; --muted:#7a7280;
+  --purple:#8e58f0; --lav:#bfa5f5; --lime:#d4f550; --coral:#f5604c; --teal:#5aafbc;
+  --border:rgba(24,24,32,.12); --shadow:0 30px 60px rgba(0,0,0,.18);
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Space Grotesk',sans-serif;color:var(--ink);line-height:1.6;background:var(--paper);overflow-x:hidden;position:relative}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");background-size:240px;opacity:.16;mix-blend-mode:multiply;pointer-events:none;z-index:0}
+.wrap{max-width:1240px;margin:0 auto;padding:0 32px;position:relative;z-index:2}
+.wrap-tight{max-width:780px;margin:0 auto;padding:0 32px;position:relative;z-index:2}
+.italic{font-style:italic}
+.script{font-family:'Caveat',cursive;font-weight:700}
+.hl{position:relative;display:inline-block;padding:0 .15em}
+.hl::before{content:'';position:absolute;inset:.18em -.05em;background:var(--lav);z-index:-1;transform:rotate(-1.2deg)}
+.hl-lime::before{background:var(--lime)}
+.hl-coral::before{background:var(--coral);opacity:.5}
+
+/* TOPBAR */
+.topbar{background:var(--ink);color:var(--paper);padding:11px 24px;text-align:center;font-size:11px;letter-spacing:2px;text-transform:uppercase;font-weight:600;position:relative;z-index:50}
+.topbar a{color:var(--lime);text-decoration:none;margin-left:14px;border-bottom:1px solid transparent;transition:border .2s}
+.topbar a:hover{border-color:var(--lime)}
+
+/* HEADER */
+header{display:flex;justify-content:space-between;align-items:center;padding:24px 0;border-bottom:1px solid var(--border);position:relative;z-index:10}
+.brand{display:flex;flex-direction:column;line-height:1.1;text-decoration:none}
+.brand-name{font-family:'Archivo Black',sans-serif;font-size:18px;letter-spacing:-.02em;color:var(--ink)}
+.brand-sub{font-size:10px;letter-spacing:3px;color:var(--muted);font-weight:500;margin-top:4px;text-transform:uppercase}
+nav ul{list-style:none;display:flex;gap:30px;align-items:center}
+nav a{font-family:'Space Grotesk',sans-serif;text-decoration:none;color:var(--ink);font-weight:500;font-size:13px;letter-spacing:.5px;transition:color .3s}
+nav a:hover{color:var(--purple)}
+.nav-cta{background:var(--lime)!important;color:var(--ink)!important;padding:11px 22px;font-weight:700;font-size:11px;letter-spacing:2px;text-transform:uppercase;border-radius:50px;transition:all .3s;border:2px solid var(--ink)}
+.nav-cta:hover{background:var(--ink)!important;color:var(--lime)!important}
+
+/* HERO */
+.hero{padding:80px 0 50px;text-align:center;position:relative}
+.kicker{font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:700;color:var(--purple);letter-spacing:4px;text-transform:uppercase;margin-bottom:24px;display:inline-block;padding:8px 16px;background:rgba(142,88,240,.08);border-radius:99px}
+.hero h1{font-family:'Playfair Display',serif;font-style:italic;font-weight:900;font-size:clamp(2.6rem,7vw,6rem);line-height:.97;letter-spacing:-.03em;margin:0 auto 24px;max-width:1000px}
+.hero h1 .sans{font-family:'Archivo Black',sans-serif;font-style:normal;font-weight:400}
+.hero p.lead{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(1.05rem,1.5vw,1.3rem);color:var(--ink-soft);max-width:660px;margin:0 auto;line-height:1.55}
+
+/* BUTTONS */
+.btn{display:inline-flex;align-items:center;gap:10px;padding:16px 32px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:2px;text-decoration:none;border:none;cursor:pointer;transition:all .3s cubic-bezier(.16,1,.3,1);border-radius:50px;line-height:1;text-align:center}
+.btn-solid{background:var(--ink);color:var(--paper)}
+.btn-solid:hover{background:var(--purple);transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--ink)}
+.btn-ghost{background:transparent;color:var(--ink);border:2px solid var(--ink)}
+.btn-ghost:hover{background:var(--ink);color:var(--paper)}
+.btn-lime{background:var(--lime);color:var(--ink)}
+.btn-lime:hover{background:var(--ink);color:var(--lime);transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--lime)}
+.btn-purple{background:var(--purple);color:#fff}
+.btn-purple:hover{background:var(--ink);transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--purple)}
+.btn-big{padding:20px 40px;font-size:14px}
+
+/* CARDS */
+.posts{padding:60px 0 40px}
+.posts-grid{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:30px;max-width:1240px;margin:0 auto}
+.post-card{background:#fff;border:2px solid var(--ink);border-radius:28px;padding:36px 32px;cursor:pointer;transition:all .3s cubic-bezier(.16,1,.3,1);display:flex;flex-direction:column;gap:14px;text-decoration:none;color:var(--ink);position:relative;overflow:hidden}
+.post-card:hover{transform:translate(-3px,-3px)}
+.post-card.feat{grid-row:span 1;padding:50px 44px;background:var(--ink);color:var(--paper);box-shadow:10px 10px 0 var(--lime)}
+.post-card.feat:hover{box-shadow:14px 14px 0 var(--lime)}
+.post-card:nth-child(2){box-shadow:6px 6px 0 var(--coral)}
+.post-card:nth-child(2):hover{box-shadow:10px 10px 0 var(--coral)}
+.post-card:nth-child(3){box-shadow:6px 6px 0 var(--purple)}
+.post-card:nth-child(3):hover{box-shadow:10px 10px 0 var(--purple)}
+.post-cat{display:inline-block;padding:5px 12px;border-radius:99px;font-family:'Archivo Black',sans-serif;font-size:10px;letter-spacing:2px;text-transform:uppercase;align-self:flex-start}
+.post-card.feat .post-cat{background:var(--lime);color:var(--ink)}
+.post-card:nth-child(2) .post-cat{background:var(--coral);color:#fff}
+.post-card:nth-child(3) .post-cat{background:var(--purple);color:#fff}
+.post-card h2{font-family:'Playfair Display',serif;font-style:italic;font-weight:900;font-size:clamp(1.6rem,3vw,2.2rem);line-height:1.05;letter-spacing:-.02em}
+.post-card.feat h2{font-size:clamp(1.9rem,3.4vw,2.8rem)}
+.post-card h2 .sans{font-family:'Archivo Black',sans-serif;font-style:normal;font-weight:400}
+.post-card p{font-family:'Playfair Display',serif;font-style:italic;font-size:1rem;color:var(--ink-soft);line-height:1.55;flex:1}
+.post-card.feat p{color:rgba(239,230,211,.78)}
+.post-meta{display:flex;justify-content:space-between;align-items:center;padding-top:14px;border-top:1px dashed var(--ink);margin-top:6px;font-size:12px;color:var(--ink-soft)}
+.post-card.feat .post-meta{border-top-color:rgba(239,230,211,.3);color:rgba(239,230,211,.65)}
+.post-meta .read-arrow{font-family:'Playfair Display',serif;font-style:italic;font-weight:900;font-size:24px;color:var(--coral)}
+
+/* ARTICLE */
+.article{padding:90px 0;border-top:1px solid var(--border);scroll-margin-top:40px}
+.article:nth-child(odd){background:linear-gradient(180deg, transparent 0%, rgba(142,88,240,.04) 100%)}
+.article-head{max-width:780px;margin:0 auto 50px;text-align:left}
+.article-cat{display:inline-block;padding:6px 14px;border-radius:99px;font-family:'Archivo Black',sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;margin-bottom:18px;background:var(--lime);color:var(--ink)}
+.article-cat.coral{background:var(--coral);color:#fff}
+.article-cat.purple{background:var(--purple);color:#fff}
+.article h1{font-family:'Playfair Display',serif;font-style:italic;font-weight:900;font-size:clamp(2rem,5vw,3.8rem);line-height:1;letter-spacing:-.03em;margin-bottom:18px}
+.article h1 .sans{font-family:'Archivo Black',sans-serif;font-style:normal;font-weight:400}
+.article-author{display:flex;align-items:center;gap:12px;font-size:13px;color:var(--ink-soft);margin-bottom:8px}
+.article-author .avatar{width:36px;height:36px;border-radius:50%;background:var(--purple);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Archivo Black',sans-serif;font-size:12px}
+.article-author b{color:var(--ink)}
+
+.article-body{max-width:740px;margin:0 auto;font-family:'Playfair Display',serif;font-size:1.15rem;line-height:1.75;color:var(--ink-soft)}
+.article-body p{margin-bottom:24px}
+.article-body p:first-of-type::first-letter{font-family:'Playfair Display',serif;font-style:italic;font-weight:900;font-size:5em;float:left;line-height:.85;margin-right:14px;margin-top:6px;color:var(--purple)}
+.article-body h2{font-family:'Playfair Display',serif;font-style:italic;font-weight:900;font-size:clamp(1.6rem,3vw,2.4rem);line-height:1.1;letter-spacing:-.02em;margin:42px 0 18px;color:var(--ink)}
+.article-body h2 .sans{font-family:'Archivo Black',sans-serif;font-style:normal;font-weight:400}
+.article-body h3{font-family:'Archivo Black',sans-serif;font-size:1.2rem;line-height:1.2;letter-spacing:-.005em;margin:30px 0 14px;color:var(--ink);text-transform:uppercase}
+.article-body strong{color:var(--ink);font-weight:700;font-family:'Space Grotesk',sans-serif;font-style:normal;font-size:1rem}
+.article-body em{font-style:italic;color:var(--purple)}
+.article-body ul, .article-body ol{margin:0 0 24px 24px}
+.article-body li{margin-bottom:10px;font-family:'Playfair Display',serif;font-size:1.1rem;line-height:1.7}
+.article-body li strong{font-family:'Space Grotesk',sans-serif;font-weight:700}
+.article-body blockquote{border-left:4px solid var(--coral);padding:14px 24px;margin:30px 0;font-family:'Playfair Display',serif;font-style:italic;font-size:1.3rem;color:var(--ink);background:var(--paper);border-radius:0 14px 14px 0}
+.article-body blockquote .sig{display:block;margin-top:8px;font-family:'Caveat',cursive;font-weight:700;color:var(--coral);font-size:1.1rem;font-style:normal}
+.article-body .callout{padding:24px 28px;background:var(--ink);color:var(--paper);border-radius:18px;margin:30px 0;font-family:'Space Grotesk',sans-serif;font-style:normal;font-size:1rem;line-height:1.6}
+.article-body .callout b{color:var(--lime);font-family:'Archivo Black',sans-serif;font-weight:400;font-size:1em}
+.article-body .callout-title{font-family:'Archivo Black',sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--lime);margin-bottom:10px;display:block}
+
+.article-cta{max-width:740px;margin:50px auto 0;padding:30px;background:#fff;border:2px dashed var(--ink);border-radius:24px;display:flex;flex-direction:column;align-items:center;gap:16px;text-align:center}
+.article-cta p{font-family:'Caveat',cursive;font-weight:700;color:var(--coral);font-size:1.4rem;margin:0}
+.article-cta h4{font-family:'Playfair Display',serif;font-style:italic;font-weight:900;font-size:clamp(1.4rem,2.5vw,1.8rem);line-height:1.2}
+.article-cta h4 .sans{font-family:'Archivo Black',sans-serif;font-style:normal}
+.article-cta .btns{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+
+/* FOOTER */
+footer{padding:60px 0 40px;background:var(--ink);color:var(--paper);border-top:1px solid rgba(239,230,211,.18);margin-top:60px}
+footer .grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:50px;padding-bottom:36px;border-bottom:1px solid rgba(239,230,211,.18)}
+footer .brand-name{color:var(--paper)}
+footer .brand-sub{color:rgba(239,230,211,.5)}
+footer p{font-size:13px;color:rgba(239,230,211,.65);line-height:1.55;margin-top:16px;max-width:340px}
+footer h5{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--lime);margin-bottom:18px;font-weight:700}
+footer ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+footer ul a{color:rgba(239,230,211,.78);text-decoration:none;font-size:13px;transition:color .2s}
+footer ul a:hover{color:var(--lime)}
+footer .bottom{padding-top:30px;display:flex;justify-content:space-between;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(239,230,211,.45)}
+
+/* REVEAL */
+.rev{opacity:0;transform:translateY(28px);transition:all .8s cubic-bezier(.16,1,.3,1)}
+.rev.show{opacity:1;transform:translateY(0)}
+
+/* RESPONSIVE */
+@media (max-width:980px){
+  .posts-grid{grid-template-columns:1fr;gap:20px}
+  .post-card.feat{padding:36px 32px}
+}
+@media (max-width:600px){
+  nav ul{display:none}
+  .wrap, .wrap-tight{padding:0 22px}
+  .hero{padding:50px 0 30px}
+  .hero h1{font-size:clamp(2rem,9vw,3rem);line-height:1;margin-bottom:18px}
+  .article{padding:60px 0}
+  .article-body{font-size:1.05rem}
+  .article-body p:first-of-type::first-letter{font-size:4em}
+  footer .grid{grid-template-columns:1fr;gap:30px}
+  footer .bottom{flex-direction:column;gap:8px;align-items:flex-start}
+}
+
+/* === LOGO ZIV === */
+.brand{display:flex;align-items:center;gap:14px;text-decoration:none}
+.brand-logo{width:84px;height:84px;border-radius:18px;flex-shrink:0;box-shadow:0 6px 16px rgba(24,24,32,.25);object-fit:cover;border:2px solid var(--ink);transition:transform .25s cubic-bezier(.16,1,.3,1)}
+.brand:hover .brand-logo{transform:rotate(-3deg) scale(1.04)}
+.brand-text{display:flex;flex-direction:column;line-height:1}
+.brand-sub{font-size:10px;letter-spacing:3px;color:var(--muted);font-weight:600;text-transform:uppercase;line-height:1.3}
+footer .brand-logo{width:68px;height:68px;border-radius:14px}
+@media (max-width:640px){
+  .brand-logo{width:64px;height:64px;border-radius:14px}
+  footer .brand-logo{width:58px;height:58px}
+  .brand-sub{font-size:9px;letter-spacing:2.5px}
+}
+}
+
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <strong>Blog ZIV</strong> · estrategia y negocio para quien sí cierra
+  <a href="cotizador.html">Cotizar mi página web →</a>
+</div>
+
+<div class="wrap">
+  <header>
+    <a href="index.html" class="brand">
+      <img src="logo.png" alt="ZIV Creativo logo" class="brand-logo" loading="lazy">
+    </a>
+    <nav>
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="cotizador.html">Cotizador</a></li>
+        <li><a href="invitaciones.html">Invitaciones</a></li>
+        <li><a href="automatizaciones.html">Automatizaciones</a></li>
+        <li><a href="cotizador.html" class="nav-cta">Cotizar gratis →</a></li>
+      </ul>
+    </nav>
+  </header>
+</div>
+
+<!-- HERO -->
+<div class="wrap">
+  <section class="hero">
+    <span class="kicker">// BLOG ZIV · LECTURA CORTA · VALOR ALTO</span>
+    <h1>Estrategia y <span class="italic">negocio</span>.<br>Para quien <span class="hl hl-lime">sí cierra</span>.</h1>
+    <p class="lead">Sin relleno, sin "5 tips para emprender" recopilados de TikTok. Estos son aprendizajes reales de 50+ negocios que escalamos — qué los hizo crecer y qué los hundió.</p>
+  </section>
+</div>
+
+<!-- POST CARDS -->
+<section class="posts">
+  <div class="wrap">
+    <div class="posts-grid">
+
+      <a href="#post-rentable" class="post-card feat rev">
+        <span class="post-cat">Negocio</span>
+        <h2>Cómo hacer un negocio <span class="sans">rentable</span> en 2026 (sin inversionistas ni ahorros eternos).</h2>
+        <p>5 verdades incómodas que separan a los negocios que cierran del primer mes a los que viven endeudados. La mayoría de cursos te miente — esto es lo que sí funciona.</p>
+        <div class="post-meta">
+          <span>· Por Ismael Ríos · 8 min de lectura</span>
+          <span class="read-arrow">→</span>
+        </div>
+      </a>
+
+      <a href="#post-ia-automatizacion" class="post-card rev">
+        <span class="post-cat">Automatización</span>
+        <h2>Automatización para pequeños negocios: cómo <span class="sans">vender más con menos gente</span>.</h2>
+        <p>Casos reales de empresas que reemplazaron 3 puestos con 1 flujo bien armado de WhatsApp + CRM. Y por qué tu competidor ya lo está haciendo.</p>
+        <div class="post-meta">
+          <span>· 6 min de lectura</span>
+          <span class="read-arrow">→</span>
+        </div>
+      </a>
+
+      <a href="#post-ia-landing" class="post-card rev">
+        <span class="post-cat">Página web · conversión</span>
+        <h2>Por qué tu página web <span class="sans">no convierte</span> (aunque se vea bonita).</h2>
+        <p>Spoiler: no es el diseño, no es el copy, no es el botón. Es algo más obvio — y por eso casi nadie lo arregla.</p>
+        <div class="post-meta">
+          <span>· 7 min de lectura</span>
+          <span class="read-arrow">→</span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- ARTÍCULO 1: NEGOCIO RENTABLE -->
+<!-- ============================================================ -->
+<article class="article" id="post-rentable">
+  <div class="wrap-tight article-head">
+    <span class="article-cat">Negocio</span>
+    <h1>Cómo hacer un negocio <span class="sans">rentable</span> en 2026 (sin inversionistas ni ahorros eternos).</h1>
+    <div class="article-author">
+      <div class="avatar">IR</div>
+      <span>Por <b>Ismael Ríos</b> · ZIV Creativo · 8 min de lectura · Mayo 2026</span>
+    </div>
+  </div>
+
+  <div class="wrap-tight article-body">
+    <p>Llevo más de una década viendo emprendimientos nacer y morir. Y casi todos mueren por la misma razón — no por mala idea, sino por confundir <em>actividad</em> con <em>rentabilidad</em>. Estás "ocupado" todo el día, pero a fin de mes la cuenta no cuadra. Suena conocido, ¿verdad?</p>
+
+    <p>Aquí van las 5 verdades incómodas que separan a los negocios rentables del resto. Sin maquillaje motivacional, porque tu renta no se paga con frases bonitas.</p>
+
+    <h2>1. <span class="sans">Vender</span> no es lo mismo que cobrar.</h2>
+
+    <p>El error más común: medir el éxito en facturación. "Este mes facturé 80 mil pesos." Genial. ¿Cuánto cobraste? ¿Cuánto te pagaron a 30 días, a 60, a 90? ¿Cuánto sigue pendiente?</p>
+
+    <p>Un negocio rentable no es el que más vende. Es el que más <strong>cobra rápido</strong>. Apartado, anticipo, pago contra entrega — lo que sea, pero cobrar antes de gastar la energía. Las facturas a 90 días son ahorros que le estás regalando a tus clientes. Si trabajas con grandes empresas, súmate al costo financiero del crédito.</p>
+
+    <div class="callout">
+      <span class="callout-title">Acción concreta</span>
+      Mete <b>50% de anticipo obligatorio</b> en todos tus servicios. El que no quiera pagarlo no era tu cliente — era tu problema esperando a estallar.
+    </div>
+
+    <h2>2. <span class="sans">Más clientes</span> no resuelve nada si tu margen es malo.</h2>
+
+    <p>"Necesito más clientes." Te lo digo con cariño: no, no necesitas más clientes. Necesitas que cada cliente te deje más utilidad. Tener 10 clientes que te pagan poco es peor que tener 3 que te pagan bien — porque los 10 te quitan tiempo, te exigen más, y te llenan la cabeza de ruido operativo.</p>
+
+    <p>Antes de salir a buscar más leads, abre tu hoja de cálculo y calcula: <strong>¿cuál es el margen real por cada cliente?</strong> Resta tiempo invertido (a tu tarifa por hora), insumos, gastos administrativos, y el costo invisible de WhatsApp a las 11 pm. Vas a descubrir que algunos clientes son <em>negativos</em> — te quitan dinero, no te lo dan.</p>
+
+    <p>Despide a esos. Sí, despide clientes. Suena radical, pero te va a sacar del hoyo más rápido que cualquier campaña de Meta Ads.</p>
+
+    <h2>3. La <span class="italic">automatización</span> no es lujo. Es supervivencia.</h2>
+
+    <p>En 2020 podías sobrevivir sin automatizar. En 2026, automatizar es lo que separa al que escala del que se quedó "bien estable" (aka: estancado y sin tiempo libre).</p>
+
+    <p>No estoy hablando de tener un ChatBot raro. Hablo de cosas básicas:</p>
+
+    <ul>
+      <li><strong>Agenda online:</strong> deja de mandar mensajes de "te paso mi disponibilidad".</li>
+      <li><strong>Cobros automáticos:</strong> link de pago, MSI, OXXO. Que no dependa de ti recordar cobrar.</li>
+      <li><strong>Recordatorios automáticos:</strong> de cita, de pago, de seguimiento. Cero no-shows.</li>
+      <li><strong>Respuestas frecuentes:</strong> WhatsApp con menú interactivo. La gente quiere precios — dáselos sin negociar.</li>
+      <li><strong>CRM:</strong> deja la libreta. Cada lead, cliente y conversación en un solo lugar.</li>
+    </ul>
+
+    <p>El argumento siempre es "no tengo presupuesto para automatizar". El contraargumento: cada hora que pasas contestando WhatsApp a las 11 pm vale dinero. Súmalas en un mes. Compáralo con lo que cuesta un setup de automatización.</p>
+
+    <blockquote>
+      "Las herramientas no son caras. Lo caro es seguir haciendo todo a mano."
+      <span class="sig">— una verdad que a nadie le gusta oír</span>
+    </blockquote>
+
+    <h2>4. Tu <span class="sans">tiempo</span> tiene un costo. Cóbralo.</h2>
+
+    <p>El emprendedor mexicano tiene un mal hábito: regalar tiempo. "Te explico, te muestro, te paso info, te doy una asesoría rápida." Esa "asesoría rápida" son 45 minutos que no te paga nadie y que después se va con tu competencia.</p>
+
+    <p>Ponle valor a tu tiempo desde el primer contacto. No es ser difícil — es ser <strong>profesional</strong>. Si das una llamada de exploración, que sea de 15 minutos máximo y agendada por calendario online (que pre-califica al lead). Si das una asesoría real, cóbrala — aunque sea simbólico. Cobrar filtra curiosos.</p>
+
+    <p>Tu tiempo no es infinito. Cada minuto que regalas a un curioso es un minuto que le quitas a un cliente que sí va a pagar.</p>
+
+    <h2>5. <span class="italic">No vendas el qué</span>. Vende <span class="sans">el cómo se va a sentir</span>.</h2>
+
+    <p>Si vendes un servicio o producto, deja de vender la cosa. Vende la <em>transformación</em>. La gente no compra una página web page — compra <strong>"que mi negocio se vea profesional y mis clientes confíen en mí"</strong>. La gente no contrata un nutriólogo — contrata <strong>"sentirme bien con mi cuerpo en el espejo"</strong>.</p>
+
+    <p>En tu página web, en tu copy, en tu propuesta — deja de hablar de features y empieza a hablar de cómo va a cambiar la vida del cliente. Eso es lo que cierra ventas. No la lista de cosas que incluye tu paquete.</p>
+
+    <h2>Cierre: el negocio rentable es <span class="sans">aburrido</span>.</h2>
+
+    <p>El negocio rentable no es el que sale en revistas. Es el que cobra rápido, atiende clientes premium, automatiza lo aburrido, y deja al dueño con tiempo de vida. No es glamoroso, no es pivot tras pivot, no es "estoy en mil cosas". Es enfocado, claro y sostenible.</p>
+
+    <p>Si tienes que escoger entre verte exitoso y serlo — escoge serlo. Lo otro es vanidad y la vanidad no paga renta.</p>
+  </div>
+
+  <div class="wrap-tight article-cta">
+    <p>↓ ¿quieres aplicar esto en tu negocio?</p>
+    <h4>Empezamos por la <span class="sans">página web</span> que sí vende — y luego automatizamos lo aburrido.</h4>
+    <div class="btns">
+      <a href="cotizador.html" class="btn btn-solid">Cotizar mi página web gratis →</a>
+      <a href="automatizaciones.html" class="btn btn-ghost">Ver automatizaciones</a>
+    </div>
+  </div>
+</article>
+
+<!-- ============================================================ -->
+<!-- ARTÍCULO 2: AUTOMATIZACIÓN -->
+<!-- ============================================================ -->
+<article class="article" id="post-ia-automatizacion">
+  <div class="wrap-tight article-head">
+    <span class="article-cat coral">Automatización</span>
+    <h1><span class="sans">Automatizar</span> para vender más: cómo los pequeños negocios están vendiendo más con menos gente.</h1>
+    <div class="article-author">
+      <div class="avatar" style="background:var(--coral)">IR</div>
+      <span>Por <b>Ismael Ríos</b> · ZIV Creativo · 6 min de lectura · Mayo 2026</span>
+    </div>
+  </div>
+
+  <div class="wrap-tight article-body">
+    <p>Hace dos años "automatizar con tecnología" era ciencia ficción para la mayoría de pequeños negocios. Hoy es la diferencia entre el que crece y el que cierra. Y no, no necesitas ser ingeniero — necesitas saber qué automatizar primero.</p>
+
+    <p>Esta es una guía rápida de qué se puede hacer hoy con tecnología aplicada a negocios reales. Sin teoría, con casos.</p>
+
+    <h2>1. <span class="sans">Bots</span> que ya no parecen bots.</h2>
+
+    <p>Los bots de WhatsApp de hace 3 años eran rígidos: "Para reservar marca 1, para precios marca 2." La gente los odiaba. Hoy con modelos de lenguaje conectados al chat, el bot conversa <em>como un humano</em> entrenado específicamente en tu negocio.</p>
+
+    <p>Un caso real: un consultorio dental que atendía 200 mensajes diarios de pacientes preguntando precios, horarios y ubicación. Implementamos un bot inteligente conectado a su agenda. <strong>Resultado: 87% de los mensajes los resuelve solo, sin intervención humana</strong>. La recepcionista pasó de apagar fuegos todo el día a coordinar tratamientos importantes.</p>
+
+    <div class="callout">
+      <span class="callout-title">Lo que hace bien la automatización hoy</span>
+      Responder preguntas frecuentes, calificar leads, agendar citas, recomendar productos según historial, escribir copy de email/redes, transcribir y resumir llamadas, traducir conversaciones en tiempo real.
+    </div>
+
+    <h2>2. <span class="italic">Calificación de leads</span> automática.</h2>
+
+    <p>Antes recibías 100 leads por mes y dedicabas 80 horas a llamarlos a todos para descubrir cuáles eran serios. Hoy, un sistema con tecnología te puede preguntar lo mismo que tú harías por mensaje en 3 minutos, y enviarte solo los que califican — con su perfil completo y prioridad asignada.</p>
+
+    <p>Lo aplicamos en una inmobiliaria. Antes los brokers perdían tiempo con curiosos. Hoy, el sistema pregunta presupuesto, zona, urgencia y forma de pago. Si el lead califica, le llega al broker disponible — con el resumen completo. <strong>Tasa de cierre por broker: 3.4x.</strong></p>
+
+    <h2>3. Recuperación de carrito con <span class="sans">mensajes personalizados</span>.</h2>
+
+    <p>El carrito abandonado es el mayor desperdicio en e-commerce. La diferencia entre 2024 y hoy es que la automatización puede generar mensajes <em>personalizados al producto</em>, al perfil del cliente, e incluso al momento del día.</p>
+
+    <p>Un cliente que dejó botas de invierno en el carrito recibe un mensaje distinto al que dejó vestidos de gala. La automatización lee el contexto y genera un copy que sí convierte. Resultado promedio en nuestros clientes: <strong>recuperación del 35-42%</strong> de carritos perdidos.</p>
+
+    <h2>4. <span class="sans">Reportes y análisis</span> que antes te tomaban 2 días.</h2>
+
+    <p>Antes el dueño del negocio pasaba el primer día del mes mirando Excel para entender qué pasó. Hoy un sistema con tecnología conectado a tus datos genera el reporte automáticamente: cuánto vendiste, qué producto/servicio rindió más, qué fuente de leads funcionó, dónde se cayó el embudo, y <em>qué deberías cambiar el próximo mes</em>.</p>
+
+    <p>Lo más valioso no es el dato — es la interpretación. La automatización hoy te dice "tu conversión bajó 12% en el último mes, parece que viene de Instagram porque tu CTR cayó después del cambio de copy del 14 de abril". Eso ahorra horas de análisis.</p>
+
+    <h2>5. ¿Qué <span class="italic">no</span> debes automatizar todavía?</h2>
+
+    <p>Hay cosas que la automatización puede hacer técnicamente, pero no <strong>deben</strong> automatizarse en negocios pequeños:</p>
+
+    <ul>
+      <li><strong>Cierre de ventas premium:</strong> el cliente premium quiere hablar con un humano, no con un bot. Usa la automatización para calificar y agendar — no para cerrar.</li>
+      <li><strong>Reseñas y disculpas públicas:</strong> nunca dejes que un bot conteste reseñas negativas. Suena hueco y empeora todo.</li>
+      <li><strong>Decisiones estratégicas:</strong> la automatización te da datos, no juicio. La estrategia la tomas tú.</li>
+      <li><strong>Relación a largo plazo con clientes top:</strong> tus 20% mejores clientes generan el 80% de tus ingresos. Atiéndelos personalmente.</li>
+    </ul>
+
+    <h2>Cómo empezar <span class="sans">esta semana</span>.</h2>
+
+    <p>Si ya estás convencido y quieres dar el primer paso, este es el orden sugerido:</p>
+
+    <ol>
+      <li><strong>Setup de WhatsApp Business API</strong> con menú interactivo y respuestas automáticas para preguntas frecuentes.</li>
+      <li><strong>CRM básico</strong> que capture cada lead y lo etiquete por origen y estado.</li>
+      <li><strong>Recordatorios automáticos</strong> de cita o pago. Esto solo evita el 30-50% de no-shows o moras.</li>
+      <li><strong>Bot con tecnología</strong> entrenado en tus FAQs, productos y políticas.</li>
+      <li><strong>Reportes automáticos</strong> semanales a tu email.</li>
+    </ol>
+
+    <blockquote>
+      "El que automatiza primero compite con margen. El que no, compite con horas de su vida."
+      <span class="sig">— Ismael, ZIV Creativo</span>
+    </blockquote>
+
+    <p>El miedo a la automatización es legítimo. Pero quedarse fuera de la jugada es peor que entrar tarde. Y entrar tarde no significa "esperar a que esté maduro" — significa empezar mañana, con el módulo más sencillo, y crecer desde ahí.</p>
+  </div>
+
+  <div class="wrap-tight article-cta">
+    <p>↓ ¿qué automatizar en tu negocio?</p>
+    <h4>Diagnóstico <span class="sans">gratis</span> — te digo qué empezar primero según tu caso.</h4>
+    <div class="btns">
+      <a href="automatizaciones.html#cotizador-auto" class="btn btn-purple">Cotizar mi automatización →</a>
+      <a href="https://wa.me/525539480470?text=Hola%20Ismael%2C%20quiero%20diagn%C3%B3stico%20gratis%20de%20automatizaci%C3%B3n" target="_blank" class="btn btn-ghost">WhatsApp directo</a>
+    </div>
+  </div>
+</article>
+
+<!-- ============================================================ -->
+<!-- ARTÍCULO 3: POR QUÉ TU PÁGINA NO CONVIERTE -->
+<!-- ============================================================ -->
+<article class="article" id="post-ia-landing">
+  <div class="wrap-tight article-head">
+    <span class="article-cat purple">Página web · conversión</span>
+    <h1>Por qué tu página web <span class="sans">no convierte</span> (aunque se vea bonita).</h1>
+    <div class="article-author">
+      <div class="avatar" style="background:var(--ink);color:var(--lime)">IR</div>
+      <span>Por <b>Ismael Ríos</b> · ZIV Creativo · 7 min de lectura · Mayo 2026</span>
+    </div>
+  </div>
+
+  <div class="wrap-tight article-body">
+    <p>Spoiler: si tu página web no convierte, no es porque le falten plugins de tecnología, ni un chatbot bonito, ni animaciones nuevas. Es por algo mucho más viejo y mucho más doloroso: <strong>no tienes claro qué le ofreces a tu cliente</strong>.</p>
+
+    <p>Llevo cientos de páginas web revisadas. Y te puedo decir las 5 razones por las que la mayoría no vende — en orden de importancia.</p>
+
+    <h2>1. Tu página web habla <span class="italic">de ti</span>, no del cliente.</h2>
+
+    <p>Abro 9 de cada 10 páginas web y leo "Somos una empresa con 15 años de experiencia comprometida con la excelencia y la innovación, ofreciendo soluciones integrales adaptadas a las necesidades de nuestros valiosos clientes."</p>
+
+    <p>Cero ventas. Sabes por qué? Porque al cliente <em>no le importas</em>. Le importa <strong>su problema</strong>. Tu página web tiene que abrir hablando del dolor del cliente, no de tu historia.</p>
+
+    <p>Cambia "Somos una agencia con 15 años de experiencia" por "¿Tu negocio aparece en Google cuando alguien te busca?". El primero es ego. El segundo es venta.</p>
+
+    <h2>2. Pones <span class="sans">10 cosas</span> en lugar de <span class="italic">una</span>.</h2>
+
+    <p>Una página web que vende habla <em>de una cosa</em>. Un servicio, un producto, una transformación. Cuando metes 10 servicios, 5 industrias y 3 audiencias en la misma página, el cliente entra y se va — porque no entiende a quién le hablas.</p>
+
+    <p>Si tienes varios servicios, haz <strong>una página web por servicio</strong>. Cada una hablando a su cliente ideal con su lenguaje específico. Eso convierte. Una página catch-all no.</p>
+
+    <div class="callout">
+      <span class="callout-title">Test rápido</span>
+      Lee tu página web como si fueras un cliente nuevo. ¿Sabes en menos de 10 segundos <b>qué vendes y a quién</b>? Si no, no vas a convertir. La automatización tampoco lo va a salvar.
+    </div>
+
+    <h2>3. Tienes <span class="sans">100 botones</span> y ninguna acción clara.</h2>
+
+    <p>"Llámanos, escríbenos, agenda, cotiza, suscríbete, descarga, síguenos." Cuando ofreces todo, el cliente no escoge nada. Eso es el principio de Hick: a más opciones, más parálisis.</p>
+
+    <p>Define <strong>una sola acción primaria</strong>. Si lo importante es agendar, todo en la página web tiene que llevar a agendar. WhatsApp puede ser secundario, suscripción puede no estar. Una acción, repetida estratégicamente.</p>
+
+    <h2>4. No tienes <span class="italic">prueba social</span>. O la que tienes parece falsa.</h2>
+
+    <p>"Más de 1000 clientes satisfechos en toda la república". Nadie cree eso. Lo que sí cree la gente es:</p>
+
+    <ul>
+      <li>Testimonios con <strong>nombre, foto y resultado específico</strong> ("Cerré 3 propiedades en una semana — Carlos M., Inmobiliaria Lux").</li>
+      <li>Capturas de WhatsApp / Stories de clientes (con permiso).</li>
+      <li>Casos antes/después.</li>
+      <li>Reseñas con link a Google / Facebook.</li>
+      <li>Logos de clientes reales (no genéricos).</li>
+    </ul>
+
+    <p>La prueba social no convierte porque sea bonita — convierte porque <strong>quita el miedo a equivocarse</strong>. Si el cliente puede decir "ah, esto le funcionó a alguien parecido a mí", entonces compra.</p>
+
+    <h2>5. Cargas en 8 segundos y se ve <span class="sans">amateur</span> en celular.</h2>
+
+    <p>El 75% de tus visitas son móviles. Si tu página web carga lento o se ve mal en celular, perdiste antes de jugar. Y no, "tener una versión mobile" no es lo mismo que estar diseñado mobile-first.</p>
+
+    <p>Mobile-first significa: el primer borrador se hace pensando en celular, y desde ahí se escala a desktop. No al revés. Eso cambia todo: la jerarquía visual, los textos cortos, los botones grandes, los espacios generosos. Hace una página que <em>se siente bien</em> en el dispositivo donde se va a leer.</p>
+
+    <h2>¿Y la <span class="italic">automatización</span>? ¿Dónde encaja?</h2>
+
+    <p>La automatización puede ayudar a:</p>
+
+    <ul>
+      <li><strong>Generar copy inicial</strong> que tú vas a editar (no que vas a copiar y pegar).</li>
+      <li><strong>Personalizar el saludo</strong> según el origen del visitante (Meta Ads vs Google).</li>
+      <li><strong>Asistir el chat</strong> con preguntas frecuentes.</li>
+      <li><strong>A/B testing</strong> automático de variantes de copy.</li>
+    </ul>
+
+    <p>Pero la automatización <strong>no puede</strong> arreglar lo fundamental: una mala oferta, un cliente mal definido, una propuesta confusa. Esas decisiones las tomas tú con criterio comercial — no con un prompt.</p>
+
+    <blockquote>
+      "Una página web es buena si vende. Si no vende, es decoración."
+      <span class="sig">— principio que rompe egos</span>
+    </blockquote>
+
+    <h2>Cierre: lo que sí convierte.</h2>
+
+    <p>Una página web que vende tiene 5 cosas:</p>
+
+    <ol>
+      <li>Un <strong>titular claro</strong> que habla del dolor o deseo del cliente.</li>
+      <li>Una <strong>oferta única</strong> con beneficio tangible.</li>
+      <li><strong>Prueba social</strong> creíble.</li>
+      <li>Una <strong>acción primaria</strong> repetida estratégicamente.</li>
+      <li><strong>Velocidad y diseño mobile</strong> impecables.</li>
+    </ol>
+
+    <p>Si tienes esos 5, vendes. Si te faltan, ningún plugin de tecnología te va a salvar. Empieza por arreglar la base — y después automatiza con tecnología. En ese orden.</p>
+  </div>
+
+  <div class="wrap-tight article-cta">
+    <p>↓ revisemos tu página web actual</p>
+    <h4>Cotiza una <span class="sans">nueva página web</span> que sí venda — diseñada por un vendedor.</h4>
+    <div class="btns">
+      <a href="cotizador.html" class="btn btn-lime">Cotizar gratis mi página web →</a>
+      <a href="https://wa.me/525539480470?text=Hola%20Ismael%2C%20quiero%20una%20revisi%C3%B3n%20de%20mi%20p%C3%A1gina%20web%20actual" target="_blank" class="btn btn-ghost">Pedir revisión de mi página web</a>
+    </div>
+  </div>
+</article>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="grid">
+      <div>
+        <div class="brand">
+      <img src="logo.png" alt="ZIV Creativo logo" class="brand-logo" loading="lazy">
+    </div>
+        <p>Diseño páginas web premium, automatizaciones e invitaciones digitales editoriales. Hechas por un vendedor con 10 años cerrando, no por una agencia. CDMX, México.</p>
+      </div>
+      <div>
+        <h5>Sitio</h5>
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="cotizador.html">Cotizador página web</a></li>
+          <li><a href="invitaciones.html">Invitaciones inteligentes</a></li>
+          <li><a href="automatizaciones.html">Automatizaciones</a></li>
+          <li><a href="blog.html">Blog</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Contacto</h5>
+        <ul>
+          <li><a href="https://wa.me/525539480470" target="_blank">WhatsApp · 55 3948 0470</a></li>
+          <li><a href="https://instagram.com/zivcreativo" target="_blank">Instagram · @zivcreativo</a></li>
+          <li><a href="mailto:hola@zivcreativo.shop">hola@zivcreativo.shop</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="bottom">
+      <span>© 2026 ZIV Creativo · Diseñado para vender.</span>
+      <span>Hecho con criterio comercial.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+const io = new IntersectionObserver(entries => {
+  entries.forEach(en => {
+    if(en.isIntersecting){
+      en.target.classList.add('show');
+      io.unobserve(en.target);
+    }
+  });
+}, {threshold:.12});
+document.querySelectorAll('.rev').forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
