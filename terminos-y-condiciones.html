@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Términos y Condiciones · Crea Tu Página Web en 14 Días</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<style>
+  :root{--ink:#eaf6ff;--mut:#b9c9d6;--acc:#5fe3c8;--acc2:#3b82f6}
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:'Sora',system-ui,sans-serif;color:var(--ink);background:#04121f;overflow-x:hidden}
+  #terrain{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;display:block}
+  .sky{position:fixed;inset:0;z-index:-1;background:linear-gradient(180deg,#071a2b 0%,#0b3a4a 50%,#0e5b57 100%)}
+  .scrim{position:fixed;inset:0;z-index:5;pointer-events:none;background:linear-gradient(180deg,rgba(3,14,24,.66),rgba(3,14,24,.5) 40%,rgba(3,14,24,.7))}
+
+  nav{position:fixed;top:0;left:0;right:0;z-index:40;display:flex;align-items:center;justify-content:space-between;
+    padding:18px clamp(18px,4vw,46px);backdrop-filter:blur(8px);background:linear-gradient(180deg,rgba(4,18,31,.55),transparent)}
+  .logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:1.05rem;letter-spacing:-.02em;text-decoration:none;color:#fff}
+  .gem{width:22px;height:22px;transform:rotate(45deg);background:linear-gradient(135deg,var(--acc),var(--acc2));border-radius:5px;box-shadow:0 0 18px rgba(95,227,200,.6)}
+  .logo img{width:34px;height:34px;border-radius:9px;display:block;box-shadow:0 0 18px rgba(255,255,255,.2)}
+  .back{color:var(--mut);text-decoration:none;font-size:.9rem;border:1px solid rgba(255,255,255,.18);padding:9px 18px;border-radius:99px;backdrop-filter:blur(6px)}
+  .back:hover{color:#fff;border-color:var(--acc)}
+
+  .hero{position:relative;z-index:10;padding:150px clamp(20px,7vw,120px) 40px;max-width:1000px;margin:0 auto}
+  .eyebrow{font-weight:600;font-size:.85rem;letter-spacing:3px;text-transform:uppercase;color:var(--acc);margin-bottom:14px;text-shadow:0 2px 16px rgba(0,8,16,.7)}
+  .hero h1{font-size:clamp(2.4rem,7vw,4.5rem);font-weight:700;letter-spacing:-.04em;line-height:1;text-shadow:0 4px 30px rgba(0,8,16,.6)}
+  .hero .date{color:var(--mut);font-weight:300;margin-top:14px}
+
+  main{position:relative;z-index:10;max-width:900px;margin:0 auto;padding:0 clamp(16px,5vw,40px) 80px}
+  .doc{background:rgba(5,20,33,.72);border:1px solid rgba(95,227,200,.16);border-radius:26px;backdrop-filter:blur(16px);
+    padding:clamp(28px,5vw,56px);box-shadow:0 30px 70px rgba(0,0,0,.4)}
+  .doc .intro{color:var(--mut);font-weight:300;font-size:1.05rem}
+  .doc h2{font-size:1.25rem;font-weight:700;color:#fff;margin:34px 0 8px;display:flex;align-items:center;gap:12px}
+  .doc h2:first-of-type{margin-top:18px}
+  .doc h2 .n{min-width:34px;height:34px;border-radius:9px;background:linear-gradient(135deg,var(--acc),var(--acc2));color:#03202a;
+    display:inline-flex;align-items:center;justify-content:center;font-size:.95rem;font-weight:700;flex:none}
+  .doc p{color:var(--mut);font-weight:300;margin:8px 0;line-height:1.7}
+  .doc strong{color:var(--ink);font-weight:600}
+  .doc ul{list-style:none;margin:10px 0}
+  .doc ul li{position:relative;padding:6px 0 6px 26px;color:var(--mut);font-weight:300}
+  .doc ul li::before{content:"";position:absolute;left:2px;top:15px;width:7px;height:7px;border-radius:50%;background:var(--acc)}
+  .doc a{color:var(--acc);text-decoration:none;border-bottom:1px solid rgba(95,227,200,.4)}
+
+  .hl{background:linear-gradient(135deg,rgba(95,227,200,.12),rgba(59,130,246,.1));border:1px solid rgba(95,227,200,.35);border-radius:16px;padding:18px 22px;margin:18px 0}
+  .hl p{margin:0;color:#d4f6ee}
+  .guar{background:linear-gradient(135deg,rgba(95,227,200,.14),rgba(59,130,246,.08));border:1px dashed rgba(95,227,200,.5);border-radius:16px;padding:20px 24px;margin:10px 0}
+  .guar p{margin:0}
+  .note{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.14);border-radius:14px;padding:16px 20px;margin:26px 0 0;font-size:.9rem}
+  .note p{color:#cbd5e1}
+
+  footer{position:relative;z-index:10;text-align:center;padding:50px 20px;color:var(--mut);font-size:.82rem;font-weight:300;background:linear-gradient(180deg,transparent,#03161d)}
+</style>
+</head>
+<body>
+<div class="sky" id="sky"></div>
+<canvas id="terrain"></canvas>
+<div class="scrim"></div>
+
+<nav>
+  <a class="logo" href="index.html"><img src="logo.png" alt="ZIV Creativo"> ZIV Creativo</a>
+  <a class="back" href="index.html">← Volver al curso</a>
+</nav>
+
+<header class="hero">
+  <div class="eyebrow">Documento legal</div>
+  <h1>Términos y<br>Condiciones</h1>
+  <p class="date">Curso “Crea Tu Página Web en 14 Días” · Última actualización: junio 2026</p>
+</header>
+
+<main>
+  <div class="doc">
+    <p class="intro">Estos Términos y Condiciones regulan la inscripción y participación en el curso <strong>“Crea Tu Página Web en 14 Días”</strong> (en adelante, “el Curso”). Al realizar tu pago, aceptas estos términos. Buscamos un trato justo y claro para ambas partes.</p>
+
+    <h2><span class="n">1</span> Qué incluye el Curso</h2>
+    <p>El Curso enseña a crear páginas web utilizando herramientas de inteligencia artificial (como ChatGPT y Gemini). Se imparte en vivo por Zoom e incluye, según el plan contratado: clases en vivo, acceso a las grabaciones, plantillas y prompts, materiales de apoyo, comunidad de WhatsApp y, en planes superiores, mentorías o sesiones individuales. El uso de las herramientas de IA está sujeto a los términos de sus propios proveedores y, en su caso, a sus planes gratuitos o de pago. El detalle de cada plan es el publicado en la página de ventas al momento de la compra.</p>
+
+    <h2><span class="n">2</span> Inscripción y pago</h2>
+    <ul>
+      <li>Los precios están expresados en pesos mexicanos (MXN) e incluyen lo descrito en cada plan.</li>
+      <li>El pago se procesa de forma segura a través de Shopify (tarjeta) o por los medios que se indiquen.</li>
+      <li>Tu lugar queda reservado una vez confirmado el pago.</li>
+    </ul>
+    <div class="hl"><p>🗓️ <strong>Fechas del curso:</strong> una vez confirmado tu pago, <strong>un ejecutivo se pondrá en contacto contigo por WhatsApp</strong> para darte las fechas y horarios de la próxima generación, así como los accesos a las clases. Te contactamos normalmente dentro de las 24–48 horas hábiles siguientes a tu compra.</p></div>
+
+    <h2><span class="n">3</span> Acceso y grabaciones</h2>
+    <p>Las clases en vivo se realizan en las fechas acordadas. Si no puedes asistir a una sesión en vivo, contarás con acceso a la grabación correspondiente para que no pierdas el contenido. El acceso a los materiales es personal e intransferible.</p>
+
+    <h2><span class="n">4</span> Garantía de satisfacción</h2>
+    <div class="guar"><p>🛡️ <strong style="color:var(--ink)">Si la primera clase en vivo no te gusta, te regresamos el 100% de tu dinero.</strong> Solo escríbenos por WhatsApp dentro de los 7 días naturales posteriores al inicio de tu generación y procesamos tu reembolso, sin preguntas incómodas.</p></div>
+    <p>Pasado ese plazo, o si ya se impartió la mayor parte del contenido, no aplican reembolsos.</p>
+
+    <h2><span class="n">5</span> Cancelaciones y reprogramaciones</h2>
+    <ul>
+      <li><strong>Por el alumno:</strong> puedes solicitar cambiar tu inscripción a una generación posterior avisando con al menos 48 horas de anticipación al inicio, sujeto a disponibilidad.</li>
+      <li><strong>Por nosotros:</strong> si por causa justificada debemos reprogramar una clase o generación, te avisaremos con anticipación y te ofreceremos una nueva fecha o, si lo prefieres, el reembolso de la parte no impartida.</li>
+    </ul>
+
+    <h2><span class="n">6</span> Propiedad intelectual</h2>
+    <p>Los materiales, plantillas, prompts, grabaciones y contenidos del Curso son propiedad de su autor y se entregan para tu <strong>uso personal y profesional</strong>. No está permitido revenderlos, redistribuirlos, ni compartir los accesos o grabaciones con terceros.</p>
+
+    <h2><span class="n">7</span> Conducta y comunidad</h2>
+    <p>Esperamos un trato respetuoso en clases y en la comunidad. Nos reservamos el derecho de retirar el acceso, sin reembolso, a quien incurra en conductas abusivas, fraude o incumplimiento grave de estos términos.</p>
+
+    <h2><span class="n">8</span> Resultados y responsabilidad</h2>
+    <p>El Curso te enseña el método y las herramientas para crear páginas web y, si lo deseas, ofrecer el servicio. Los resultados dependen de tu dedicación y esfuerzo, por lo que <strong>no garantizamos ingresos ni resultados económicos específicos</strong>. Nuestra responsabilidad se limita, como máximo, al monto pagado por el Curso.</p>
+
+    <h2><span class="n">9</span> Privacidad de tus datos</h2>
+    <p>Los datos que nos proporciones (nombre, contacto, pago) se usan únicamente para gestionar tu inscripción, contactarte y prestarte el servicio. No los vendemos ni los compartimos con terceros ajenos a la operación del Curso.</p>
+
+    <h2><span class="n">10</span> Cambios y contacto</h2>
+    <p>Podemos actualizar estos Términos; la versión vigente será la publicada en esta página. Para cualquier duda, solicitud de reembolso o aclaración, escríbenos por WhatsApp al <a href="https://wa.me/525539480470" target="_blank" rel="noopener">55 3948 0470</a>. Estos términos se rigen por las leyes aplicables en México.</p>
+
+    <div class="note"><p><strong>Nota:</strong> este documento es una base equilibrada y de buena fe. Te recomendamos que un abogado lo revise y lo ajuste a tu situación particular (datos fiscales, razón social, política de facturación, etc.) antes de publicarlo de forma definitiva.</p></div>
+  </div>
+</main>
+
+<footer>© 2026 · Curso “Crea Tu Página Web en 14 Días” · ZIV Creativo · WhatsApp 55 3948 0470</footer>
+
+<script>
+(function(){
+  if(typeof THREE==='undefined'||window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  var canvas=document.getElementById('terrain');
+  var renderer=new THREE.WebGLRenderer({canvas:canvas,antialias:true,alpha:true});
+  renderer.setPixelRatio(Math.min(devicePixelRatio,2));
+  var W=innerWidth,H=innerHeight;renderer.setSize(W,H);
+  var scene=new THREE.Scene();scene.fog=new THREE.FogExp2(0x0a3340,0.018);
+  var cam=new THREE.PerspectiveCamera(60,W/H,0.1,300);cam.position.set(0,7,24);cam.lookAt(0,2,-40);
+  var SEG=70,SIZE=120;
+  var geo=new THREE.PlaneGeometry(SIZE,SIZE,SEG,SEG);geo.rotateX(-Math.PI/2);
+  var pos=geo.attributes.position,n=pos.count;
+  var colors=new Float32Array(n*3);geo.setAttribute('color',new THREE.BufferAttribute(colors,3));
+  var mesh=new THREE.Mesh(geo,new THREE.MeshBasicMaterial({vertexColors:true}));scene.add(mesh);
+  var wire=new THREE.Mesh(geo,new THREE.MeshBasicMaterial({color:0x7fe9ff,wireframe:true,transparent:true,opacity:0.05}));scene.add(wire);
+  function hgt(x,z){return Math.sin(x*0.18+z*0.05)*2.2+Math.cos(z*0.12)*2.6+Math.sin((x+z)*0.07)*1.8;}
+  var cW=new THREE.Color(0x1d4ed8),cG=new THREE.Color(0x16a37a),cS=new THREE.Color(0x8fc3bd);
+  function update(fwd){for(var i=0;i<n;i++){var x=pos.getX(i),z=pos.getZ(i);var h=hgt(x,z+fwd);pos.setY(i,h);
+    var k=(h+5)/9;var c=k<0.35?cW.clone().lerp(cG,k/0.35):cG.clone().lerp(cS,(k-0.35)/0.65);colors[i*3]=c.r;colors[i*3+1]=c.g;colors[i*3+2]=c.b;}
+    pos.needsUpdate=true;geo.attributes.color.needsUpdate=true;}
+  var sp=0,spT=0;function onS(){var m=document.body.scrollHeight-innerHeight;spT=m>0?scrollY/m:0;}
+  addEventListener('scroll',onS,{passive:true});onS();
+  var clock=new THREE.Clock();
+  (function loop(){var t=clock.getElapsedTime();sp+=(spT-sp)*0.06;update(t*6+sp*150);
+    cam.position.x=Math.sin(t*0.1)*3;cam.position.z=24-sp*20;cam.position.y=7-sp*4.2;cam.lookAt(0,2-sp*2,-40);
+    scene.fog.density=0.018+sp*0.01;renderer.render(scene,cam);requestAnimationFrame(loop);})();
+  addEventListener('resize',function(){W=innerWidth;H=innerHeight;renderer.setSize(W,H);cam.aspect=W/H;cam.updateProjectionMatrix();});
+})();
+</script>
+</body>
+</html>

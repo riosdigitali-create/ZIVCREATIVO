@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ECHO — Kelo Studio · Arquitectura</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{--cream:#f3efe8;--ink:#16140f;--stone:#9b9484;--line:rgba(20,18,14,.14)}
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--ink);overflow-x:hidden}
+  .serif{font-family:'Cormorant Garamond',serif}
+  .label{font-size:.7rem;letter-spacing:3px;text-transform:uppercase;color:var(--stone)}
+
+  nav{position:fixed;top:0;left:0;right:0;z-index:30;display:flex;justify-content:space-between;align-items:center;
+    padding:22px clamp(18px,4vw,48px);mix-blend-mode:difference;color:#fff}
+  nav .b{font-family:'Cormorant Garamond',serif;font-size:1.4rem;letter-spacing:4px;font-weight:500}
+  nav .m{display:flex;gap:26px;font-size:.74rem;letter-spacing:2px;text-transform:uppercase}
+  nav a{color:#fff;text-decoration:none;opacity:.9}
+  @media(max-width:680px){nav .m{display:none}}
+
+  .scene{position:relative;height:100vh;display:flex;align-items:flex-end;overflow:hidden;
+    background:linear-gradient(160deg,#d9d2c4,#b9b2a3 55%,#6f6a5e)}
+  .scene.alt{background:linear-gradient(160deg,#e7e1d6,#cfc7b7 50%,#8a8474)}
+  .scene.dark{background:linear-gradient(160deg,#2a2722,#16140f)}
+  .scene img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+  .scene canvas{position:absolute;inset:0;width:100%;height:100%;z-index:0}
+  .scene::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.18),transparent 30%,transparent 60%,rgba(0,0,0,.45));z-index:1}
+  .scene .cap{position:relative;z-index:2;padding:0 clamp(20px,6vw,90px) clamp(40px,8vh,90px);color:#fff;width:100%}
+  .scene .big{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(3rem,11vw,8.5rem);line-height:.92;letter-spacing:-.01em}
+  .scene .big em{font-style:italic}
+  .scene .meta{display:flex;justify-content:space-between;align-items:flex-end;margin-top:24px;border-top:1px solid rgba(255,255,255,.3);padding-top:16px}
+  .scene .meta p{max-width:340px;font-size:.92rem;opacity:.92}
+
+  .intro{padding:clamp(70px,12vh,150px) clamp(20px,6vw,90px);display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+  .intro h2{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(2rem,4.5vw,3.6rem);line-height:1.05}
+  .intro p{color:#4a4639;font-size:1.05rem;line-height:1.7;max-width:440px}
+  @media(max-width:760px){.intro{grid-template-columns:1fr;gap:24px}}
+
+  .index{padding:0 clamp(20px,6vw,90px) 60px}
+  .index .row{display:grid;grid-template-columns:60px 1fr auto;gap:20px;align-items:center;padding:26px 0;border-top:1px solid var(--line);font-size:1rem}
+  .index .row .n{font-family:'Cormorant Garamond',serif;color:var(--stone);font-size:1.3rem}
+  .index .row .t{font-family:'Cormorant Garamond',serif;font-size:clamp(1.4rem,3vw,2.2rem);font-weight:400}
+  .index .row .y{color:var(--stone);font-size:.85rem}
+
+  .final{background:var(--ink);color:var(--cream);text-align:center;padding:clamp(80px,16vh,180px) 20px}
+  .final .big{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(2.4rem,7vw,5.5rem);line-height:1.05;max-width:16ch;margin:0 auto}
+  .final a{display:inline-block;margin-top:30px;border:1px solid var(--cream);color:var(--cream);text-decoration:none;padding:14px 32px;border-radius:99px;font-size:.74rem;letter-spacing:2px;text-transform:uppercase}
+  .final a:hover{background:var(--cream);color:var(--ink)}
+  footer{background:var(--ink);color:var(--stone);text-align:center;padding:30px;font-size:.8rem}
+</style>
+</head>
+<body>
+<nav>
+  <div class="b">ECHO</div>
+  <div class="m"><a href="#about">Estudio</a><a href="#projects">Proyectos</a><a href="#index">Índice</a><a href="#contact">Contacto</a></div>
+  <div class="b" style="font-size:.74rem;letter-spacing:2px;font-family:Inter">KELO STUDIO®</div>
+</nav>
+
+<section class="scene">
+  <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80" alt="" onerror="this.remove()">
+  <div class="cap">
+    <div class="label" style="color:rgba(255,255,255,.8)">Kelo Studio — Obras seleccionadas 2026</div>
+    <div class="big">Armonía<br><em>en</em> casa</div>
+    <div class="meta"><p>Un estudio de arquitectura que crea espacios serenos y llenos de luz, donde la precisión y la naturaleza se encuentran.</p><span class="label" style="color:#fff">↓ Baja</span></div>
+  </div>
+</section>
+
+<section class="intro" id="about">
+  <h2 class="serif"><em>Un lugar donde la precisión<br>y la creatividad se conectan.</em></h2>
+  <p>Diseñamos casas y espacios que respiran, reduciendo cada proyecto a sus líneas, materiales y luz esenciales. Cada detalle está pensado, nada es decoración. El resultado es una arquitectura que se siente inevitable.</p>
+</section>
+
+<section class="scene alt" id="projects">
+  <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1600&q=80" alt="" onerror="this.remove()">
+  <div class="cap">
+    <div class="label" style="color:rgba(255,255,255,.85)">Proyecto 01 — Dune Residence</div>
+    <div class="big">Precisión<br><em>en el</em> detalle</div>
+    <div class="meta"><p>Una casa frente al mar donde cada unión, sombra y línea se diseñó para fundirse con el paisaje.</p><span class="label" style="color:#fff">01 / 03</span></div>
+  </div>
+</section>
+
+<section class="scene" style="background:linear-gradient(160deg,#cdbfa6,#9c8f74)">
+  <img src="https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=1600&q=80" alt="" onerror="this.remove()">
+  <div class="cap">
+    <div class="label" style="color:rgba(255,255,255,.85)">Proyecto 02 — Atelier Verde</div>
+    <div class="big">Belleza<br><em>de la</em> naturaleza</div>
+    <div class="meta"><p>Interiores cálidos de roble, piedra y una honestidad de materiales que envejece con belleza.</p><span class="label" style="color:#fff">02 / 03</span></div>
+  </div>
+</section>
+
+<section class="scene dark">
+  <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1600&q=80" alt="" onerror="this.remove()">
+  <div class="cap">
+    <div class="label" style="color:rgba(255,255,255,.7)">Proyecto 03 — ECHO Pavilion</div>
+    <div class="big">ECHO<span style="font-family:Inter;font-size:1rem;vertical-align:super">®</span></div>
+    <div class="meta"><p>Un pabellón cultural que convierte el concreto y la luz en una experiencia serena y resonante.</p><span class="label" style="color:#fff">03 / 03</span></div>
+  </div>
+</section>
+
+<section class="index" id="index">
+  <div style="padding:60px 0 30px"><span class="label">Índice</span><h2 class="serif" style="font-weight:300;font-size:clamp(2rem,5vw,3.4rem);margin-top:8px">Proyectos seleccionados</h2></div>
+  <div class="row"><span class="n">09</span><span class="t serif">Dune Residence</span><span class="y">Costa · 2025</span></div>
+  <div class="row"><span class="n">17</span><span class="t serif">Atelier Verde</span><span class="y">Valle · 2025</span></div>
+  <div class="row"><span class="n">24</span><span class="t serif">ECHO Pavilion</span><span class="y">Ciudad · 2026</span></div>
+  <div class="row"><span class="n">31</span><span class="t serif">Lumen House</span><span class="y">Bosque · 2026</span></div>
+</section>
+
+<!-- EXTRA SCENE -->
+<section class="scene" style="background:linear-gradient(160deg,#c9c0ae,#76705f)">
+  <img src="https://images.unsplash.com/photo-1523217582562-09d0def993a6?auto=format&fit=crop&w=1600&q=80" alt="" onerror="this.remove()">
+  <div class="cap">
+    <div class="label" style="color:rgba(255,255,255,.85)">Proyecto 04 — Lumen House</div>
+    <div class="big">La luz<br><em>como</em> material</div>
+    <div class="meta"><p>Un hogar en el bosque donde la luz natural se vuelve el material principal de cada estancia.</p><span class="label" style="color:#fff">04 / 04</span></div>
+  </div>
+</section>
+
+<!-- STUDIO IN NUMBERS -->
+<section style="padding:clamp(70px,12vh,140px) clamp(20px,6vw,90px);text-align:center;background:var(--cream)">
+  <span class="label">El estudio en números</span>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:30px;margin-top:34px" class="estat">
+    <div><div class="serif" style="font-size:clamp(3rem,8vw,5.5rem);font-weight:300;line-height:1" data-count="48">0</div><span class="label">proyectos entregados</span></div>
+    <div><div class="serif" style="font-size:clamp(3rem,8vw,5.5rem);font-weight:300;line-height:1" data-count="12">0</div><span class="label">premios de diseño</span></div>
+    <div><div class="serif" style="font-size:clamp(3rem,8vw,5.5rem);font-weight:300;line-height:1" data-count="9">0</div><span class="label">años de oficio</span></div>
+  </div>
+</section>
+
+<!-- PHILOSOPHY -->
+<section class="intro">
+  <h2 class="serif"><em>Diseñamos para el silencio,<br>no para el ruido.</em></h2>
+  <p>Cada proyecto empieza con una pregunta y termina cuando ya no se puede quitar nada más. Reducimos hasta lo esencial: luz, materia y proporción. Lo demás sobra. Así nace una arquitectura que no se nota — se siente.</p>
+</section>
+
+<section class="final" id="contact">
+  <span class="label" style="color:var(--stone)">Construyamos algo sereno y duradero</span>
+  <div class="big serif" style="margin-top:18px">Arquitectura que escucha antes de hablar.</div>
+  <a href="https://wa.me/525539480470">Iniciar un proyecto</a>
+</section>
+<footer>© 2026 ECHO — Kelo Studio · Ejemplo de página hecha con IA · diseño por ZIV Creativo</footer><script>
+  // PROFUNDIDAD FUERTE: la foto hace zoom y se mueve lento; el texto vuela a otra velocidad
+  var scenes=document.querySelectorAll('.scene');
+  function px(){var vh=innerHeight;
+    scenes.forEach(function(s){
+      var r=s.getBoundingClientRect();var p=(r.top)/vh;            // 1 abajo, 0 arriba
+      var img=s.querySelector('img');var cap=s.querySelector('.cap');var big=s.querySelector('.big');
+      if(img)img.style.transform='scale(1.35) translateY('+(p*-130)+'px)';
+      if(cap)cap.style.transform='translateY('+(p*120)+'px)';
+      if(big)big.style.transform='translateY('+(p*-60)+'px)';      // el título se separa del bloque = profundidad
+    });}
+  addEventListener('scroll',px,{passive:true});addEventListener('resize',px);px();
+  (function(){function fmt(n,el){return Math.floor(n)+(el.dataset.suf||'');}
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;var el=e.target,end=+el.dataset.count,t0=null;function s(ts){if(!t0)t0=ts;var p=Math.min((ts-t0)/1600,1),ea=1-Math.pow(1-p,3);el.textContent=fmt(end*ea,el);if(p<1)requestAnimationFrame(s);}requestAnimationFrame(s);io.unobserve(el);});},{threshold:.5});
+    document.querySelectorAll('[data-count]').forEach(function(el){io.observe(el);});})();
+</script>
+</body>
+</html>
