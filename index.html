@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0B0906">
+<title>ZIV · Creemos algo hermoso para tu negocio</title>
+<meta name="description" content="Cuéntame de tu negocio en 2 minutos y te preparo una demo de tu página web, gratis. Llega directo a mi WhatsApp.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg:#0B0906; --bg2:#100C08; --panel:#151009;
+    --cream:#F4ECDB; --muted:#B7AC93; --dim:#8A7F6A; --faint:#5E5645;
+    --gold:#D9B45B; --gold-lo:#A8792E; --gold-hi:#F5E7BE; --champ:#E8C874;
+    --line:rgba(217,180,91,.16); --line-2:rgba(244,236,219,.09);
+    --err:#E27D6B; --wa:#25D366;
+    --gold-grad:linear-gradient(120deg,#A8792E 0%,#E8C874 32%,#F7ECC8 52%,#D9B45B 74%,#A8792E 100%);
+    --ease:cubic-bezier(.22,.61,.36,1);
+    --ink-on-gold:#231703;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:auto}
+  body{
+    background:var(--bg); color:var(--cream);
+    font-family:'Archivo',system-ui,-apple-system,sans-serif;
+    -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+    min-height:100svh; overflow-x:hidden; line-height:1.6;
+    position:relative;
+  }
+
+  /* ---------- fondo cinematográfico (todo GPU / estático) ---------- */
+  .bg{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;
+    background:
+      radial-gradient(150% 120% at 50% -10%, #1C140A 0%, #0E0A06 46%, #080604 100%);}
+  .aura{position:absolute;border-radius:50%;filter:blur(60px);opacity:.5;will-change:transform,opacity;mix-blend-mode:screen}
+  .a1{width:70vw;height:70vw;left:-16vw;top:-22vw;
+    background:radial-gradient(closest-side,rgba(233,200,120,.55),rgba(168,121,46,.14),transparent 72%);
+    animation:drift1 26s var(--ease) infinite}
+  .a2{width:62vw;height:62vw;right:-20vw;top:8vh;
+    background:radial-gradient(closest-side,rgba(217,180,91,.40),rgba(120,80,30,.10),transparent 70%);
+    animation:drift2 32s var(--ease) infinite}
+  .a3{width:80vw;height:80vw;left:8vw;bottom:-40vw;
+    background:radial-gradient(closest-side,rgba(255,210,130,.22),transparent 68%);
+    animation:drift3 38s var(--ease) infinite}
+  @keyframes drift1{0%,100%{transform:translate3d(0,0,0) scale(1)}50%{transform:translate3d(4vw,3vh,0) scale(1.12)}}
+  @keyframes drift2{0%,100%{transform:translate3d(0,0,0) scale(1);opacity:.5}50%{transform:translate3d(-5vw,4vh,0) scale(1.08);opacity:.72}}
+  @keyframes drift3{0%,100%{transform:translate3d(0,0,0) scale(1)}50%{transform:translate3d(3vw,-3vh,0) scale(1.14)}}
+  #dust{position:fixed;inset:0;z-index:1;pointer-events:none;display:block}
+  .grain{position:fixed;inset:0;z-index:2;pointer-events:none;opacity:.05;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size:200px 200px}
+  .vig{position:fixed;inset:0;z-index:3;pointer-events:none;
+    background:radial-gradient(130% 100% at 50% 34%, transparent 40%, rgba(6,5,3,.55) 82%, rgba(5,4,2,.94) 100%)}
+
+  /* ---------- layout ---------- */
+  .stage{position:relative;z-index:5;min-height:100svh;display:flex;flex-direction:column;
+    align-items:center;justify-content:flex-start;
+    padding:clamp(16px,4vh,44px) 18px calc(30px + env(safe-area-inset-bottom))}
+  .shell{width:100%;max-width:600px;margin:0 auto}
+
+  /* brand */
+  .brand{display:flex;flex-direction:column;align-items:center;gap:7px;margin-bottom:30px;opacity:0;animation:rise .9s var(--ease) .1s forwards}
+  .wordmark{position:relative;display:inline-block;font-weight:900;font-size:33px;letter-spacing:-.05em;line-height:1;color:var(--cream);text-transform:uppercase;padding-right:16px}
+  .wordmark .mk{position:absolute;right:0;bottom:6px;width:9px;height:9px;border-radius:2px;background:var(--gold-grad);box-shadow:0 0 15px rgba(217,180,91,.85)}
+  .brand-sub{font-weight:300;font-size:9.5px;letter-spacing:.54em;color:var(--dim);text-transform:uppercase;padding-left:.54em}
+
+  /* card */
+  .card{position:relative;text-align:center;border-radius:26px;padding:clamp(26px,5vw,44px) clamp(22px,4.4vw,40px);
+    background:
+      linear-gradient(180deg, rgba(30,22,12,.72), rgba(16,12,8,.82));
+    box-shadow:0 60px 140px -50px rgba(0,0,0,.9), 0 0 90px -40px rgba(217,180,91,.28),
+      inset 0 1px 0 rgba(255,240,200,.06);
+    transform:perspective(1200px);
+    transition:transform .5s var(--ease);
+    opacity:0;animation:rise 1s var(--ease) .22s forwards}
+  .card::before{content:"";position:absolute;inset:0;border-radius:26px;padding:1px;pointer-events:none;
+    background:linear-gradient(150deg, rgba(245,231,190,.6), rgba(168,121,46,.12) 40%, rgba(245,231,190,.15) 70%, rgba(168,121,46,.5));
+    -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+    -webkit-mask-composite:xor;mask-composite:exclude;opacity:.75}
+  .card::after{content:"";position:absolute;top:0;left:14%;right:14%;height:1px;pointer-events:none;
+    background:linear-gradient(90deg,transparent,rgba(245,231,190,.55),transparent)}
+
+  /* progress */
+  .prog{display:flex;flex-direction:column;align-items:center;gap:10px;margin-bottom:26px;opacity:1;transition:opacity .4s}
+  .prog.hide{opacity:0;height:0;margin:0;overflow:hidden;pointer-events:none}
+  .prog .track{position:relative;width:100%;height:2px;background:rgba(244,236,219,.10);border-radius:2px;overflow:hidden}
+  .prog .fill{position:absolute;inset:0;width:0;border-radius:2px;background:var(--gold-grad);
+    box-shadow:0 0 14px rgba(217,180,91,.6);transition:width .6s var(--ease)}
+  .prog .count{font-size:11px;letter-spacing:.28em;color:var(--dim);font-weight:600;font-variant-numeric:tabular-nums;white-space:nowrap}
+  .prog .count b{color:var(--champ)}
+
+  /* steps */
+  .steps{position:relative}
+  .step{display:none}
+  .step.on{display:block}
+  .step.on .anim{opacity:0;transform:translateY(14px);animation:rise .7s var(--ease) forwards}
+  .step.on .anim:nth-child(1){animation-delay:.02s}
+  .step.on .anim:nth-child(2){animation-delay:.09s}
+  .step.on .anim:nth-child(3){animation-delay:.16s}
+  .step.on .anim:nth-child(4){animation-delay:.23s}
+  .step.on .anim:nth-child(5){animation-delay:.3s}
+  .step.on .anim:nth-child(6){animation-delay:.37s}
+  @keyframes rise{to{opacity:1;transform:none}}
+
+  .eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:10.5px;letter-spacing:.34em;
+    text-transform:uppercase;color:var(--champ);font-weight:600;margin-bottom:18px}
+  .eyebrow .ln{width:26px;height:1px;background:linear-gradient(90deg,var(--gold),transparent)}
+  .eyebrow .dot{width:5px;height:5px;border-radius:50%;background:var(--gold);box-shadow:0 0 10px 1px rgba(217,180,91,.9)}
+
+  h1,h2,.serif{font-family:'Archivo','Helvetica Neue',Arial,sans-serif}
+  h1{font-weight:300;font-size:clamp(42px,10vw,78px);line-height:.95;letter-spacing:-.03em;text-transform:uppercase;margin-bottom:16px;color:var(--cream)}
+  h2{font-weight:300;font-size:clamp(34px,8vw,58px);line-height:.96;letter-spacing:-.03em;text-transform:uppercase;margin-bottom:14px;color:var(--cream)}
+  .em{font-weight:900;
+    background:linear-gradient(120deg,#F7ECC8,#E8C874 40%,#D9B45B 60%,#F5E7BE);
+    background-size:220% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;
+    animation:shimmer 9s linear infinite}
+  @keyframes shimmer{to{background-position:220% 0}}
+  /* sistema grueso + delgado (estilo specimen) */
+  .display{text-transform:uppercase;line-height:1.0;letter-spacing:-.03em}
+  .display span{display:block}
+  .display .thin{font-weight:300;font-size:.55em;letter-spacing:0;color:var(--cream);margin-bottom:.04em}
+  .display .em{font-weight:900;line-height:.96}
+  .thin{font-weight:300}
+  .lead{color:var(--muted);font-size:clamp(15px,3.5vw,17px);max-width:44ch;margin:0 auto 8px}
+  .lead b{color:var(--cream);font-weight:600}
+  .qhint{color:var(--dim);font-size:13.5px;margin-bottom:22px}
+
+  .chips-mini{display:flex;flex-wrap:wrap;gap:9px;margin:22px 0 4px;justify-content:center}
+  .chip-mini{font-family:'Archivo';font-size:12.5px;color:var(--cream);background:rgba(244,236,219,.045);
+    border:1px solid var(--line);border-radius:100px;padding:7px 14px}
+  .chip-mini b{color:var(--champ);font-weight:700}
+
+  /* fields */
+  .field{margin-top:6px}
+  .field .lab{display:block;font-size:13px;font-weight:600;color:var(--cream);margin-bottom:10px;letter-spacing:.01em}
+  .field .lab .opt{color:var(--dim);font-weight:400;font-size:12.5px}
+  .inp{width:100%;background:rgba(244,236,219,.04);border:1px solid var(--line-2);border-radius:14px;
+    color:var(--cream);font-family:'Archivo';font-size:17px;padding:16px 17px;transition:.22s var(--ease);outline:none;text-align:center}
+  textarea.inp{resize:vertical;min-height:92px;line-height:1.55;text-align:left}
+  .inp::placeholder{color:#736A57}
+  .inp:focus{border-color:rgba(217,180,91,.6);background:rgba(244,236,219,.06);
+    box-shadow:0 0 0 3px rgba(217,180,91,.14), 0 0 34px -8px rgba(217,180,91,.55)}
+  .field.err .inp{border-color:rgba(226,125,107,.75);box-shadow:0 0 0 3px rgba(226,125,107,.16)}
+  .errmsg{display:none;color:var(--err);font-size:12.5px;margin-top:8px;letter-spacing:.01em}
+  .field.err .errmsg{display:block;animation:rise .4s var(--ease)}
+  /* buscador con autocompletado (giro) */
+  .combo{position:relative}
+  .suggest{position:absolute;left:0;right:0;top:calc(100% + 8px);z-index:30;display:none;
+    background:linear-gradient(180deg,rgba(28,20,11,.98),rgba(15,11,7,.99));
+    border:1px solid var(--line);border-radius:14px;overflow:hidden;
+    box-shadow:0 34px 74px -24px rgba(0,0,0,.92)}
+  .suggest.on{display:block;animation:rise .2s var(--ease)}
+  .suggest .sg{display:block;width:100%;text-align:center;padding:13px 16px;cursor:pointer;
+    background:transparent;border:none;border-bottom:1px solid var(--line-2);
+    color:var(--cream);font-family:'Archivo';font-size:15px;transition:background .15s}
+  .suggest .sg:last-child{border-bottom:none}
+  .suggest .sg:hover{background:rgba(233,200,120,.12);color:#FBEFD0}
+
+  /* option chips (select) */
+  .opts{display:flex;flex-wrap:wrap;gap:10px;margin-top:4px;justify-content:center}
+  .opts.grid{display:grid;grid-template-columns:repeat(2,1fr)}
+  .opt-chip{position:relative;display:flex;align-items:center;gap:10px;cursor:pointer;user-select:none;
+    font-size:14.5px;color:var(--cream);background:rgba(244,236,219,.04);border:1px solid var(--line-2);
+    border-radius:14px;padding:14px 16px;transition:transform .18s var(--ease),border-color .18s,background .18s;
+    -webkit-tap-highlight-color:transparent;text-align:left;font-family:'Archivo'}
+  .opts:not(.grid) .opt-chip{border-radius:100px;padding:11px 17px}
+  .opt-chip:hover{border-color:rgba(217,180,91,.5);background:rgba(244,236,219,.06)}
+  .opt-chip:active{transform:scale(.97)}
+  .opt-chip .tick{width:18px;height:18px;flex:0 0 18px;border-radius:50%;border:1px solid var(--faint);
+    display:flex;align-items:center;justify-content:center;transition:.18s}
+  .opt-chip .tick svg{width:11px;height:11px;opacity:0;transform:scale(.5);transition:.2s var(--ease);color:var(--ink-on-gold)}
+  .opts:not(.grid) .opt-chip .tick{display:none}
+  .opt-chip.sel{border-color:transparent;background:linear-gradient(120deg,rgba(233,200,120,.22),rgba(217,180,91,.14));
+    box-shadow:0 0 0 1px rgba(233,200,120,.6), 0 12px 30px -14px rgba(217,180,91,.7);color:#FBEFD0}
+  .opt-chip.sel .tick{background:var(--gold-grad);border-color:transparent}
+  .opt-chip.sel .tick svg{opacity:1;transform:none}
+
+  /* upload */
+  .drop{display:flex;align-items:center;justify-content:center;gap:14px;width:100%;cursor:pointer;margin-top:10px;
+    background:rgba(217,180,91,.05);border:1.5px dashed rgba(217,180,91,.42);border-radius:16px;padding:15px 16px;transition:.22s var(--ease)}
+  .drop:hover{background:rgba(217,180,91,.1);border-color:rgba(217,180,91,.7)}
+  .drop .ic{width:42px;height:42px;flex:0 0 42px;border-radius:12px;background:var(--gold-grad);
+    display:flex;align-items:center;justify-content:center;color:var(--ink-on-gold)}
+  .drop .ic svg{width:21px;height:21px}
+  .drop .dt{font-weight:600;font-size:14px;color:var(--cream);display:block}
+  .drop .ds{font-size:12px;color:var(--muted);margin-top:2px;display:block}
+  .previews{display:grid;grid-template-columns:repeat(auto-fill,minmax(74px,1fr));gap:9px;margin-top:12px}
+  .thumb{position:relative;aspect-ratio:1;border-radius:12px;overflow:hidden;border:1px solid var(--line);background:#000;
+    animation:rise .4s var(--ease)}
+  .thumb img{width:100%;height:100%;object-fit:cover;display:block}
+  .thumb button{position:absolute;top:4px;right:4px;width:22px;height:22px;border-radius:50%;border:none;cursor:pointer;
+    background:rgba(0,0,0,.72);color:#fff;font-size:14px;line-height:1;display:flex;align-items:center;justify-content:center}
+  .thumb button:hover{background:var(--gold-lo)}
+
+  /* review */
+  .summary{margin:8px auto 4px;max-width:430px;border:1px solid var(--line);border-radius:18px;overflow:hidden;text-align:center}
+  .srow{display:block;padding:14px 18px;border-bottom:1px solid var(--line-2)}
+  .srow:last-child{border-bottom:none}
+  .srow .k{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--dim);margin-bottom:5px}
+  .srow .v{font-size:15px;color:var(--cream)}
+  .srow .v .muted{color:var(--dim)}
+  .srow .v .tag{display:inline-block;font-size:12.5px;background:rgba(233,200,120,.12);border:1px solid var(--line);
+    color:#FBEFD0;border-radius:100px;padding:3px 11px;margin:3px 5px 0 0}
+  .sig{font-weight:300;font-size:10.5px;letter-spacing:.34em;text-transform:uppercase;color:var(--dim);text-align:center;margin-top:20px}
+
+  /* buttons */
+  .nav{display:flex;align-items:center;justify-content:center;gap:12px;margin-top:28px}
+  .btn{appearance:none;border:none;cursor:pointer;font-family:'Archivo';font-weight:600;transition:.24s var(--ease)}
+  .btn-primary{position:relative;overflow:hidden;flex:1;display:inline-flex;align-items:center;justify-content:center;gap:11px;
+    font-size:16.5px;font-weight:700;color:var(--ink-on-gold);padding:17px 22px;border-radius:100px;
+    background:var(--gold-grad);background-size:180% 100%;
+    box-shadow:0 20px 55px -22px rgba(217,180,91,.85), inset 0 1px 0 rgba(255,255,255,.35)}
+  .btn-primary:hover{background-position:100% 0;transform:translateY(-2px);box-shadow:0 26px 66px -20px rgba(217,180,91,1)}
+  .btn-primary:active{transform:translateY(0)}
+  .btn-primary .sheen{position:absolute;top:0;left:-60%;width:45%;height:100%;pointer-events:none;
+    background:linear-gradient(100deg,transparent,rgba(255,255,255,.55),transparent);transform:skewX(-18deg);
+    animation:sheen 4.6s ease-in-out infinite}
+  @keyframes sheen{0%,62%{left:-60%}82%,100%{left:130%}}
+  .btn-primary svg{width:21px;height:21px;flex:0 0 21px}
+  .btn-ghost{display:inline-flex;align-items:center;justify-content:center;gap:8px;
+    background:transparent;color:var(--muted);border:1px solid var(--line);border-radius:100px;padding:16px 20px;font-size:14.5px}
+  .btn-ghost:hover{color:var(--cream);border-color:rgba(217,180,91,.5)}
+  .btn-back{flex:0 0 auto;width:54px;height:54px;padding:0;border-radius:50%}
+  .btn-back svg{width:18px;height:18px}
+  .foot{margin-top:16px;text-align:center;font-size:12px;color:var(--dim)}
+  .foot b{color:var(--muted);font-weight:600}
+
+  /* success */
+  .done{display:none;text-align:center}
+  .done.on{display:block;animation:rise .5s var(--ease)}
+  .done .seal{width:74px;height:74px;margin:0 auto 20px;border-radius:50%;
+    background:radial-gradient(closest-side,rgba(37,211,102,.18),rgba(37,211,102,.03));
+    border:1px solid rgba(37,211,102,.5);display:flex;align-items:center;justify-content:center;
+    box-shadow:0 0 40px -6px rgba(37,211,102,.5)}
+  .done .seal svg{width:34px;height:34px;color:#54e08a}
+  .done .stepslist{text-align:left;background:rgba(244,236,219,.04);border:1px solid var(--line);border-radius:16px;
+    padding:17px 19px;margin:20px 0;display:flex;flex-direction:column;gap:13px}
+  .done .stepslist .st{display:flex;gap:12px;align-items:flex-start;font-size:14px;color:var(--cream)}
+  .done .stepslist .st .n{flex:0 0 24px;width:24px;height:24px;border-radius:50%;background:var(--gold-grad);
+    color:var(--ink-on-gold);font-weight:700;font-size:12.5px;display:flex;align-items:center;justify-content:center}
+  .btn-wa{width:100%;display:inline-flex;align-items:center;justify-content:center;gap:11px;font-weight:700;font-size:16px;
+    padding:16px 20px;border-radius:100px;cursor:pointer;border:none;background:var(--wa);color:#04310f;margin-top:8px;transition:.2s;font-family:'Archivo'}
+  .btn-wa:hover{filter:brightness(1.06);transform:translateY(-1px)}
+  .btn-wa svg{width:20px;height:20px}
+
+  .tagline{text-align:center;font-size:12.5px;color:var(--dim);margin-top:20px;letter-spacing:.02em;
+    opacity:0;animation:rise 1s var(--ease) .5s forwards}
+  .tagline .em{font-weight:700;font-size:13px}
+
+  @media (max-width:420px){
+    .opts.grid{grid-template-columns:1fr}
+    .btn-back{width:50px;height:50px}
+    .srow .k{flex-basis:78px}
+  }
+  /* pantallas de poca altura: compacta para no tener que hacer scroll */
+  @media (max-height:760px){
+    .brand{margin-bottom:15px}
+    .prog{margin-bottom:16px}
+    h1{font-size:clamp(31px,6.6vh,50px)}
+    h2{font-size:clamp(26px,5.8vh,42px)}
+    .lead{margin-bottom:6px}
+    .qhint{margin-bottom:12px}
+    .chips-mini{margin:13px 0 2px}
+    .nav{margin-top:18px}
+    .opt-chip{padding:11px 14px;font-size:14px}
+    .opts.grid{gap:8px}
+    textarea.inp{min-height:68px}
+    .field{margin-top:4px}
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:.001s!important;animation-iteration-count:1!important;transition-duration:.05s!important}
+    .aura{animation:none}
+    .btn-primary .sheen{display:none}
+    .step.on .anim{opacity:1;transform:none}
+  }
+</style>
+</head>
+<body>
+  <div class="bg" aria-hidden="true">
+    <span class="aura a1"></span><span class="aura a2"></span><span class="aura a3"></span>
+  </div>
+  <canvas id="dust" aria-hidden="true"></canvas>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="vig" aria-hidden="true"></div>
+
+  <main class="stage">
+    <div class="shell">
+      <div class="brand">
+        <div class="wordmark">ZIV<i class="mk"></i></div>
+        <div class="brand-sub">Estudio&nbsp;Web</div>
+      </div>
+
+      <section class="card" id="card">
+        <div class="prog hide" id="prog">
+          <div class="track"><span class="fill" id="fill"></span></div>
+          <div class="count"><b id="pcur">01</b> / <span id="ptot">5</span></div>
+        </div>
+
+        <div class="steps" id="wizard">
+
+          <!-- STEP 0 · INTRO -->
+          <div class="step on" data-idx="0">
+            <span class="eyebrow anim"><span class="ln"></span> Demo gratis · sin compromiso</span>
+            <h1 class="anim display"><span class="thin">Creemos algo</span><span class="em">hermoso</span><span class="thin">para tu negocio</span></h1>
+            <p class="lead anim">En 2 minutos te diseño una muestra real de tu página web. <b>Gratis y sin compromiso.</b></p>
+            <div class="chips-mini anim">
+              <span class="chip-mini"><b>A tu medida</b></span>
+              <span class="chip-mini">Hecha a <b>mano</b></span>
+              <span class="chip-mini">Sin <b>plantillas</b></span>
+            </div>
+            <div class="nav anim">
+              <button type="button" class="btn btn-primary" data-next>
+                <span class="sheen"></span>
+                Comenzar
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- STEP 1 · NEGOCIO -->
+          <div class="step" data-idx="1">
+            <span class="eyebrow anim"><span class="dot"></span> Tu negocio</span>
+            <h2 class="anim display"><span class="thin">¿Cómo se llama</span><span class="em">tu negocio?</span></h2>
+            <p class="qhint anim">El nombre con el que te conocen tus clientes.</p>
+            <div class="field anim" id="f-negocio">
+              <input class="inp" type="text" id="negocio" name="negocio" placeholder="Ej. Boutique Aurora" autocomplete="organization" autocapitalize="words" enterkeyhint="next">
+              <div class="errmsg">Escribe el nombre de tu negocio para continuar.</div>
+            </div>
+            <div class="nav anim">
+              <button type="button" class="btn btn-ghost btn-back" data-prev aria-label="Atrás"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg></button>
+              <button type="button" class="btn btn-primary" data-next><span class="sheen"></span>Continuar
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+            </div>
+          </div>
+
+          <!-- STEP 2 · GIRO -->
+          <div class="step" data-idx="2">
+            <span class="eyebrow anim"><span class="dot"></span> A qué te dedicas</span>
+            <h2 class="anim display"><span class="thin">¿A qué se</span><span class="em">dedica?</span></h2>
+            <p class="qhint anim">Empieza a escribir y elige una opción, o déjalo como lo pusiste.</p>
+            <div class="field anim combo" id="f-giro">
+              <input class="inp" type="text" id="giroText" name="giroText" placeholder="Ej. Clínica dental, boutique, cafetería…" autocomplete="off" enterkeyhint="next" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="giroList">
+              <div class="suggest" id="giroList" role="listbox" aria-label="Sugerencias"></div>
+              <div class="errmsg">Dime a qué te dedicas para continuar.</div>
+            </div>
+            <div class="nav anim">
+              <button type="button" class="btn btn-ghost btn-back" data-prev aria-label="Atrás"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg></button>
+              <button type="button" class="btn btn-primary" data-next><span class="sheen"></span>Continuar
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+            </div>
+          </div>
+
+          <!-- STEP 3 · OBJETIVOS -->
+          <div class="step" data-idx="3">
+            <span class="eyebrow anim"><span class="dot"></span> Lo que sueñas</span>
+            <h2 class="anim display"><span class="thin">¿Qué te gustaría</span><span class="em">lograr?</span></h2>
+            <p class="qhint anim">Toca todo lo que te lata. (Puedes elegir varias)</p>
+            <div class="opts grid anim" id="metaOpts" role="listbox" aria-multiselectable="true" aria-label="Objetivos">
+              <button type="button" class="opt-chip" data-val="Que se vea elegante"><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span>Que se vea elegante</span></button>
+              <button type="button" class="opt-chip" data-val="Botón de WhatsApp"><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span>Botón de WhatsApp</span></button>
+              <button type="button" class="opt-chip" data-val="Catálogo de productos"><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span>Catálogo de productos</span></button>
+              <button type="button" class="opt-chip" data-val="Reservas o citas"><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span>Reservas o citas</span></button>
+              <button type="button" class="opt-chip" data-val="Galería de fotos"><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span>Galería de fotos</span></button>
+              <button type="button" class="opt-chip" data-val="Ubicación / mapa"><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span>Ubicación / mapa</span></button>
+              <button type="button" class="opt-chip" data-val="Reseñas / testimonios"><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span>Reseñas / testimonios</span></button>
+              <button type="button" class="opt-chip" data-val="Vender en línea"><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span>Vender en línea</span></button>
+            </div>
+            <div class="field anim" style="margin-top:16px">
+              <textarea class="inp" id="deseo" name="deseo" placeholder="¿Algo más en mente? Cuéntame con tus palabras… (opcional)"></textarea>
+            </div>
+            <div class="nav anim">
+              <button type="button" class="btn btn-ghost btn-back" data-prev aria-label="Atrás"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg></button>
+              <button type="button" class="btn btn-primary" data-next><span class="sheen"></span>Continuar
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+            </div>
+          </div>
+
+          <!-- STEP 4 · DATOS + FOTOS -->
+          <div class="step" data-idx="4">
+            <span class="eyebrow anim"><span class="dot"></span> Casi listo</span>
+            <h2 class="anim display"><span class="thin">¿Con quién tengo</span><span class="em">el gusto?</span></h2>
+            <p class="qhint anim">Para saludarte bien cuando te escriba.</p>
+            <div class="field anim">
+              <label class="lab" for="nombre">Tu nombre <span class="opt">(opcional)</span></label>
+              <input class="inp" type="text" id="nombre" name="nombre" placeholder="Ej. Ismael" autocomplete="name" autocapitalize="words">
+            </div>
+            <div class="field anim" style="margin-top:18px">
+              <label class="lab">Sube fotos de tu negocio <span class="opt">(opcional)</span></label>
+              <label class="drop" for="fotos">
+                <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h4l2-3h6l2 3h4v13H3z"/><circle cx="12" cy="13" r="3.5"/></svg></span>
+                <span><span class="dt">Toca para subir fotos</span><span class="ds">Logo, productos, tu local… lo que tengas a la mano.</span></span>
+              </label>
+              <input type="file" id="fotos" accept="image/*" multiple hidden>
+              <div class="previews" id="previews"></div>
+            </div>
+            <div class="nav anim">
+              <button type="button" class="btn btn-ghost btn-back" data-prev aria-label="Atrás"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg></button>
+              <button type="button" class="btn btn-primary" data-next><span class="sheen"></span>Revisar
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+            </div>
+          </div>
+
+          <!-- STEP 5 · REVIEW -->
+          <div class="step" data-idx="5">
+            <span class="eyebrow anim"><span class="dot"></span> Todo en orden</span>
+            <h2 class="anim display"><span class="thin">Confirma y</span><span class="em">te lo preparo</span></h2>
+            <p class="qhint anim">Revisa que esté bien. Al enviar se abre tu WhatsApp con todo listo.</p>
+            <div class="summary anim" id="summary"></div>
+            <p class="sig anim">Hecho con cuidado · ZIV</p>
+            <div class="nav anim">
+              <button type="button" class="btn btn-ghost btn-back" data-prev aria-label="Atrás"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg></button>
+              <button type="button" class="btn btn-primary" id="send"><span class="sheen"></span>
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 018.413 3.488 11.824 11.824 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.51 5.26l-.999 3.648 3.978-1.007zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.767.967-.94 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.29.173-1.414z"/></svg>
+                Enviar por WhatsApp</button>
+            </div>
+            <p class="foot">🔒 <b>Sin spam.</b> Solo usamos esto para armar tu demo.</p>
+          </div>
+
+        </div><!-- /steps -->
+
+        <!-- SUCCESS -->
+        <div class="done" id="done">
+          <div class="seal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></div>
+          <h2 class="display"><span class="thin">¡Abrí tu</span><span class="em">WhatsApp!</span></h2>
+          <p class="lead" style="margin:0 auto 4px">Ya te llené el mensaje con tus datos. <b>Solo dale “Enviar”.</b></p>
+          <div class="stepslist">
+            <div class="st"><span class="n">1</span><span>En WhatsApp, toca <b>Enviar</b> el mensaje que te dejé listo.</span></div>
+            <div class="st" id="stepFotos" style="display:none"><span class="n">2</span><span>Adjunta tus fotos en ese mismo chat con el clip <b>📎</b> (elige de tu galería).</span></div>
+          </div>
+          <button class="btn-wa" id="reopenWa">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 018.413 3.488 11.824 11.824 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.51 5.26l-.999 3.648 3.978-1.007zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.767.967-.94 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.29.173-1.414z"/></svg>
+            Volver a abrir mi WhatsApp</button>
+          <button class="btn-wa" id="shareFotos" style="display:none;background:linear-gradient(120deg,#E8C874,#D9B45B);color:#231703">📎 Enviar mis fotos por WhatsApp</button>
+          <button class="btn btn-ghost" id="restart" style="width:100%;margin-top:10px">Llenar otra vez</button>
+        </div>
+
+      </section>
+
+      <p class="tagline">ZIV · <span class="em">Páginas web que convierten</span> · Lista en 2 horas</p>
+    </div>
+  </main>
+
+<script>
+/* =========================================================
+   1) POLVO DORADO — canvas ligero, pausado y gateado
+   ========================================================= */
+(function(){
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduce) return;
+  var c = document.getElementById('dust'), x = c.getContext('2d');
+  var DPR = Math.min(window.devicePixelRatio || 1, 1.5);
+  var W, H, N, pts, raf = null, running = false;
+
+  function size(){
+    W = c.width  = Math.floor(innerWidth  * DPR);
+    H = c.height = Math.floor(innerHeight * DPR);
+    c.style.width = innerWidth + 'px';
+    c.style.height = innerHeight + 'px';
+    N = innerWidth < 640 ? 24 : 46;              // pocas partículas = fluido
+    pts = [];
+    for(var i=0;i<N;i++) pts.push(spawn(true));
+  }
+  function spawn(any){
+    return {
+      x: Math.random()*W,
+      y: any ? Math.random()*H : H + 10*DPR,
+      r: (0.5 + Math.random()*1.5) * DPR,
+      vy: (0.12 + Math.random()*0.4) * DPR,
+      vx: (Math.random()-0.5) * 0.18 * DPR,
+      a: 0.15 + Math.random()*0.5,
+      tw: Math.random()*6.28,
+      tws: 0.01 + Math.random()*0.03
+    };
+  }
+  function frame(){
+    x.clearRect(0,0,W,H);
+    for(var i=0;i<N;i++){
+      var p = pts[i];
+      p.y -= p.vy; p.x += p.vx; p.tw += p.tws;
+      if(p.y < -10*DPR){ pts[i] = spawn(false); continue; }
+      var fl = p.a * (0.6 + 0.4*Math.sin(p.tw));
+      x.beginPath();
+      x.fillStyle = 'rgba(233,200,120,'+ fl.toFixed(3) +')';
+      x.arc(p.x, p.y, p.r, 0, 6.283);
+      x.fill();
+    }
+    raf = requestAnimationFrame(frame);
+  }
+  function start(){ if(!running){ running = true; raf = requestAnimationFrame(frame); } }
+  function stop(){ running = false; if(raf) cancelAnimationFrame(raf); raf = null; }
+
+  size();
+  var rt;
+  addEventListener('resize', function(){ clearTimeout(rt); rt = setTimeout(size, 200); }, {passive:true});
+  document.addEventListener('visibilitychange', function(){ document.hidden ? stop() : start(); });
+  start();
+})();
+
+/* =========================================================
+   2) TILT de lujo — solo puntero fino, throttled a rAF
+   ========================================================= */
+(function(){
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var fine = matchMedia('(hover:hover) and (pointer:fine)').matches;
+  if(true || reduce || !fine) return;
+  var card = document.getElementById('card'), tick = false, mx = 0, my = 0;
+  card.addEventListener('pointermove', function(e){
+    var r = card.getBoundingClientRect();
+    mx = (e.clientX - r.left)/r.width - 0.5;
+    my = (e.clientY - r.top)/r.height - 0.5;
+    if(!tick){ tick = true; requestAnimationFrame(apply); }
+  });
+  card.addEventListener('pointerleave', function(){
+    card.style.transform = 'perspective(1200px) rotateX(0deg) rotateY(0deg)';
+  });
+  function apply(){
+    tick = false;
+    card.style.transform = 'perspective(1200px) rotateX(' + (my*-3).toFixed(2) + 'deg) rotateY(' + (mx*3.4).toFixed(2) + 'deg)';
+  }
+})();
+
+/* =========================================================
+   3) WIZARD — navegación, selección, validación, envío
+   ========================================================= */
+(function(){
+  var WA_NUMBER = "525539480470";
+
+  var steps   = Array.prototype.slice.call(document.querySelectorAll('#wizard .step'));
+  var TOTAL   = 5; // pasos "contables" (1..5)
+  var idx     = 0;
+  var prog    = document.getElementById('prog');
+  var fill    = document.getElementById('fill');
+  var pcur    = document.getElementById('pcur');
+  var wizard  = document.getElementById('wizard');
+  var doneView= document.getElementById('done');
+
+  var state = { negocio:"", giro:"", giroText:"", metas:[], deseo:"", nombre:"", photos:[] };
+
+  /* ---- giro: buscador con autocompletado (texto libre permitido) ---- */
+  var giroInput = document.getElementById('giroText');
+  var giroList  = document.getElementById('giroList');
+  var GIROS = ["Restaurante / Comida","Cafetería / Bar","Tienda / Boutique","Moda / Ropa","Belleza / Estética","Barbería","Spa / Bienestar","Salud / Clínica","Dentista / Ortodoncia","Consultorio médico","Servicios profesionales","Inmobiliaria / Bienes raíces","Fitness / Gimnasio","Estudio de yoga","Fotografía / Video","Arquitectura / Diseño","Hotel / Hospedaje","Escuela / Academia","Abogados / Despacho","Agencia / Marketing"];
+  function closeGiro(){ giroList.classList.remove('on'); giroInput.setAttribute('aria-expanded','false'); }
+  function renderGiro(){
+    var q = giroInput.value.trim().toLowerCase();
+    giroList.innerHTML = "";
+    var matches = q ? GIROS.filter(function(g){ return g.toLowerCase().indexOf(q) >= 0; }).slice(0,6) : [];
+    if(!matches.length){ closeGiro(); return; }
+    matches.forEach(function(g){
+      var b = document.createElement('button');
+      b.type = 'button'; b.className = 'sg'; b.setAttribute('role','option'); b.textContent = g;
+      b.addEventListener('mousedown', function(e){
+        e.preventDefault();
+        giroInput.value = g;
+        closeGiro(); clearErr('f-giro');
+      });
+      giroList.appendChild(b);
+    });
+    giroList.classList.add('on'); giroInput.setAttribute('aria-expanded','true');
+  }
+  giroInput.addEventListener('input', function(){ renderGiro(); clearErr('f-giro'); });
+  giroInput.addEventListener('focus', renderGiro);
+  giroInput.addEventListener('blur', function(){ setTimeout(closeGiro, 150); });
+  /* ---- selección: metas (múltiple) ---- */
+  document.getElementById('metaOpts').addEventListener('click', function(e){
+    var b = e.target.closest('.opt-chip'); if(!b) return;
+    b.classList.toggle('sel');
+    var on = b.classList.contains('sel');
+    b.setAttribute('aria-selected', on ? 'true':'false');
+    var v = b.dataset.val, k = state.metas.indexOf(v);
+    if(on && k<0) state.metas.push(v);
+    if(!on && k>=0) state.metas.splice(k,1);
+  });
+
+  /* ---- fotos ---- */
+  var input = document.getElementById('fotos');
+  var previews = document.getElementById('previews');
+  input.addEventListener('change', function(e){
+    Array.prototype.slice.call(e.target.files||[]).forEach(function(f){
+      if(f.type.indexOf('image/')===0) state.photos.push(f);
+    });
+    input.value = "";
+    renderPhotos();
+  });
+  function renderPhotos(){
+    previews.innerHTML = "";
+    state.photos.forEach(function(f,i){
+      var url = URL.createObjectURL(f);
+      var d = document.createElement('div'); d.className='thumb';
+      var img = document.createElement('img'); img.src=url; img.loading='lazy';
+      img.onload=function(){ URL.revokeObjectURL(url); };
+      var b = document.createElement('button'); b.type='button'; b.setAttribute('aria-label','Quitar foto'); b.textContent='×';
+      b.onclick=function(){ state.photos.splice(i,1); renderPhotos(); };
+      d.appendChild(img); d.appendChild(b); previews.appendChild(d);
+    });
+  }
+
+  /* ---- errores ---- */
+  function setErr(id){ var el=document.getElementById(id); if(el) el.classList.add('err'); }
+  function clearErr(id){ var el=document.getElementById(id); if(el) el.classList.remove('err'); }
+
+  /* ---- validación por paso ---- */
+  function syncInputs(){
+    state.negocio  = (document.getElementById('negocio').value||"").trim();
+    state.giroText = (document.getElementById('giroText').value||"").trim();
+    state.deseo    = (document.getElementById('deseo').value||"").trim();
+    state.nombre   = (document.getElementById('nombre').value||"").trim();
+  }
+  function validate(i){
+    syncInputs();
+    if(i===1){
+      if(!state.negocio){ setErr('f-negocio'); return false; }
+      clearErr('f-negocio');
+    }
+    if(i===2){
+      if(!state.giroText){ setErr('f-giro'); return false; }
+      clearErr('f-giro');
+    }
+    return true;
+  }
+
+  /* ---- navegación ---- */
+  function show(i){
+    steps.forEach(function(s){ s.classList.remove('on'); });
+    steps[i].classList.add('on');
+    idx = i;
+    if(i===0){ prog.classList.add('hide'); }
+    else{
+      prog.classList.remove('hide');
+      fill.style.width = (i/TOTAL*100) + '%';
+      pcur.textContent = (i<10?'0':'') + i;
+    }
+    if(i===5) buildSummary();
+    focusStep();
+    if(window.scrollY>0) window.scrollTo(0,0);
+  }
+  function focusStep(){
+    if(!matchMedia('(hover:hover) and (pointer:fine)').matches) return;
+    var el = steps[idx];
+    var f = el.querySelector('.inp');
+    if(f && (idx===1 || idx===2)){ try{ f.focus({preventScroll:true}); }catch(e){} }
+  }
+  function next(){
+    if(idx>0 && !validate(idx)) return;
+    if(idx < 5) show(idx+1);
+  }
+  function prev(){ if(idx>0) show(idx-1); }
+
+  wizard.addEventListener('click', function(e){
+    if(e.target.closest('[data-next]')) next();
+    else if(e.target.closest('[data-prev]')) prev();
+  });
+
+  /* Enter avanza (salvo en textarea) */
+  wizard.addEventListener('keydown', function(e){
+    if(e.key!=='Enter') return;
+    if(e.target.tagName==='TEXTAREA') return;
+    e.preventDefault();
+    if(idx===5) send();
+    else next();
+  });
+
+  /* limpia error al escribir */
+  document.getElementById('negocio').addEventListener('input', function(){ clearErr('f-negocio'); });
+
+  /* ---- resumen ---- */
+  function esc(s){ return (s||"").replace(/[<>&]/g,function(m){return {'<':'&lt;','>':'&gt;','&':'&amp;'}[m];}); }
+  function giroFinal(){ return state.giroText || ""; }
+  function buildSummary(){
+    syncInputs();
+    var g = giroFinal();
+    var rows = "";
+    rows += row("Negocio", esc(state.negocio) || muted());
+    rows += row("Se dedica a", esc(g) || muted());
+    if(state.metas.length){
+      rows += row("Quiere", state.metas.map(function(m){return '<span class="tag">'+esc(m)+'</span>';}).join(''));
+    }
+    if(state.deseo)  rows += row("Nota", esc(state.deseo));
+    if(state.nombre) rows += row("Tu nombre", esc(state.nombre));
+    rows += row("Fotos", state.photos.length ? (state.photos.length + " adjunta(s)") : muted("ninguna"));
+    document.getElementById('summary').innerHTML = rows;
+  }
+  function row(k,v){ return '<div class="srow"><div class="k">'+k+'</div><div class="v">'+v+'</div></div>'; }
+  function muted(t){ return '<span class="muted">'+(t||"—")+'</span>'; }
+
+  /* ---- envío a WhatsApp ---- */
+  var lastWaURL = "";
+  function buildMsg(){
+    syncInputs();
+    var g = giroFinal();
+    var m = "Hola ZIV ✨ Quiero mi DEMO GRATIS.";
+    m += "\n\n🏛️ Negocio: " + state.negocio;
+    if(g) m += "\n🧩 Se dedica a: " + g;
+    if(state.metas.length) m += "\n🎯 Me gustaría: " + state.metas.join(", ");
+    if(state.deseo)  m += "\n📝 Nota: " + state.deseo;
+    if(state.nombre) m += "\n🙋 Soy: " + state.nombre;
+    if(state.photos.length) m += "\n\n📸 Te mando " + state.photos.length + " foto(s) aquí en el chat.";
+    return m;
+  }
+  function send(){
+    if(!validate(1)){ show(1); return; }
+    if(!validate(2)){ show(2); return; }
+    var msg = buildMsg();
+    lastWaURL = "https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent(msg);
+    var w = window.open(lastWaURL, "_blank");
+    if(!w) location.href = lastWaURL;
+
+    prog.classList.add('hide');
+    wizard.style.display = 'none';
+    doneView.classList.add('on');
+
+    document.getElementById('reopenWa').onclick = function(){ window.open(lastWaURL, "_blank"); };
+    if(state.photos.length){
+      document.getElementById('stepFotos').style.display = 'flex';
+      var share = document.getElementById('shareFotos');
+      if(navigator.canShare && navigator.canShare({files:state.photos})){
+        share.style.display = 'inline-flex';
+        share.onclick = async function(){ try{ await navigator.share({files:state.photos, text:msg, title:"Mi demo ZIV"}); }catch(err){} };
+      }
+    }
+    window.scrollTo(0,0);
+  }
+  document.getElementById('send').addEventListener('click', send);
+
+  /* ---- reiniciar ---- */
+  document.getElementById('restart').onclick = function(){
+    state = { negocio:"", giro:"", giroText:"", metas:[], deseo:"", nombre:"", photos:[] };
+    ['negocio','giroText','deseo','nombre'].forEach(function(id){ document.getElementById(id).value=""; });
+    document.querySelectorAll('.opt-chip.sel').forEach(function(o){ o.classList.remove('sel'); o.setAttribute('aria-selected','false'); });
+    renderPhotos();
+    clearErr('f-negocio'); clearErr('f-giro');
+    document.getElementById('stepFotos').style.display='none';
+    document.getElementById('shareFotos').style.display='none';
+    doneView.classList.remove('on');
+    wizard.style.display='block';
+    show(0);
+  };
+
+  show(0);
+})();
+</script>
+</body>
+</html>
