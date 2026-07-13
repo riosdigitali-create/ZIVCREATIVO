@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Prueba de almacenamiento · Ziv CRM</title>
+<style>
+  body{background:#0a0a0f;color:#eef0f6;font-family:system-ui,sans-serif;padding:34px;line-height:1.6}
+  h1{font-size:22px;margin:0 0 6px}
+  .sub{color:#8b8ba7;font-size:14px;margin-bottom:26px}
+  .t{background:#16161f;border:1px solid #26263a;border-radius:14px;padding:20px 22px;margin-bottom:14px;border-left:4px solid #5c5c78}
+  .t.ok{border-left-color:#2EDC6E}
+  .t.no{border-left-color:#EF3B36}
+  .t b{font-size:34px;display:block;margin-bottom:6px}
+  .t .n{font-size:15px;font-weight:700;margin-bottom:4px}
+  .t .d{font-size:13.5px;color:#8b8ba7}
+  code{background:#0a0a0f;padding:2px 7px;border-radius:5px;color:#F5A800;font-size:13px}
+  #ver{margin-top:24px;padding:18px 20px;border-radius:14px;font-size:16px;font-weight:700;line-height:1.7}
+</style>
+</head>
+<body>
+  <h1>🔬 Prueba de almacenamiento</h1>
+  <div class="sub">Comprobando qué puede guardar tu navegador al abrir el archivo con doble clic.</div>
+  <div id="origen" class="t"><div class="n">Origen</div><div class="d" id="oTxt">—</div></div>
+  <div id="ls" class="t"><b>⏳</b><div class="n">localStorage — donde viven los leads hoy</div><div class="d" id="lsTxt">Probando...</div></div>
+  <div id="idb" class="t"><b>⏳</b><div class="n">IndexedDB — donde viven las FOTOS de evidencia</div><div class="d" id="idbTxt">Probando...</div></div>
+  <div id="ver"></div>
+
+<script>
+const $ = id => document.getElementById(id);
+const proto = location.protocol;
+$('oTxt').innerHTML = `<code>${proto}</code> · ${location.host || '(sin servidor — archivo local)'}`;
+
+function pinta(el, ok, icono, txt){
+  $(el).className = 't ' + (ok ? 'ok' : 'no');
+  $(el).querySelector('b').textContent = icono;
+  $(el + 'Txt').innerHTML = txt;
+  return ok;
+}
+
+let okLS = false, okIDB = false;
+
+/* 1) localStorage */
+try{
+  localStorage.setItem('__ziv_test', 'x');
+  okLS = localStorage.getItem('__ziv_test') === 'x';
+  localStorage.removeItem('__ziv_test');
+  pinta('ls', okLS, okLS ? '✅' : '❌', okLS ? 'Funciona. Los leads se guardan bien.' : 'Bloqueado.');
+}catch(e){ pinta('ls', false, '❌', 'Bloqueado: ' + e.name); }
+
+/* 2) IndexedDB — prueba de verdad: abre, escribe y lee */
+(function(){
+  if(!window.indexedDB) return fin(pinta('idb', false, '❌', 'Tu navegador no expone IndexedDB aquí. <b>Las fotos NO se pueden guardar.</b>'));
+  let listo = false;
+  const to = setTimeout(() => { if(!listo) fin(pinta('idb', false, '❌', 'Se quedó colgado (el navegador lo bloquea en silencio). <b>Las fotos NO se pueden guardar.</b>')); }, 4000);
+  try{
+    const rq = indexedDB.open('__ziv_test_db', 1);
+    rq.onupgradeneeded = () => rq.result.createObjectStore('t', { keyPath:'id' });
+    rq.onerror = () => { listo = true; clearTimeout(to); fin(pinta('idb', false, '❌', 'Rechazado: ' + (rq.error && rq.error.name) + '. <b>Las fotos NO se pueden guardar.</b>')); };
+    rq.onsuccess = () => {
+      const db = rq.result;
+      try{
+        const tx = db.transaction('t','readwrite');
+        tx.objectStore('t').put({ id:1, foto:'x'.repeat(50000) });   // simula una foto
+        tx.oncomplete = () => {
+          const tx2 = db.transaction('t','readonly');
+          const g = tx2.objectStore('t').get(1);
+          g.onsuccess = () => {
+            listo = true; clearTimeout(to);
+            const bien = g.result && g.result.foto.length === 50000;
+            fin(pinta('idb', bien, bien?'✅':'❌', bien
+              ? 'Funciona. Escribí y leí una foto de prueba de 50 KB sin problema.'
+              : 'Escribe pero no lee bien.'));
+            db.close(); indexedDB.deleteDatabase('__ziv_test_db');
+          };
+        };
+        tx.onerror = () => { listo = true; clearTimeout(to); fin(pinta('idb', false, '❌', 'No deja escribir. <b>Las fotos NO se pueden guardar.</b>')); };
+      }catch(e){ listo = true; clearTimeout(to); fin(pinta('idb', false, '❌', 'Error: ' + e.name)); }
+    };
+  }catch(e){ clearTimeout(to); fin(pinta('idb', false, '❌', 'Error: ' + e.name)); }
+})();
+
+function fin(idbOk){
+  okIDB = idbOk;
+  const v = $('ver');
+  if(okIDB && okLS){
+    v.style.background = 'rgba(46,220,110,.12)'; v.style.color = '#2EDC6E';
+    v.innerHTML = '✅ VÍA LIBRE. Puedo mover los leads a IndexedDB y quitarte el techo de los 2,000 contactos, sin pagar nada y sin cambiar cómo lo usas.';
+  } else if(okLS){
+    v.style.background = 'rgba(239,59,54,.12)'; v.style.color = '#EF3B36';
+    v.innerHTML = '⚠️ OJO: tu navegador bloquea IndexedDB al abrir el archivo con doble clic. Eso significa que <b>las fotos de evidencia no se están guardando</b>. Hay que publicar el CRM en una URL (gratis) — que además vas a necesitar sí o sí para correr los anuncios de Meta.';
+  } else {
+    v.style.background = 'rgba(239,59,54,.12)'; v.style.color = '#EF3B36';
+    v.innerHTML = '❌ Tu navegador bloquea el almacenamiento local. Hay que publicarlo en una URL.';
+  }
+}
+</script>
+</body>
+</html>

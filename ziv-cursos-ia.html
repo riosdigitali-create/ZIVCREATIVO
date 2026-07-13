@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>ZIV IA KART · Hazte experto en IA en 4 días</title>
+
+<meta name="description" content="Corre, agarra las cajas y desbloquea tu curso de IA en 4 días. ChatGPT, Gemini, imágenes y automatizaciones. Clases en vivo. Desde $499 MXN.">
+<meta name="theme-color" content="#000000">
+<meta property="og:type" content="website">
+<meta property="og:title" content="🏁 ZIV IA KART · Hazte experto en IA en 4 días">
+<meta property="og:description" content="Corre, agarra las cajas sorpresa y arma tu curso de IA. Desde $499 MXN.">
+<meta property="og:image" content="ziv-bloque-atardecer.png">
+<link rel="icon" href="ziv-bloque-aire-amplio.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#000; --gold:#FCD34D; --orange:#F5A800; --red:#EF3B36; --cream:#fff;
+  --green:#26A62B; --k:#2EDC6E; --blue:#57c7ff; --purple:#a78bfa;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{
+  background:var(--ink);
+  font-family:'Press Start 2P',monospace;
+  color:var(--cream);
+  overflow-x:hidden;
+}
+button{font-family:inherit;cursor:pointer}
+
+/* ---------- PISTA ---------- */
+#race{position:relative;height:100vh;height:100dvh;overflow:hidden;background:#5D8FF7}
+#race canvas{position:absolute;inset:0;width:100%;height:100%;image-rendering:pixelated;image-rendering:crisp-edges}
+
+/* HUD en DOM = texto nítido (el canvas es de baja resolución a propósito) */
+.hud{position:absolute;inset:0;z-index:10;pointer-events:none}
+.hud > *{pointer-events:auto}
+.box{background:#000;border:3px solid #fff;padding:9px 11px;box-shadow:4px 4px 0 rgba(0,0,0,.4)}
+#hVuelta{position:absolute;top:12px;left:12px;font-size:clamp(8px,1.6vw,11px);color:var(--gold);line-height:1.9}
+#hVuelta b{color:#fff}
+#hVel{position:absolute;bottom:12px;right:12px;font-size:clamp(8px,1.6vw,11px);color:var(--k);line-height:1.9;text-align:right}
+#hVel b{font-size:clamp(13px,2.6vw,18px);color:#fff;display:block;margin-bottom:3px}
+#hMods{position:absolute;top:12px;right:12px;display:flex;flex-direction:column;gap:5px;align-items:flex-end}
+.mod{
+  background:#000;border:3px solid #444;color:#555;
+  font-size:clamp(6px,1.2vw,8px);padding:6px 8px;line-height:1.6;
+  transition:.2s;white-space:nowrap
+}
+.mod.on{border-color:var(--k);color:#fff;box-shadow:0 0 0 2px rgba(46,220,110,.25)}
+.mod .i{color:var(--gold)}
+
+#toasts{position:absolute;left:50%;top:22%;transform:translateX(-50%);z-index:30;display:flex;flex-direction:column;gap:8px;align-items:center;pointer-events:none}
+.toast{
+  background:#000;border:4px solid var(--gold);padding:12px 16px;
+  font-size:clamp(7px,1.5vw,10px);line-height:1.9;text-align:center;
+  animation:tin .25s steps(3) both, tout .3s steps(3) 2.2s both;
+  box-shadow:6px 6px 0 rgba(0,0,0,.4)
+}
+.toast b{color:var(--gold);display:block;margin-bottom:5px}
+@keyframes tin{from{transform:scale(.6);opacity:0}to{transform:scale(1);opacity:1}}
+@keyframes tout{to{opacity:0;transform:translateY(-18px)}}
+
+/* diálogos */
+.dlg{
+  position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  width:min(92%,560px);background:#000;border:4px solid #fff;
+  padding:26px 22px;text-align:center;z-index:40;
+  box-shadow:8px 8px 0 rgba(0,0,0,.4);
+  animation:pop .25s steps(3) both;max-height:92vh;overflow-y:auto
+}
+@keyframes pop{from{transform:translate(-50%,-44%) scale(.85)}to{transform:translate(-50%,-50%) scale(1)}}
+.dlg h2{font-size:clamp(11px,2.4vw,16px);color:var(--gold);line-height:1.8;margin-bottom:14px;text-shadow:3px 3px 0 #000}
+.dlg p{font-size:clamp(8px,1.7vw,11px);line-height:2;margin-bottom:16px;color:#dfe6f5}
+.dlg .hint{font-size:clamp(6px,1.3vw,9px);color:#9fb4ff;margin-top:12px;margin-bottom:0}
+.btn{
+  font-family:inherit;font-size:clamp(9px,1.9vw,12px);
+  background:var(--red);color:var(--gold);border:none;
+  padding:14px 22px;box-shadow:0 5px 0 #8c120f;text-shadow:1px 1px 0 #000;
+  transition:transform .05s
+}
+.btn:hover{filter:brightness(1.12)}
+.btn:active{transform:translateY(3px);box-shadow:0 2px 0 #8c120f}
+.btn.blink{animation:blink .8s steps(2) infinite}
+@keyframes blink{50%{opacity:.4}}
+.btn.g{background:var(--green);color:#fff;box-shadow:0 5px 0 #14701a}
+.btn.g:active{box-shadow:0 2px 0 #14701a}
+
+/* controles táctiles (dentro del pasto de abajo) */
+.touch{position:absolute;inset:0;z-index:12;display:none;pointer-events:none}
+body.coarse .touch.on{display:block}
+.tb{
+  position:absolute;bottom:14px;width:60px;height:60px;
+  background:rgba(0,0,0,.5);border:3px solid rgba(255,255,255,.9);
+  color:#fff;font-size:18px;display:flex;align-items:center;justify-content:center;
+  pointer-events:auto;user-select:none;-webkit-user-select:none;touch-action:none;
+  box-shadow:0 4px 0 rgba(0,0,0,.5)
+}
+.tb:active{background:var(--gold);color:#000;transform:translateY(4px);box-shadow:none}
+.tb.l{left:14px}.tb.r{left:84px}
+.tb.a{right:14px;width:76px;height:76px;border-radius:50%;font-size:9px;background:rgba(46,220,110,.85);border-color:#fff}
+.tb.b{right:100px;width:56px;height:56px;border-radius:50%;font-size:9px;background:rgba(239,59,54,.8);border-color:#fff}
+
+/* ---------- SECCIÓN DE PLANES ---------- */
+#planes{
+  min-height:100vh;padding:60px 20px 80px;
+  background:
+    linear-gradient(180deg,#000 0%,#0a0a14 40%,#000 100%);
+  display:none
+}
+#planes.on{display:block}
+.wrap{max-width:1080px;margin:0 auto}
+.tit{text-align:center;margin-bottom:14px}
+.tit h1{font-size:clamp(13px,3vw,24px);color:var(--gold);line-height:1.7;text-shadow:4px 4px 0 #000;margin-bottom:14px}
+.tit p{font-size:clamp(8px,1.6vw,11px);color:#9fb4ff;line-height:2}
+.live{
+  display:inline-flex;align-items:center;gap:7px;margin:18px auto 0;
+  font-size:clamp(6px,1.3vw,8px);color:#8b8ba7;
+  background:#0f0f18;border:2px solid #26263a;padding:7px 11px
+}
+.live .dot{width:7px;height:7px;border-radius:50%;background:var(--k);animation:pulse 1.6s infinite}
+@keyframes pulse{50%{opacity:.25}}
+
+.karts{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:38px}
+@media(max-width:880px){.karts{grid-template-columns:1fr;max-width:420px;margin-left:auto;margin-right:auto}}
+.kart{
+  background:#0d0d16;border:4px solid #2a2a3e;padding:22px 18px;
+  display:flex;flex-direction:column;position:relative;
+  transition:.2s
+}
+.kart:hover{transform:translateY(-5px);border-color:#4a4a6a}
+.kart.top{border-color:var(--gold);box-shadow:0 0 0 3px rgba(245,168,0,.18),0 12px 32px rgba(0,0,0,.6)}
+.kart .etq{
+  position:absolute;top:-13px;left:50%;transform:translateX(-50%);
+  background:var(--gold);color:#000;font-size:clamp(6px,1.2vw,8px);
+  padding:6px 12px;white-space:nowrap;border:3px solid #000
+}
+.kart .em{font-size:34px;text-align:center;margin-bottom:12px;line-height:1}
+.kart h3{font-size:clamp(9px,1.8vw,12px);text-align:center;line-height:1.7;margin-bottom:6px}
+.kart .sub{font-size:clamp(6px,1.2vw,8px);color:#8b8ba7;text-align:center;line-height:1.8;margin-bottom:18px;min-height:2.6em}
+.kart .pr{text-align:center;margin-bottom:18px}
+.kart .tach{font-size:clamp(7px,1.4vw,10px);color:#5d5d7a;text-decoration:line-through;display:block;margin-bottom:7px}
+.kart .now{font-size:clamp(16px,3.4vw,26px);color:var(--k);text-shadow:3px 3px 0 #000;display:block}
+.kart .cur{font-size:clamp(6px,1.2vw,8px);color:#8b8ba7;display:block;margin-top:8px;line-height:1.8}
+.kart ul{list-style:none;flex:1;margin-bottom:20px}
+.kart li{
+  font-size:clamp(6px,1.3vw,8px);color:#b9bdd0;line-height:1.9;
+  padding:7px 0 7px 18px;position:relative
+}
+.kart li:before{content:"▸";position:absolute;left:0;color:var(--k)}
+.kart .btn{width:100%}
+
+/* barra de estadísticas del kart (guiño a Mario Kart) */
+.stats{margin-bottom:16px;display:flex;flex-direction:column;gap:6px}
+.st{display:flex;align-items:center;gap:7px;font-size:clamp(5px,1.1vw,7px);color:#8b8ba7}
+.st .nm{width:52px;text-align:right}
+.st .bar{flex:1;height:8px;background:#000;border:2px solid #2a2a3e;display:flex;gap:2px;padding:1px}
+.st .bar i{flex:1;background:#1a1a28}
+.st .bar i.f{background:var(--gold)}
+
+.modulos{margin-top:54px}
+.modulos h2{font-size:clamp(10px,2.2vw,15px);color:var(--gold);text-align:center;line-height:1.8;margin-bottom:10px}
+.modulos .s{font-size:clamp(7px,1.4vw,9px);color:#8b8ba7;text-align:center;line-height:2;margin-bottom:28px}
+.mgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+@media(max-width:880px){.mgrid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.mgrid{grid-template-columns:1fr}}
+.mcard{background:#0d0d16;border:3px solid #2a2a3e;padding:18px 15px;transition:.2s}
+.mcard:hover{border-color:var(--k);transform:translateY(-3px)}
+.mcard .e{font-size:26px;margin-bottom:11px;display:block}
+.mcard h4{font-size:clamp(7px,1.4vw,10px);line-height:1.8;margin-bottom:8px;color:var(--gold)}
+.mcard p{font-size:clamp(6px,1.2vw,8px);color:#8b8ba7;line-height:1.9}
+
+.pie{text-align:center;margin-top:54px;padding-top:34px;border-top:3px solid #1a1a28}
+.pie p{font-size:clamp(7px,1.4vw,9px);color:#8b8ba7;line-height:2.2;margin-bottom:20px}
+.pie .row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.gar{
+  max-width:640px;margin:34px auto 0;border:3px dashed rgba(46,220,110,.5);
+  background:rgba(46,220,110,.06);padding:22px 20px;text-align:center
+}
+.gar b{color:var(--k);font-size:clamp(8px,1.6vw,11px);display:block;margin-bottom:10px;line-height:1.8}
+.gar span{font-size:clamp(6px,1.3vw,9px);color:#b9bdd0;line-height:2}
+
+#volver{
+  position:fixed;left:12px;bottom:12px;z-index:70;
+  font-size:clamp(6px,1.2vw,8px);background:#000;color:#fff;
+  border:3px solid #fff;padding:9px 11px;opacity:.55;transition:.2s
+}
+#volver:hover{opacity:1}
+</style>
+</head>
+<body>
+
+<!-- ══════════ LA CARRERA ══════════ -->
+<section id="race">
+  <canvas id="cv"></canvas>
+
+  <div class="hud">
+    <div id="hVuelta" class="box">🏁 VUELTA <b><span id="lap">1</span>/2</b></div>
+    <div id="hVel" class="box"><b><span id="kmh">0</span></b>KM/H</div>
+    <div id="hMods">
+      <div class="mod" data-m="0"><span class="i">?</span> CHATGPT</div>
+      <div class="mod" data-m="1"><span class="i">?</span> GEMINI</div>
+      <div class="mod" data-m="2"><span class="i">?</span> IMÁGENES IA</div>
+      <div class="mod" data-m="3"><span class="i">?</span> AUTOMATIZAR</div>
+    </div>
+  </div>
+
+  <div class="touch" id="touch">
+    <div class="tb l">◀</div>
+    <div class="tb r">▶</div>
+    <div class="tb b">FRENO</div>
+    <div class="tb a">ACELERA</div>
+  </div>
+
+  <div id="toasts"></div>
+  <div id="dlgHost"></div>
+</section>
+
+<!-- ══════════ PLANES ══════════ -->
+<section id="planes">
+  <div class="wrap">
+    <div class="tit">
+      <h1>🏆 ELIGE TU KART</h1>
+      <p>Cada kart es un plan. Tú decides qué tan rápido<br>quieres volverte experto en IA.</p>
+      <div class="live"><span class="dot"></span> <span id="liveTxt">Precios en vivo desde Shopify</span></div>
+    </div>
+
+    <div class="karts" id="karts"></div>
+
+    <div class="modulos">
+      <h2>📦 LO QUE DESBLOQUEASTE</h2>
+      <div class="s">Las 4 cajas que agarraste en la pista son los 4 días del curso.</div>
+      <div class="mgrid">
+        <div class="mcard"><span class="e">💬</span><h4>DÍA 1 · CHATGPT</h4><p>Prompts que sí funcionan. Deja de pelearte con la IA y empieza a mandarle.</p></div>
+        <div class="mcard"><span class="e">✨</span><h4>DÍA 2 · GEMINI</h4><p>Investiga, resume y analiza documentos en minutos, no en horas.</p></div>
+        <div class="mcard"><span class="e">🎨</span><h4>DÍA 3 · IMÁGENES IA</h4><p>Crea las fotos y diseños de tu negocio sin pagarle a un diseñador.</p></div>
+        <div class="mcard"><span class="e">⚡</span><h4>DÍA 4 · AUTOMATIZAR</h4><p>Que la IA trabaje sola: reportes, respuestas y contenido en piloto automático.</p></div>
+      </div>
+    </div>
+
+    <div class="gar">
+      <b>🛡️ GARANTÍA SIN VUELTAS</b>
+      <span>Si después de la 1ª clase no te convence,<br>te devolvemos tu dinero. El riesgo es nuestro.</span>
+    </div>
+
+    <div class="pie">
+      <p>¿Dudas antes de pagar?<br>Escríbenos y te decimos qué plan te conviene.</p>
+      <div class="row">
+        <button class="btn g" id="waBtn">💬 PREGUNTAR POR WHATSAPP</button>
+        <button class="btn" id="reBtn">🔄 CORRER OTRA VEZ</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<button id="volver">◀ INICIO</button>
+
+<script>
+/* ============================================================
+   ZIV IA KART
+   Motor Mode 7 — el mismo truco del SNES: el suelo se proyecta
+   línea por línea, muestreando una textura de pista desde arriba.
+   ============================================================ */
+const CFG = {
+  whatsapp: "5215539480470",
+  tienda:   "fgbf8f-py.myshopify.com",
+  inicio:   "ziv-web-quest.html"
+};
+
+/* Precios reales de tu tienda (respaldo si el navegador no puede
+   consultar Shopify). Se refrescan solos al cargar la página. */
+const PLANES = [
+  { handle:"curso-ia-plan-muy-basico", variante:"44154427637863",
+    em:"🏎️", nm:"MUY BÁSICO", sub:"El kart ligero.<br>Arranca ya.",
+    antes:999, precio:499, top:false,
+    stats:{ VELOC:2, PESO:1, MANEJO:5 },
+    feats:["4 clases en vivo","Grabaciones de por vida","Plantillas base","Certificado"] },
+  { handle:"curso-ia-plan-plus", variante:"44154427703399",
+    em:"🏁", nm:"PLUS", sub:"El favorito.<br>Balance perfecto.",
+    antes:1590, precio:799, top:true,
+    stats:{ VELOC:4, PESO:3, MANEJO:4 },
+    feats:["Todo lo de Muy Básico","5 plantillas premium","2 mentorías grupales","Guía para cobrar","Revisión de tu web"] },
+  { handle:"curso-ia-plan-1-a-1", variante:"44154427801703",
+    em:"👑", nm:"1 A 1", sub:"El kart dorado.<br>Todo para ti.",
+    antes:0, precio:1350, top:false,
+    stats:{ VELOC:5, PESO:5, MANEJO:5 },
+    feats:["Todo lo de Plus","3 sesiones privadas 1 a 1","Temario 100% a tu medida","Soporte WhatsApp 30 días"] }
+];
+
+const MODULOS = ["CHATGPT","GEMINI","IMÁGENES IA","AUTOMATIZAR"];
+const MOD_MSG = [
+  ["💬 ¡CHATGPT DESBLOQUEADO!","Día 1: prompts que sí funcionan"],
+  ["✨ ¡GEMINI DESBLOQUEADO!","Día 2: investiga y resume en minutos"],
+  ["🎨 ¡IMÁGENES IA!","Día 3: crea sin pagarle a un diseñador"],
+  ["⚡ ¡AUTOMATIZACIÓN!","Día 4: que la IA trabaje sola"]
+];
+
+const isCoarse = matchMedia('(pointer:coarse)').matches;
+if(isCoarse) document.body.classList.add('coarse');
+
+/* ---------- audio retro ---------- */
+const audio = (()=>{
+  let ac = null;
+  const init = ()=>{ if(!ac) try{ ac = new (window.AudioContext||window.webkitAudioContext)(); }catch(e){} };
+  function beep(f, d, type='square', v=.05){
+    if(!ac) return;
+    const o = ac.createOscillator(), g = ac.createGain();
+    o.type = type; o.frequency.value = f;
+    g.gain.setValueAtTime(v, ac.currentTime);
+    g.gain.exponentialRampToValueAtTime(.0001, ac.currentTime + d);
+    o.connect(g); g.connect(ac.destination);
+    o.start(); o.stop(ac.currentTime + d);
+  }
+  return {
+    init,
+    item(){ beep(880,.08); setTimeout(()=>beep(1320,.12),70); },
+    lap(){ [523,659,784,1046].forEach((f,i)=>setTimeout(()=>beep(f,.14),i*90)); },
+    win(){ [523,659,784,1046,1318].forEach((f,i)=>setTimeout(()=>beep(f,.2,'square',.06),i*110)); },
+    off(){ beep(90,.06,'sawtooth',.03); },
+    go(){ [400,400,400,800].forEach((f,i)=>setTimeout(()=>beep(f,.2),i*600)); }
+  };
+})();
+
+/* ============================================================
+   TEXTURA DE LA PISTA (vista desde arriba)
+   Se dibuja una vez. El Mode 7 la muestrea cada cuadro.
+   ============================================================ */
+const TEX = 1024;
+const track = document.createElement('canvas');
+track.width = track.height = TEX;
+const tx = track.getContext('2d');
+let mask = null;         // 1 = asfalto, 0 = pasto
+const ROAD_W = 74;       // medio ancho de la pista
+
+/* La pista NO es un óvalo plano: le metemos ondulación para que
+   tenga curvas de verdad (más divertida y más larga sin sentirse lenta). */
+const CX = TEX/2, CY = TEX/2, RX = 350, RY = 265, ONDA = 0.18;
+function centro(t){
+  const k = 1 + ONDA * Math.cos(3*t);
+  return { x: CX + Math.cos(t)*RX*k, y: CY + Math.sin(t)*RY*k };
+}
+/* normal unitaria (hacia afuera) — para colocar cajas al lado del carril */
+function normal(t){
+  const a = centro(t), b = centro(t + 0.01);
+  const tx_ = b.x - a.x, ty_ = b.y - a.y;
+  const L = Math.hypot(tx_, ty_) || 1;
+  return { x: -ty_/L, y: tx_/L };
+}
+const T_META = -Math.PI/2;         // dónde está la meta
+const T_CHK  =  Math.PI/2;         // checkpoint en el lado opuesto
+const META = centro(T_META), CHK = centro(T_CHK);
+
+function trazo(){
+  tx.beginPath();
+  for(let i=0;i<=240;i++){
+    const p = centro(i/240 * Math.PI*2);
+    i ? tx.lineTo(p.x,p.y) : tx.moveTo(p.x,p.y);
+  }
+  tx.closePath();
+}
+
+function pintarPista(){
+  // pasto a cuadros (como el de Mario Kart)
+  for(let y=0;y<TEX;y+=32){
+    for(let x=0;x<TEX;x+=32){
+      tx.fillStyle = ((x/32 + y/32) % 2) ? "#1E9E2C" : "#26B535";
+      tx.fillRect(x,y,32,32);
+    }
+  }
+  tx.lineCap = "round"; tx.lineJoin = "round";
+
+  // asfalto
+  tx.strokeStyle = "#3a3a44"; tx.lineWidth = ROAD_W*2;
+  trazo(); tx.stroke();
+
+  // pianito rojo/blanco en las dos orillas
+  tx.lineWidth = 10;
+  tx.setLineDash([18,18]);
+  tx.strokeStyle = "#fff";  trazo(); tx.lineWidth = ROAD_W*2 - 4; tx.stroke();
+  tx.strokeStyle = "#3a3a44"; tx.lineWidth = ROAD_W*2 - 20; tx.setLineDash([]); trazo(); tx.stroke();
+
+  // línea central punteada
+  tx.strokeStyle = "rgba(255,255,255,.26)"; tx.lineWidth = 4;
+  tx.setLineDash([22,26]); trazo(); tx.stroke();
+  tx.setLineDash([]);
+
+  // meta a cuadros, alineada con la dirección de la pista
+  const n = normal(T_META);
+  const ang = Math.atan2(-n.x, n.y);
+  tx.save();
+  tx.translate(META.x, META.y);
+  tx.rotate(ang);
+  const cw = ROAD_W*2/10;
+  for(let i=0;i<10;i++){
+    for(let j=0;j<3;j++){
+      tx.fillStyle = ((i+j)%2) ? "#fff" : "#111";
+      tx.fillRect(-ROAD_W + i*cw, -15 + j*10, cw, 10);
+    }
+  }
+  tx.restore();
+
+  // máscara de asfalto (para saber si te saliste)
+  const d = tx.getImageData(0,0,TEX,TEX).data;
+  mask = new Uint8Array(TEX*TEX);
+  for(let i=0;i<TEX*TEX;i++){
+    const r=d[i*4], g=d[i*4+1], b=d[i*4+2];
+    // gris = asfalto · blanco/negro = pianito y meta · todo eso cuenta como pista
+    const gris   = Math.abs(r-g)<30 && Math.abs(g-b)<30 && r<235;
+    const blanco = r>225 && g>225 && b>225;
+    mask[i] = (gris || blanco) ? 1 : 0;
+  }
+}
+pintarPista();
+const texData = tx.getImageData(0,0,TEX,TEX).data;
+
+function enPista(x,y){
+  const ix = ((Math.floor(x) % TEX) + TEX) % TEX;
+  const iy = ((Math.floor(y) % TEX) + TEX) % TEX;
+  return mask[iy*TEX + ix] === 1;
+}
+
+/* ============================================================
+   CAJAS SORPRESA — una por módulo, repartidas en la vuelta
+   ============================================================ */
+const RADIO_CAJA = 40;
+const CAJAS = [0.5, 1.9, 3.3, 4.9].map((t,i) => {
+  const p = centro(t), n = normal(t);
+  const lat = (i % 2 ? 26 : -26);           // alternadas a izq/der
+  return { x:p.x + n.x*lat, y:p.y + n.y*lat, i, tomada:false, giro:Math.random()*6 };
+});
+
+/* ============================================================
+   LETREROS A LA ORILLA DE LA PISTA
+   Los vas leyendo mientras manejas, como los anuncios de Mario Kart.
+   Aquí va el mensaje de venta, sin frenar el juego.
+   ============================================================ */
+/* Los repartimos por DISTANCIA real de pista (no por ángulo): si no,
+   en las partes cerradas del óvalo se encimarían unos con otros. */
+const LETREROS = [
+  { t:5.096, a:"LOS MEJORES",     b:"CURSOS DE IA",  c:"#F5A800" },
+  { t:5.823, a:"APRENDE A HACER", b:"IMÁGENES",      c:"#57c7ff" },
+  { t:0.225, a:"CREA",            b:"VIDEOS CON IA", c:"#a78bfa" },
+  { t:0.878, a:"HAZ TUS",         b:"PÁGINAS WEB",   c:"#2EDC6E" },
+  { t:1.623, a:"ARMA TU",         b:"PROPIO CRM",    c:"#ff5fa2" },
+  { t:2.196, a:"AUTOMATIZA",      b:"TU NEGOCIO",    c:"#F5A800" },
+  { t:2.952, a:"SIN SABER",       b:"PROGRAMAR",     c:"#57c7ff" },
+  { t:3.837, a:"4 DÍAS",          b:"EN VIVO",       c:"#2EDC6E" },
+  { t:4.450, a:"DESDE",           b:"$499 MXN",      c:"#EF3B36" }
+].map((s,i) => {
+  const p = centro(s.t), n = normal(s.t);
+  const l = (i % 2 ? -1 : 1);               // alternados: izquierda / derecha
+  const d = ROAD_W + 34;                    // justo afuera del asfalto
+  return { ...s, x:p.x + n.x*d*l, y:p.y + n.y*d*l };
+});
+
+/* ============================================================
+   CÁMARA / KART
+   ============================================================ */
+const cv = document.getElementById('cv');
+const ctx = cv.getContext('2d', { alpha:false });
+/* W,H = espacio LÓGICO del juego (toda la física y la proyección viven aquí).
+   S    = cuántos píxeles REALES de pantalla hay por cada píxel lógico.
+   El lienzo se crea a resolución nativa y escalamos el CONTEXTO, así el
+   Mode 7 se calcula fino y el texto sale nítido en vez de en bloques. */
+let W = 320, H = 180, HOR = 0, S = 1, img = null;
+let WD = 320, HD = 180, HORD = 0, KD = 0;   // los mismos valores, en píxeles reales
+
+/* Arranca ANTES de la meta (si naces encima, el contador de vueltas
+   se dispara solo en el primer cuadro). */
+const SALIDA = centro(T_META - 0.30);
+const kart = { x: SALIDA.x, y: SALIDA.y, a: 0, vel: 0, vmax: 5.2, giro: 0 };
+{ const s2 = centro(T_META - 0.24);
+  kart.a = Math.atan2(s2.x - kart.x, s2.y - kart.y); }
+
+/* La cámara va DETRÁS del kart (como en Mario Kart).
+   Si va encima, las cajas se salen de la pantalla antes de que las alcances. */
+const ATRAS = 130;              // qué tan atrás va la cámara
+const K = 12480;                // altura × lente: define la línea del horizonte
+const SPREAD = 1.5;             // qué tan abierto es el lente (menor = más zoom)
+function camara(){
+  return { x: kart.x - Math.sin(kart.a)*ATRAS, y: kart.y - Math.cos(kart.a)*ATRAS };
+}
+
+let estado = "LISTOS";      // LISTOS · CUENTA · CORRE · META
+let vuelta = 1, LAPS = 2;
+let tomadas = 0;
+let ticks = 0, sacudida = 0, cuenta = 3;
+let cruzando = false;
+let checkpoint = false;    // hay que pasar por el lado opuesto para que cuente la vuelta
+
+const TOPE_PX = isCoarse ? 500000 : 1250000;   // presupuesto de píxeles por cuadro
+
+function ajustar(){
+  const r = document.getElementById('race').getBoundingClientRect();
+  const ar = r.width / Math.max(1, r.height);
+
+  // espacio lógico (donde vive el juego)
+  H = 180;
+  W = Math.max(220, Math.min(560, Math.round(180 * ar)));
+  HOR = Math.round(H * 0.40);
+
+  // resolución real: la de tu pantalla, recortada si sale muy pesada
+  const dpr = Math.min(2, window.devicePixelRatio || 1);
+  const filas = H - HOR;
+  let s = Math.max(1, (r.height * dpr) / H);
+  s = Math.min(s, Math.sqrt(TOPE_PX / (W * filas)), 8);
+
+  S = s;
+  WD   = Math.round(W * S);
+  HD   = Math.round(H * S);
+  HORD = Math.round(HOR * S);
+  KD   = K * S;                 // el horizonte escala igual que la pantalla
+
+  cv.width = WD; cv.height = HD;
+  ctx.imageSmoothingEnabled = false;
+  img = ctx.createImageData(WD, HD - HORD);
+
+  /* Si el lienzo no cae justo en la pantalla, el navegador tiene que
+     reescalarlo. Con "pixelated" un reescalado de 1.58x deja filas
+     de píxeles desiguales y el texto se ve sucio otra vez.
+     Así que: pixelado solo cuando cae exacto; si no, suavizado. */
+  const resid = (r.height * dpr) / HD;
+  const exacto = Math.abs(resid - Math.round(resid)) < 0.06;
+  cv.style.imageRendering = exacto ? 'pixelated' : 'auto';
+}
+addEventListener('resize', ajustar);
+ajustar();
+
+/* ---------- controles ---------- */
+const keys = {};
+addEventListener('keydown', e => {
+  keys[e.key.toLowerCase()] = true;
+  if([' ','arrowup','arrowdown','arrowleft','arrowright'].includes(e.key.toLowerCase())) e.preventDefault();
+  if(estado === "LISTOS") arrancar();
+});
+addEventListener('keyup', e => keys[e.key.toLowerCase()] = false);
+
+const touch = document.getElementById('touch');
+[['l','arrowleft'],['r','arrowright'],['a','arrowup'],['b','arrowdown']].forEach(([c,k])=>{
+  const el = touch.querySelector('.tb.' + c);
+  el.addEventListener('pointerdown', e=>{ e.preventDefault(); keys[k] = true; });
+  el.addEventListener('pointerup',   e=>{ e.preventDefault(); keys[k] = false; });
+  el.addEventListener('pointerleave',()=> keys[k] = false);
+});
+document.getElementById('race').addEventListener('pointerdown', e=>{
+  if(estado === "LISTOS" && !e.target.closest('.dlg')) arrancar();
+});
+
+function arrancar(){
+  if(estado !== "LISTOS") return;
+  audio.init();
+  estado = "CUENTA";
+  cuenta = 3;
+  audio.go();
+  touch.classList.add('on');
+  const t = setInterval(()=>{
+    cuenta--;
+    if(cuenta <= 0){ clearInterval(t); estado = "CORRE"; }
+  }, 600);
+}
+
+/* ---------- avisos ---------- */
+function aviso(tit, txt){
+  const d = document.createElement('div');
+  d.className = 'toast';
+  d.innerHTML = `<b>${tit}</b>${txt}`;
+  document.getElementById('toasts').appendChild(d);
+  setTimeout(()=>d.remove(), 2600);
+}
+
+/* ============================================================
+   FÍSICA
+   ============================================================ */
+function actualizar(){
+  ticks++;
+  if(sacudida > 0) sacudida--;
+  CAJAS.forEach(c => c.giro += 0.12);
+
+  if(estado !== "CORRE") return;
+
+  const acel  = keys['arrowup']   || keys['w'] || keys[' '];
+  const frena = keys['arrowdown'] || keys['s'];
+  const izq   = keys['arrowleft'] || keys['a'];
+  const der   = keys['arrowright']|| keys['d'];
+
+  const fuera = !enPista(kart.x, kart.y);
+  const techo = fuera ? kart.vmax * 0.42 : kart.vmax;
+
+  if(acel)       kart.vel += fuera ? 0.06 : 0.13;
+  else if(frena) kart.vel -= 0.20;
+  else           kart.vel *= 0.975;
+
+  if(kart.vel > techo) kart.vel = techo;      // el pasto te frena
+  if(kart.vel < 0)     kart.vel = 0;
+
+  if(fuera && kart.vel > 0.6 && ticks % 6 === 0){ sacudida = 2; audio.off(); }
+
+  // el kart solo gira si se mueve (como los de verdad)
+  const agarre = Math.min(1, kart.vel / 2.2);
+  const objetivo = (izq ? -1 : 0) + (der ? 1 : 0);
+  kart.giro += (objetivo * 0.052 * agarre - kart.giro) * 0.22;
+  kart.a += kart.giro;
+
+  kart.x += Math.sin(kart.a) * kart.vel;
+  kart.y += Math.cos(kart.a) * kart.vel;
+
+  // envolver el mundo
+  kart.x = ((kart.x % TEX) + TEX) % TEX;
+  kart.y = ((kart.y % TEX) + TEX) % TEX;
+
+  // cajas
+  CAJAS.forEach(c=>{
+    if(c.tomada) return;
+    const dx = c.x - kart.x, dy = c.y - kart.y;
+    if(dx*dx + dy*dy < RADIO_CAJA*RADIO_CAJA){
+      c.tomada = true; tomadas++;
+      audio.item();
+      sacudida = 4;
+      const [t,s] = MOD_MSG[c.i];
+      aviso(t, s);
+      const el = document.querySelector(`.mod[data-m="${c.i}"]`);
+      el.classList.add('on');
+      el.querySelector('.i').textContent = '✓';
+    }
+  });
+
+  /* VUELTAS con checkpoint:
+     hay que pasar por el lado opuesto de la pista ANTES de que la meta cuente.
+     Sin esto, dar marcha atrás sobre la línea sumaría vueltas infinitas. */
+  if(Math.hypot(kart.x - CHK.x, kart.y - CHK.y) < 130) checkpoint = true;
+
+  const dm = Math.hypot(kart.x - META.x, kart.y - META.y);
+  if(dm < 95 && checkpoint && !cruzando){
+    cruzando = true; checkpoint = false;
+    vuelta++;
+    if(vuelta > LAPS){ terminar(); }
+    else {
+      audio.lap();
+      aviso("🏁 ¡VUELTA " + vuelta + "!", "Última vuelta, dale con todo");
+      document.getElementById('lap').textContent = Math.min(vuelta, LAPS);
+    }
+  }
+  if(dm > 160) cruzando = false;
+
+  document.getElementById('kmh').textContent = Math.round(kart.vel * 38);
+}
+
+function terminar(){
+  estado = "META";
+  touch.classList.remove('on');
+  audio.win();
+  const faltan = 4 - tomadas;
+  document.getElementById('dlgHost').innerHTML = `
+    <div class="dlg">
+      <h2>🏆 ¡LLEGASTE A LA META!</h2>
+      <p>Desbloqueaste <b style="color:#2EDC6E">${tomadas} de 4</b> módulos.<br>
+      ${faltan
+        ? `Te faltaron ${faltan}. No importa: <b style="color:#FCD34D">en el curso van los 4 completos.</b>`
+        : `<b style="color:#FCD34D">¡Los 4 completos!</b> Así de fácil se aprende IA.`}</p>
+      <p style="font-size:clamp(7px,1.5vw,10px);color:#9fb4ff">
+        Lo que tardaste en dar 2 vueltas,<br>es lo que tardas en aprender a usar ChatGPT bien.</p>
+      <button class="btn blink" id="verPlanes">▶ ELEGIR MI KART (PLAN)</button>
+      <p class="hint">Desde $499 MXN · Pago seguro con Shopify</p>
+    </div>`;
+  document.getElementById('verPlanes').onclick = ()=>{
+    document.getElementById('race').style.display = 'none';
+    document.getElementById('planes').classList.add('on');
+    window.scrollTo(0,0);
+  };
+}
+
+/* ============================================================
+   DIBUJO — Mode 7
+   ============================================================ */
+function cielo(){
+  // degradado + sol pixelado
+  for(let y=0;y<HOR;y++){
+    const t = y/HOR;
+    const r = Math.round(60 + t*60), g = Math.round(120 + t*70), b = Math.round(230 - t*20);
+    ctx.fillStyle = `rgb(${r},${g},${b})`;
+    ctx.fillRect(0,y,W,1);
+  }
+  // montañas que se mueven con el giro
+  const off = (-kart.a * 90) % W;
+  ctx.fillStyle = "#1b6d2a";
+  for(let k=-1;k<=2;k++){
+    const bx = off + k*W;
+    for(let i=0;i<6;i++){
+      const mx = bx + i*(W/5), mh = 22 + (i%3)*11;
+      ctx.beginPath();
+      ctx.moveTo(mx - 30, HOR);
+      ctx.lineTo(mx, HOR - mh);
+      ctx.lineTo(mx + 30, HOR);
+      ctx.fill();
+    }
+  }
+  ctx.fillStyle = "#000"; ctx.fillRect(0, HOR-2, W, 2);
+}
+
+/* El suelo se calcula en píxeles REALES de pantalla (no lógicos):
+   así el asfalto sale fino en vez de en bloques de 5x5. */
+function suelo(ox, oy){
+  const d = img.data;
+  const sa = Math.sin(kart.a), ca = Math.cos(kart.a);
+  const cam = camara();
+  let p = 0;
+  for(let y = HORD; y < HD; y++){
+    const dist = KD / (y - HORD + 0.0001);
+    if(dist > 5200){ // demasiado lejos: se funde con el pasto
+      for(let x=0;x<WD;x++){ d[p++]=30; d[p++]=140; d[p++]=44; d[p++]=255; }
+      continue;
+    }
+    // punto del suelo justo enfrente de la CÁMARA
+    const cx = cam.x + sa * dist;
+    const cy = cam.y + ca * dist;
+    // avance lateral por píxel de pantalla
+    const step = dist * SPREAD / WD;
+    const dx =  ca * step;
+    const dy = -sa * step;
+    let px = cx - dx * (WD/2);
+    let py = cy - dy * (WD/2);
+    // atenuación con la distancia (da sensación de profundidad)
+    const fog = Math.min(1, dist / 5200);
+    for(let x=0;x<WD;x++){
+      const ix = ((px | 0) % TEX + TEX) % TEX;
+      const iy = ((py | 0) % TEX + TEX) % TEX;
+      const s = (iy * TEX + ix) * 4;
+      d[p++] = texData[s]   + (30  - texData[s])   * fog * 0.55;
+      d[p++] = texData[s+1] + (140 - texData[s+1]) * fog * 0.55;
+      d[p++] = texData[s+2] + (44  - texData[s+2]) * fog * 0.55;
+      d[p++] = 255;
+      px += dx; py += dy;
+    }
+  }
+  // putImageData ignora la transformación: va en coordenadas reales
+  ctx.putImageData(img, Math.round(ox * S), HORD + Math.round(oy * S));
+}
+
+/* proyecta un punto del mundo a la pantalla (desde la cámara, no desde el kart) */
+function proyectar(wx, wy){
+  const cam = camara();
+  let rx = wx - cam.x, ry = wy - cam.y;
+  // envolver por el camino más corto
+  if(rx >  TEX/2) rx -= TEX; if(rx < -TEX/2) rx += TEX;
+  if(ry >  TEX/2) ry -= TEX; if(ry < -TEX/2) ry += TEX;
+  const sa = Math.sin(kart.a), ca = Math.cos(kart.a);
+  const prof = rx*sa + ry*ca;            // hacia adelante
+  const lat  = rx*ca - ry*sa;            // hacia el lado
+  if(prof < 30) return null;
+  const y = HOR + K / prof;
+  const x = W/2 + lat * W / (prof * SPREAD);
+  const esc = K / prof / 95;
+  return { x, y, esc, prof };
+}
+
+function caja(c){
+  const p = proyectar(c.x, c.y);
+  if(!p || p.y > H + 40) return;
+  const s = Math.max(2, 22 * p.esc);
+  const bob = Math.sin(c.giro) * s * 0.12;
+  const x = p.x - s/2, y = p.y - s - bob;
+  ctx.fillStyle = "#000"; ctx.fillRect(x-1, y-1, s+2, s+2);
+  ctx.fillStyle = "#F5A800"; ctx.fillRect(x, y, s, s);
+  // brillo giratorio
+  const g = (Math.sin(c.giro)*0.5 + 0.5);
+  ctx.fillStyle = `rgba(255,255,255,${0.15 + g*0.35})`;
+  ctx.fillRect(x, y, s * 0.35, s);
+  // el "?"
+  if(s > 8){
+    ctx.fillStyle = "#fff";
+    ctx.font = `${s*0.62}px 'Press Start 2P', monospace`;
+    ctx.textAlign = "center"; ctx.textBaseline = "middle";
+    ctx.fillText("?", p.x, y + s/2);
+  }
+}
+
+/* letrero de orilla: poste + tablero con el mensaje */
+function letrero(s){
+  const p = proyectar(s.x, s.y);
+  if(!p || p.y > H + 60) return;
+  const an = 74 * p.esc;              // ancho del tablero
+  const al = 30 * p.esc;              // alto
+  const poste = 26 * p.esc;
+  if(an < 6) return;                  // demasiado lejos: no vale la pena
+
+  const x = p.x - an/2;
+  const y = p.y - poste - al;
+
+  // postes
+  ctx.fillStyle = "#3b2a18";
+  ctx.fillRect(p.x - an*0.34, p.y - poste, an*0.07, poste);
+  ctx.fillRect(p.x + an*0.27, p.y - poste, an*0.07, poste);
+
+  // tablero
+  ctx.fillStyle = "#000";
+  ctx.fillRect(x - an*0.03, y - al*0.09, an*1.06, al*1.18);
+  ctx.fillStyle = "#12121c";
+  ctx.fillRect(x, y, an, al);
+  ctx.fillStyle = s.c;
+  ctx.fillRect(x, y, an, al*0.10);          // franja de color arriba
+  ctx.fillRect(x, y + al*0.90, an, al*0.10);
+
+  // texto (solo si ya se alcanza a leer)
+  if(an > 34){
+    ctx.textAlign = "center"; ctx.textBaseline = "middle";
+    ctx.fillStyle = "#fff";
+    ctx.font = `${al*0.20}px 'Press Start 2P', monospace`;
+    ctx.fillText(s.a, p.x, y + al*0.36);
+    ctx.fillStyle = s.c;
+    ctx.font = `${al*0.26}px 'Press Start 2P', monospace`;
+    ctx.fillText(s.b, p.x, y + al*0.66);
+  }
+}
+
+/* el kart del jugador, visto por detrás */
+function dibujarKart(){
+  const cxp = W/2, base = H - 14;
+  const s = 2.4;
+  const inc = Math.round(kart.giro * 46);   // se recarga al girar
+  const bote = (kart.vel > .4 && ticks % 8 < 4) ? 1 : 0;
+  const px = (x,y,w,h,col)=>{
+    ctx.fillStyle = col;
+    ctx.fillRect(Math.round(cxp + (x + inc*0.35)*s), Math.round(base + (y+bote)*s), Math.round(w*s), Math.round(h*s));
+  };
+  // sombra
+  ctx.fillStyle = "rgba(0,0,0,.35)";
+  ctx.fillRect(Math.round(cxp - 15*s), Math.round(base - 1*s), Math.round(30*s), Math.round(4*s));
+  // llantas
+  px(-15,-9, 5,9, "#111"); px(10,-9, 5,9, "#111");
+  px(-15,-9, 5,3, "#333"); px(10,-9, 5,3, "#333");
+  // carrocería
+  px(-11,-14, 22,10, "#000");
+  px(-10,-13, 20,8,  "#EF3B36");
+  px(-10,-13, 20,3,  "#ff6b66");
+  // escape
+  px(-8,-4, 3,2, "#555"); px(5,-4, 3,2, "#555");
+  // piloto
+  px(-5,-22, 10,9, "#000");
+  px(-4,-21, 8,7,  "#F0C48C");     // cara
+  px(-4,-21, 8,3,  "#F5A800");     // gorra
+  px(-6,-16, 12,4, "#000");
+  px(-5,-15, 10,2, "#2E5FD6");     // hombros
+  // humo al acelerar
+  if(kart.vel > 2.5 && ticks % 4 < 2){
+    ctx.fillStyle = "rgba(255,255,255,.35)";
+    ctx.fillRect(Math.round(cxp - 13*s), Math.round(base - 2*s), Math.round(4*s), Math.round(3*s));
+    ctx.fillRect(Math.round(cxp +  9*s), Math.round(base - 2*s), Math.round(4*s), Math.round(3*s));
+  }
+}
+
+function texto(str, x, y, col, px, out=3){
+  ctx.font = `${px}px 'Press Start 2P', monospace`;
+  ctx.textAlign = "center"; ctx.textBaseline = "alphabetic";
+  ctx.lineJoin = "round"; ctx.lineWidth = out;
+  ctx.strokeStyle = "#000"; ctx.strokeText(str, x, y);
+  ctx.fillStyle = col; ctx.fillText(str, x, y);
+}
+
+function pintar(){
+  const ox = sacudida ? (Math.random()*4-2) : 0;
+  const oy = sacudida ? (Math.random()*4-2) : 0;
+
+  // 1) CIELO — coordenadas lógicas, contexto escalado
+  ctx.setTransform(S,0,0,S,0,0);
+  ctx.save(); ctx.translate(ox, oy);
+  cielo();
+  ctx.restore();
+
+  // 2) SUELO — píxeles REALES de pantalla (putImageData no usa transformación)
+  ctx.setTransform(1,0,0,1,0,0);
+  suelo(ox, oy);
+
+  // 3) SPRITES Y TEXTO — coordenadas lógicas, pero pintados a resolución
+  //    nativa: por eso ya NO se ven en bloques.
+  ctx.setTransform(S,0,0,S,0,0);
+  ctx.save();
+  ctx.translate(ox, oy);
+
+  // letreros y cajas: del más lejano al más cercano (para que se tapen bien)
+  const mundo = [];
+  LETREROS.forEach(s=>{ const p = proyectar(s.x,s.y); if(p) mundo.push({tipo:'L', o:s, p}); });
+  CAJAS.filter(c=>!c.tomada).forEach(c=>{ const p = proyectar(c.x,c.y); if(p) mundo.push({tipo:'C', o:c, p}); });
+  mundo.sort((a,b)=> b.p.prof - a.p.prof)
+       .forEach(m => m.tipo === 'L' ? letrero(m.o) : caja(m.o));
+
+  dibujarKart();
+
+  if(estado === "LISTOS"){
+    ctx.fillStyle = "rgba(0,0,0,.55)"; ctx.fillRect(0,0,W,H);
+    texto("ZIV IA KART", W/2, H*0.33, "#FCD34D", 18, 5);
+    texto("2 VUELTAS · 4 CAJAS", W/2, H*0.46, "#fff", 8);
+    if(Math.floor(ticks/26)%2===0)
+      texto(isCoarse ? "TOCA PARA ARRANCAR" : "PRESIONA CUALQUIER TECLA", W/2, H*0.62, "#2EDC6E", 8);
+    texto(isCoarse ? "USA LOS BOTONES DE ABAJO" : "↑ ACELERA · ← → GIRA", W/2, H*0.78, "#9fb4ff", 6);
+  }
+  if(estado === "CUENTA"){
+    texto(cuenta > 0 ? String(cuenta) : "¡VÁMONOS!", W/2, H*0.42, cuenta>0 ? "#EF3B36" : "#2EDC6E", cuenta>0?34:18, 6);
+  }
+  if(estado === "CORRE" && !enPista(kart.x, kart.y) && Math.floor(ticks/16)%2===0){
+    texto("¡VUELVE A LA PISTA!", W/2, H*0.30, "#EF3B36", 8);
+  }
+  ctx.restore();
+}
+
+function bucle(){
+  actualizar();
+  pintar();
+  requestAnimationFrame(bucle);
+}
+bucle();
+if(document.fonts && document.fonts.ready) document.fonts.ready.then(()=>{});
+
+/* ============================================================
+   PRECIOS EN VIVO DESDE SHOPIFY
+   products.json es público: no hace falta token ni llave.
+   Si el navegador no puede leerlo, quedan los precios de respaldo.
+   ============================================================ */
+const mny = n => "$" + Number(n).toLocaleString('es-MX');
+
+function pintarPlanes(){
+  document.getElementById('karts').innerHTML = PLANES.map(p=>{
+    const barras = Object.entries(p.stats).map(([nm,v])=>`
+      <div class="st"><span class="nm">${nm}</span>
+        <span class="bar">${[1,2,3,4,5].map(i=>`<i class="${i<=v?'f':''}"></i>`).join('')}</span>
+      </div>`).join('');
+    return `
+    <div class="kart ${p.top?'top':''}">
+      ${p.top ? '<div class="etq">★ EL MÁS ELEGIDO ★</div>' : ''}
+      <div class="em">${p.em}</div>
+      <h3>${p.nm}</h3>
+      <div class="sub">${p.sub}</div>
+      <div class="stats">${barras}</div>
+      <div class="pr">
+        ${p.antes ? `<span class="tach">${mny(p.antes)}</span>` : ''}
+        <span class="now" data-precio="${p.handle}">${mny(p.precio)}</span>
+        <span class="cur">MXN · PAGO ÚNICO</span>
+      </div>
+      <ul>${p.feats.map(f=>`<li>${f}</li>`).join('')}</ul>
+      <button class="btn ${p.top?'':'g'}" data-pagar="${p.variante}">PAGAR ${mny(p.precio)}</button>
+    </div>`;
+  }).join('');
+
+  document.querySelectorAll('[data-pagar]').forEach(b=>{
+    b.onclick = ()=>{
+      const url = `https://${CFG.tienda}/cart/${b.dataset.pagar}:1`;
+      window.open(url, '_blank', 'noopener');
+    };
+  });
+}
+pintarPlanes();
+
+(async function preciosEnVivo(){
+  const txt = document.getElementById('liveTxt');
+  try{
+    const r = await fetch(`https://${CFG.tienda}/products.json?limit=50`, { cache:'no-store' });
+    if(!r.ok) throw 0;
+    const j = await r.json();
+    let n = 0;
+    (j.products || []).forEach(prod=>{
+      const p = PLANES.find(x => x.handle === prod.handle);
+      if(!p) return;
+      const v = (prod.variants || [])[0];
+      if(!v) return;
+      p.precio   = Math.round(+v.price);
+      p.variante = String(v.id);
+      if(v.compare_at_price) p.antes = Math.round(+v.compare_at_price);
+      if(v.available === false) p.agotado = true;
+      n++;
+    });
+    if(!n) throw 0;
+    pintarPlanes();
+    txt.textContent = `Precios en vivo desde Shopify · ${n} planes`;
+  }catch(e){
+    // sin conexión (o abriste el archivo con doble clic): quedan los precios reales de respaldo
+    txt.textContent = 'Precios verificados · Pago seguro con Shopify';
+    document.querySelector('.live .dot').style.background = '#F5A800';
+  }
+})();
+
+/* ---------- botones ---------- */
+document.getElementById('waBtn').onclick = ()=>{
+  const msg = "🏁 *¡Vengo del ZIV IA KART!*\n\nQuiero info del curso de IA en 4 días.\nMódulos que desbloqueé: " + tomadas + "/4";
+  window.open(`https://wa.me/${CFG.whatsapp}?text=${encodeURIComponent(msg)}`, '_blank', 'noopener');
+};
+document.getElementById('reBtn').onclick = ()=> location.reload();
+document.getElementById('volver').onclick = ()=> location.href = CFG.inicio;
+</script>
+</body>
+</html>
