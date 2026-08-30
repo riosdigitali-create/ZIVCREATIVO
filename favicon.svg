@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 44" fill="none" role="img" aria-label="ZIV Creativo">
+  <!-- Wordmark ZIV® — geométrico pesado. Usa fill="currentColor" para versión negro/blanco. -->
+  <g stroke="currentColor" stroke-width="8" stroke-linecap="square" stroke-linejoin="miter" fill="none">
+    <path d="M6 7 H30 L6 37 H30"/>
+    <path d="M44 7 V37"/>
+    <path d="M56 7 L68 37 L80 7"/>
+  </g>
+  <g fill="none" stroke="currentColor">
+    <circle cx="102" cy="11" r="6.5" stroke-width="2"/>
+  </g>
+  <text x="102" y="14.6" text-anchor="middle" font-family="Archivo, 'Arial Black', sans-serif" font-weight="900" font-size="8.5" fill="currentColor">R</text>
+</svg>
