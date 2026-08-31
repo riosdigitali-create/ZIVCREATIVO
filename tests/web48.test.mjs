@@ -7,7 +7,7 @@ import { initializeDemoForm } from '../assets/web48-form.mjs';
 const request = { business: ' Magnolia & Co. ', activity: 'Diseño de interiores', city: 'Ciudad de México', acceptedPrice: true };
 test('Precio, anticipo, demo y destinatario correctos', () => {
   assert.equal(OFFER.deposit * 2, OFFER.price);
-  assert.equal(OFFER.whatsapp, '525539480470');
+  assert.equal(OFFER.whatsapp, '525540161213');
   assert.equal(validateDemoRequest(request), null);
   assert.match(buildDemoMessage(request), /Negocio: Magnolia & Co\./);
   assert.match(buildDemoMessage(request), /gratis, sin compromiso/);
@@ -21,7 +21,7 @@ test('Rechaza datos incompletos y falta de aceptación del precio', () => {
 test('El mensaje no puede alterar el destinatario ni crear parámetros extra', () => {
   const url = new URL(buildWhatsAppUrl({ ...request, business: '&text=otro / ? # á' }));
   assert.equal(url.origin, 'https://wa.me');
-  assert.equal(url.pathname, '/525539480470');
+  assert.equal(url.pathname, '/525540161213');
   assert.deepEqual([...url.searchParams.keys()], ['text']);
   assert.match(url.searchParams.get('text'), /&text=otro/);
 });
@@ -58,7 +58,8 @@ test('La falta de consentimiento no genera un enlace de WhatsApp', () => {
 test('Publicación completa, dominio intacto y sin dependencias del servidor privado', async () => {
   const html = await fs.readFile(new URL('../index.html', import.meta.url), 'utf8');
   assert.equal((await fs.readFile(new URL('../CNAME', import.meta.url), 'utf8')).trim(), 'zivcreativo.shop');
-  for (const url of ['https://aviv.mx/', 'https://theimagemethod.com/', 'https://mundosimz.com/']) assert.ok(html.includes(`href="${url}"`));
+  const portfolio = await fs.readFile(new URL('../portafolio.html', import.meta.url), 'utf8');
+  for (const url of ['https://aviv.mx/', 'https://theimagemethod.com/', 'https://mundosimz.com/']) assert.ok(portfolio.includes(`href="${url}"`));
   assert.ok(html.includes('href="/portafolio.html"'));
   assert.ok(html.includes('https://zivcreativo.shop/og-image.jpg'));
   assert.ok(html.includes('name="robots" content="index,follow"'));
@@ -66,28 +67,56 @@ test('Publicación completa, dominio intacto y sin dependencias del servidor pri
   for (const [, asset] of html.matchAll(/(?:src|href)="\/(assets\/[^"?]+|estudio-web\.jpg|favicon\.svg)(?:\?[^" ]*)?"/g)) {
     assert.ok((await fs.stat(new URL(`../${asset}`, import.meta.url))).isFile());
   }
-  const css = await fs.readFile(new URL('../assets/web48.css', import.meta.url), 'utf8');
+  const css = await fs.readFile(new URL('../assets/designjoy.css', import.meta.url), 'utf8');
   assert.ok(css.includes('[hidden]{display:none!important}'));
   assert.doesNotMatch(css, /@import/);
 });
 
-test('Portafolio de seis muestras: nuevas primero y anteriores conservadas', async () => {
+test('Rediseño: navegación completa, imágenes locales y accesibilidad básica', async () => {
   const html = await fs.readFile(new URL('../index.html', import.meta.url), 'utf8');
-  const section = html.match(/<div class="project-list">([\s\S]*?)<\/div>/)?.[1];
-  assert.ok(section, 'La lista de proyectos está incluida en el HTML estático');
-  const rows = [...section.matchAll(/<a href="([^"]+)"([^>]*)class="project-row"([^>]*)>([\s\S]*?)<\/a>/g)];
-  assert.deepEqual(rows.map(row => row[1]), [
-    'https://aritzasalazar.com/',
-    'https://maggiesalmeron.com/',
-    'https://caesi.mx/',
-    'https://aviv.mx/',
-    'https://theimagemethod.com/',
-    'https://mundosimz.com/',
-  ]);
-  for (const row of rows) {
-    assert.match(row[2] + row[3], /target="_blank"/);
-    assert.match(row[2] + row[3], /rel="noopener noreferrer"/);
-    assert.match(row[4], /class="project-name">[^<]+<\/span>/);
-    assert.match(row[4], /class="project-type">[^<]+<\/span>/);
+  const ids = [...html.matchAll(/\bid="([^"]+)"/g)].map(match => match[1]);
+  assert.equal(new Set(ids).size, ids.length, 'No hay identificadores duplicados');
+  for (const [, anchor] of html.matchAll(/href="#([^"]+)"/g)) {
+    assert.ok(ids.includes(anchor), 'Existe el destino ' + anchor);
   }
+  assert.equal((html.match(/<h1>/g) || []).length, 1);
+  for (const [, tag] of html.matchAll(/(<img\b[^>]*>)/g)) {
+    assert.match(tag, /alt="[^"]+"/);
+    const src = tag.match(/src="([^"]+)"/)?.[1];
+    assert.ok(src?.startsWith('/'));
+    assert.ok((await fs.stat(new URL('..' + src, import.meta.url))).isFile());
+  }
+  for (const [, src] of html.matchAll(/(?:src|href)="(\/assets\/[^"?]+)(?:\?[^"]*)?"/g)) {
+    assert.ok((await fs.stat(new URL('..' + src, import.meta.url))).isFile());
+  }
+  assert.match(html, /aria-label="Navegación principal"/);
+  assert.match(html, /aria-label="Accesos rápidos"/);
+  assert.match(html, /name="acceptedPrice"/);
+  assert.match(html, /Todavía|todavía no se ha enviado/);
+  assert.doesNotMatch(html, /buy\.stripe\.com|billing\.stripe\.com|hello@designjoy|cdn\.prod\.website-files/);
+  const css = await fs.readFile(new URL('../assets/designjoy.css', import.meta.url), 'utf8');
+  assert.match(css, /prefers-reduced-motion/);
+  assert.match(css, /focus-visible/);
+  assert.match(css, /@media\(max-width:760px\)/);
+});
+
+test('Portada con tres destacados y portafolio completo con diez demos', async () => {
+  const html = await fs.readFile(new URL('../index.html', import.meta.url), 'utf8');
+  const portfolio = await fs.readFile(new URL('../portafolio.html', import.meta.url), 'utf8');
+  const previewPortfolio = await fs.readFile(new URL('../../web-ventas/public/portafolio.html', import.meta.url), 'utf8');
+  const manifest = JSON.parse(await fs.readFile(new URL('../../demos/projects.json', import.meta.url), 'utf8'));
+  const section = html.match(/<section[^>]*id="trabajo"[\s\S]*?<\/section>/)[0];
+  assert.deepEqual([...section.matchAll(/data-project="([^"]+)"/g)].map(x=>x[1]), manifest.slice(0,3).map(p=>p.slug));
+  assert.deepEqual([...portfolio.matchAll(/data-project="([^"]+)"/g)].map(x=>x[1]), manifest.map(p=>p.slug));
+  assert.equal(portfolio, previewPortfolio, 'Las dos versiones tienen el mismo portafolio');
+  for (const p of manifest) {
+    assert.ok(portfolio.includes('href="https://'+p.slug+'.pages.dev/"'));
+    assert.ok((await fs.stat(new URL('../thumbs/'+p.thumb+'.webp', import.meta.url))).isFile());
+  }
+  for(const domain of ['aritzasalazar.com','maggiesalmeron.com','caesi.mx','aviv.mx','theimagemethod.com','mundosimz.com'])assert.ok(portfolio.includes('https://'+domain+'/'));
+  assert.match(portfolio,/aria-pressed="true"/);
+  assert.match(portfolio,/aria-live="polite"/);
+  assert.doesNotMatch(portfolio,/1,950|iframe/);
+  const previewLanding = await fs.readFile(new URL('../../web-ventas/lib/landing.ts', import.meta.url),'utf8');
+  assert.ok(previewLanding.includes(JSON.stringify(section).slice(1,-1)), 'Los tres destacados están también en la página con CRM');
 });

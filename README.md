@@ -7,12 +7,15 @@ Página estática para GitHub Pages. Publicación existente desde `main`, carpet
 ## Contenido
 
 - `index.html`: oferta, condiciones, muestras y solicitud de demo gratis.
-- `assets/web48.css`: estilos de la página de ventas.
+- `assets/designjoy.css`: diseño actual inspirado en la composición de Designjoy, adaptado a ZIV: fondo cálido, tarjeta oscura/azul, galería, proceso, precio y navegación flotante.
+- `assets/web48.css`: estilos de la página de ventas anterior, conservados para recuperación.
 - `assets/offer.mjs`: validación y preparación del mensaje de WhatsApp.
 - `assets/web48-form.mjs`: interacción del formulario, sin guardar datos ni enviar mensajes automáticamente.
 - `portafolio.html`, `thumbs/` y `perfil-cutout.png`: portafolio anterior conservado.
 
 Las seis muestras de la página de ventas son Aritza Salazar, Maggie Salmerón, CAESI, AVIV, The Image Method y Mundo Simz. Los tres primeros fueron agregados el 31 de agosto de 2026 sin reemplazar los anteriores. Mantener estas muestras en `index.html`: la publicación actual es estática y no depende de un generador externo.
+
+El rediseño del 31 de agosto conserva esas seis muestras y añade una galería visual de CIRUELA, CANTERA, DOBLE HUMO y VELTRA utilizando las miniaturas locales del portafolio. No incorpora imágenes, testimonios, clientes, precios ni condiciones de Designjoy. Conserva el formulario, el destinatario de WhatsApp, los metadatos sociales existentes y el dominio. El proyecto `web-ventas` es independiente y no se modifica para publicar esta portada estática.
 
 La demo no obliga a contratar. Precio de Web Esencial: $5,900 MXN IVA incluido; dominio y hosting aparte. Las 48 horas empiezan con demo aprobada, anticipo y materiales completos.
 
