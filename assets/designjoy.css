@@ -5,3 +5,27 @@
 @media(max-width:760px){.wrap{width:calc(100% - 40px)}.site-header{padding-block:25px}.site-header nav{gap:14px}.site-header nav>a:first-child{display:none}.nav-call{font-size:11px}.button.small{font-size:11px;padding:11px 14px;gap:18px}.wordmark{font-size:43px}.wordmark>span{font-size:10px}.hero{grid-template-columns:1fr;gap:40px;padding-top:34px;padding-bottom:43px}.hero h1{font-size:clamp(53px,10vw,77px);letter-spacing:-3.6px;margin-top:21px}.hero-intro{font-size:16px}.hero-bottom{margin-top:25px}.membership{max-width:430px;width:100%;margin:auto;padding:27px}.member-heading{font-size:47px}.member-monogram{right:6px;top:135px}.member-bottom{margin-top:43px}.service-ribbon{gap:16px;justify-content:center;flex-wrap:wrap;padding:23px 0;font-size:9px}.service-ribbon>span:last-child,.service-ribbon>span:nth-last-child(2){display:none}.service-ribbon>span:nth-child(even){font-size:18px}h2{font-size:41px;letter-spacing:-2px}.process-section,.benefits-section{padding-block:65px}.section-heading>p:last-child:not(.eyebrow){font-size:14px}.steps{grid-template-columns:1fr;gap:35px;margin-top:35px}.step-visual{height:205px;margin-bottom:17px}.step-card>p{max-width:none}.step-card h3{font-size:24px}.work-section{padding-block:55px}.work-heading{align-items:start;flex-direction:column;gap:25px}.work-gallery{gap:18px;grid-template-columns:1fr;margin-top:30px}.work-card{padding:23px 23px 17px}.project-list{grid-template-columns:1fr}.benefits-grid{grid-template-columns:1fr 1fr;gap:35px 22px;margin-top:40px}.benefits-grid h3{font-size:18px}.benefits-grid p{font-size:12px}.pricing-section{padding-block:55px}.pricing-grid,.demo-section{grid-template-columns:1fr;gap:35px}.pricing-copy h2{font-size:55px}.team-note{margin-top:25px}.offer-card{padding:28px}.price{font-size:60px}.faq-section{padding-block:65px}.faq-list{margin-top:30px}.faq-list summary{font-size:14px;line-height:1.4}.demo-section{padding-block:10px 65px}.demo-copy h2{font-size:48px}.demo-copy>p:not(.eyebrow){max-width:none}.demo-form{padding:25px}.footer-top{flex-wrap:wrap;gap:24px}.footer-top>a:last-child{width:100%}.site-footer{padding-bottom:110px}.floating-nav{bottom:max(14px,env(safe-area-inset-bottom));max-width:calc(100% - 24px);gap:0;padding:6px}.floating-nav a{font-size:10px;padding:12px 11px}.desktop-break{display:none}}
 @media(max-width:360px){.wrap{width:calc(100% - 32px)}.nav-call{display:none}.hero h1{font-size:50px}.benefits-grid{grid-template-columns:1fr}.floating-nav a{padding:12px 8px;font-size:9px}.offer-card,.demo-form{padding:22px}.member-heading{font-size:42px}.price{font-size:52px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important;animation:none!important}}
+
+/* Paleta ZIV basada en los colores principales de la referencia */
+:root{--background:#ece6e8;--foreground:#000;--muted:#625d59;--blue:#0000fe;--pink:#ff0084;--orange:#ff5a00;--yellow:#ffdb01;--border:#ddced3;--card:#fff}
+body{background:#fff}
+.hero-shell{background:var(--yellow)}
+.hero h1>span{color:var(--pink)}
+.hero-intro,.hero-bottom p>span{color:#282727}
+.round-link,.service-ribbon{border-color:#000}
+.membership{background:radial-gradient(ellipse at 90% 20%,#4852ff 0,#0000fe 36%,#090916 76%);border-color:#0000fe;box-shadow:0 16px 0 #00000018}
+.process-section{background:#fff}
+.brief-visual{background:#ffccb6}.tags-visual{background:#daddff}.tags-visual span:nth-child(3){background:var(--blue)}.delivery-visual{background:#f3e78c}
+.work-section{background:var(--pink);color:#000}
+.work-section .button.outline{border-color:#000;color:#000;background:#fff}
+.work-section .portfolio-section-foot{border-color:#000}.work-section .portfolio-section-foot p{color:#171717}
+.benefits-section{background:#fff}
+.pricing-section{background:var(--blue);color:#fff}
+.pricing-copy h2 span{color:var(--yellow)}
+.pricing-copy>p:not(.eyebrow),.pricing-copy .text-link,.pricing-copy .team-note small{color:#fff}
+.pricing-section .offer-card{background:#000;border:1px solid #ffffff45;box-shadow:14px 14px 0 var(--yellow)}
+.button.blue,.cta{background:var(--pink)}.button.blue:hover,.cta:hover{background:#d90070}
+.faq-section{background:#fff}
+.demo-section{background:var(--background);border-radius:28px;padding-inline:clamp(24px,5vw,58px);margin-block:70px}
+.demo-copy h2 span{color:var(--pink)}
+::selection{background:var(--pink);color:#fff}

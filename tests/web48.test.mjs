@@ -112,7 +112,9 @@ test('Portada con tres destacados y portafolio completo con demos activas', asyn
   assert.equal(portfolio, previewPortfolio, 'Las dos versiones tienen el mismo portafolio');
   for (const p of active) {
     assert.ok(portfolio.includes('href="https://'+p.slug+'.pages.dev/"'));
-    assert.ok((await fs.stat(new URL('../thumbs/'+p.thumb+'.webp', import.meta.url))).isFile());
+    const thumbnail = p.thumbFile || p.thumb+'.webp';
+    assert.ok(portfolio.includes('/thumbs/'+thumbnail));
+    assert.ok((await fs.stat(new URL('../thumbs/'+thumbnail, import.meta.url))).isFile());
   }
   for(const domain of ['aritzasalazar.com','maggiesalmeron.com','caesi.mx','aviv.mx','theimagemethod.com','mundosimz.com'])assert.ok(portfolio.includes('https://'+domain+'/'));
   assert.match(portfolio,/aria-pressed="true"/);
