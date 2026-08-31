@@ -4,7 +4,7 @@ export function initializeDemoForm(doc) {
   const form = doc.getElementById('demo-request');
   if (!form) return;
   const track = (name, details = {}) => {
-    const win = doc.defaultView;
+    const win = doc.defaultView || (typeof window !== 'undefined' ? window : null);
     if (!win) return;
     win.dataLayer = win.dataLayer || [];
     win.dataLayer.push({ event: `ziv_${name}`, ...details });
