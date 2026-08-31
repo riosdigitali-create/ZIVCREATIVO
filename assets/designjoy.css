@@ -6,26 +6,42 @@
 @media(max-width:360px){.wrap{width:calc(100% - 32px)}.nav-call{display:none}.hero h1{font-size:50px}.benefits-grid{grid-template-columns:1fr}.floating-nav a{padding:12px 8px;font-size:9px}.offer-card,.demo-form{padding:22px}.member-heading{font-size:42px}.price{font-size:52px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important;animation:none!important}}
 
-/* Paleta ZIV basada en los colores principales de la referencia */
-:root{--background:#ece6e8;--foreground:#000;--muted:#625d59;--blue:#0000fe;--pink:#ff0084;--orange:#ff5a00;--yellow:#ffdb01;--border:#ddced3;--card:#fff}
-body{background:#fff}
-.hero-shell{background:var(--yellow)}
-.hero h1>span{color:var(--pink)}
-.hero-intro,.hero-bottom p>span{color:#282727}
-.round-link,.service-ribbon{border-color:#000}
-.membership{background:radial-gradient(ellipse at 90% 20%,#4852ff 0,#0000fe 36%,#090916 76%);border-color:#0000fe;box-shadow:0 16px 0 #00000018}
-.process-section{background:#fff}
-.brief-visual{background:#ffccb6}.tags-visual{background:#daddff}.tags-visual span:nth-child(3){background:var(--blue)}.delivery-visual{background:#f3e78c}
-.work-section{background:var(--pink);color:#000}
+/* Dirección visual ZIV: proporciones y contraste inspirados en Designjoy. */
+:root{--background:#ece6e8;--foreground:#000;--muted:#6f6965;--blue:#0000fe;--pink:#ff0084;--orange:#ff5a00;--yellow:#ffdb01;--border:#ddced3;--card:#fff}
+body{background:var(--background)}
+.hero-shell{background:transparent}
+.hero h1>span,.pricing-copy h2 span,.demo-copy h2 span{color:#77716d}
+.membership{background:#000;border:0;box-shadow:0 28px 55px #00000024,inset 0 1px 1px #ffffff80,inset 0 -1px 1px #ffffff24}
+.membership:after{content:"";position:absolute;z-index:-1;right:-95px;top:72px;width:235px;height:235px;border-radius:50%;background:radial-gradient(circle,#0000fe 0,#0000fe55 35%,transparent 70%);filter:blur(7px);opacity:.75}
+.member-monogram{color:#ffffff13;animation:ziv-float 7s ease-in-out infinite}
+.button.light{box-shadow:0 1px 0 #ffffff70}
+.service-ribbon{position:relative;background:#fff;border:1px solid #000;border-radius:13px;padding-inline:25px;box-shadow:8px 8px 0 #000;transform:rotate(-1deg);animation:ziv-ribbon 7s ease-in-out infinite}
+.process-section,.benefits-section,.work-section,.pricing-section,.faq-section{background:transparent;color:var(--foreground)}
+.step-card{background:#fff;border-radius:19px;padding:14px 14px 27px;box-shadow:0 1px 0 #ffffffb0;transition:transform .28s ease,box-shadow .28s ease}
+.step-card:hover{transform:translateY(-7px);box-shadow:0 22px 45px #00000012}
+.step-number{left:28px;top:27px}
+.step-visual{margin-bottom:25px}
+.brief-visual{background:#f4d6ca}.tags-visual{background:#e2e1f2}.tags-visual span:nth-child(3){background:var(--blue)}.delivery-visual{background:#e8ead8}
+.step-card h3,.step-card>p{margin-inline:10px}
+.work-section{padding-block:95px}
 .work-section .button.outline{border-color:#000;color:#000;background:#fff}
-.work-section .portfolio-section-foot{border-color:#000}.work-section .portfolio-section-foot p{color:#171717}
-.benefits-section{background:#fff}
-.pricing-section{background:var(--blue);color:#fff}
-.pricing-copy h2 span{color:var(--yellow)}
-.pricing-copy>p:not(.eyebrow),.pricing-copy .text-link,.pricing-copy .team-note small{color:#fff}
-.pricing-section .offer-card{background:#000;border:1px solid #ffffff45;box-shadow:14px 14px 0 var(--yellow)}
-.button.blue,.cta{background:var(--pink)}.button.blue:hover,.cta:hover{background:#d90070}
-.faq-section{background:#fff}
-.demo-section{background:var(--background);border-radius:28px;padding-inline:clamp(24px,5vw,58px);margin-block:70px}
-.demo-copy h2 span{color:var(--pink)}
+.selected-project .project-cover{box-shadow:0 24px 55px #00000010;transition:transform .3s ease,box-shadow .3s ease}
+.selected-project:hover .project-cover{transform:translateY(-7px) rotate(.25deg);box-shadow:0 32px 70px #00000020}
+.benefits-grid article{background:#fff;border-radius:19px;padding:34px 24px;box-shadow:0 1px 0 #ffffffb0;transition:transform .28s ease}
+.benefits-grid article:hover{transform:translateY(-6px)}
+.pricing-section{padding-block:105px}
+.pricing-section .offer-card{background:#000;border:0;box-shadow:0 30px 65px #00000038,inset 0 1px 1px #ffffff78,inset 0 -1px 1px #ffffff24}
+.button.blue,.cta{background:var(--blue)}.button.blue:hover,.cta:hover{background:#2424ff}
+.faq-list{background:#fff;border-radius:19px;padding-inline:30px;box-shadow:0 1px 0 #ffffffb0}
+.demo-section{position:relative;margin-block:70px 95px;padding:58px;border-radius:19px;background:#000;color:#fff;box-shadow:0 30px 65px #00000024,inset 0 1px 1px #ffffff6b}
+.demo-copy h2 span{color:#aaa5a1}
+.demo-copy>p:not(.eyebrow),.demo-copy>p.demo-note{color:#c9c5c2}
+.demo-copy .text-link{color:#fff}
+.demo-form{color:#000;box-shadow:0 18px 45px #00000035}
+.site-footer{width:100%;max-width:none;background:#000;color:#fff;border:0;padding:65px max(36px,calc((100% - 1120px)/2)) 125px}
+.site-footer .wordmark{color:#fff}.site-footer .footer-top p,.site-footer .privacy-details,.site-footer .footer-bottom{color:#aaa5a1}
+.site-footer .footer-bottom{border-color:#ffffff2b}.site-footer .privacy-details p{color:#aaa5a1}
 ::selection{background:var(--pink);color:#fff}
+@keyframes ziv-float{0%,100%{transform:rotate(-15deg) translateY(0)}50%{transform:rotate(-12deg) translateY(-10px)}}
+@keyframes ziv-ribbon{0%,100%{transform:rotate(-1deg) translateY(0)}50%{transform:rotate(.35deg) translateY(-4px)}}
+@media(max-width:760px){.service-ribbon{width:calc(100% - 40px);padding-inline:16px;box-shadow:5px 5px 0 #000}.benefits-grid article{padding:26px 17px}.demo-section{width:calc(100% - 40px);padding:38px 24px;margin-block:45px 70px}.site-footer{padding-inline:20px}.selected-project:hover .project-cover{transform:none}}
