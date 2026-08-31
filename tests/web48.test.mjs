@@ -100,23 +100,28 @@ test('Rediseño: navegación completa, imágenes locales y accesibilidad básica
   assert.match(css, /@media\(max-width:760px\)/);
 });
 
-test('Portada con tres destacados y portafolio completo con diez demos', async () => {
+test('Portada con tres destacados y portafolio completo con demos activas', async () => {
   const html = await fs.readFile(new URL('../index.html', import.meta.url), 'utf8');
   const portfolio = await fs.readFile(new URL('../portafolio.html', import.meta.url), 'utf8');
   const previewPortfolio = await fs.readFile(new URL('../../web-ventas/public/portafolio.html', import.meta.url), 'utf8');
   const manifest = JSON.parse(await fs.readFile(new URL('../../demos/projects.json', import.meta.url), 'utf8'));
+  const active = manifest.filter(p => p.active !== false);
   const section = html.match(/<section[^>]*id="trabajo"[\s\S]*?<\/section>/)[0];
-  assert.deepEqual([...section.matchAll(/data-project="([^"]+)"/g)].map(x=>x[1]), manifest.slice(0,3).map(p=>p.slug));
-  assert.deepEqual([...portfolio.matchAll(/data-project="([^"]+)"/g)].map(x=>x[1]), manifest.map(p=>p.slug));
+  assert.deepEqual([...section.matchAll(/data-project="([^"]+)"/g)].map(x=>x[1]), active.slice(0,3).map(p=>p.slug));
+  assert.deepEqual([...portfolio.matchAll(/data-project="([^"]+)"/g)].map(x=>x[1]), active.map(p=>p.slug));
   assert.equal(portfolio, previewPortfolio, 'Las dos versiones tienen el mismo portafolio');
-  for (const p of manifest) {
+  for (const p of active) {
     assert.ok(portfolio.includes('href="https://'+p.slug+'.pages.dev/"'));
     assert.ok((await fs.stat(new URL('../thumbs/'+p.thumb+'.webp', import.meta.url))).isFile());
   }
   for(const domain of ['aritzasalazar.com','maggiesalmeron.com','caesi.mx','aviv.mx','theimagemethod.com','mundosimz.com'])assert.ok(portfolio.includes('https://'+domain+'/'));
   assert.match(portfolio,/aria-pressed="true"/);
   assert.match(portfolio,/aria-live="polite"/);
+  assert.match(portfolio,/>9<\/strong>conceptos web/);
+  assert.doesNotMatch(portfolio,/ciruela-riosdigital|CIRUELA/);
   assert.doesNotMatch(portfolio,/1,950|iframe/);
   const previewLanding = await fs.readFile(new URL('../../web-ventas/lib/landing.ts', import.meta.url),'utf8');
-  assert.ok(previewLanding.includes(JSON.stringify(section).slice(1,-1)), 'Los tres destacados están también en la página con CRM');
+  const previewUpdate = await fs.readFile(new URL('../../web-ventas/lib/landing-updated.ts', import.meta.url),'utf8');
+  for (const p of active.slice(0,2)) assert.ok(previewLanding.includes(p.slug), p.name+' está también en la página con CRM');
+  assert.ok(previewUpdate.includes(active[2].slug), active[2].name+' está también en la página con CRM');
 });
