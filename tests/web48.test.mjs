@@ -70,3 +70,24 @@ test('Publicación completa, dominio intacto y sin dependencias del servidor pri
   assert.ok(css.includes('[hidden]{display:none!important}'));
   assert.doesNotMatch(css, /@import/);
 });
+
+test('Portafolio de seis muestras: nuevas primero y anteriores conservadas', async () => {
+  const html = await fs.readFile(new URL('../index.html', import.meta.url), 'utf8');
+  const section = html.match(/<div class="project-list">([\s\S]*?)<\/div>/)?.[1];
+  assert.ok(section, 'La lista de proyectos está incluida en el HTML estático');
+  const rows = [...section.matchAll(/<a href="([^"]+)"([^>]*)class="project-row"([^>]*)>([\s\S]*?)<\/a>/g)];
+  assert.deepEqual(rows.map(row => row[1]), [
+    'https://aritzasalazar.com/',
+    'https://maggiesalmeron.com/',
+    'https://caesi.mx/',
+    'https://aviv.mx/',
+    'https://theimagemethod.com/',
+    'https://mundosimz.com/',
+  ]);
+  for (const row of rows) {
+    assert.match(row[2] + row[3], /target="_blank"/);
+    assert.match(row[2] + row[3], /rel="noopener noreferrer"/);
+    assert.match(row[4], /class="project-name">[^<]+<\/span>/);
+    assert.match(row[4], /class="project-type">[^<]+<\/span>/);
+  }
+});
