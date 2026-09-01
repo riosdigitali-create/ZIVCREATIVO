@@ -7,7 +7,7 @@ import { initializeDemoForm } from '../assets/web48-form.mjs';
 const request = { business: ' Magnolia & Co. ', activity: 'Diseño de interiores', city: 'Ciudad de México', acceptedPrice: true };
 test('Precio, anticipo, demo y destinatario correctos', () => {
   assert.equal(OFFER.deposit * 2, OFFER.price);
-  assert.equal(OFFER.whatsapp, '525540161213');
+  assert.equal(OFFER.whatsapp, '525539480470');
   assert.equal(validateDemoRequest(request), null);
   assert.match(buildDemoMessage(request), /Negocio: Magnolia & Co\./);
   assert.match(buildDemoMessage(request), /gratis, sin compromiso/);
@@ -21,7 +21,7 @@ test('Rechaza datos incompletos y falta de aceptación del precio', () => {
 test('El mensaje no puede alterar el destinatario ni crear parámetros extra', () => {
   const url = new URL(buildWhatsAppUrl({ ...request, business: '&text=otro / ? # á' }));
   assert.equal(url.origin, 'https://wa.me');
-  assert.equal(url.pathname, '/525540161213');
+  assert.equal(url.pathname, '/525539480470');
   assert.deepEqual([...url.searchParams.keys()], ['text']);
   assert.match(url.searchParams.get('text'), /&text=otro/);
 });

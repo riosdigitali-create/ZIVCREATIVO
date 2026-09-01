@@ -2,7 +2,7 @@ export const OFFER = {
     price: 5900,
     deposit: 2950,
     currency: 'MXN',
-    whatsapp: '525540161213',
+    whatsapp: '525539480470',
     reference: 'ZIV-WEB48',
 };
 export function validateDemoRequest(request) {
