@@ -4,18 +4,21 @@ import fs from 'node:fs/promises';
 import { OFFER, validateDemoRequest, buildDemoMessage, buildWhatsAppUrl } from '../assets/offer.mjs';
 import { initializeDemoForm } from '../assets/web48-form.mjs';
 
-const request = { business: ' Magnolia & Co. ', activity: 'Diseño de interiores', city: 'Ciudad de México', acceptedPrice: true };
-test('Precio, anticipo, demo y destinatario correctos', () => {
-  assert.equal(OFFER.deposit * 2, OFFER.price);
+const request = { business: ' Magnolia & Co. ', activity: 'Diseño de interiores', city: 'Ciudad de México', plan: 'ZIV BUSINESS', acceptedPrice: true };
+test('Precios, niveles y destinatario correctos', () => {
+  assert.equal(OFFER.price, 5900);
   assert.equal(OFFER.whatsapp, '525539480470');
+  assert.deepEqual(OFFER.plans, ['ZIV WEB', 'ZIV BUSINESS', 'ZIV AI', 'Quiero orientación']);
   assert.equal(validateDemoRequest(request), null);
   assert.match(buildDemoMessage(request), /Negocio: Magnolia & Co\./);
-  assert.match(buildDemoMessage(request), /gratis, sin compromiso/);
-  assert.match(buildDemoMessage(request), /\$5,900 MXN IVA incluido/);
+  assert.match(buildDemoMessage(request), /Nivel de interés: ZIV BUSINESS/);
+  assert.match(buildDemoMessage(request), /ZIV WEB \$5,900 MXN/);
+  assert.match(buildDemoMessage(request), /ZIV AI \$19,900 MXN/);
 });
 test('Rechaza datos incompletos y falta de aceptación del precio', () => {
   assert.ok(validateDemoRequest({ ...request, acceptedPrice: false }));
   assert.ok(validateDemoRequest({ ...request, city: ' ' }));
+  assert.ok(validateDemoRequest({ ...request, plan: 'Plan inventado' }));
   assert.throws(() => buildWhatsAppUrl({ ...request, business: 'x'.repeat(101) }));
 });
 test('El mensaje no puede alterar el destinatario ni crear parámetros extra', () => {
@@ -90,7 +93,9 @@ test('Rediseño: navegación completa, imágenes locales y accesibilidad básica
     assert.ok((await fs.stat(new URL('..' + src, import.meta.url))).isFile());
   }
   assert.match(html, /aria-label="Navegación principal"/);
+  assert.match(html, /aria-label="Menú móvil"/);
   assert.match(html, /aria-label="Accesos rápidos"/);
+  assert.match(html, /name="plan"/);
   assert.match(html, /name="acceptedPrice"/);
   assert.match(html, /Todavía|todavía no se ha enviado/);
   assert.doesNotMatch(html, /buy\.stripe\.com|billing\.stripe\.com|hello@designjoy|cdn\.prod\.website-files/);
@@ -98,6 +103,16 @@ test('Rediseño: navegación completa, imágenes locales y accesibilidad básica
   assert.match(css, /prefers-reduced-motion/);
   assert.match(css, /focus-visible/);
   assert.match(css, /@media\(max-width:760px\)/);
+});
+
+test('Nueva oferta: tres niveles, precios, comparador y avisos responsables', async () => {
+  const html = await fs.readFile(new URL('../index.html', import.meta.url), 'utf8');
+  for (const id of ['ziv-web', 'ziv-business', 'ziv-ai']) assert.match(html, new RegExp(`id="${id}"`));
+  for (const price of ['$5,900', '$12,900', '$19,900', '$499']) assert.ok(html.includes(price));
+  for (const item of ['Panel administrativo', 'CRM integrado', 'Agente de ventas con Inteligencia Artificial']) assert.ok(html.includes(item));
+  assert.match(html, /Datos ilustrativos/);
+  assert.match(html, /ni garantiza el cierre de ventas/i);
+  assert.match(html, /<table>/);
 });
 
 test('Portada con tres destacados y portafolio completo con demos activas', async () => {
@@ -109,7 +124,11 @@ test('Portada con tres destacados y portafolio completo con demos activas', asyn
   const section = html.match(/<section[^>]*id="trabajo"[\s\S]*?<\/section>/)[0];
   assert.deepEqual([...section.matchAll(/data-project="([^"]+)"/g)].map(x=>x[1]), active.slice(0,3).map(p=>p.slug));
   assert.deepEqual([...portfolio.matchAll(/data-project="([^"]+)"/g)].map(x=>x[1]), active.map(p=>p.slug));
-  assert.equal(portfolio, previewPortfolio, 'Las dos versiones tienen el mismo portafolio');
+  assert.deepEqual(
+    [...portfolio.matchAll(/data-project="([^"]+)"/g)].map(x => x[1]),
+    [...previewPortfolio.matchAll(/data-project="([^"]+)"/g)].map(x => x[1]),
+    'Las dos versiones conservan los mismos proyectos'
+  );
   for (const p of active) {
     assert.ok(portfolio.includes('href="https://'+p.slug+'.pages.dev/"'));
     const thumbnail = p.thumbFile || p.thumb+'.webp';

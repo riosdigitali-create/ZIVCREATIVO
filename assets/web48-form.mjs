@@ -1,4 +1,4 @@
-import { buildWhatsAppUrl, validateDemoRequest } from './offer.mjs';
+import { buildWhatsAppUrl, validateDemoRequest } from './offer.mjs?v=20260903-systems';
 
 export function initializeDemoForm(doc) {
   const form = doc.getElementById('demo-request');
@@ -30,6 +30,7 @@ export function initializeDemoForm(doc) {
       business: field('business').value,
       activity: field('activity').value,
       city: field('city').value,
+      plan: field('plan').value,
       acceptedPrice: field('acceptedPrice').checked,
     };
     const issue = validateDemoRequest(request);
@@ -48,8 +49,10 @@ export function initializeDemoForm(doc) {
     const link = event.target.closest?.('a');
     if (!link) return;
     if (link.matches('a[href^="https://wa.me/"]')) track('whatsapp_click');
+    if (link.matches('.plan-cta')) track('plan_interest', { plan: link.closest('article')?.id || 'unknown' });
     if (link.matches('a[href*="portafolio"]')) track('portfolio_view');
     if (link.matches('a[href="#planes"]')) track('price_view');
+    if (link.getAttribute?.('href')?.startsWith('#')) doc.querySelector?.('.site-menu')?.removeAttribute('open');
   });
   submit.disabled = false;
 }

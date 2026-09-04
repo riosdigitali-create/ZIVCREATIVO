@@ -45,3 +45,196 @@ body{background:var(--background)}
 @keyframes ziv-float{0%,100%{transform:rotate(-15deg) translateY(0)}50%{transform:rotate(-12deg) translateY(-10px)}}
 @keyframes ziv-ribbon{0%,100%{transform:rotate(-1deg) translateY(0)}50%{transform:rotate(.35deg) translateY(-4px)}}
 @media(max-width:760px){.service-ribbon{width:calc(100% - 40px);padding-inline:16px;box-shadow:5px 5px 0 #000}.benefits-grid article{padding:26px 17px}.demo-section{width:calc(100% - 40px);padding:38px 24px;margin-block:45px 70px}.site-footer{padding-inline:20px}.selected-project:hover .project-cover{transform:none}}
+
+/* ZIV Systems · navegación y arquitectura comercial */
+html{scroll-padding-top:90px}
+#sistemas,#trabajo,#planes,#preguntas,#demo,#ziv-web,#ziv-business,#ziv-ai{scroll-margin-top:90px}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.desktop-nav a:not(.button){position:relative;padding-block:8px}
+.desktop-nav a:not(.button):after{content:"";position:absolute;left:0;right:100%;bottom:3px;height:1px;background:#000;transition:right .22s ease}
+.desktop-nav a:not(.button):hover:after{right:0}
+.site-menu{display:none}
+.site-menu summary{list-style:none;cursor:pointer}
+.site-menu summary::-webkit-details-marker{display:none}
+.system-ladder{position:relative;z-index:2;display:grid;grid-template-columns:1fr;gap:7px;margin-top:34px;padding:15px;border:1px solid #ffffff26;border-radius:12px;background:#ffffff0b}
+.system-ladder span{display:flex;align-items:center;gap:10px;font-size:12px;font-weight:700;letter-spacing:.4px}
+.system-ladder span b{display:grid;place-items:center;width:25px;height:25px;border:1px solid #ffffff38;border-radius:50%;font-size:8px;color:#a9b0ff}
+.system-ladder i{display:block;justify-self:center;font-style:normal;font-size:9px;opacity:.45;transform:rotate(90deg)}
+.member-bottom{margin-top:28px}
+.member-bottom>p:first-child{max-width:260px}
+.member-monogram{top:165px}
+.ai-orbit{position:relative}
+.ai-orbit:after{content:"";position:absolute;width:145px;height:145px;border:1px solid #0000fe55;border-radius:50%;animation:ziv-orbit 6s linear infinite}
+.ai-orbit strong{position:relative;z-index:1}
+@keyframes ziv-orbit{to{transform:rotate(360deg) scale(.82)}}
+
+/* Los tres niveles se presentan como capítulos editoriales, no como tarjetas SaaS genéricas. */
+.pricing-section{background:#0b0b0c!important;color:#fff!important;padding-block:120px 130px!important}
+.plans-wrap{width:min(1240px,calc(100% - 72px))}
+.plans-heading{max-width:900px;margin-bottom:70px}
+.plans-heading .eyebrow{color:#9ea5ff;margin-bottom:22px}
+.plans-heading h2{font-size:clamp(52px,6.8vw,88px);line-height:.96;letter-spacing:-5px}
+.plans-heading>p:last-child{max-width:660px;margin-top:28px;color:#b9b9b5;font-size:18px;line-height:1.6}
+.plan-rail{display:grid;grid-template-columns:auto 1fr auto 1fr auto;align-items:center;gap:17px;margin-bottom:28px;color:#858581;font:10px Courier New,monospace;letter-spacing:1px}
+.plan-rail i{height:1px;background:#ffffff26}
+.plan-stack{display:grid;gap:34px}
+.plan-card{position:relative;display:grid;grid-template-columns:minmax(0,42fr) minmax(0,58fr);gap:64px;padding:58px;border-radius:26px;background:#f7f6f2;color:#111;box-shadow:0 30px 80px #0007}
+.plan-intro{align-self:start;position:sticky;top:96px}
+.plan-label{display:flex;align-items:center;gap:12px;margin-bottom:27px;font-size:13px;letter-spacing:.9px}
+.plan-label>span{display:grid;place-items:center;width:31px;height:31px;border:1px solid currentColor;border-radius:50%;font-size:9px;opacity:.55}
+.plan-label>small{margin-left:auto;font-size:9px;letter-spacing:.9px;opacity:.65}
+.plan-badge{padding:8px 11px;border:1px solid currentColor;border-radius:999px;opacity:1!important}
+.price-anchor{margin-bottom:36px}
+.plan-price{font-size:clamp(68px,7vw,104px);line-height:.83;letter-spacing:-7px;font-weight:600;white-space:nowrap}
+.price-anchor>span{display:block;margin-top:15px;font-size:11px;font-weight:700;letter-spacing:1.3px}
+.price-anchor>small{display:block;margin-top:6px;font-size:10px;opacity:.62}
+.monthly-price{margin-top:21px;font-size:18px;font-weight:700;letter-spacing:-.4px}
+.plan-intro h3{font-size:clamp(38px,4vw,55px);line-height:1;letter-spacing:-2.8px;margin-bottom:22px}
+.plan-intro>p{max-width:430px;font-size:15px;line-height:1.7;opacity:.72}
+.plan-cta{display:flex;align-items:center;justify-content:space-between;width:100%;max-width:430px;min-height:58px;margin-top:34px;padding:17px 20px;border-radius:10px;background:#111;color:#fff;font-size:12px;font-weight:800;letter-spacing:.5px;transition:transform .2s ease,box-shadow .2s ease}
+.plan-cta:hover{transform:translateY(-3px);box-shadow:0 14px 30px #0002}
+.plan-body{min-width:0;padding-top:58px}
+.plan-promise{padding:27px 0;border-top:1px solid currentColor;border-bottom:1px solid currentColor;font-size:clamp(24px,2.5vw,36px);line-height:1.12;letter-spacing:-1.3px;font-weight:600}
+.feature-lead{margin:34px 0 17px;font-size:10px;font-weight:800;letter-spacing:1.4px;opacity:.55}
+.feature-list{display:grid;grid-template-columns:1fr 1fr;gap:0 24px;padding:0;list-style:none}
+.feature-list li{position:relative;padding:12px 0 12px 23px;border-bottom:1px solid #11111118;font-size:13px;line-height:1.45}
+.feature-list li:before{content:"+";position:absolute;left:0;font-weight:800;color:var(--blue)}
+.plan-business{background:var(--blue);color:#fff}
+.plan-business .plan-intro{top:96px}
+.plan-business .feature-list li{border-color:#ffffff25}
+.plan-business .feature-list li:before{color:#fff}
+.light-cta{background:#fff;color:#0000d9}
+.sales-flow{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:17px 18px;border:1px solid #ffffff38;border-radius:12px;background:#00000018;font-size:9px;font-weight:800;letter-spacing:.5px}
+.sales-flow i{font-style:normal;opacity:.55}
+.demo-metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin-top:17px;background:#ffffff30;border:1px solid #ffffff30;border-radius:12px;overflow:hidden}
+.demo-metrics span{display:flex;flex-direction:column;gap:7px;padding:20px 14px;background:#0000e6;font-size:9px;text-transform:uppercase;letter-spacing:.7px}
+.demo-metrics b{font-size:20px;letter-spacing:-1px}
+.demo-disclaimer{margin:11px 2px 31px;font-size:9px;line-height:1.5;opacity:.65}
+.plan-ai{background:#151517;color:#fff;border:1px solid #ffffff21;box-shadow:inset 0 1px 0 #ffffff29,0 30px 80px #0009}
+.plan-ai:before{content:"";position:absolute;right:4%;top:3%;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle,#0000fe90 0,transparent 67%);filter:blur(9px);pointer-events:none}
+.plan-ai .feature-list li{border-color:#ffffff18}
+.plan-ai .feature-list li:before{color:#9ea5ff}
+.premium-badge{color:#fff;background:#0000fe;border-color:#4f59ff}
+.ai-cta{background:#0000fe}
+.ai-demo{position:relative;padding:25px;border:1px solid #ffffff23;border-radius:16px;background:#0d0d0f}
+.chat-label{margin-bottom:20px;font-size:9px;letter-spacing:1.4px;color:#9ea5ff}
+.chat-bubble{max-width:84%;padding:16px 18px;border-radius:15px;margin-top:12px}
+.chat-bubble span{display:block;margin-bottom:6px;font-size:9px;font-weight:800;letter-spacing:.8px;text-transform:uppercase}
+.chat-bubble p{font-size:13px;line-height:1.55}
+.chat-bubble.customer{background:#29292d}
+.chat-bubble.assistant{margin-left:auto;background:#0000fe}
+.ai-flow{display:flex;align-items:center;gap:7px;margin-top:22px;overflow-x:auto;padding-bottom:3px;font-size:9px;white-space:nowrap}
+.ai-flow span{padding:9px 10px;border:1px solid #ffffff2b;border-radius:999px}
+.ai-flow i{font-style:normal;color:#6f78ff}
+.ai-statement{display:flex;flex-direction:column;gap:7px;margin-block:30px;padding-left:20px;border-left:3px solid #0000fe}
+.ai-statement strong{font-size:26px;letter-spacing:-1px}
+.ai-statement span{font-size:15px;color:#b8b8bb}
+.ai-note{margin-top:23px;padding:17px;border:1px solid #ffffff1e;border-radius:10px;color:#aaaab0;font-size:11px;line-height:1.6}
+
+.comparison{display:grid;grid-template-columns:280px minmax(0,1fr);gap:55px;margin-top:95px;padding-top:65px;border-top:1px solid #ffffff24}
+.comparison-heading h3{margin-top:17px;font-size:43px;line-height:1;letter-spacing:-2px}
+.comparison-heading>p:last-child{margin-top:22px;color:#97979a;font-size:12px;line-height:1.6}
+.comparison-scroll{min-width:0;overflow-x:auto;border:1px solid #ffffff22;border-radius:16px;background:#121214;scrollbar-color:#606069 #18181b}
+.comparison-scroll:focus-visible{outline:2px solid #fff;outline-offset:4px}
+.comparison table{width:100%;min-width:680px;border-collapse:collapse;font-size:12px}
+.comparison th,.comparison td{padding:16px 18px;border-bottom:1px solid #ffffff15;text-align:center}
+.comparison th:first-child{text-align:left}
+.comparison tbody th{font-weight:500;color:#c5c5c7}
+.comparison thead th{position:sticky;top:0;background:#1a1a1d;color:#fff;font-size:10px;letter-spacing:.8px}
+.comparison tbody td{font-size:15px;color:#7f87ff}
+.comparison tbody tr:last-child th,.comparison tbody tr:last-child td{border-bottom:0}
+
+.form-field select{width:100%;min-height:48px;border:1px solid #d7d3ce;border-radius:8px;padding:12px;background:#faf9f7;color:#000;font-size:16px}
+.form-field select:focus-visible,.form-field input:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+
+@supports(animation-timeline:view()){
+  .plan-card,.comparison{animation:ziv-reveal linear both;animation-timeline:view();animation-range:entry 5% cover 28%}
+  @keyframes ziv-reveal{from{opacity:.12;transform:translateY(38px)}to{opacity:1;transform:translateY(0)}}
+}
+
+@media(max-width:1050px){
+  .desktop-nav{gap:17px!important}
+  .plan-card{grid-template-columns:minmax(0,40fr) minmax(0,60fr);gap:38px;padding:44px}
+  .plan-price{font-size:74px;letter-spacing:-5px}
+  .feature-list{grid-template-columns:1fr}
+  .plan-body{padding-top:48px}
+  .comparison{grid-template-columns:220px minmax(0,1fr);gap:35px}
+}
+
+@media(max-width:900px){
+  .desktop-nav{display:none!important}
+  .site-menu{display:block;position:relative;z-index:60}
+  .site-menu summary{display:flex;align-items:center;gap:18px;padding:12px 15px;border:1px solid #aaa29d;border-radius:9px;font-size:12px;font-weight:700}
+  .site-menu[open] summary{background:#000;color:#fff;border-color:#000}
+  .site-menu[open] summary span:last-child{transform:rotate(45deg)}
+  .site-menu summary span:last-child{font-size:18px;line-height:1;transition:transform .2s ease}
+  .site-menu nav{position:absolute;right:0;top:calc(100% + 10px);display:flex!important;flex-direction:column!important;align-items:stretch!important;gap:0!important;width:min(340px,calc(100vw - 40px));padding:12px;border:1px solid #ffffff26;border-radius:15px;background:#111;color:#fff;box-shadow:0 25px 60px #0005}
+  .site-menu nav>a{display:flex!important;align-items:center;gap:17px;padding:17px 14px;border-bottom:1px solid #ffffff1c;font-size:18px}
+  .site-menu nav>a span{font:9px Courier New,monospace;color:#8585ff}
+  .site-menu nav>a.menu-contact{margin-top:10px;border:0;border-radius:9px;background:#0000fe;font-size:12px;font-weight:700}
+  .plan-card{grid-template-columns:1fr;padding:42px}
+  .plan-intro{position:static}
+  .plan-body{padding-top:0}
+  .plan-intro>p,.plan-cta{max-width:620px}
+  .feature-list{grid-template-columns:1fr 1fr}
+  .comparison{grid-template-columns:1fr}
+  .comparison-heading{max-width:430px}
+}
+
+@media(max-width:760px){
+  html{scroll-padding-top:70px}
+  .plans-wrap{width:calc(100% - 40px)}
+  .pricing-section{padding-block:75px 90px!important}
+  .plans-heading{margin-bottom:45px}
+  .plans-heading h2{font-size:49px;letter-spacing:-3px}
+  .plans-heading>p:last-child{font-size:15px}
+  .plan-rail{display:none}
+  .plan-stack{gap:22px}
+  .plan-card{padding:27px 23px;border-radius:19px;gap:32px}
+  .plan-label{margin-bottom:24px}
+  .plan-price{font-size:clamp(57px,18vw,78px);letter-spacing:-5px}
+  .monthly-price{font-size:16px}
+  .plan-intro h3{font-size:39px;letter-spacing:-2px}
+  .plan-intro>p{font-size:14px}
+  .plan-promise{font-size:27px}
+  .feature-list{grid-template-columns:1fr}
+  .feature-list li{font-size:12px;padding-block:11px}
+  .sales-flow{display:grid;grid-template-columns:1fr;gap:0;overflow:visible;white-space:normal;padding-block:9px}
+  .sales-flow span{padding:10px 0;border-bottom:1px solid #ffffff24}
+  .sales-flow span:last-child{border-bottom:0}
+  .sales-flow i{display:none}
+  .demo-metrics{grid-template-columns:1fr 1fr}
+  .demo-metrics span{min-height:76px}
+  .chat-bubble{max-width:94%}
+  .ai-flow{display:grid;grid-template-columns:1fr;overflow:visible;white-space:normal}
+  .ai-flow span{border-radius:9px}
+  .ai-flow i{display:none}
+  .ai-statement strong{font-size:23px}
+  .comparison{margin-top:65px;padding-top:45px;gap:28px}
+  .comparison-scroll{margin-right:-3px}
+  .comparison table{min-width:600px}
+  .comparison th,.comparison td{padding:14px 13px}
+  .comparison th:first-child{position:sticky;left:0;z-index:1;background:#121214;box-shadow:8px 0 13px #0005}
+  .comparison thead th:first-child{z-index:3;background:#1a1a1d}
+  .system-ladder{grid-template-columns:1fr auto 1fr auto 1fr;align-items:center;gap:5px;padding:12px 9px}
+  .system-ladder span{flex-direction:column;gap:5px;font-size:9px;text-align:center}
+  .system-ladder span b{width:22px;height:22px}
+  .system-ladder i{display:block;font-style:normal;font-size:10px;opacity:.5;transform:none}
+  .service-ribbon{flex-wrap:nowrap!important;justify-content:space-between!important}
+  .service-ribbon span{display:none!important}
+  .service-ribbon span:nth-child(1),.service-ribbon span:nth-child(2),.service-ribbon span:nth-child(3),.service-ribbon span:nth-child(8),.service-ribbon span:nth-child(9){display:inline!important}
+  .demo-section{padding-top:38px!important}
+}
+
+@media(max-width:430px){
+  .plans-wrap{width:calc(100% - 28px)}
+  .plans-heading h2{font-size:42px}
+  .plan-card{padding:24px 18px}
+  .plan-price{font-size:55px;letter-spacing:-4px}
+  .plan-label{gap:8px}
+  .plan-label b{font-size:11px}
+  .plan-label>small{font-size:8px;padding-inline:7px}
+  .plan-intro h3{font-size:35px}
+  .ai-demo{padding:18px}
+  .floating-nav a{padding-inline:9px!important}
+}
