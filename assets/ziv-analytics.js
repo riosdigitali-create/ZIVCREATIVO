@@ -1,5 +1,5 @@
 (function(){
- var ENDPOINT='https://ziv-metricas-crm.isma-rhisma94.chatgpt.site/api/events',SITE='zivcreativo.shop',key='ziv_session_id',sessionId=sessionStorage.getItem(key),engaged=false,started=new WeakSet(),params=new URLSearchParams(location.search);
+ var ENDPOINT='https://crm.ziv.mx/api/events',SITE='zivcreativo.shop',key='ziv_session_id',sessionId=sessionStorage.getItem(key),engaged=false,started=new WeakSet(),params=new URLSearchParams(location.search);
  if(!sessionId){sessionId=crypto.randomUUID().replace(/-/g,'');sessionStorage.setItem(key,sessionId)}
  function referrer(){try{return document.referrer?new URL(document.referrer).hostname:null}catch(e){return null}}
  function send(event,label){fetch(ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({site:SITE,event:event,sessionId:sessionId,path:location.pathname,label:label?String(label).trim().slice(0,120):null,referrerHost:referrer(),utmSource:params.get('utm_source'),utmMedium:params.get('utm_medium'),utmCampaign:params.get('utm_campaign')}),keepalive:true,mode:'cors'}).catch(function(){})}
