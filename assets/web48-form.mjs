@@ -7,7 +7,9 @@ export function initializeDemoForm(doc) {
     const win = doc.defaultView || (typeof window !== "undefined" ? window : null);
     if (!win) return;
     win.dataLayer = win.dataLayer || [];
-    win.dataLayer.push({ event: `ziv_${name}`, ...details });
+    const googleEvent = name === "demo_message_prepared" ? "generate_lead" : `ziv_${name}`;
+    if (typeof win.gtag === "function") win.gtag("event", googleEvent, details);
+    else win.dataLayer.push({ event: googleEvent, ...details });
   };
   const submit = doc.getElementById("prepare-demo");
   const error = doc.getElementById("form-error");
