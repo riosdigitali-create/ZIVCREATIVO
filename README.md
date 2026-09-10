@@ -19,7 +19,7 @@ El rediseño del 31 de agosto conserva esas seis muestras y añade una galería 
 
 La oferta se presenta en tres niveles acumulativos: ZIV WEB por $5,900 MXN, ZIV BUSINESS por $12,900 MXN y ZIV AI con implementación de $19,900 MXN más operación desde $499 MXN al mes según uso y volumen. Las métricas comerciales son ilustrativas y no se prometen ventas ni cierres automáticos.
 
-No hay cobros, claves, API de Google Ads ni etiquetas publicitarias en este repositorio. El visitante elige el nivel, revisa el mensaje preparado y lo envía por sí mismo en WhatsApp. La página no activa anuncios ni gasto.
+No hay cobros, claves ni API de Google Ads en este repositorio. La etiqueta de Google Ads `AW-18416108948` mide visitas y acciones relevantes; una solicitud guardada correctamente emite el evento `generate_lead`. El visitante elige el nivel, revisa el mensaje preparado y lo envía por sí mismo en WhatsApp. La página no activa anuncios ni gasto por sí sola.
 
 ## Verificación
 
