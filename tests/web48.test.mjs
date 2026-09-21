@@ -164,7 +164,9 @@ test("Nueva oferta: cinco categorías, precios y avisos responsables", async () 
   assert.equal((html.match(/data-plan-panel=/g) || []).length, 5);
   assert.match(html, /no requiere API de Meta/i);
   assert.match(html, /consumo de IA no incluidos/i);
-  assert.ok((html.match(/<summary>Ver proyectos y demos/g) || []).length >= 4);
+  assert.ok((html.match(/<summary>Ver proyectos y demos/g) || []).length >= 2);
+  assert.equal((html.match(/class="service-examples-link"/g) || []).length, 2);
+  assert.equal((html.match(/Explora 10 demos de ecommerce/g) || []).length, 2);
   assert.match(html, /Ver ejemplos de negocios en línea/);
   assert.match(html, /https:\/\/ismaelrios\.ziv\.mx\//);
   assert.match(html, /https:\/\/ziv\.mx\/shop\/distrito-demo/);

@@ -283,6 +283,7 @@ html{scroll-padding-top:90px}
 .service-examples summary::-webkit-details-marker{display:none}
 .service-examples summary span{display:grid;place-items:center;width:25px;height:25px;border-radius:50%;background:#6d5ce7;color:#fff;font-size:15px;transition:transform .2s ease}
 .service-examples[open] summary span{transform:rotate(45deg)}
+.service-examples-link{display:flex;align-items:center;justify-content:space-between;gap:18px;min-height:68px;margin:-7px 0 23px;padding:13px 16px;border:1px solid #20201d;border-radius:13px;background:#20201d;color:#fff;transition:transform .2s,background .2s}.service-examples-link:hover{transform:translateY(-2px);background:#353530}.service-examples-link span{display:grid;gap:4px}.service-examples-link b{font-size:13px}.service-examples-link small{color:#c7c2bb;font-size:10px;font-weight:500}.service-examples-link i{display:grid;place-items:center;flex:0 0 auto;width:31px;height:31px;border-radius:50%;background:#6d5ce7;font-size:15px;font-style:normal}
 .service-example-list{display:grid;padding:0 10px 10px}
 .service-example-list a{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:12px 8px;border-top:1px solid #e0dad2;color:#252421;transition:color .2s,transform .2s}
 .service-example-list a:hover{color:#5a47df;transform:translateX(3px)}
