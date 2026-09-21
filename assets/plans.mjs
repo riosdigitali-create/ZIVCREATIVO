@@ -42,6 +42,13 @@ tabs.forEach((tab, index) => {
   });
 });
 
+document.querySelectorAll(".service-examples").forEach((examples) => {
+  examples.addEventListener("toggle", () => {
+    const activePanel = panels.find((panel) => panel.classList.contains("is-active"));
+    requestAnimationFrame(() => syncHeight(activePanel));
+  });
+});
+
 const selected = tabs.find((tab) => tab.getAttribute("aria-selected") === "true");
 if (selected) selectPlan(selected.dataset.planTab);
 window.addEventListener("resize", () => {
