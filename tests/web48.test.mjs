@@ -169,6 +169,10 @@ test("Nueva oferta: cinco categorías, precios y avisos responsables", async () 
   assert.match(html, /https:\/\/ziv\.mx\/shop\/distrito-demo/);
   assert.match(html, /category=Hamburguesas/);
   assert.match(html, /category=Ropa/);
+  assert.match(html, /Hasta 15,000 contactos/);
+  assert.match(html, /<b>100<\/b><span>contactos<\/span><strong>\$280<\/strong>/);
+  assert.match(html, /<b>300<\/b><span>contactos<\/span><strong>\$350<\/strong>/);
+  assert.match(html, /<b>Hasta 1,500<\/b><span>contactos<\/span><strong>\$500<\/strong>/);
   assert.doesNotMatch(html, /Somos Ismael|Abraham|525539480470/);
   for (const href of html.matchAll(/href="(https:\/\/wa\.me\/[^"?]+\?text=[^"]+)"/g)) {
     const url = new URL(href[1]);
