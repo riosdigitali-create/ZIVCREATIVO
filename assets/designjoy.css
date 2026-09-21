@@ -357,3 +357,6 @@ html{scroll-padding-top:90px}
 .build-question .plan-answer button{color:#c8c1ff}
 .build-question .service-card{color:#1d1d1a}
 .build-question .service-note{background:#34342f;color:#d6d2cb}
+.build-question .online-example-grid>a{color:#252421}
+.build-question .online-example-grid>a:hover{color:#4938c9}
+.build-question .online-example-grid .featured-online-example{color:#fff}
