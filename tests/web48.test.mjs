@@ -169,18 +169,16 @@ test("Nueva oferta: cinco categorías, precios y avisos responsables", async () 
   assert.match(html, /data-change-plan/);
   assert.match(html, /no requiere API de Meta/i);
   assert.match(html, /consumo de IA no incluidos/i);
-  assert.ok((html.match(/<summary>Ver proyectos y demos/g) || []).length >= 2);
-  assert.equal((html.match(/class="service-examples-link"/g) || []).length, 2);
-  assert.equal((html.match(/Explora 10 demos de ecommerce/g) || []).length, 2);
+  assert.ok((html.match(/<summary>Ver proyectos y demos/g) || []).length >= 1);
+  assert.equal((html.match(/class="service-examples-link"/g) || []).length, 3);
+  assert.equal((html.match(/Ver las 10 demos/g) || []).length, 4);
   assert.match(html, /Ver ejemplos de negocios en línea/);
   assert.match(html, /https:\/\/ismaelrios\.ziv\.mx\//);
-  assert.match(html, /https:\/\/ziv\.mx\/shop\/distrito-demo/);
-  assert.match(html, /category=Hamburguesas/);
-  assert.match(html, /category=Ropa/);
-  for (const category of ["Hamburguesas", "Alitas", "Pizza", "Abarrotes", "Tenis", "Ropa", "Muebles", "Postres"])
-    assert.match(html, new RegExp(`category=${category}`));
-  assert.match(html, /Ver todos los diseños disponibles/);
-  assert.match(html, /https:\/\/ziv\.mx\/\?view=templates/);
+  assert.doesNotMatch(html, /https:\/\/ziv\.mx\/(?:\?view=templates|shop\/distrito-demo)/);
+  assert.match(html, /demos-ecommerce\.html#hamburguesas/);
+  assert.match(html, /demos-ecommerce\.html#perfumeria/);
+  for (const category of ["hamburguesas", "alitas", "pizza", "abarrotes", "tenis", "dulceria", "muebles", "postres"])
+    assert.match(html, new RegExp(`demos-ecommerce\\.html#${category}`));
   assert.match(html, /Hasta 15,000 contactos/);
   assert.match(html, /<b>100<\/b><span>contactos<\/span><strong>\$280<\/strong>/);
   assert.match(html, /<b>300<\/b><span>contactos<\/span><strong>\$350<\/strong>/);
@@ -191,6 +189,15 @@ test("Nueva oferta: cinco categorías, precios y avisos responsables", async () 
     assert.equal(url.pathname, "/525540161213");
     assert.ok(url.searchParams.get("text")?.startsWith("Hola ZIV Creativo."));
   }
+});
+
+test("Galería ecommerce propia contiene diez demos y ningún enlace a ziv.mx", async () => {
+  const html = await fs.readFile(new URL("../demos-ecommerce.html", import.meta.url), "utf8");
+  assert.equal((html.match(/class="demo-card /g) || []).length, 10);
+  assert.equal((html.match(/\/assets\/demo-gallery\//g) || []).length, 10);
+  assert.doesNotMatch(html, /href="https:\/\/ziv\.mx/);
+  for (const category of ["hamburguesas", "alitas", "pizza", "abarrotes", "tenis", "dulceria", "muebles", "ferreteria", "postres", "perfumeria"])
+    assert.match(html, new RegExp(`id="${category}"`));
 });
 
 test("Portada muestra ocho proyectos públicos y ningún panel privado", async () => {
