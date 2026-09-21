@@ -164,11 +164,16 @@ test("Nueva oferta: cinco categorías, precios y avisos responsables", async () 
   assert.equal((html.match(/data-plan-panel=/g) || []).length, 5);
   assert.match(html, /no requiere API de Meta/i);
   assert.match(html, /consumo de IA no incluidos/i);
-  assert.ok((html.match(/<summary>Ver proyectos y demos/g) || []).length >= 6);
+  assert.ok((html.match(/<summary>Ver proyectos y demos/g) || []).length >= 4);
+  assert.match(html, /Ver ejemplos de negocios en línea/);
   assert.match(html, /https:\/\/ismaelrios\.ziv\.mx\//);
   assert.match(html, /https:\/\/ziv\.mx\/shop\/distrito-demo/);
   assert.match(html, /category=Hamburguesas/);
   assert.match(html, /category=Ropa/);
+  for (const category of ["Hamburguesas", "Alitas", "Pizza", "Abarrotes", "Tenis", "Ropa", "Muebles", "Postres"])
+    assert.match(html, new RegExp(`category=${category}`));
+  assert.match(html, /Ver todos los diseños disponibles/);
+  assert.match(html, /https:\/\/ziv\.mx\/\?view=templates/);
   assert.match(html, /Hasta 15,000 contactos/);
   assert.match(html, /<b>100<\/b><span>contactos<\/span><strong>\$280<\/strong>/);
   assert.match(html, /<b>300<\/b><span>contactos<\/span><strong>\$350<\/strong>/);
@@ -181,63 +186,16 @@ test("Nueva oferta: cinco categorías, precios y avisos responsables", async () 
   }
 });
 
-test("Portada con tres destacados y portafolio completo con demos activas", async () => {
+test("Portada muestra tres sistemas reales construidos", async () => {
   const html = await fs.readFile(new URL("../index.html", import.meta.url), "utf8");
-  const portfolio = await fs.readFile(new URL("../portafolio.html", import.meta.url), "utf8");
-  const previewPortfolio = await fs.readFile(
-    new URL("../../web-ventas/public/portafolio.html", import.meta.url),
-    "utf8",
-  );
-  const manifest = JSON.parse(
-    await fs.readFile(new URL("../../demos/projects.json", import.meta.url), "utf8"),
-  );
-  const active = manifest.filter((p) => p.active !== false);
   const section = html.match(/<section[^>]*id="trabajo"[\s\S]*?<\/section>/)[0];
   assert.deepEqual(
     [...section.matchAll(/data-project="([^"]+)"/g)].map((x) => x[1]),
-    active.slice(0, 3).map((p) => p.slug),
+    ["ziv-commerce", "ziv-crm", "aviv-credit"],
   );
-  assert.deepEqual(
-    [...portfolio.matchAll(/data-project="([^"]+)"/g)].map((x) => x[1]),
-    active.map((p) => p.slug),
-  );
-  assert.deepEqual(
-    [...portfolio.matchAll(/data-project="([^"]+)"/g)].map((x) => x[1]),
-    [...previewPortfolio.matchAll(/data-project="([^"]+)"/g)].map((x) => x[1]),
-    "Las dos versiones conservan los mismos proyectos",
-  );
-  for (const p of active) {
-    assert.ok(portfolio.includes('href="https://' + p.slug + '.pages.dev/"'));
-    const thumbnail = p.thumbFile || p.thumb + ".webp";
-    assert.ok(portfolio.includes("/thumbs/" + thumbnail));
-    assert.ok((await fs.stat(new URL("../thumbs/" + thumbnail, import.meta.url))).isFile());
-  }
-  for (const domain of [
-    "aritzasalazar.com",
-    "maggiesalmeron.com",
-    "caesi.mx",
-    "aviv.mx",
-    "theimagemethod.com",
-    "mundosimz.com",
-  ])
-    assert.ok(portfolio.includes("https://" + domain + "/"));
-  assert.match(portfolio, /aria-pressed="true"/);
-  assert.match(portfolio, /aria-live="polite"/);
-  assert.match(portfolio, />9<\/strong>conceptos web/);
-  assert.doesNotMatch(portfolio, /ciruela-riosdigital|CIRUELA/);
-  assert.doesNotMatch(portfolio, /1,950|iframe/);
-  const previewLanding = await fs.readFile(
-    new URL("../../web-ventas/lib/landing.ts", import.meta.url),
-    "utf8",
-  );
-  const previewUpdate = await fs.readFile(
-    new URL("../../web-ventas/lib/landing-updated.ts", import.meta.url),
-    "utf8",
-  );
-  for (const p of active.slice(0, 2))
-    assert.ok(previewLanding.includes(p.slug), p.name + " está también en la página con CRM");
-  assert.ok(
-    previewUpdate.includes(active[2].slug),
-    active[2].name + " está también en la página con CRM",
-  );
+  for (const url of ["https://ziv.mx/commerce", "https://crm.ziv.mx/", "https://aviv.mx/aviv-crm"])
+    assert.ok(section.includes(`href="${url}"`));
+  for (const name of ["ZIV COMMERCE HUB", "CRM ZIV", "CEREBRO AVIV"])
+    assert.ok(section.includes(name));
+  assert.match(section, /Sistemas que hemos/);
 });

@@ -42,7 +42,7 @@ tabs.forEach((tab, index) => {
   });
 });
 
-document.querySelectorAll(".service-examples").forEach((examples) => {
+document.querySelectorAll(".service-examples, .online-business-examples").forEach((examples) => {
   examples.addEventListener("toggle", () => {
     const activePanel = panels.find((panel) => panel.classList.contains("is-active"));
     requestAnimationFrame(() => syncHeight(activePanel));
