@@ -1,9 +1,20 @@
 export const OFFER = {
   price: 5900,
   currency: "MXN",
-  whatsapp: "525539480470",
+  whatsapp: "525540161213",
   reference: "ZIV-SYSTEMS",
-  plans: ["ZIV WEB", "ZIV BUSINESS", "ZIV AI", "Quiero orientación"],
+  plans: [
+    "Catálogo",
+    "Catálogo Plus",
+    "Ecommerce",
+    "Ecommerce Plus",
+    "CRM ZIV",
+    "Agente IA",
+    "ZIV Web",
+    "Ecommerce Propio",
+    "CRM + Asistente IA",
+    "Quiero orientación",
+  ],
 };
 export function validateDemoRequest(request) {
   for (const value of [request.name, request.business, request.activity, request.city]) {
@@ -23,14 +34,14 @@ export function validateDemoRequest(request) {
 export function buildDemoMessage(request) {
   if (validateDemoRequest(request)) throw new Error("Solicitud incompleta");
   return [
-    "Hola ZIV. Quiero construir el sistema digital de mi negocio.",
+    "Hola ZIV Creativo. Quiero construir el sistema digital de mi negocio.",
     `Nombre: ${request.name.trim()}`,
     `Teléfono: ${request.phone.trim()}`,
     `Negocio: ${request.business.trim()}`,
     `Actividad: ${request.activity.trim()}`,
     `Ciudad: ${request.city.trim()}`,
-    `Nivel de interés: ${request.plan}`,
-    "Revisé los precios publicados: ZIV WEB $5,900 MXN; ZIV BUSINESS $12,900 MXN; ZIV AI $19,900 MXN de implementación + mensualidad desde $499 MXN.",
+    `Servicio de interés: ${request.plan}`,
+    "Revisé los precios publicados en la sección de servicios.",
     "Entiendo que el alcance, calendario y posibles servicios recurrentes se confirman por escrito.",
     "Esta conversación no me obliga a contratar.",
     `Referencia: ${OFFER.reference}`,

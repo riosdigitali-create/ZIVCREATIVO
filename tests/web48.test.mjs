@@ -15,19 +15,20 @@ const request = {
   business: " Magnolia & Co. ",
   activity: "Diseño de interiores",
   city: "Ciudad de México",
-  plan: "ZIV BUSINESS",
+  plan: "Ecommerce",
   acceptedPrice: true,
   contactConsent: true,
 };
-test("Precios, niveles y destinatario correctos", () => {
+test("Servicios y destinatario correctos", () => {
   assert.equal(OFFER.price, 5900);
-  assert.equal(OFFER.whatsapp, "525539480470");
-  assert.deepEqual(OFFER.plans, ["ZIV WEB", "ZIV BUSINESS", "ZIV AI", "Quiero orientación"]);
+  assert.equal(OFFER.whatsapp, "525540161213");
+  assert.ok(OFFER.plans.includes("Catálogo"));
+  assert.ok(OFFER.plans.includes("Ecommerce"));
+  assert.ok(OFFER.plans.includes("CRM + Asistente IA"));
   assert.equal(validateDemoRequest(request), null);
   assert.match(buildDemoMessage(request), /Negocio: Magnolia & Co\./);
-  assert.match(buildDemoMessage(request), /Nivel de interés: ZIV BUSINESS/);
-  assert.match(buildDemoMessage(request), /ZIV WEB \$5,900 MXN/);
-  assert.match(buildDemoMessage(request), /ZIV AI \$19,900 MXN/);
+  assert.match(buildDemoMessage(request), /Servicio de interés: Ecommerce/);
+  assert.match(buildDemoMessage(request), /precios publicados en la sección de servicios/);
 });
 test("Rechaza datos incompletos y falta de aceptación del precio", () => {
   assert.ok(validateDemoRequest({ ...request, acceptedPrice: false }));
@@ -38,7 +39,7 @@ test("Rechaza datos incompletos y falta de aceptación del precio", () => {
 test("El mensaje no puede alterar el destinatario ni crear parámetros extra", () => {
   const url = new URL(buildWhatsAppUrl({ ...request, business: "&text=otro / ? # á" }));
   assert.equal(url.origin, "https://wa.me");
-  assert.equal(url.pathname, "/525539480470");
+  assert.equal(url.pathname, "/525540161213");
   assert.deepEqual([...url.searchParams.keys()], ["text"]);
   assert.match(url.searchParams.get("text"), /&text=otro/);
 });
@@ -153,20 +154,22 @@ test("Rediseño: navegación completa, imágenes locales y accesibilidad básica
   assert.match(css, /@media\(max-width:760px\)/);
 });
 
-test("Nueva oferta: tres niveles, precios, comparador y avisos responsables", async () => {
+test("Nueva oferta: cinco categorías, precios y avisos responsables", async () => {
   const html = await fs.readFile(new URL("../index.html", import.meta.url), "utf8");
-  for (const id of ["ziv-web", "ziv-business", "ziv-ai"])
-    assert.match(html, new RegExp(`id="${id}"`));
-  for (const price of ["$5,900", "$12,900", "$19,900", "$499"]) assert.ok(html.includes(price));
-  for (const item of [
-    "Panel administrativo",
-    "CRM integrado",
-    "Agente de ventas con Inteligencia Artificial",
-  ])
-    assert.ok(html.includes(item));
-  assert.match(html, /Datos ilustrativos/);
-  assert.match(html, /ni garantiza el cierre de ventas/i);
-  assert.match(html, /<table>/);
+  for (const category of ["catalogo", "ecommerce", "crm", "ia", "unico"])
+    assert.match(html, new RegExp(`data-plan-tab="${category}"`));
+  for (const price of ["$199", "$249", "$299", "$350", "$500", "$5,900", "$12,500", "$16,300"])
+    assert.ok(html.includes(price));
+  assert.equal((html.match(/data-plan-tab=/g) || []).length, 5);
+  assert.equal((html.match(/data-plan-panel=/g) || []).length, 5);
+  assert.match(html, /no requiere API de Meta/i);
+  assert.match(html, /consumo de IA no incluidos/i);
+  assert.doesNotMatch(html, /Ismael|Abraham|525539480470/);
+  for (const href of html.matchAll(/href="(https:\/\/wa\.me\/[^"?]+\?text=[^"]+)"/g)) {
+    const url = new URL(href[1]);
+    assert.equal(url.pathname, "/525540161213");
+    assert.ok(url.searchParams.get("text")?.startsWith("Hola ZIV Creativo."));
+  }
 });
 
 test("Portada con tres destacados y portafolio completo con demos activas", async () => {
