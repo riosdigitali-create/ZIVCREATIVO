@@ -5,6 +5,7 @@ const plansSection = document.querySelector(".service-plans");
 const answerBar = document.querySelector(".plan-answer");
 const answerText = document.querySelector("[data-plan-answer]");
 const changeButton = document.querySelector("[data-change-plan]");
+const questionBox = document.querySelector(".build-question");
 
 function syncHeight(panel) {
   if (!panelHost || !panel) return;
@@ -31,7 +32,7 @@ function selectPlan(name, focus = false) {
   if (answerBar) answerBar.hidden = false;
   if (answerText) answerText.textContent = activeTab.querySelector("b")?.textContent || activeTab.textContent.trim();
   syncHeight(activePanel);
-  if (focus) activeTab.focus();
+  requestAnimationFrame(() => answerBar?.focus({ preventScroll: true }));
 }
 
 tabs.forEach((tab, index) => {
@@ -63,7 +64,7 @@ changeButton?.addEventListener("click", () => {
   if (answerBar) answerBar.hidden = true;
   if (panelHost) panelHost.style.height = "0px";
   tabs[0]?.focus();
-  document.querySelector(".build-question")?.scrollIntoView({ behavior: "smooth", block: "center" });
+  questionBox?.scrollIntoView({ behavior: "smooth", block: "nearest" });
 });
 
 document.querySelectorAll(".service-examples, .online-business-examples").forEach((examples) => {

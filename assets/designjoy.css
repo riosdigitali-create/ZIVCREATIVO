@@ -348,3 +348,12 @@ html{scroll-padding-top:90px}
 
 /* Fondo principal limpio. */
 .hero-shell{background:#fff}
+
+/* La elección y sus planes viven en el mismo cuadro. */
+.service-plans.has-selection .build-question-copy,
+.service-plans.has-selection .service-tabs{display:none}
+.build-question .plan-answer{margin:0 0 22px;padding:0 0 20px;border:0;border-bottom:1px solid #ffffff24;border-radius:0;background:transparent;color:#fff}
+.build-question .plan-answer p{font-size:18px}
+.build-question .plan-answer button{color:#c8c1ff}
+.build-question .service-card{color:#1d1d1a}
+.build-question .service-note{background:#34342f;color:#d6d2cb}
