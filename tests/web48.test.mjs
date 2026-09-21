@@ -156,12 +156,17 @@ test("Rediseño: navegación completa, imágenes locales y accesibilidad básica
 
 test("Nueva oferta: cinco categorías, precios y avisos responsables", async () => {
   const html = await fs.readFile(new URL("../index.html", import.meta.url), "utf8");
-  for (const category of ["catalogo", "ecommerce", "crm", "ia", "unico"])
+  for (const category of ["catalogo", "web", "ecommerce", "ia", "crm"])
     assert.match(html, new RegExp(`data-plan-tab="${category}"`));
   for (const price of ["$199", "$249", "$299", "$350", "$500", "$5,900", "$12,500", "$16,300"])
     assert.ok(html.includes(price));
   assert.equal((html.match(/data-plan-tab=/g) || []).length, 5);
   assert.equal((html.match(/data-plan-panel=/g) || []).length, 5);
+  assert.match(html, /¿Qué te gustaría construir\?/);
+  for (const choice of ["Catálogo digital", "Página web", "Página ecommerce", "Agente IA", "CRM"])
+    assert.ok(html.includes(choice));
+  assert.equal((html.match(/class="service-panel is-active"/g) || []).length, 0);
+  assert.match(html, /data-change-plan/);
   assert.match(html, /no requiere API de Meta/i);
   assert.match(html, /consumo de IA no incluidos/i);
   assert.ok((html.match(/<summary>Ver proyectos y demos/g) || []).length >= 2);

@@ -1,6 +1,10 @@
 const tabs = [...document.querySelectorAll("[data-plan-tab]")];
 const panels = [...document.querySelectorAll("[data-plan-panel]")];
 const panelHost = document.querySelector(".service-panels");
+const plansSection = document.querySelector(".service-plans");
+const answerBar = document.querySelector(".plan-answer");
+const answerText = document.querySelector("[data-plan-answer]");
+const changeButton = document.querySelector("[data-change-plan]");
 
 function syncHeight(panel) {
   if (!panelHost || !panel) return;
@@ -23,6 +27,9 @@ function selectPlan(name, focus = false) {
     panel.setAttribute("aria-hidden", String(!selected));
     panel.inert = !selected;
   });
+  plansSection?.classList.add("has-selection");
+  if (answerBar) answerBar.hidden = false;
+  if (answerText) answerText.textContent = activeTab.querySelector("b")?.textContent || activeTab.textContent.trim();
   syncHeight(activePanel);
   if (focus) activeTab.focus();
 }
@@ -42,6 +49,23 @@ tabs.forEach((tab, index) => {
   });
 });
 
+changeButton?.addEventListener("click", () => {
+  tabs.forEach((tab, index) => {
+    tab.setAttribute("aria-selected", "false");
+    tab.tabIndex = index === 0 ? 0 : -1;
+  });
+  panels.forEach((panel) => {
+    panel.classList.remove("is-active");
+    panel.setAttribute("aria-hidden", "true");
+    panel.inert = true;
+  });
+  plansSection?.classList.remove("has-selection");
+  if (answerBar) answerBar.hidden = true;
+  if (panelHost) panelHost.style.height = "0px";
+  tabs[0]?.focus();
+  document.querySelector(".build-question")?.scrollIntoView({ behavior: "smooth", block: "center" });
+});
+
 document.querySelectorAll(".service-examples, .online-business-examples").forEach((examples) => {
   examples.addEventListener("toggle", () => {
     const activePanel = panels.find((panel) => panel.classList.contains("is-active"));
@@ -49,8 +73,7 @@ document.querySelectorAll(".service-examples, .online-business-examples").forEac
   });
 });
 
-const selected = tabs.find((tab) => tab.getAttribute("aria-selected") === "true");
-if (selected) selectPlan(selected.dataset.planTab);
+if (panelHost) panelHost.style.height = "0px";
 window.addEventListener("resize", () => {
   const activePanel = panels.find((panel) => panel.classList.contains("is-active"));
   syncHeight(activePanel);
