@@ -1,0 +1,2220 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TALLO — taller floral en Roma Norte, CDMX</title>
+<meta name="description" content="Taller floral en Zacatecas 61, Roma Norte. Arreglos de flor de temporada cortada esta mañana, entrega el mismo día en CDMX si pides antes de las 14:00.">
+<meta name="theme-color" content="#2F4033">
+<meta property="og:type" content="website">
+<meta property="og:title" content="TALLO — taller floral en Roma Norte, CDMX">
+<meta property="og:description" content="Flor de temporada, cortada esta mañana. Arreglos por ocasión, suscripción floral y entrega el mismo día en la Ciudad de México.">
+<meta property="og:image" content="https://images.unsplash.com/photo-1582794543139-8ac9cb0f7b11?auto=format&fit=crop&w=1600&q=75">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%232F4033'/%3E%3Cpath d='M16 25V13' stroke='%238C9C7E' stroke-width='1.5' fill='none'/%3E%3Ccircle cx='16' cy='10' r='3.4' fill='%23E3C9C0'/%3E%3Cpath d='M16 18c-3 0-5-1.6-5-4 2.8-.4 5 1.2 5 4z' fill='%238C9C7E'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Urbanist:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   TALLO — taller floral
+   Paleta: hueso / verde tallo / verde claro / terracota / tinta
+   ============================================================ */
+:root{
+  --hueso:#F7F4EE;
+  --hueso-2:#EFEAE0;
+  --tallo:#2F4033;
+  --verde:#8C9C7E;
+  --verde-osc:#5F6E52;
+  --terracota:#B8624B;
+  --tinta:#1B1B18;
+  --rosa:#E3C9C0;
+  --linea:rgba(27,27,24,.16);
+  --linea-suave:rgba(27,27,24,.09);
+  --serif:"Playfair Display",Georgia,"Times New Roman",serif;
+  --sans:"Urbanist",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+  --ease:cubic-bezier(.22,.61,.36,1);
+  --pad:clamp(20px,5vw,72px);
+  --header-h:66px;
+}
+*,*::before,*::after{box-sizing:border-box;}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;overflow-x:hidden;}
+body{
+  margin:0;
+  background-color:var(--hueso);
+  color:var(--tinta);
+  font-family:var(--sans);
+  font-weight:300;
+  font-size:16px;
+  line-height:1.65;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:1;
+  opacity:.55;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)' opacity='0.055'/%3E%3C/svg%3E");
+}
+img{max-width:100%;display:block;}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;}
+a{color:inherit;text-decoration:none;}
+input,select,textarea{font:inherit;color:inherit;}
+h1,h2,h3,h4{margin:0;font-weight:400;line-height:1.06;letter-spacing:-.01em;}
+p{margin:0;}
+ul,ol{margin:0;padding:0;list-style:none;}
+:focus-visible{outline:2px solid var(--terracota);outline-offset:3px;}
+::selection{background:var(--rosa);color:var(--tinta);}
+
+.wrap{width:100%;max-width:1360px;margin:0 auto;padding-left:var(--pad);padding-right:var(--pad);}
+.serif{font-family:var(--serif);}
+.it{font-style:italic;}
+.sci{font-family:var(--serif);font-style:italic;font-size:.82em;letter-spacing:.01em;}
+.eyebrow{
+  font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:600;
+  color:var(--verde-osc);
+}
+.eyebrow-tinta{color:rgba(27,27,24,.5);}
+.rule{height:1px;background:var(--linea-suave);border:0;margin:0;}
+.hidden{display:none !important;}
+
+/* ---------- reveal ---------- */
+.rv{opacity:0;transform:translateY(22px);transition:opacity .9s var(--ease),transform .9s var(--ease);}
+.rv.in{opacity:1;transform:none;}
+.rv-d1{transition-delay:.08s}.rv-d2{transition-delay:.16s}.rv-d3{transition-delay:.24s}.rv-d4{transition-delay:.32s}
+
+/* ============ HEADER ============ */
+.hdr{
+  position:sticky;top:0;z-index:60;
+  background:rgba(247,244,238,.92);
+  backdrop-filter:saturate(1.1) blur(8px);
+  border-bottom:1px solid var(--linea-suave);
+}
+.hdr-in{
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+  min-height:var(--header-h);
+}
+.logo{
+  font-family:var(--serif);font-size:24px;letter-spacing:.16em;
+  display:inline-flex;align-items:baseline;gap:9px;
+}
+.logo small{
+  font-family:var(--sans);font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--verde-osc);font-weight:600;
+}
+.nav-desk{display:none;align-items:center;gap:30px;}
+.nav-desk a{
+  font-size:13px;letter-spacing:.06em;color:rgba(27,27,24,.72);
+  padding:6px 0;position:relative;
+}
+.nav-desk a::after{
+  content:"";position:absolute;left:0;right:100%;bottom:2px;height:1px;background:var(--tallo);
+  transition:right .45s var(--ease);
+}
+.nav-desk a:hover::after{right:0;}
+.hdr-right{display:flex;align-items:center;gap:12px;}
+.hoy{
+  display:none;flex-direction:column;line-height:1.25;text-align:right;
+  padding-right:14px;border-right:1px solid var(--linea-suave);
+}
+.hoy b{font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:var(--terracota);}
+.hoy span{font-size:11.5px;color:rgba(27,27,24,.6);}
+.btn-cart{
+  display:inline-flex;align-items:center;gap:9px;
+  min-height:44px;padding:0 16px;border:1px solid var(--linea);
+  border-radius:999px;font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;
+  transition:background .35s var(--ease),color .35s var(--ease),border-color .35s var(--ease);
+}
+.btn-cart:hover{background:var(--tallo);color:var(--hueso);border-color:var(--tallo);}
+.btn-cart svg{width:17px;height:17px;flex:none;}
+.cart-count{
+  min-width:20px;height:20px;padding:0 5px;border-radius:999px;
+  background:var(--terracota);color:#fff;font-size:11px;font-weight:600;
+  display:inline-flex;align-items:center;justify-content:center;letter-spacing:0;
+}
+.btn-burger{
+  width:44px;height:44px;display:inline-flex;align-items:center;justify-content:center;
+  border:1px solid var(--linea);border-radius:999px;
+}
+.btn-burger svg{width:18px;height:18px;}
+@media(min-width:940px){
+  .nav-desk{display:flex;}
+  .hoy{display:flex;}
+  .btn-burger{display:none;}
+}
+
+/* ---------- menú móvil ---------- */
+.mnav{
+  position:fixed;left:0;right:0;top:0;z-index:70;
+  background:var(--tallo);color:var(--hueso);
+  transform:translateY(-102%);
+  transition:transform .62s var(--ease);
+  padding:22px var(--pad) 40px;
+  max-height:100dvh;overflow-y:auto;
+}
+.mnav.open{transform:none;}
+.mnav-top{display:flex;align-items:center;justify-content:space-between;min-height:var(--header-h);}
+.mnav-top .logo{color:var(--hueso);}
+.mnav-top .logo small{color:var(--verde);}
+.mnav-close{width:44px;height:44px;display:inline-flex;align-items:center;justify-content:center;border:1px solid rgba(247,244,238,.3);border-radius:999px;}
+.mnav-close svg{width:18px;height:18px;}
+.mnav ul{margin-top:26px;border-top:1px solid rgba(247,244,238,.18);}
+.mnav li a{
+  display:block;padding:16px 0;border-bottom:1px solid rgba(247,244,238,.18);
+  font-family:var(--serif);font-style:italic;font-size:clamp(26px,8vw,36px);line-height:1.1;
+}
+.mnav-foot{margin-top:26px;font-size:13px;color:rgba(247,244,238,.7);line-height:1.7;}
+.mnav-foot b{display:block;color:var(--rosa);font-weight:600;letter-spacing:.14em;text-transform:uppercase;font-size:11px;margin-bottom:6px;}
+.scrim{
+  position:fixed;inset:0;z-index:65;background:rgba(27,27,24,.5);
+  opacity:0;visibility:hidden;transition:opacity .4s var(--ease),visibility .4s;
+}
+.scrim.on{opacity:1;visibility:visible;}
+
+/* ============ HERO ============ */
+.hero{padding:clamp(18px,3vw,34px) 0 clamp(30px,5vw,58px);position:relative;z-index:2;}
+.hero-grid{display:grid;gap:14px;grid-template-columns:1fr;}
+.hero-mob{position:relative;}
+.hero-mob .ph{aspect-ratio:4/5;background:var(--hueso-2);overflow:hidden;}
+.hero-mob img{width:100%;height:100%;object-fit:cover;}
+.hero-mob-title{
+  position:absolute;left:0;right:0;bottom:0;padding:26px 20px 22px;
+  background:linear-gradient(to top,rgba(27,27,24,.68),rgba(27,27,24,.1) 62%,transparent);
+  color:var(--hueso);
+}
+.hero-mob-title h1{font-family:var(--serif);font-size:clamp(38px,12.5vw,60px);line-height:.98;}
+.hero-mob-title p{margin-top:10px;font-size:13.5px;color:rgba(247,244,238,.86);max-width:34ch;}
+.hero-acts-mob{display:grid;gap:10px;margin-top:2px;}
+@media(min-width:560px){
+  .hero-mob .ph{aspect-ratio:16/10.5;}
+  .hero-mob-title{padding:34px 30px 28px;}
+  .hero-mob-title h1{font-size:clamp(46px,7.4vw,62px);max-width:15ch;}
+  .hero-acts-mob{grid-template-columns:repeat(2,auto);justify-content:start;}
+}
+.hero-link{
+  display:flex;align-items:center;justify-content:space-between;gap:14px;
+  min-height:46px;padding:6px 0 0;
+  font-size:12.5px;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--verde-osc);border-bottom:1px solid var(--linea);
+}
+.hero-link span{min-width:0;}
+.hero-link svg{width:16px;height:16px;flex:none;transition:transform .4s var(--ease);}
+.hero-link:hover svg{transform:translateX(5px);}
+.hero-strip-lbl{
+  margin:10px 0 -2px;font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+  color:rgba(27,27,24,.5);
+}
+.hero-strip{display:grid;grid-template-columns:1.5fr 1fr;gap:12px;align-items:end;}
+.hero-strip .ph{background:var(--hueso-2);overflow:hidden;}
+.hero-strip .ph:first-child{aspect-ratio:4/4.5;}
+.hero-strip .ph:last-child{aspect-ratio:1/1.12;}
+.hero-strip img{width:100%;height:100%;object-fit:cover;}
+.hero-desk{display:none;}
+.hero-fecha{
+  margin-top:18px;display:flex;flex-wrap:wrap;align-items:center;gap:10px;
+  font-size:12.5px;letter-spacing:.05em;color:rgba(27,27,24,.62);
+}
+.hero-fecha .dot{width:4px;height:4px;border-radius:50%;background:var(--terracota);flex:none;}
+@media(min-width:940px){
+  .hero-mob,.hero-strip,.hero-acts-mob,.hero-strip-lbl{display:none;}
+  .hero-desk{
+    display:grid;
+    grid-template-columns:minmax(0,.92fr) minmax(0,1.16fr) minmax(0,.78fr);
+    gap:clamp(20px,2.6vw,38px);
+    align-items:end;
+  }
+  .hero-col{min-width:0;}
+  .hero-img-a{aspect-ratio:3/4.35;background:var(--hueso-2);overflow:hidden;}
+  .hero-img-b{aspect-ratio:3/3.5;background:var(--hueso-2);overflow:hidden;}
+  .hero-img-a img,.hero-img-b img{width:100%;height:100%;object-fit:cover;transition:transform 1.4s var(--ease);}
+  .hero-img-a:hover img,.hero-img-b:hover img{transform:scale(1.035);}
+  .hero-center{padding-bottom:clamp(6px,2vw,26px);}
+  .hero-center h1{
+    font-family:var(--serif);
+    font-size:clamp(52px,6.1vw,92px);
+    line-height:.93;letter-spacing:-.02em;
+  }
+  .hero-center h1 em{font-style:italic;color:var(--tallo);}
+  .hero-lede{margin-top:22px;max-width:38ch;font-size:16px;color:rgba(27,27,24,.72);}
+  .hero-acts{margin-top:26px;display:flex;flex-wrap:wrap;gap:12px;}
+  .hero-cap{
+    margin-top:10px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+    color:rgba(27,27,24,.45);
+  }
+}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  min-height:48px;padding:0 26px;border-radius:999px;
+  font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;
+  border:1px solid var(--tallo);background:var(--tallo);color:var(--hueso);
+  transition:background .4s var(--ease),color .4s var(--ease),transform .4s var(--ease);
+}
+.btn:hover{background:transparent;color:var(--tallo);}
+.btn:active{transform:translateY(1px);}
+.btn-ghost{background:transparent;color:var(--tallo);border-color:var(--linea);}
+.btn-ghost:hover{background:var(--tallo);color:var(--hueso);border-color:var(--tallo);}
+.btn-terra{background:var(--terracota);border-color:var(--terracota);color:#fff;}
+.btn-terra:hover{background:transparent;color:var(--terracota);}
+.btn-block{width:100%;}
+
+/* ============ SECCIONES ============ */
+.sec{padding:clamp(56px,8vw,116px) 0;position:relative;z-index:2;}
+.sec-head{display:grid;gap:14px;margin-bottom:clamp(28px,4vw,52px);}
+.sec-head h2{font-family:var(--serif);font-size:clamp(30px,4.6vw,58px);line-height:1.02;}
+.sec-head h2 em{font-style:italic;}
+.sec-head p{max-width:52ch;color:rgba(27,27,24,.66);font-size:15.5px;}
+@media(min-width:900px){
+  .sec-head{grid-template-columns:minmax(0,1.05fr) minmax(0,.85fr);align-items:end;gap:34px;}
+}
+
+/* ---------- OCASIONES / herbario ---------- */
+.ocs{display:grid;gap:12px;grid-template-columns:repeat(2,minmax(0,1fr));}
+@media(min-width:640px){.ocs{grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;}}
+@media(min-width:1060px){.ocs{grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;}}
+.oc{
+  position:relative;text-align:left;width:100%;
+  display:flex;flex-direction:column;
+  background:var(--hueso-2);
+  border:1px solid var(--linea-suave);
+  padding:9px 9px 14px;
+  transition:border-color .4s var(--ease),background .4s var(--ease),transform .5s var(--ease);
+}
+.oc:hover{border-color:var(--tallo);background:#fff;transform:translateY(-3px);}
+.oc[aria-pressed="true"]{border-color:var(--tallo);background:#fff;}
+.oc[aria-pressed="true"]::after{
+  content:"";position:absolute;left:9px;right:9px;bottom:6px;height:2px;background:var(--terracota);
+}
+.oc-ph{display:block;aspect-ratio:4/5;background:#ddd8cd;overflow:hidden;}
+.oc-ph img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease),filter .5s var(--ease);}
+.oc:hover .oc-ph img{transform:scale(1.05);}
+.oc-num{
+  position:absolute;top:16px;left:17px;z-index:2;
+  background:var(--hueso);color:var(--tinta);
+  font-size:9.5px;letter-spacing:.16em;padding:3px 7px;font-weight:600;
+}
+.oc-body{display:block;padding:12px 4px 0;}
+.oc-body .t{display:block;font-family:var(--serif);font-size:clamp(19px,2.4vw,24px);line-height:1.05;}
+.oc-body .sci{display:block;color:var(--verde-osc);margin-top:4px;font-size:12px;}
+.oc-body .l{display:block;margin-top:9px;font-size:13px;line-height:1.5;color:rgba(27,27,24,.62);}
+.oc-cta{
+  margin-top:11px;display:inline-flex;align-items:center;gap:7px;
+  font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:var(--terracota);
+}
+.oc-cta svg{width:13px;height:13px;transition:transform .4s var(--ease);}
+.oc:hover .oc-cta svg{transform:translateX(4px);}
+
+/* ---------- TALLER ---------- */
+.taller{display:grid;gap:clamp(24px,4vw,56px);align-items:center;}
+@media(min-width:900px){.taller{grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);}}
+.taller-ph{aspect-ratio:4/5;background:var(--hueso-2);overflow:hidden;}
+@media(min-width:900px){.taller-ph{aspect-ratio:4/4.6;}}
+.taller-ph img{width:100%;height:100%;object-fit:cover;}
+.taller-txt h2{font-family:var(--serif);font-size:clamp(28px,4.2vw,52px);line-height:1.04;}
+.taller-txt h2 em{font-style:italic;}
+.taller-txt p{margin-top:20px;color:rgba(27,27,24,.72);max-width:46ch;}
+.notas{margin-top:30px;display:grid;gap:0;border-top:1px solid var(--linea-suave);}
+.nota{
+  display:grid;grid-template-columns:auto minmax(0,1fr);gap:16px;align-items:start;
+  padding:16px 0;border-bottom:1px solid var(--linea-suave);
+}
+.nota-n{
+  font-family:var(--serif);font-style:italic;font-size:15px;color:var(--verde-osc);
+  min-width:30px;padding-top:2px;
+}
+.nota b{display:block;font-family:var(--serif);font-size:17px;font-weight:400;letter-spacing:0;}
+.nota span{display:block;margin-top:4px;font-size:13.5px;color:rgba(27,27,24,.6);line-height:1.55;}
+
+/* ---------- CATÁLOGO ---------- */
+.cat-bar{
+  display:flex;flex-wrap:wrap;align-items:center;gap:8px;
+  padding-bottom:18px;border-bottom:1px solid var(--linea-suave);margin-bottom:26px;
+}
+.chip{
+  min-height:44px;padding:0 17px;border:1px solid var(--linea);border-radius:999px;
+  font-size:12px;letter-spacing:.07em;color:rgba(27,27,24,.72);
+  transition:background .35s var(--ease),color .35s var(--ease),border-color .35s var(--ease);
+}
+.chip:hover{border-color:var(--tallo);}
+.chip[aria-pressed="true"]{background:var(--tallo);border-color:var(--tallo);color:var(--hueso);}
+.cat-count{
+  flex:1 0 100%;order:2;padding-top:4px;
+  font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;
+  color:rgba(27,27,24,.5);white-space:nowrap;
+}
+@media(min-width:760px){
+  .cat-count{flex:0 0 auto;order:0;padding-top:0;margin-left:auto;}
+}
+.cat-grid{display:grid;gap:clamp(14px,2.4vw,30px);grid-template-columns:repeat(2,minmax(0,1fr));}
+@media(min-width:760px){.cat-grid{grid-template-columns:repeat(3,minmax(0,1fr));}}
+@media(min-width:1180px){.cat-grid{grid-template-columns:repeat(4,minmax(0,1fr));}}
+.card{
+  text-align:left;width:100%;background:none;border:0;padding:0;
+  display:flex;flex-direction:column;min-width:0;
+  transition:opacity .5s var(--ease),transform .5s var(--ease);
+}
+.card-ph{aspect-ratio:3/4.3;background:var(--hueso-2);overflow:hidden;position:relative;}
+.card-ph img{width:100%;height:100%;object-fit:cover;transition:transform 1.3s var(--ease);}
+.card:hover .card-ph img{transform:scale(1.045);}
+.card-tag{
+  position:absolute;top:10px;left:10px;
+  background:rgba(247,244,238,.94);color:var(--tinta);
+  font-size:9.5px;letter-spacing:.15em;text-transform:uppercase;padding:4px 8px;font-weight:600;
+}
+.card-body{padding-top:13px;display:flex;flex-direction:column;gap:5px;}
+.card-body .t{display:block;font-family:var(--serif);font-size:clamp(20px,2.3vw,26px);line-height:1.05;}
+.card-body .sci{color:var(--verde-osc);font-size:12.5px;}
+.card-body .l{display:block;font-size:13px;color:rgba(27,27,24,.6);line-height:1.5;margin-top:2px;}
+.card-foot{
+  margin-top:10px;padding-top:10px;border-top:1px solid var(--linea-suave);
+  display:flex;align-items:flex-end;justify-content:space-between;gap:10px;
+}
+.card-price{font-size:14px;letter-spacing:.01em;}
+.card-price small{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:rgba(27,27,24,.45);display:block;}
+.card-open{
+  font-size:10.5px;letter-spacing:.15em;text-transform:uppercase;font-weight:600;color:var(--terracota);
+  display:inline-flex;align-items:center;gap:6px;
+}
+.card-open svg{width:12px;height:12px;transition:transform .4s var(--ease);}
+.card:hover .card-open svg{transform:translateX(4px);}
+.cat-empty{padding:40px 0;font-family:var(--serif);font-style:italic;font-size:20px;color:rgba(27,27,24,.5);}
+
+/* ---------- MODAL FICHA ---------- */
+.modal{
+  position:fixed;inset:0;z-index:90;display:flex;align-items:flex-end;justify-content:center;
+  opacity:0;visibility:hidden;transition:opacity .4s var(--ease),visibility .4s;
+}
+.modal.on{opacity:1;visibility:visible;}
+.modal-bg{position:absolute;inset:0;background:rgba(27,27,24,.62);}
+.modal-card{
+  position:relative;z-index:2;width:100%;max-width:1060px;max-height:94dvh;overflow-y:auto;
+  background:var(--hueso);
+  transform:translateY(26px);transition:transform .5s var(--ease);
+  -webkit-overflow-scrolling:touch;
+}
+.modal.on .modal-card{transform:none;}
+@media(min-width:900px){
+  .modal{align-items:center;padding:26px;}
+  .modal-card{max-height:88dvh;}
+}
+.modal-close{
+  position:absolute;top:12px;right:12px;z-index:5;
+  width:44px;height:44px;border-radius:999px;
+  background:rgba(247,244,238,.94);border:1px solid var(--linea);
+  display:inline-flex;align-items:center;justify-content:center;
+}
+.modal-close svg{width:17px;height:17px;}
+.modal-grid{display:grid;grid-template-columns:1fr;}
+@media(min-width:900px){.modal-grid{grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);}}
+.modal-ph{background:var(--hueso-2);aspect-ratio:16/9.6;overflow:hidden;}
+@media(min-width:900px){.modal-ph{aspect-ratio:auto;height:100%;min-height:420px;}}
+.modal-ph img{width:100%;height:100%;object-fit:cover;}
+.modal-body{padding:clamp(22px,3.4vw,42px);padding-bottom:clamp(14px,2vw,26px);}
+.modal-body h2{font-family:var(--serif);font-size:clamp(30px,4.4vw,46px);line-height:1;}
+.modal-sci{display:block;color:var(--verde-osc);margin-top:6px;font-size:13px;}
+.modal-desc{margin-top:16px;color:rgba(27,27,24,.72);font-size:15px;max-width:46ch;}
+.comp{margin-top:24px;border-top:1px solid var(--linea-suave);}
+.comp-h{font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:rgba(27,27,24,.45);padding:14px 0 8px;font-weight:600;}
+.comp li{
+  display:flex;flex-wrap:wrap;align-items:baseline;gap:8px;
+  padding:8px 0;border-bottom:1px solid var(--linea-suave);font-size:14px;
+}
+.comp li .sci{color:var(--verde-osc);}
+.comp li .cant{margin-left:auto;font-size:12px;color:rgba(27,27,24,.45);letter-spacing:.06em;}
+.field{margin-top:22px;}
+.field > label,.field-h{
+  display:block;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;
+  color:rgba(27,27,24,.5);font-weight:600;margin-bottom:9px;
+}
+.sizes{display:grid;grid-template-columns:1fr;gap:8px;}
+.size{
+  border:1px solid var(--linea);background:none;padding:12px 14px;text-align:left;min-height:56px;
+  display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:6px 14px;
+  transition:border-color .35s var(--ease),background .35s var(--ease);
+}
+.size:hover{border-color:var(--tallo);}
+.size[aria-pressed="true"]{border-color:var(--tallo);background:#fff;}
+.size b{font-size:13px;font-weight:600;letter-spacing:.04em;}
+.size span{grid-column:1;font-size:12px;color:rgba(27,27,24,.55);}
+.size i{grid-column:2;grid-row:1 / span 2;font-style:normal;font-family:var(--serif);font-size:19px;}
+@media(min-width:560px){
+  .sizes{grid-template-columns:repeat(3,minmax(0,1fr));}
+  .size{display:block;padding:11px 12px;min-height:66px;}
+  .size b{display:block;}
+  .size span{display:block;margin-top:3px;}
+  .size i{display:block;margin-top:6px;font-size:17px;}
+}
+textarea,input[type="text"],input[type="date"],input[type="email"],input[type="tel"],select{
+  width:100%;background:#fff;border:1px solid var(--linea);border-radius:0;
+  padding:12px 13px;font-size:15px;font-weight:300;min-height:46px;
+  transition:border-color .3s var(--ease);
+}
+textarea{resize:vertical;min-height:86px;line-height:1.5;}
+textarea:focus,input:focus,select:focus{border-color:var(--tallo);outline:none;}
+select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231B1B18' stroke-width='1.5'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;background-size:16px;padding-right:38px;}
+.counter{margin-top:6px;font-size:11.5px;color:rgba(27,27,24,.45);letter-spacing:.06em;text-align:right;}
+.counter.max{color:var(--terracota);}
+.two{display:grid;gap:12px;grid-template-columns:1fr;}
+@media(min-width:520px){.two{grid-template-columns:1fr 1fr;}}
+.modal-foot{
+  position:sticky;bottom:0;z-index:6;
+  padding:14px clamp(20px,3.4vw,42px) calc(14px + env(safe-area-inset-bottom));
+  border-top:1px solid var(--linea);
+  background:var(--hueso);
+  display:flex;flex-wrap:nowrap;align-items:center;justify-content:space-between;gap:16px;
+}
+.modal-foot .btn{flex:none;}
+@media(max-width:459px){
+  .xs-hide{display:none;}
+  .modal-foot .btn{padding-left:18px;padding-right:18px;}
+  .modal-total b{font-size:25px;}
+}
+.modal-total{line-height:1.2;}
+.modal-total small{display:block;white-space:nowrap;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:rgba(27,27,24,.45);}
+.modal-total b{font-family:var(--serif);font-size:30px;font-weight:400;}
+
+/* ---------- CARRITO ---------- */
+.cart{
+  position:fixed;top:0;right:0;bottom:0;z-index:95;
+  width:min(440px,100%);background:var(--hueso);
+  display:flex;flex-direction:column;
+  transform:translateX(102%);transition:transform .55s var(--ease);
+  border-left:1px solid var(--linea);
+}
+.cart.on{transform:none;}
+.cart-head{
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding:18px 20px;border-bottom:1px solid var(--linea-suave);
+}
+.cart-head h2{font-family:var(--serif);font-size:24px;}
+.cart-head p{font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:rgba(27,27,24,.45);margin-top:2px;}
+.cart-body{flex:1;overflow-y:auto;padding:8px 20px 20px;-webkit-overflow-scrolling:touch;}
+.cart-empty{padding:48px 0;text-align:center;}
+.cart-empty p{font-family:var(--serif);font-style:italic;font-size:20px;color:rgba(27,27,24,.5);}
+.cart-empty span{display:block;margin-top:8px;font-size:13px;color:rgba(27,27,24,.45);}
+.ci{display:grid;grid-template-columns:74px minmax(0,1fr);gap:14px;padding:18px 0;border-bottom:1px solid var(--linea-suave);}
+.ci-ph{aspect-ratio:3/4;background:var(--hueso-2);overflow:hidden;}
+.ci-ph img{width:100%;height:100%;object-fit:cover;}
+.ci-top{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;}
+.ci-top h3{font-family:var(--serif);font-size:19px;line-height:1.1;}
+.ci-meta{margin-top:6px;font-size:12px;color:rgba(27,27,24,.6);line-height:1.6;}
+.ci-meta em{font-style:italic;color:var(--verde-osc);}
+.ci-ded{
+  margin-top:8px;width:100%;background:#fff;border:1px solid var(--linea-suave);
+  padding:8px 10px;font-size:12.5px;min-height:40px;line-height:1.45;
+}
+.ci-ded::placeholder{color:rgba(27,27,24,.35);}
+.ci-row{margin-top:10px;display:flex;align-items:center;justify-content:space-between;gap:10px;}
+.qty{display:inline-flex;align-items:center;border:1px solid var(--linea);}
+.qty button{width:44px;height:44px;display:inline-flex;align-items:center;justify-content:center;font-size:15px;}
+.qty button:hover{background:var(--hueso-2);}
+.qty span{min-width:32px;text-align:center;font-size:13px;}
+.ci-sub{font-size:14px;}
+.ci-del{
+  width:44px;height:44px;margin:-8px -10px 0 0;display:inline-flex;align-items:center;justify-content:center;
+  color:rgba(27,27,24,.45);transition:color .3s var(--ease);flex:none;
+}
+.ci-del:hover{color:var(--terracota);}
+.ci-del svg{width:15px;height:15px;}
+.cart-foot{border-top:1px solid var(--linea);padding:16px 20px 20px;background:var(--hueso-2);}
+.cart-line{display:flex;align-items:baseline;justify-content:space-between;gap:12px;font-size:13.5px;padding:4px 0;color:rgba(27,27,24,.7);}
+.cart-line.total{
+  margin-top:8px;padding-top:12px;border-top:1px solid var(--linea);
+  font-size:16px;color:var(--tinta);
+}
+.cart-line.total b{font-family:var(--serif);font-size:26px;font-weight:400;}
+.envio-nota{font-size:11.5px;color:var(--verde-osc);letter-spacing:.04em;margin-top:6px;}
+.resumen{
+  margin-top:14px;background:#fff;border:1px solid var(--linea);padding:14px;
+  font-size:12.5px;line-height:1.7;white-space:pre-wrap;max-height:210px;overflow-y:auto;
+  font-family:var(--sans);color:rgba(27,27,24,.8);
+}
+.resumen b{display:block;font-family:var(--serif);font-size:15px;margin-bottom:6px;font-weight:400;}
+
+/* ---------- SUSCRIPCIÓN ---------- */
+.sus{background:var(--tallo);color:var(--hueso);}
+.sus .sec-head h2{color:var(--hueso);}
+.sus .sec-head p{color:rgba(247,244,238,.72);}
+.sus .eyebrow{color:var(--rosa);}
+.sus-grid{display:grid;gap:clamp(22px,3.4vw,48px);}
+@media(min-width:900px){.sus-grid{grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);align-items:start;}}
+.freqs{display:grid;gap:10px;}
+.freq{
+  display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:14px;align-items:center;
+  padding:16px 18px;border:1px solid rgba(247,244,238,.24);cursor:pointer;
+  transition:border-color .35s var(--ease),background .35s var(--ease);
+}
+.freq:hover{border-color:rgba(247,244,238,.55);}
+.freq input{
+  appearance:none;width:17px;height:17px;border-radius:50%;
+  border:1px solid rgba(247,244,238,.6);margin:0;flex:none;
+  transition:border-color .3s var(--ease),box-shadow .3s var(--ease);
+}
+.freq input:checked{border-color:var(--rosa);box-shadow:inset 0 0 0 4px var(--rosa);}
+.freq:has(input:checked){border-color:var(--rosa);background:rgba(227,201,192,.08);}
+.freq b{font-family:var(--serif);font-size:22px;font-weight:400;display:block;}
+.freq span{display:block;font-size:12.5px;color:rgba(247,244,238,.62);margin-top:2px;}
+.freq i{font-style:normal;font-family:var(--serif);font-size:20px;white-space:nowrap;}
+.sus-box{border:1px solid rgba(247,244,238,.24);padding:clamp(20px,3vw,30px);}
+.sus-box .k{font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--rosa);font-weight:600;}
+.sus-box .v{font-family:var(--serif);font-size:clamp(38px,5.6vw,60px);line-height:1;margin-top:10px;}
+.sus-box .v small{font-family:var(--sans);font-size:13px;letter-spacing:.1em;color:rgba(247,244,238,.6);display:block;margin-top:8px;font-weight:300;}
+.sus-list{margin-top:22px;border-top:1px solid rgba(247,244,238,.2);}
+.sus-list li{
+  display:flex;gap:10px;align-items:flex-start;padding:11px 0;
+  border-bottom:1px solid rgba(247,244,238,.2);font-size:13.5px;color:rgba(247,244,238,.82);
+}
+.sus-list svg{width:15px;height:15px;flex:none;margin-top:3px;color:var(--rosa);}
+.sus .btn{background:var(--rosa);border-color:var(--rosa);color:var(--tinta);margin-top:22px;}
+.sus .btn:hover{background:transparent;color:var(--rosa);}
+
+/* ---------- CORPORATIVO ---------- */
+.corp-ph{aspect-ratio:16/11;background:var(--hueso-2);overflow:hidden;}
+@media(min-width:900px){.corp-ph{aspect-ratio:21/8;}}
+.corp-ph img{width:100%;height:100%;object-fit:cover;}
+.corp-in{
+  margin-top:-1px;border:1px solid var(--linea-suave);border-top:0;
+  padding:clamp(24px,3.6vw,48px);
+  display:grid;gap:clamp(22px,3vw,44px);
+}
+@media(min-width:900px){.corp-in{grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);}}
+.corp-in h2{font-family:var(--serif);font-size:clamp(28px,4vw,46px);line-height:1.03;}
+.corp-in h2 em{font-style:italic;}
+.corp-in > div > p{margin-top:16px;color:rgba(27,27,24,.68);max-width:44ch;}
+.corp-mini{margin-top:22px;font-size:13px;color:rgba(27,27,24,.55);line-height:1.8;}
+.corp-mini b{color:var(--tinta);font-weight:600;}
+form .fgrid{display:grid;gap:12px;}
+@media(min-width:520px){form .fgrid.two-col{grid-template-columns:1fr 1fr;}}
+.lbl{display:block;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:rgba(27,27,24,.5);font-weight:600;margin-bottom:7px;}
+.err{display:block;margin-top:6px;font-size:12px;color:var(--terracota);min-height:0;}
+.ok-msg{
+  margin-top:16px;border:1px solid var(--verde);background:rgba(140,156,126,.12);
+  padding:15px 16px;font-size:14px;line-height:1.6;
+}
+.ok-msg b{font-family:var(--serif);font-size:18px;font-weight:400;display:block;margin-bottom:4px;}
+
+/* ---------- CUIDADOS ---------- */
+.acc{border-top:1px solid var(--linea);}
+.acc-item{border-bottom:1px solid var(--linea);}
+.acc-btn{
+  width:100%;display:flex;align-items:center;justify-content:space-between;gap:18px;
+  padding:22px 0;text-align:left;min-height:64px;
+}
+.acc-btn .n{font-family:var(--serif);font-style:italic;font-size:14px;color:var(--verde-osc);min-width:30px;}
+.acc-btn h3{font-family:var(--serif);font-size:clamp(19px,2.6vw,28px);line-height:1.15;flex:1;min-width:0;font-weight:400;}
+.acc-ico{width:20px;height:20px;flex:none;position:relative;}
+.acc-ico::before,.acc-ico::after{
+  content:"";position:absolute;background:var(--tinta);transition:transform .45s var(--ease),opacity .45s var(--ease);
+}
+.acc-ico::before{left:0;right:0;top:9.5px;height:1px;}
+.acc-ico::after{top:0;bottom:0;left:9.5px;width:1px;}
+.acc-btn[aria-expanded="true"] .acc-ico::after{transform:scaleY(0);opacity:0;}
+.acc-panel{max-height:0;overflow:hidden;transition:max-height .55s var(--ease);}
+.acc-panel-in{padding:0 0 24px;max-width:60ch;color:rgba(27,27,24,.7);font-size:15px;}
+.acc-panel-in em{font-style:italic;color:var(--verde-osc);}
+@media(min-width:700px){.acc-panel-in{padding-left:46px;}}
+
+/* ---------- COBERTURA ---------- */
+.cob{display:grid;gap:0 clamp(24px,4vw,64px);grid-template-columns:1fr;}
+@media(min-width:760px){.cob{grid-template-columns:1fr 1fr;}}
+.cob-row{
+  display:flex;align-items:baseline;justify-content:space-between;gap:14px;
+  padding:12px 0;border-bottom:1px solid var(--linea-suave);font-size:14.5px;
+}
+.cob-row span:last-child{font-family:var(--serif);font-size:15px;white-space:nowrap;color:rgba(27,27,24,.75);}
+.cob-row .free{color:var(--verde-osc);font-family:var(--sans);font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;}
+.cob-nota{margin-top:22px;font-size:13px;color:rgba(27,27,24,.55);max-width:60ch;}
+
+/* ---------- FOOTER ---------- */
+.ftr{background:var(--hueso-2);border-top:1px solid var(--linea-suave);padding:clamp(48px,6vw,84px) 0 34px;position:relative;z-index:2;}
+.ftr-grid{display:grid;gap:34px;}
+@media(min-width:820px){.ftr-grid{grid-template-columns:1.25fr 1fr 1fr 1.1fr;gap:40px;}}
+.ftr h4{font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:rgba(27,27,24,.45);font-weight:600;margin-bottom:14px;}
+.ftr li,.ftr p{font-size:13.5px;color:rgba(27,27,24,.7);line-height:1.9;}
+.ftr a:hover{color:var(--terracota);}
+.ftr .logo{font-size:26px;margin-bottom:12px;display:inline-flex;}
+.ftr-bio{max-width:34ch;}
+.socials{display:flex;gap:10px;margin-top:14px;}
+.socials a{
+  width:40px;height:40px;border:1px solid var(--linea);border-radius:999px;
+  display:inline-flex;align-items:center;justify-content:center;
+  transition:background .35s var(--ease),color .35s var(--ease),border-color .35s var(--ease);
+}
+.socials a:hover{background:var(--tallo);color:var(--hueso);border-color:var(--tallo);}
+.socials svg{width:16px;height:16px;}
+.ftr-bot{
+  margin-top:40px;padding-top:20px;border-top:1px solid var(--linea-suave);
+  display:flex;flex-wrap:wrap;gap:10px 24px;justify-content:space-between;
+  font-size:11.5px;color:rgba(27,27,24,.45);letter-spacing:.04em;
+}
+
+/* ---------- BLOQUE COMERCIAL ---------- */
+.sell{background:var(--tallo);color:var(--hueso);padding:clamp(56px,8vw,110px) 0;position:relative;z-index:2;}
+.sell-grid{display:grid;gap:clamp(28px,4vw,64px);}
+@media(min-width:940px){.sell-grid{grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);align-items:start;}}
+.sell .eyebrow{color:var(--rosa);}
+.sell h2{font-family:var(--serif);font-size:clamp(34px,5.4vw,70px);line-height:1;margin-top:16px;}
+.sell h2 em{font-style:italic;color:var(--rosa);}
+.sell-lede{margin-top:20px;color:rgba(247,244,238,.76);max-width:44ch;font-size:16px;}
+.sell-list{margin-top:28px;display:grid;gap:0;border-top:1px solid rgba(247,244,238,.2);}
+.sell-list li{
+  display:flex;align-items:flex-start;gap:12px;padding:12px 0;
+  border-bottom:1px solid rgba(247,244,238,.2);
+  font-size:14.5px;color:rgba(247,244,238,.86);
+}
+.sell-list .bullet{
+  width:16px;height:16px;flex:none;margin-top:4px;
+  border:1px solid var(--verde);border-radius:50%;position:relative;
+}
+.sell-list .bullet::after{
+  content:"";position:absolute;inset:4px;border-radius:50%;background:var(--rosa);
+}
+.sell-box{border:1px solid rgba(247,244,238,.26);padding:clamp(24px,3.4vw,40px);}
+.sell-price{font-family:var(--serif);font-size:clamp(48px,7vw,76px);line-height:1;}
+.sell-price sup{font-size:.42em;vertical-align:super;margin-right:4px;}
+.sell-box .pago{margin-top:8px;font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--rosa);font-weight:600;}
+.sell-box .nota{margin-top:18px;font-size:13.5px;color:rgba(247,244,238,.66);line-height:1.7;}
+.sell-box .btn{
+  margin-top:24px;width:100%;background:var(--rosa);border-color:var(--rosa);color:var(--tinta);
+}
+.sell-box .btn:hover{background:transparent;color:var(--rosa);}
+.sell-box .fine{margin-top:14px;font-size:11.5px;color:rgba(247,244,238,.5);text-align:center;letter-spacing:.04em;}
+
+/* ---------- reduced motion ---------- */
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto;}
+  *,*::before,*::after{
+    animation-duration:.001ms !important;animation-iteration-count:1 !important;
+    transition-duration:.001ms !important;
+  }
+  .rv{opacity:1;transform:none;}
+}
+</style>
+<link rel="stylesheet" href="../_shared/ziv-premium.css">
+<script src="../_shared/ziv-premium.js" defer></script>
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header class="hdr">
+  <div class="wrap hdr-in">
+    <a href="#top" class="logo" aria-label="TALLO, inicio">TALLO<small>taller floral</small></a>
+
+    <nav class="nav-desk" aria-label="Navegación principal">
+      <a href="#ocasiones">Ocasiones</a>
+      <a href="#arreglos">Arreglos</a>
+      <a href="#suscripcion">Suscripción</a>
+      <a href="#eventos">Eventos</a>
+      <a href="#cuidados">Cuidados</a>
+    </nav>
+
+    <div class="hdr-right">
+      <a class="hoy" href="#arreglos">
+        <b id="hoyTitulo">Pedidos hoy</b>
+        <span id="hoyTexto">Cargando horario…</span>
+      </a>
+      <button class="btn-cart" id="openCart" aria-label="Abrir mi pedido">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        <span>Pedido</span>
+        <span class="cart-count" id="cartCount">0</span>
+      </button>
+      <button class="btn-burger" id="openMenu" aria-label="Abrir menú" aria-expanded="false" aria-controls="mnav">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M3 7h18M3 12h18M3 17h18"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ============ MENÚ MÓVIL ============ -->
+<div class="mnav" id="mnav" aria-hidden="true">
+  <div class="mnav-top">
+    <span class="logo">TALLO<small>taller floral</small></span>
+    <button class="mnav-close" id="closeMenu" aria-label="Cerrar menú">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+  </div>
+  <ul>
+    <li><a href="#ocasiones" data-mclose>Ocasiones</a></li>
+    <li><a href="#arreglos" data-mclose>Arreglos</a></li>
+    <li><a href="#taller" data-mclose>El taller</a></li>
+    <li><a href="#suscripcion" data-mclose>Suscripción</a></li>
+    <li><a href="#eventos" data-mclose>Eventos</a></li>
+    <li><a href="#cuidados" data-mclose>Cuidados</a></li>
+    <li><a href="#cobertura" data-mclose>Entregas</a></li>
+  </ul>
+  <div class="mnav-foot">
+    <b>Pedidos hoy</b>
+    <span id="hoyMovil">Corte de entrega el mismo día: 14:00</span>
+    <b style="margin-top:16px">Taller</b>
+    Zacatecas 61, Roma Norte, CDMX<br>
+    Martes a sábado 9:00 – 19:00 · Domingo 10:00 – 14:00<br>
+    55 4016 1213
+  </div>
+</div>
+<div class="scrim" id="scrim" hidden></div>
+
+<main id="top">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <div class="wrap">
+
+      <!-- móvil -->
+      <div class="hero-grid">
+        <div class="hero-mob">
+          <div class="ph">
+            <img src="https://images.unsplash.com/photo-1582794543139-8ac9cb0f7b11?auto=format&fit=crop&w=1200&q=80" alt="Ramo de flores de temporada recién armado sobre la mesa del taller" fetchpriority="high" width="1200" height="1500">
+          </div>
+          <div class="hero-mob-title">
+            <h1>Flor de <em class="it">temporada</em>, cortada esta mañana.</h1>
+            <p>Taller floral en Roma Norte. Armamos por encargo, con lo que llegó fresco hoy del mercado.</p>
+          </div>
+        </div>
+        <div class="hero-acts-mob">
+          <a class="btn btn-block" href="#arreglos">Ver los arreglos</a>
+          <a class="hero-link" href="#suscripcion">Suscripción floral, cada semana
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+        <p class="hero-strip-lbl">Lo que hay hoy en cubeta</p>
+        <div class="hero-strip">
+          <div class="ph"><img src="https://images.unsplash.com/photo-1593011951342-8426e949371f?auto=format&fit=crop&w=500&q=70" alt="Manos de florista atando un ramo con cordel de algodón" loading="lazy" decoding="async" width="500" height="500"></div>
+          <div class="ph"><img src="https://images.unsplash.com/photo-1612526031467-2b6bf1f49961?auto=format&fit=crop&w=500&q=70" alt="Detalle de pétalos de ranúnculo sobre papel de estraza" loading="lazy" decoding="async" width="500" height="500"></div>
+        </div>
+      </div>
+
+      <!-- desktop: tres columnas -->
+      <div class="hero-desk">
+        <div class="hero-col">
+          <div class="hero-img-a">
+            <img src="https://images.unsplash.com/photo-1582794543139-8ac9cb0f7b11?auto=format&fit=crop&w=2000&q=80" alt="Ramo de flores de temporada recién armado sobre la mesa del taller" fetchpriority="high" width="900" height="1300">
+          </div>
+          <p class="hero-cap">Mesa de trabajo · miércoles por la mañana</p>
+        </div>
+
+        <div class="hero-col hero-center">
+          <h1>Flor de <em>temporada</em>,<br>cortada esta<br>mañana.</h1>
+          <p class="hero-lede">Taller floral en Roma Norte. No tenemos catálogo eterno: armamos con lo que llegó fresco del mercado y eso cambia cada semana.</p>
+          <div class="hero-acts">
+            <a class="btn" href="#arreglos">Ver los arreglos</a>
+            <a class="btn btn-ghost" href="#suscripcion">Suscripción floral</a>
+          </div>
+        </div>
+
+        <div class="hero-col">
+          <div class="hero-img-b">
+            <img src="https://images.unsplash.com/photo-1523693916903-027d144a2b7d?auto=format&fit=crop&w=1200&q=80" alt="Flores blancas y verdes en un jarrón de vidrio junto a una ventana" loading="lazy" decoding="async" width="800" height="960">
+          </div>
+          <p class="hero-cap">Lo que hay hoy en cubeta</p>
+        </div>
+      </div>
+
+      <p class="hero-fecha">
+        <span class="dot" aria-hidden="true"></span>
+        <span id="fechaHoy">Cargando la fecha de hoy…</span>
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ OCASIONES ============ -->
+  <section class="sec" id="ocasiones" style="padding-top:clamp(30px,4vw,60px)">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <div>
+          <p class="eyebrow">Herbario de ocasiones</p>
+          <h2 style="margin-top:12px">Dinos para <em class="it">quién</em> es<br>y nosotros elegimos la flor.</h2>
+        </div>
+        <p>Cada ocasión pide otra paleta, otro tamaño y otro aroma. Elige una y te mostramos sólo lo que armamos para eso.</p>
+      </div>
+
+      <div class="ocs" id="ocsGrid"></div>
+    </div>
+  </section>
+
+  <!-- ============ TALLER ============ -->
+  <section class="sec" id="taller" style="padding-top:clamp(20px,3vw,50px)">
+    <div class="wrap">
+      <div class="taller">
+        <div class="taller-ph rv">
+          <img src="https://images.unsplash.com/photo-1567696153798-9111f9cd3d0d?auto=format&fit=crop&w=1200&q=75" alt="Interior del taller floral con cubetas, tijeras y flor recién llegada" loading="lazy" decoding="async" width="900" height="1100">
+        </div>
+        <div class="taller-txt rv rv-d1">
+          <p class="eyebrow">El taller</p>
+          <h2 style="margin-top:14px">Un oficio de <em>manos frías</em><br>y agua limpia.</h2>
+          <p>Abrimos a las 5:40 de la mañana para llegar a Jamaica antes que el sol. Se compra de pie, oliendo y apretando el tallo: la flor buena se siente firme y huele a campo, no a refrigerador.</p>
+          <p>Cortamos en diagonal, cambiamos el agua todos los días y no forzamos nada: si el ranúnculo no está en su punto, ese arreglo no sale. Preferimos decirte que hoy hay dalia.</p>
+
+          <div class="notas">
+            <div class="nota">
+              <span class="nota-n">i.</span>
+              <div>
+                <b>Compra diaria en Jamaica</b>
+                <span>Cinco días a la semana, antes de las 7:00. Lo que no se usa se regala al vecindario, no se guarda.</span>
+              </div>
+            </div>
+            <div class="nota">
+              <span class="nota-n">ii.</span>
+              <div>
+                <b>Hidratación de 12 horas</b>
+                <span>Toda la flor descansa una noche en agua con acondicionador antes de tocar un arreglo.</span>
+              </div>
+            </div>
+            <div class="nota">
+              <span class="nota-n">iii.</span>
+              <div>
+                <b>Papel, cordel y nada más</b>
+                <span>Envolvemos en papel de estraza y algodón encerado. Sin plástico, sin celofán, sin brillos.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CATÁLOGO ============ -->
+  <section class="sec" id="arreglos">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <div>
+          <p class="eyebrow">Arreglos de la casa</p>
+          <h2 style="margin-top:12px">Doce arreglos con <em class="it">nombre</em> propio.</h2>
+        </div>
+        <p>Cada uno tiene una fórmula fija de estructura y una parte que cambia con la temporada. Tres tamaños: de mesa de noche, de comedor y de recibidor.</p>
+      </div>
+
+      <div class="cat-bar rv" id="catBar" role="group" aria-label="Filtrar arreglos por ocasión"></div>
+      <div class="cat-grid" id="catGrid"></div>
+      <p class="cat-empty hidden" id="catEmpty">Por ahora no tenemos nada armado para esa ocasión. Escríbenos y lo hacemos a la medida.</p>
+    </div>
+  </section>
+
+  <!-- ============ SUSCRIPCIÓN ============ -->
+  <section class="sec sus" id="suscripcion">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <div>
+          <p class="eyebrow">Suscripción floral</p>
+          <h2 style="margin-top:12px">Flor nueva en casa,<br>sin tener que <em class="it">acordarse</em>.</h2>
+        </div>
+        <p>Nosotros elegimos, tú abres la puerta. Cada entrega es distinta porque la temporada es distinta. Puedes pausarla cuando salgas de viaje.</p>
+      </div>
+
+      <div class="sus-grid">
+        <div class="rv">
+          <fieldset style="border:0;padding:0;margin:0">
+            <legend class="eyebrow" style="margin-bottom:14px">Elige tu frecuencia</legend>
+            <div class="freqs">
+              <label class="freq">
+                <input type="radio" name="freq" value="semanal" checked>
+                <span><b>Semanal</b><span>Cada martes · 4 entregas al mes</span></span>
+                <i>$690</i>
+              </label>
+              <label class="freq">
+                <input type="radio" name="freq" value="quincenal">
+                <span><b>Quincenal</b><span>Martes de por medio · 2 entregas al mes</span></span>
+                <i>$790</i>
+              </label>
+              <label class="freq">
+                <input type="radio" name="freq" value="mensual">
+                <span><b>Mensual</b><span>Primer martes del mes · 1 entrega</span></span>
+                <i>$890</i>
+              </label>
+            </div>
+          </fieldset>
+          <p style="margin-top:18px;font-size:13px;color:rgba(247,244,238,.6);max-width:46ch">
+            El precio es por entrega. En la semanal el arreglo es de mesa; en la mensual va en tamaño mediano porque tiene que durar más.
+          </p>
+        </div>
+
+        <div class="sus-box rv rv-d1">
+          <p class="k">Tu mes con TALLO</p>
+          <p class="v" id="susTotal">$2,760<small id="susDetalle">Semanal · 4 entregas de $690</small></p>
+          <ul class="sus-list">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Jarrón de cortesía en la primera entrega.</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Envío sin costo dentro de la cobertura.</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Pausa o cambio de dirección con 48 horas.</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Ficha con los nombres de lo que va adentro.</span></li>
+          </ul>
+          <a class="btn" id="susCta" href="https://wa.me/525540161213" target="_blank" rel="noopener">Quiero la suscripción</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CORPORATIVO Y EVENTOS ============ -->
+  <section class="sec" id="eventos">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <div>
+          <p class="eyebrow">Corporativo y eventos</p>
+          <h2 style="margin-top:12px">Flor para <em class="it">espacios</em> que se ven todos los días.</h2>
+        </div>
+        <p>Recepciones, restaurantes, bodas chicas y montajes de una noche. Cotizamos por temporada, no por foto de Pinterest.</p>
+      </div>
+
+      <div class="rv">
+        <div class="corp-ph">
+          <img src="https://images.unsplash.com/photo-1527609635833-38e4a5f7c941?auto=format&fit=crop&w=1600&q=75" alt="Mesa larga vestida con arreglos florales bajos para un evento" loading="lazy" decoding="async" width="1600" height="620">
+        </div>
+        <div class="corp-in">
+          <div>
+            <h2>Cuéntanos qué se <em>celebra</em>.</h2>
+            <p>Te respondemos el mismo día con dos o tres caminos posibles y su rango de precio, según lo que haya en temporada esa fecha.</p>
+            <div class="corp-mini">
+              <b>Montajes semanales</b> para oficina y restaurante desde $1,850 por punto.<br>
+              <b>Bodas y celebraciones</b> con visita al lugar sin costo dentro de CDMX.<br>
+              <b>Regalo corporativo</b> a partir de 10 piezas con tarjeta impresa.
+            </div>
+          </div>
+
+          <form id="corpForm" novalidate>
+            <div class="fgrid">
+              <div class="fgrid two-col">
+                <div>
+                  <label class="lbl" for="cNombre">Tu nombre</label>
+                  <input type="text" id="cNombre" name="nombre" autocomplete="name" placeholder="Mariana Escobedo">
+                  <span class="err" id="errNombre"></span>
+                </div>
+                <div>
+                  <label class="lbl" for="cEvento">Tipo de evento</label>
+                  <select id="cEvento" name="evento">
+                    <option value="">Elige uno</option>
+                    <option>Boda</option>
+                    <option>Cena o celebración privada</option>
+                    <option>Montaje semanal de oficina</option>
+                    <option>Restaurante o local</option>
+                    <option>Regalo corporativo</option>
+                    <option>Otro</option>
+                  </select>
+                  <span class="err" id="errEvento"></span>
+                </div>
+              </div>
+              <div class="fgrid two-col">
+                <div>
+                  <label class="lbl" for="cFecha">Fecha</label>
+                  <input type="date" id="cFecha" name="fecha">
+                  <span class="err" id="errFecha"></span>
+                </div>
+                <div>
+                  <label class="lbl" for="cPresu">Presupuesto aproximado</label>
+                  <select id="cPresu" name="presupuesto">
+                    <option value="">Elige un rango</option>
+                    <option>Menos de $5,000</option>
+                    <option>$5,000 – $15,000</option>
+                    <option>$15,000 – $40,000</option>
+                    <option>Más de $40,000</option>
+                    <option>Aún no lo sé</option>
+                  </select>
+                  <span class="err" id="errPresu"></span>
+                </div>
+              </div>
+              <button class="btn btn-block" type="submit" style="margin-top:6px">Enviar y cotizar</button>
+            </div>
+            <div class="ok-msg hidden" id="corpOk" role="status" aria-live="polite">
+              <b>Listo, lo recibimos.</b>
+              <span id="corpOkTxt">Te contestamos hoy mismo con una propuesta.</span>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CUIDADOS ============ -->
+  <section class="sec" id="cuidados">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <div>
+          <p class="eyebrow">Cuidados de la flor</p>
+          <h2 style="margin-top:12px">Cómo hacer que te <em class="it">dure</em> el doble.</h2>
+        </div>
+        <p>Lo que le decimos a todo el mundo en el mostrador, escrito para que no se te olvide en el camino a casa.</p>
+      </div>
+
+      <div class="acc rv" id="acc">
+        <div class="acc-item">
+          <button class="acc-btn" aria-expanded="false" aria-controls="p1" id="b1">
+            <span class="n">i.</span>
+            <h3>Corta el tallo en diagonal, cada tercer día</h3>
+            <span class="acc-ico" aria-hidden="true"></span>
+          </button>
+          <div class="acc-panel" id="p1" role="region" aria-labelledby="b1">
+            <div class="acc-panel-in">
+              Un centímetro basta, con tijera o cuchillo bien filoso y de preferencia bajo el chorro de agua. El corte en ángulo abre más superficie para beber y evita que el tallo se selle contra el fondo del jarrón. Nunca uses tijeras de cocina desafiladas: machucan el tallo y lo pudren en dos días.
+            </div>
+          </div>
+        </div>
+        <div class="acc-item">
+          <button class="acc-btn" aria-expanded="false" aria-controls="p2" id="b2">
+            <span class="n">ii.</span>
+            <h3>Agua limpia siempre, y ninguna hoja adentro</h3>
+            <span class="acc-ico" aria-hidden="true"></span>
+          </button>
+          <div class="acc-panel" id="p2" role="region" aria-labelledby="b2">
+            <div class="acc-panel-in">
+              Cambia el agua completa a diario; no la rellenes, cámbiala. Cualquier hoja que quede sumergida se descompone y contamina el jarrón entero — quítalas todas antes de acomodar. Lava el jarrón con jabón entre ramo y ramo: el 90% de los ramos que se echan a perder es por vidrio sucio, no por la flor.
+            </div>
+          </div>
+        </div>
+        <div class="acc-item">
+          <button class="acc-btn" aria-expanded="false" aria-controls="p3" id="b3">
+            <span class="n">iii.</span>
+            <h3>Lejos del sol directo, del frutero y del aire</h3>
+            <span class="acc-ico" aria-hidden="true"></span>
+          </button>
+          <div class="acc-panel" id="p3" role="region" aria-labelledby="b3">
+            <div class="acc-panel-in">
+              La ventana que da al poniente es el peor lugar de la casa. La fruta madura suelta etileno y le abre las flores de golpe, así que no lo pongas junto al plátano. Tampoco debajo del clima ni frente a un ventilador: la corriente deshidrata el pétalo aunque el agua esté llena.
+            </div>
+          </div>
+        </div>
+        <div class="acc-item">
+          <button class="acc-btn" aria-expanded="false" aria-controls="p4" id="b4">
+            <span class="n">iv.</span>
+            <h3>La flor que se apaga primero, fuera</h3>
+            <span class="acc-ico" aria-hidden="true"></span>
+          </button>
+          <div class="acc-panel" id="p4" role="region" aria-labelledby="b4">
+            <div class="acc-panel-in">
+              Un arreglo no muere parejo. Cuando una flor se venza, sácala y reacomoda el resto en un jarrón más chico: te quedan cuatro o cinco días más y se ve intencionado, no marchito. Las <em>hortensias</em> que se ven tristes se recuperan sumergiéndolas de cabeza veinte minutos en agua fría.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ COBERTURA ============ -->
+  <section class="sec" id="cobertura" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <div>
+          <p class="eyebrow">Entregas en la ciudad</p>
+          <h2 style="margin-top:12px">Dónde llegamos <em class="it">hoy</em> mismo.</h2>
+        </div>
+        <p>Salimos en dos rutas: una a las 11:00 y otra a las 16:30. Envío gratis en toda la cobertura a partir de $1,500.</p>
+      </div>
+
+      <div class="cob rv">
+        <ul>
+          <li class="cob-row"><span>Roma Norte y Roma Sur</span><span class="free">Sin costo</span></li>
+          <li class="cob-row"><span>Condesa e Hipódromo</span><span class="free">Sin costo</span></li>
+          <li class="cob-row"><span>Juárez y Cuauhtémoc</span><span>$120</span></li>
+          <li class="cob-row"><span>Del Valle y Nápoles</span><span>$120</span></li>
+          <li class="cob-row"><span>Escandón y San Miguel Chapultepec</span><span>$120</span></li>
+          <li class="cob-row"><span>Polanco y Anzures</span><span>$150</span></li>
+        </ul>
+        <ul>
+          <li class="cob-row"><span>Coyoacán centro</span><span>$180</span></li>
+          <li class="cob-row"><span>San Ángel y Chimalistac</span><span>$180</span></li>
+          <li class="cob-row"><span>Narvarte y Portales</span><span>$150</span></li>
+          <li class="cob-row"><span>Santa Fe</span><span>$260</span></li>
+          <li class="cob-row"><span>Lomas de Chapultepec</span><span>$190</span></li>
+          <li class="cob-row"><span>Otras alcaldías de CDMX</span><span>Cotizamos</span></li>
+        </ul>
+      </div>
+      <p class="cob-nota">Pedidos con dedicatoria salen en la ruta de la tarde para que la flor viaje lo menos posible. Si necesitas una hora exacta, escríbenos y lo apartamos.</p>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="ftr">
+  <div class="wrap">
+    <div class="ftr-grid">
+      <div>
+        <span class="logo">TALLO<small>taller floral</small></span>
+        <p class="ftr-bio">Taller de flor de temporada en Roma Norte. Trabajamos por encargo y con lo que da el mercado esa semana.</p>
+        <div class="socials">
+          <a href="#top" aria-label="Instagram de TALLO">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></svg>
+          </a>
+          <a href="#top" aria-label="Facebook de TALLO">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h-2.5A3.5 3.5 0 0 0 9 6.5V9H7v3h2v9h3v-9h2.5l.5-3H12V6.5a1 1 0 0 1 1-1h2z"/></svg>
+          </a>
+          <a href="https://wa.me/525540161213" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-12.7 7.4L3 21l2.2-5.1A8.5 8.5 0 1 1 21 11.5z"/><path d="M8.8 9.2c0 3 2.5 5.5 5.5 5.5"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div>
+        <h4>El taller</h4>
+        <ul>
+          <li>Zacatecas 61, local B</li>
+          <li>Roma Norte, 06700</li>
+          <li>Ciudad de México</li>
+          <li style="margin-top:10px"><a href="https://wa.me/525540161213" target="_blank" rel="noopener">55 4016 1213</a></li>
+          <li><a href="#top">hola@tallo.mx</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Horarios</h4>
+        <ul>
+          <li>Martes a viernes · 9:00 – 19:00</li>
+          <li>Sábado · 9:00 – 18:00</li>
+          <li>Domingo · 10:00 – 14:00</li>
+          <li>Lunes cerrado (día de mercado)</li>
+          <li style="margin-top:10px">Corte para entrega el mismo día: <strong>14:00</strong></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Sustitución de flor</h4>
+        <p style="max-width:32ch">Trabajamos con producto vivo. Si una variedad no llega en buen estado, la reemplazamos por otra del mismo valor, color y carácter, y te avisamos por WhatsApp antes de salir a entregar. Nunca sustituimos por flor teñida ni artificial.</p>
+        <ul style="margin-top:12px">
+          <li><a href="#cuidados">Cuidados y garantía de 3 días</a></li>
+          <li><a href="#cobertura">Zonas y costos de entrega</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="ftr-bot">
+      <span>© <span id="anio">2026</span> TALLO taller floral · CDMX</span>
+      <span>Aviso de privacidad · Términos de entrega · Política de sustitución</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ BLOQUE COMERCIAL $1,950 ============ -->
+<section class="sell" aria-labelledby="sellTitle">
+  <div class="wrap">
+    <div class="sell-grid">
+      <div class="rv">
+        <p class="eyebrow">¿Te gustó esta página?</p>
+        <h2 id="sellTitle">¿Tienes una florería? Tu página podría recibir <em>pedidos</em> así.</h2>
+        <p class="sell-lede">Diseñamos páginas web profesionales para negocios como el tuyo: catálogo, pedidos y WhatsApp, listos para funcionar desde el primer día.</p>
+        <ul class="sell-list">
+          <li><span class="bullet" aria-hidden="true"></span><span>Diseño profesional hecho a la medida de tu marca</span></li>
+          <li><span class="bullet" aria-hidden="true"></span><span>Adaptada a celular, que es de donde llega tu gente</span></li>
+          <li><span class="bullet" aria-hidden="true"></span><span>WhatsApp integrado: el pedido te llega listo para leer</span></li>
+          <li><span class="bullet" aria-hidden="true"></span><span>Catálogo, citas o carrito según tu negocio</span></li>
+          <li><span class="bullet" aria-hidden="true"></span><span>Editable: cambias precios y fotos cuando quieras</span></li>
+          <li><span class="bullet" aria-hidden="true"></span><span>Dominio incluido por 1 año</span></li>
+        </ul>
+      </div>
+
+      <div class="sell-box rv rv-d1">
+        <p class="eyebrow">Precio</p>
+        <p class="sell-price"><sup>$</sup>1,950</p>
+        <p class="pago">MXN · pago único</p>
+        <p class="nota">Sin mensualidades escondidas ni comisiones por pedido. Te entregamos la página funcionando, con tus fotos y tus precios, y te enseñamos a moverle.</p>
+        <a class="btn" href="https://wa.me/525540161213?text=Hola%2C%20vi%20una%20de%20sus%20p%C3%A1ginas%20demo%20y%20quiero%20informaci%C3%B3n%20para%20hacer%20una%20p%C3%A1gina%20para%20mi%20negocio." target="_blank" rel="noopener">Quiero mi página</a>
+        <p class="fine">Te contestamos por WhatsApp el mismo día</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MODAL FICHA ============ -->
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="mTitle" aria-hidden="true">
+  <div class="modal-bg" data-close-modal></div>
+  <div class="modal-card">
+    <button class="modal-close" id="modalClose" aria-label="Cerrar ficha del arreglo">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+    <div class="modal-grid">
+      <div class="modal-ph"><img id="mImg" alt="" width="900" height="1100"></div>
+      <div class="modal-body">
+        <p class="eyebrow" id="mOcasion">Ocasión</p>
+        <h2 id="mTitle" style="margin-top:10px">Nombre</h2>
+        <span class="sci modal-sci" id="mSci"></span>
+        <p class="modal-desc" id="mDesc"></p>
+
+        <div class="comp">
+          <p class="comp-h">Composición floral</p>
+          <ul id="mComp"></ul>
+        </div>
+
+        <div class="field">
+          <span class="field-h" id="mSizeLbl">Tamaño</span>
+          <div class="sizes" id="mSizes" role="group" aria-labelledby="mSizeLbl"></div>
+        </div>
+
+        <div class="field">
+          <label for="mDed">Dedicatoria (opcional)</label>
+          <textarea id="mDed" maxlength="140" placeholder="Va escrita a mano en tarjeta de algodón. Ej.: Para que la casa nueva huela bien. — R."></textarea>
+          <p class="counter" id="mDedCount">0 / 140</p>
+        </div>
+
+        <div class="field">
+          <div class="two">
+            <div>
+              <label class="lbl" for="mFecha">Fecha de entrega</label>
+              <input type="date" id="mFecha">
+            </div>
+            <div>
+              <label class="lbl" for="mFranja">Franja horaria</label>
+              <select id="mFranja">
+                <option value="Mañana 9–13">Mañana 9–13</option>
+                <option value="Tarde 13–18">Tarde 13–18</option>
+                <option value="Noche 18–21">Noche 18–21</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="modal-foot">
+      <p class="modal-total"><small>Total<span class="xs-hide"> del arreglo</span></small><b id="mPrecio">$780</b></p>
+      <button class="btn" id="mAdd">Agregar al pedido</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ PANEL CARRITO ============ -->
+<aside class="cart" id="cart" aria-label="Mi pedido" aria-hidden="true">
+  <div class="cart-head">
+    <div>
+      <h2>Mi pedido</h2>
+      <p id="cartHeadNota">Entrega en CDMX</p>
+    </div>
+    <button class="modal-close" id="cartClose" style="position:static" aria-label="Cerrar mi pedido">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+  </div>
+  <div class="cart-body" id="cartBody"></div>
+  <div class="cart-foot">
+    <div class="cart-line"><span>Subtotal</span><span id="cSub">$0</span></div>
+    <div class="cart-line"><span>Envío en CDMX</span><span id="cEnvio">$0</span></div>
+    <div class="cart-line total"><span>Total</span><b id="cTotal">$0</b></div>
+    <p class="envio-nota" id="cEnvioNota">Envío gratis a partir de $1,500.</p>
+    <button class="btn btn-terra btn-block" id="cSend" style="margin-top:14px">Solicitar mi arreglo</button>
+    <div class="resumen hidden" id="cResumen" role="status" aria-live="polite"></div>
+  </div>
+</aside>
+
+<script>
+(function(){
+  "use strict";
+
+  /* ============================================================
+     0. Utilidades
+     ============================================================ */
+  var IMG = "https://images.unsplash.com/";
+  function img(id, w, q){ return IMG + id + "?auto=format&fit=crop&w=" + w + "&q=" + q; }
+  function mxn(n){ return "$" + Number(n).toLocaleString("es-MX"); }
+  function el(sel, ctx){ return (ctx || document).querySelector(sel); }
+  function els(sel, ctx){ return Array.prototype.slice.call((ctx || document).querySelectorAll(sel)); }
+  function cap(s){ return s.charAt(0).toUpperCase() + s.slice(1); }
+  function esc(s){
+    return String(s).replace(/[&<>"']/g, function(c){
+      return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];
+    });
+  }
+  var WA = "https://wa.me/525540161213";
+
+  /* ---------- localStorage seguro ---------- */
+  var mem = {};
+  var store = {
+    get: function(k){
+      try { var v = window.localStorage.getItem(k); return v === null ? mem[k] : v; }
+      catch(e){ return mem[k]; }
+    },
+    set: function(k, v){
+      mem[k] = v;
+      try { window.localStorage.setItem(k, v); } catch(e){ /* memoria */ }
+    }
+  };
+
+  /* ============================================================
+     1. Fecha, horario de corte
+     ============================================================ */
+  var HOY = new Date();
+  var DIAS = ["Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado"];
+  var MESES = ["enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre"];
+
+  function fechaLarga(d){
+    return DIAS[d.getDay()] + " " + d.getDate() + " de " + MESES[d.getMonth()];
+  }
+  function iso(d){
+    var m = String(d.getMonth() + 1).padStart(2, "0");
+    var dd = String(d.getDate()).padStart(2, "0");
+    return d.getFullYear() + "-" + m + "-" + dd;
+  }
+  function fechaCorta(str){
+    if(!str){ return "Sin fecha"; }
+    var p = str.split("-");
+    if(p.length !== 3){ return str; }
+    var d = new Date(Number(p[0]), Number(p[1]) - 1, Number(p[2]));
+    if(isNaN(d.getTime())){ return str; }
+    return DIAS[d.getDay()] + " " + d.getDate() + " de " + MESES[d.getMonth()];
+  }
+
+  var fechaEl = el("#fechaHoy");
+  if(fechaEl){ fechaEl.textContent = fechaLarga(HOY) + " · flor fresca de hoy"; }
+
+  var anio = el("#anio");
+  if(anio){ anio.textContent = String(HOY.getFullYear()); }
+
+  var horaAhora = HOY.getHours();
+  var minAhora = HOY.getMinutes();
+  var aTiempo = horaAhora < 14;
+  var hoyTitulo = el("#hoyTitulo");
+  var hoyTexto = el("#hoyTexto");
+  if(hoyTitulo && hoyTexto){
+    if(aTiempo){
+      var faltanMin = (14 - horaAhora) * 60 - minAhora;
+      var h = Math.floor(faltanMin / 60);
+      var m = faltanMin % 60;
+      hoyTitulo.textContent = "Pedidos hoy";
+      hoyTexto.textContent = "Cierra en " + (h > 0 ? h + " h " : "") + m + " min · entrega hoy";
+    } else {
+      hoyTitulo.textContent = "Pedidos mañana";
+      hoyTexto.textContent = "Hoy ya salieron las rutas · 14:00";
+    }
+  }
+  var hoyMovil = el("#hoyMovil");
+  if(hoyMovil && hoyTexto){ hoyMovil.textContent = hoyTexto.textContent; }
+
+  var cartHeadNota = el("#cartHeadNota");
+  if(cartHeadNota){
+    cartHeadNota.textContent = aTiempo ? "Pide antes de las 14:00 y llega hoy" : "Las rutas de hoy ya salieron";
+  }
+
+  /* ============================================================
+     2. Datos: ocasiones
+     ============================================================ */
+  var OCASIONES = [
+    { id:"cumpleanos",  nombre:"Cumpleaños",   sci:"Dahlia pinnata",       frase:"Color sin pedir permiso, para quien odia lo discreto.", img:"photo-1572454591674-2739f30d8c40", alt:"Arreglo de dalias y flores de color intenso" },
+    { id:"aniversario", nombre:"Aniversario",  sci:"Ranunculus asiaticus", frase:"Para los años que ya se cuentan de memoria.",           img:"photo-1457089328109-e5d9bd499191", alt:"Ramo de ranúnculos en tonos suaves sobre mesa de madera" },
+    { id:"amor",        nombre:"Amor",         sci:"Paeonia lactiflora",   frase:"Sin corazones. Peonía abierta y punto.",                img:"photo-1589095181425-c038b3871b6a", alt:"Peonías abiertas en un jarrón claro" },
+    { id:"gracias",     nombre:"Gracias",      sci:"Matthiola incana",     frase:"Cuando alguien hizo algo que no tenía que hacer.",      img:"photo-1561181286-d3fee7d55364", alt:"Ramo de alhelíes y flores blancas envuelto en papel" },
+    { id:"nacimiento",  nombre:"Nacimiento",   sci:"Anemone coronaria",    frase:"Chico, claro y que quepa junto a la cuna.",             img:"photo-1487530811176-3780de880c2d", alt:"Arreglo pequeño de anémonas blancas" },
+    { id:"condolencias",nombre:"Condolencias", sci:"Lilium candidum",      frase:"Blanco, verde y silencio. Llega a tiempo.",             img:"photo-1533616688419-b7a585564566", alt:"Arreglo blanco y verde de lirios y follaje" },
+    { id:"temporada",   nombre:"Temporada",    sci:"Flores de estación",   frase:"Lo que llegó hoy del mercado, sin más motivo.",         img:"photo-1622658641558-235f26dd270b", alt:"Cubetas con flores variadas de temporada en el taller" }
+  ];
+
+  /* ============================================================
+     3. Datos: arreglos
+     ============================================================ */
+  var ARREGLOS = [
+    {
+      id:"bruma", nombre:"Bruma", ocasion:"condolencias",
+      sci:"Blanco, verde y gris",
+      desc:"Un arreglo alto y sereno, sin flor de color. Se manda cuando no hay nada que decir.",
+      img:"photo-1561848355-890d054dc55a",
+      alt:"Arreglo alto de flores blancas con follaje gris",
+      precios:{ Pequeño:780, Mediano:1120, Grande:1680 },
+      comp:[
+        { c:"Lirio blanco", s:"Lilium candidum", q:"5 tallos" },
+        { c:"Alhelí", s:"Matthiola incana", q:"7 tallos" },
+        { c:"Eucalipto plateado", s:"Eucalyptus cinerea", q:"al gusto" },
+        { c:"Nube", s:"Gypsophila paniculata", q:"3 tallos" }
+      ]
+    },
+    {
+      id:"domingo", nombre:"Domingo", ocasion:"temporada",
+      sci:"Mezcla de mercado",
+      desc:"Lo que se veía mejor esa mañana, atado suelto. Cambia cada semana y nunca se repite igual.",
+      img:"photo-1587317996237-eddd7e834d84",
+      alt:"Ramo suelto de flores mezcladas de temporada",
+      precios:{ Pequeño:620, Mediano:890, Grande:1280 },
+      comp:[
+        { c:"Flor de temporada", s:"Selección del día", q:"12–18 tallos" },
+        { c:"Estática", s:"Limonium sinuatum", q:"4 tallos" },
+        { c:"Hoja de olivo", s:"Olea europaea", q:"al gusto" }
+      ]
+    },
+    {
+      id:"casa-de-campo", nombre:"Casa de campo", ocasion:"cumpleanos",
+      sci:"Abundante y desordenado",
+      desc:"Grande, ancho y con aire de recién cortado. Para quien tiene mesa larga y visitas.",
+      img:"photo-1531120364508-a6b656c3e78d",
+      alt:"Arreglo abundante de flores de campo en jarrón de barro",
+      precios:{ Pequeño:850, Mediano:1240, Grande:1850 },
+      comp:[
+        { c:"Dalia", s:"Dahlia pinnata", q:"6 tallos" },
+        { c:"Girasol chico", s:"Helianthus annuus", q:"3 tallos" },
+        { c:"Margarita", s:"Leucanthemum vulgare", q:"9 tallos" },
+        { c:"Trigo", s:"Triticum aestivum", q:"al gusto" }
+      ]
+    },
+    {
+      id:"tinta", nombre:"Tinta", ocasion:"aniversario",
+      sci:"Vino, ciruela y ocre",
+      desc:"Paleta oscura, casi de bodegón. Se ve mejor de noche y con poca luz.",
+      img:"photo-1523694576729-dc99e9c0f9b4",
+      alt:"Arreglo de flores en tonos vino y ciruela",
+      precios:{ Pequeño:890, Mediano:1290, Grande:1920 },
+      comp:[
+        { c:"Rosa de jardín borgoña", s:"Rosa gallica", q:"7 tallos" },
+        { c:"Escabiosa", s:"Scabiosa atropurpurea", q:"5 tallos" },
+        { c:"Amaranto colgante", s:"Amaranthus caudatus", q:"3 tallos" },
+        { c:"Hoja de haya", s:"Fagus sylvatica", q:"al gusto" }
+      ]
+    },
+    {
+      id:"almendro", nombre:"Almendro", ocasion:"nacimiento",
+      sci:"Blanco y rosa muy pálido",
+      desc:"Chico, redondo y de tallo corto: cabe en un buró y no estorba en el cuarto.",
+      img:"photo-1531058240690-006c446962d8",
+      alt:"Arreglo pequeño de flores blancas y rosa pálido",
+      precios:{ Pequeño:590, Mediano:840, Grande:1180 },
+      comp:[
+        { c:"Anémona", s:"Anemone coronaria", q:"6 tallos" },
+        { c:"Ranúnculo blanco", s:"Ranunculus asiaticus", q:"8 tallos" },
+        { c:"Nube", s:"Gypsophila paniculata", q:"2 tallos" }
+      ]
+    },
+    {
+      id:"la-fiebre", nombre:"La fiebre", ocasion:"cumpleanos",
+      sci:"Naranja, fucsia, amarillo",
+      desc:"El más ruidoso del taller. Lo pedimos nosotros cuando la ocasión lo merece.",
+      img:"photo-1642751652611-bb9a7cad58a3",
+      alt:"Ramo de flores en naranja, fucsia y amarillo intenso",
+      precios:{ Pequeño:820, Mediano:1180, Grande:1740 },
+      comp:[
+        { c:"Gerbera", s:"Gerbera jamesonii", q:"7 tallos" },
+        { c:"Ave del paraíso", s:"Strelitzia reginae", q:"3 tallos" },
+        { c:"Craspedia", s:"Craspedia globosa", q:"9 tallos" },
+        { c:"Bugambilia", s:"Bougainvillea glabra", q:"al gusto" }
+      ]
+    },
+    {
+      id:"carta", nombre:"Carta", ocasion:"gracias",
+      sci:"Crema y verde limón",
+      desc:"Mediano, prolijo y fácil de recibir en una oficina. Va con tarjeta de algodón.",
+      img:"photo-1608656218680-e8be81ce71d7",
+      alt:"Arreglo en tonos crema y verde envuelto en papel de estraza",
+      precios:{ Pequeño:650, Mediano:920, Grande:1340 },
+      comp:[
+        { c:"Rosa crema", s:"Rosa x hybrida", q:"9 tallos" },
+        { c:"Alhelí", s:"Matthiola incana", q:"5 tallos" },
+        { c:"Hoja de pistache", s:"Pistacia vera", q:"al gusto" }
+      ]
+    },
+    {
+      id:"tarde-de-agosto", nombre:"Tarde de agosto", ocasion:"amor",
+      sci:"Peonía y rosa de jardín",
+      desc:"Denso, perfumado y sin un solo listón. La flor hace todo el trabajo.",
+      img:"photo-1491994336086-44f5d76dd8f2",
+      alt:"Ramo denso de peonías y rosas de jardín",
+      precios:{ Pequeño:980, Mediano:1420, Grande:2100 },
+      comp:[
+        { c:"Peonía", s:"Paeonia lactiflora", q:"7 tallos" },
+        { c:"Rosa de jardín", s:"Rosa centifolia", q:"9 tallos" },
+        { c:"Lisianthus", s:"Eustoma grandiflorum", q:"5 tallos" },
+        { c:"Menta", s:"Mentha spicata", q:"al gusto" }
+      ]
+    },
+    {
+      id:"invernadero", nombre:"Invernadero", ocasion:"temporada",
+      sci:"Verde sobre verde",
+      desc:"Casi puro follaje, con dos o tres flores escondidas. Dura más que cualquier otro.",
+      img:"photo-1435783459217-ee7fe5414abe",
+      alt:"Arreglo verde de follajes con pocas flores",
+      precios:{ Pequeño:560, Mediano:790, Grande:1150 },
+      comp:[
+        { c:"Helecho cuero", s:"Rumohra adiantiformis", q:"al gusto" },
+        { c:"Eucalipto baby", s:"Eucalyptus pulverulenta", q:"5 tallos" },
+        { c:"Orquídea verde", s:"Cymbidium sp.", q:"2 tallos" },
+        { c:"Ruscus", s:"Ruscus aculeatus", q:"al gusto" }
+      ]
+    },
+    {
+      id:"primera-luz", nombre:"Primera luz", ocasion:"nacimiento",
+      sci:"Durazno y hueso",
+      desc:"Suave sin ser dulce. Lo mandamos con jarrón chico incluido para no dar trabajo.",
+      img:"photo-1628927124199-a8a2a5394392",
+      alt:"Arreglo en tonos durazno y hueso en jarrón pequeño",
+      precios:{ Pequeño:610, Mediano:870, Grande:1240 },
+      comp:[
+        { c:"Ranúnculo durazno", s:"Ranunculus asiaticus", q:"9 tallos" },
+        { c:"Clavel de olor", s:"Dianthus caryophyllus", q:"6 tallos" },
+        { c:"Astilbe", s:"Astilbe japonica", q:"3 tallos" }
+      ]
+    },
+    {
+      id:"veinte-anos", nombre:"Veinte años", ocasion:"aniversario",
+      sci:"Rosa antigua y blanco",
+      desc:"Clásico bien hecho, de forma cerrada y simétrica. El que piden los que ya saben.",
+      img:"photo-1586973698216-0c4c285d7afd",
+      alt:"Arreglo clásico de rosas antiguas y flores blancas",
+      precios:{ Pequeño:940, Mediano:1360, Grande:1980 },
+      comp:[
+        { c:"Rosa antigua", s:"Rosa x damascena", q:"12 tallos" },
+        { c:"Lisianthus blanco", s:"Eustoma grandiflorum", q:"6 tallos" },
+        { c:"Hiedra", s:"Hedera helix", q:"al gusto" }
+      ]
+    },
+    {
+      id:"mesa-puesta", nombre:"Mesa puesta", ocasion:"gracias",
+      sci:"Bajo y horizontal",
+      desc:"Se ve por encima al conversar: no pasa de 22 cm de alto. Para cenas y comidas largas.",
+      img:"photo-1487070183336-b863922373d4",
+      alt:"Arreglo bajo y horizontal para centro de mesa",
+      precios:{ Pequeño:720, Mediano:1020, Grande:1480 },
+      comp:[
+        { c:"Ranúnculo", s:"Ranunculus asiaticus", q:"7 tallos" },
+        { c:"Anémona", s:"Anemone coronaria", q:"5 tallos" },
+        { c:"Romero", s:"Salvia rosmarinus", q:"al gusto" },
+        { c:"Estática", s:"Limonium sinuatum", q:"3 tallos" }
+      ]
+    }
+  ];
+
+  var TAMANOS = [
+    { key:"Pequeño", nota:"Mesa de noche · 30 cm" },
+    { key:"Mediano", nota:"Comedor · 45 cm" },
+    { key:"Grande",  nota:"Recibidor · 60 cm" }
+  ];
+
+  function nombreOcasion(id){
+    for(var i = 0; i < OCASIONES.length; i++){
+      if(OCASIONES[i].id === id){ return OCASIONES[i].nombre; }
+    }
+    return "Temporada";
+  }
+  function arreglo(id){
+    for(var i = 0; i < ARREGLOS.length; i++){
+      if(ARREGLOS[i].id === id){ return ARREGLOS[i]; }
+    }
+    return null;
+  }
+
+  /* ============================================================
+     4. Reveal al scroll
+     ============================================================ */
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var io = null;
+  if("IntersectionObserver" in window && !reduce){
+    io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){
+          en.target.classList.add("in");
+          io.unobserve(en.target);
+        }
+      });
+    }, { threshold:0.12, rootMargin:"0px 0px -8% 0px" });
+  }
+  function observar(node){
+    if(!node){ return; }
+    if(io){ io.observe(node); } else { node.classList.add("in"); }
+  }
+  els(".rv").forEach(observar);
+
+  /* ============================================================
+     5. Menú móvil
+     ============================================================ */
+  var mnav = el("#mnav");
+  var scrim = el("#scrim");
+  var openMenu = el("#openMenu");
+  var closeMenu = el("#closeMenu");
+
+  function setScrim(on){
+    if(!scrim){ return; }
+    if(on){ scrim.hidden = false; requestAnimationFrame(function(){ scrim.classList.add("on"); }); }
+    else { scrim.classList.remove("on"); window.setTimeout(function(){ if(!menuAbierto && !cartAbierto){ scrim.hidden = true; } }, 400); }
+  }
+  var menuAbierto = false;
+  function abrirMenu(){
+    if(!mnav){ return; }
+    menuAbierto = true;
+    mnav.classList.add("open");
+    mnav.setAttribute("aria-hidden", "false");
+    if(openMenu){ openMenu.setAttribute("aria-expanded", "true"); }
+    setScrim(true);
+    document.body.style.overflow = "hidden";
+    if(closeMenu){ closeMenu.focus(); }
+  }
+  function cerrarMenu(){
+    if(!mnav){ return; }
+    menuAbierto = false;
+    mnav.classList.remove("open");
+    mnav.setAttribute("aria-hidden", "true");
+    if(openMenu){ openMenu.setAttribute("aria-expanded", "false"); }
+    setScrim(cartAbierto);
+    if(!cartAbierto && !modalAbierto){ document.body.style.overflow = ""; }
+  }
+  if(openMenu){ openMenu.addEventListener("click", abrirMenu); }
+  if(closeMenu){ closeMenu.addEventListener("click", function(){ cerrarMenu(); if(openMenu){ openMenu.focus(); } }); }
+  els("[data-mclose]").forEach(function(a){ a.addEventListener("click", cerrarMenu); });
+
+  /* ============================================================
+     6. Ocasiones (fichas de herbario)
+     ============================================================ */
+  var ocsGrid = el("#ocsGrid");
+  if(ocsGrid){
+    var htmlOcs = "";
+    OCASIONES.forEach(function(o, i){
+      var n = String(i + 1).padStart(2, "0");
+      htmlOcs +=
+        '<button class="oc rv rv-d' + ((i % 4) + 1) + '" type="button" data-oc="' + o.id + '" aria-pressed="false">' +
+          '<span class="oc-num">N.º ' + n + '</span>' +
+          '<span class="oc-ph"><img src="' + img(o.img, 900, 75) + '" alt="' + esc(o.alt) + '" loading="lazy" decoding="async" width="600" height="750"></span>' +
+          '<span class="oc-body">' +
+            '<span class="t">' + esc(o.nombre) + '</span>' +
+            '<span class="sci">' + esc(o.sci) + '</span>' +
+            '<span class="l">' + esc(o.frase) + '</span>' +
+            '<span class="oc-cta">Ver arreglos ' +
+              '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>' +
+            '</span>' +
+          '</span>' +
+        '</button>';
+    });
+    // ficha final: ver todo
+    htmlOcs +=
+      '<button class="oc rv rv-d4" type="button" data-oc="todo" aria-pressed="true">' +
+        '<span class="oc-num">N.º 00</span>' +
+        '<span class="oc-ph"><img src="' + img("photo-1587317997383-2e6c1b24040f", 900, 75) + '" alt="Vista general de arreglos florales listos para entrega" loading="lazy" decoding="async" width="600" height="750"></span>' +
+        '<span class="oc-body">' +
+          '<span class="t">Todo el taller</span>' +
+          '<span class="sci">Doce arreglos de la casa</span>' +
+          '<span class="l">Si prefieres verlo todo junto y decidir con calma.</span>' +
+          '<span class="oc-cta">Ver el catálogo ' +
+            '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>' +
+          '</span>' +
+        '</span>' +
+      '</button>';
+    ocsGrid.innerHTML = htmlOcs;
+    els(".rv", ocsGrid).forEach(observar);
+
+    els("[data-oc]", ocsGrid).forEach(function(btn){
+      btn.addEventListener("click", function(){
+        var val = btn.getAttribute("data-oc");
+        aplicarFiltro(val, true);
+      });
+    });
+  }
+
+  /* ============================================================
+     7. Catálogo + filtro
+     ============================================================ */
+  var catBar = el("#catBar");
+  var catGrid = el("#catGrid");
+  var catEmpty = el("#catEmpty");
+  var filtroActual = "todo";
+
+  if(catBar){
+    var htmlBar = '<button class="chip" type="button" data-chip="todo" aria-pressed="true">Todos</button>';
+    OCASIONES.forEach(function(o){
+      htmlBar += '<button class="chip" type="button" data-chip="' + o.id + '" aria-pressed="false">' + esc(o.nombre) + '</button>';
+    });
+    htmlBar += '<span class="cat-count" id="catCount">12 arreglos</span>';
+    catBar.innerHTML = htmlBar;
+    els("[data-chip]", catBar).forEach(function(ch){
+      ch.addEventListener("click", function(){ aplicarFiltro(ch.getAttribute("data-chip"), false); });
+    });
+  }
+
+  function tarjeta(a){
+    var desde = a.precios["Pequeño"];
+    return '' +
+      '<button class="card rv" type="button" data-abrir="' + a.id + '">' +
+        '<span class="card-ph">' +
+          '<span class="card-tag">' + esc(nombreOcasion(a.ocasion)) + '</span>' +
+          '<img src="' + img(a.img, 900, 75) + '" alt="' + esc(a.alt) + '" loading="lazy" decoding="async" width="600" height="860">' +
+        '</span>' +
+        '<span class="card-body">' +
+          '<span class="t">' + esc(a.nombre) + '</span>' +
+          '<span class="sci">' + esc(a.sci) + '</span>' +
+          '<span class="l">' + esc(a.desc) + '</span>' +
+        '</span>' +
+        '<span class="card-foot">' +
+          '<span class="card-price"><small>Desde</small>' + mxn(desde) + '</span>' +
+          '<span class="card-open">Ver ficha ' +
+            '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>' +
+          '</span>' +
+        '</span>' +
+      '</button>';
+  }
+
+  function pintarCatalogo(){
+    if(!catGrid){ return; }
+    var lista = ARREGLOS.filter(function(a){
+      return filtroActual === "todo" || a.ocasion === filtroActual;
+    });
+    catGrid.innerHTML = lista.map(tarjeta).join("");
+    els(".rv", catGrid).forEach(observar);
+    els("[data-abrir]", catGrid).forEach(function(c){
+      c.addEventListener("click", function(){ abrirModal(c.getAttribute("data-abrir"), c); });
+    });
+    var count = el("#catCount");
+    if(count){
+      count.textContent = lista.length + (lista.length === 1 ? " arreglo" : " arreglos") +
+        (filtroActual === "todo" ? "" : " · " + nombreOcasion(filtroActual));
+    }
+    if(catEmpty){ catEmpty.classList.toggle("hidden", lista.length > 0); }
+  }
+
+  function aplicarFiltro(val, scroll){
+    filtroActual = val;
+    els("[data-chip]").forEach(function(ch){
+      ch.setAttribute("aria-pressed", ch.getAttribute("data-chip") === val ? "true" : "false");
+    });
+    els("[data-oc]").forEach(function(o){
+      o.setAttribute("aria-pressed", o.getAttribute("data-oc") === val ? "true" : "false");
+    });
+    pintarCatalogo();
+    if(scroll){
+      var target = el("#arreglos");
+      if(target){
+        var y = target.getBoundingClientRect().top + window.pageYOffset - 70;
+        window.scrollTo({ top:y, behavior: reduce ? "auto" : "smooth" });
+      }
+    }
+  }
+  pintarCatalogo();
+
+  /* ============================================================
+     8. Modal ficha
+     ============================================================ */
+  var modal = el("#modal");
+  var mImg = el("#mImg");
+  var mTitle = el("#mTitle");
+  var mSci = el("#mSci");
+  var mDesc = el("#mDesc");
+  var mComp = el("#mComp");
+  var mSizes = el("#mSizes");
+  var mDed = el("#mDed");
+  var mDedCount = el("#mDedCount");
+  var mFecha = el("#mFecha");
+  var mFranja = el("#mFranja");
+  var mPrecio = el("#mPrecio");
+  var mAdd = el("#mAdd");
+  var mOcasion = el("#mOcasion");
+  var modalClose = el("#modalClose");
+
+  var modalAbierto = false;
+  var actual = null;
+  var tamanoSel = "Pequeño";
+  var ultimoFoco = null;
+
+  if(mFecha){
+    mFecha.min = iso(HOY);
+    var sugerida = new Date(HOY.getTime());
+    if(!aTiempo){ sugerida.setDate(sugerida.getDate() + 1); }
+    mFecha.value = iso(sugerida);
+  }
+
+  function pintarSizes(){
+    if(!mSizes || !actual){ return; }
+    mSizes.innerHTML = TAMANOS.map(function(t){
+      var on = t.key === tamanoSel;
+      return '<button class="size" type="button" data-size="' + t.key + '" aria-pressed="' + (on ? "true" : "false") + '">' +
+        '<b>' + t.key + '</b><span>' + t.nota + '</span><i>' + mxn(actual.precios[t.key]) + '</i></button>';
+    }).join("");
+    els("[data-size]", mSizes).forEach(function(b){
+      b.addEventListener("click", function(){
+        tamanoSel = b.getAttribute("data-size");
+        pintarSizes();
+        actualizarPrecio();
+      });
+    });
+  }
+  function actualizarPrecio(){
+    if(mPrecio && actual){ mPrecio.textContent = mxn(actual.precios[tamanoSel]); }
+  }
+
+  function abrirModal(id, origen){
+    var a = arreglo(id);
+    if(!a || !modal){ return; }
+    actual = a;
+    tamanoSel = "Pequeño";
+    ultimoFoco = origen || document.activeElement;
+
+    if(mImg){ mImg.src = img(a.img, 1200, 78); mImg.alt = a.alt; }
+    if(mTitle){ mTitle.textContent = a.nombre; }
+    if(mSci){ mSci.textContent = a.sci; }
+    if(mDesc){ mDesc.textContent = a.desc; }
+    if(mOcasion){ mOcasion.textContent = nombreOcasion(a.ocasion); }
+    if(mComp){
+      mComp.innerHTML = a.comp.map(function(f){
+        return '<li><span>' + esc(f.c) + '</span><span class="sci">' + esc(f.s) + '</span><span class="cant">' + esc(f.q) + '</span></li>';
+      }).join("");
+    }
+    if(mDed){ mDed.value = ""; }
+    if(mDedCount){ mDedCount.textContent = "0 / 140"; mDedCount.classList.remove("max"); }
+    pintarSizes();
+    actualizarPrecio();
+
+    modal.classList.add("on");
+    modal.setAttribute("aria-hidden", "false");
+    modalAbierto = true;
+    document.body.style.overflow = "hidden";
+    if(modalClose){ requestAnimationFrame(function(){ modalClose.focus(); }); }
+  }
+
+  function cerrarModal(){
+    if(!modal){ return; }
+    modal.classList.remove("on");
+    modal.setAttribute("aria-hidden", "true");
+    modalAbierto = false;
+    if(!cartAbierto && !menuAbierto){ document.body.style.overflow = ""; }
+    if(ultimoFoco && typeof ultimoFoco.focus === "function"){ ultimoFoco.focus(); }
+  }
+
+  if(modalClose){ modalClose.addEventListener("click", cerrarModal); }
+  els("[data-close-modal]").forEach(function(n){ n.addEventListener("click", cerrarModal); });
+
+  if(mDed && mDedCount){
+    mDed.addEventListener("input", function(){
+      var n = mDed.value.length;
+      mDedCount.textContent = n + " / 140";
+      mDedCount.classList.toggle("max", n >= 140);
+    });
+  }
+
+  if(mAdd){
+    mAdd.addEventListener("click", function(){
+      if(!actual){ return; }
+      agregar({
+        id: actual.id,
+        nombre: actual.nombre,
+        img: actual.img,
+        tamano: tamanoSel,
+        precio: actual.precios[tamanoSel],
+        dedicatoria: mDed ? mDed.value.trim().slice(0, 140) : "",
+        fecha: mFecha ? mFecha.value : "",
+        franja: mFranja ? mFranja.value : "Mañana 9–13",
+        cant: 1
+      });
+      cerrarModal();
+      abrirCart();
+    });
+  }
+
+  /* ============================================================
+     9. Carrito
+     ============================================================ */
+  var cart = el("#cart");
+  var cartBody = el("#cartBody");
+  var cartCount = el("#cartCount");
+  var cSub = el("#cSub");
+  var cEnvio = el("#cEnvio");
+  var cTotal = el("#cTotal");
+  var cEnvioNota = el("#cEnvioNota");
+  var cSend = el("#cSend");
+  var cResumen = el("#cResumen");
+  var openCartBtn = el("#openCart");
+  var cartClose = el("#cartClose");
+
+  var ENVIO = 120;
+  var ENVIO_GRATIS = 1500;
+  var items = [];
+  var cartAbierto = false;
+
+  try {
+    var guardado = store.get("tallo_pedido");
+    if(guardado){
+      var parsed = JSON.parse(guardado);
+      if(Object.prototype.toString.call(parsed) === "[object Array]"){ items = parsed; }
+    }
+  } catch(e){ items = []; }
+
+  function guardar(){
+    try { store.set("tallo_pedido", JSON.stringify(items)); } catch(e){ /* nada */ }
+  }
+
+  function subtotal(){
+    return items.reduce(function(s, it){ return s + (it.precio * it.cant); }, 0);
+  }
+  function piezas(){
+    return items.reduce(function(s, it){ return s + it.cant; }, 0);
+  }
+  function costoEnvio(){
+    if(items.length === 0){ return 0; }
+    return subtotal() >= ENVIO_GRATIS ? 0 : ENVIO;
+  }
+
+  function llaveItem(it){
+    return [it.id, it.tamano, it.fecha, it.franja, it.dedicatoria].join("|");
+  }
+
+  function agregar(nuevo){
+    var k = llaveItem(nuevo);
+    var found = false;
+    for(var i = 0; i < items.length; i++){
+      if(llaveItem(items[i]) === k){ items[i].cant += 1; found = true; break; }
+    }
+    if(!found){ items.push(nuevo); }
+    pintarCart();
+    guardar();
+  }
+
+  function pintarCart(){
+    if(cartCount){ cartCount.textContent = String(piezas()); }
+    if(!cartBody){ return; }
+
+    if(items.length === 0){
+      cartBody.innerHTML =
+        '<div class="cart-empty"><p>Todavía no hay flor aquí.</p>' +
+        '<span>Elige un arreglo y ajusta tamaño, fecha y dedicatoria.</span></div>';
+    } else {
+      cartBody.innerHTML = items.map(function(it, i){
+        return '' +
+          '<article class="ci">' +
+            '<span class="ci-ph"><img src="' + img(it.img, 500, 70) + '" alt="Arreglo ' + esc(it.nombre) + '" loading="lazy" decoding="async" width="220" height="290"></span>' +
+            '<div>' +
+              '<div class="ci-top">' +
+                '<h3>' + esc(it.nombre) + '</h3>' +
+                '<button class="ci-del" type="button" data-del="' + i + '" aria-label="Quitar ' + esc(it.nombre) + ' del pedido">' +
+                  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/></svg>' +
+                '</button>' +
+              '</div>' +
+              '<p class="ci-meta">' +
+                'Tamaño <em>' + esc(it.tamano) + '</em><br>' +
+                esc(fechaCorta(it.fecha)) + ' · ' + esc(it.franja) +
+              '</p>' +
+              '<textarea class="ci-ded" data-ded="' + i + '" maxlength="140" rows="2" aria-label="Dedicatoria de ' + esc(it.nombre) + '" placeholder="Sin dedicatoria — puedes escribirla aquí">' + esc(it.dedicatoria || "") + '</textarea>' +
+              '<div class="ci-row">' +
+                '<span class="qty">' +
+                  '<button type="button" data-menos="' + i + '" aria-label="Quitar una unidad">−</button>' +
+                  '<span>' + it.cant + '</span>' +
+                  '<button type="button" data-mas="' + i + '" aria-label="Agregar una unidad">+</button>' +
+                '</span>' +
+                '<span class="ci-sub">' + mxn(it.precio * it.cant) + '</span>' +
+              '</div>' +
+            '</div>' +
+          '</article>';
+      }).join("");
+
+      els("[data-del]", cartBody).forEach(function(b){
+        b.addEventListener("click", function(){
+          items.splice(Number(b.getAttribute("data-del")), 1);
+          pintarCart(); guardar();
+        });
+      });
+      els("[data-mas]", cartBody).forEach(function(b){
+        b.addEventListener("click", function(){
+          var i = Number(b.getAttribute("data-mas"));
+          if(items[i] && items[i].cant < 20){ items[i].cant += 1; pintarCart(); guardar(); }
+        });
+      });
+      els("[data-menos]", cartBody).forEach(function(b){
+        b.addEventListener("click", function(){
+          var i = Number(b.getAttribute("data-menos"));
+          if(!items[i]){ return; }
+          items[i].cant -= 1;
+          if(items[i].cant <= 0){ items.splice(i, 1); }
+          pintarCart(); guardar();
+        });
+      });
+      els("[data-ded]", cartBody).forEach(function(t){
+        t.addEventListener("input", function(){
+          var i = Number(t.getAttribute("data-ded"));
+          if(items[i]){ items[i].dedicatoria = t.value.slice(0, 140); guardar(); }
+        });
+      });
+    }
+
+    var sub = subtotal();
+    var env = costoEnvio();
+    if(cSub){ cSub.textContent = mxn(sub); }
+    if(cEnvio){ cEnvio.textContent = env === 0 ? (items.length ? "Cortesía" : mxn(0)) : mxn(env); }
+    if(cTotal){ cTotal.textContent = mxn(sub + env); }
+    if(cEnvioNota){
+      if(items.length === 0){
+        cEnvioNota.textContent = "Envío $120 en CDMX · gratis desde $1,500.";
+      } else if(sub >= ENVIO_GRATIS){
+        cEnvioNota.textContent = "Tu envío va por nuestra cuenta.";
+      } else {
+        cEnvioNota.textContent = "Te faltan " + mxn(ENVIO_GRATIS - sub) + " para envío sin costo.";
+      }
+    }
+    if(cResumen){ cResumen.classList.add("hidden"); }
+  }
+
+  function abrirCart(){
+    if(!cart){ return; }
+    cartAbierto = true;
+    cart.classList.add("on");
+    cart.setAttribute("aria-hidden", "false");
+    setScrim(true);
+    document.body.style.overflow = "hidden";
+    if(cartClose){ requestAnimationFrame(function(){ cartClose.focus(); }); }
+  }
+  function cerrarCart(){
+    if(!cart){ return; }
+    cartAbierto = false;
+    cart.classList.remove("on");
+    cart.setAttribute("aria-hidden", "true");
+    setScrim(menuAbierto);
+    if(!menuAbierto && !modalAbierto){ document.body.style.overflow = ""; }
+    if(openCartBtn){ openCartBtn.focus(); }
+  }
+  if(openCartBtn){ openCartBtn.addEventListener("click", abrirCart); }
+  if(cartClose){ cartClose.addEventListener("click", cerrarCart); }
+  if(scrim){
+    scrim.addEventListener("click", function(){
+      if(menuAbierto){ cerrarMenu(); }
+      if(cartAbierto){ cerrarCart(); }
+    });
+  }
+
+  /* ---------- resumen + WhatsApp ---------- */
+  function textoPedido(){
+    var lineas = [];
+    lineas.push("PEDIDO — TALLO taller floral");
+    lineas.push(fechaLarga(HOY));
+    lineas.push("");
+    items.forEach(function(it, i){
+      lineas.push((i + 1) + ". " + it.nombre + " — " + it.tamano + " x" + it.cant);
+      lineas.push("   Entrega: " + fechaCorta(it.fecha) + ", " + it.franja);
+      if(it.dedicatoria){ lineas.push('   Dedicatoria: "' + it.dedicatoria + '"'); }
+      lineas.push("   Subtotal: " + mxn(it.precio * it.cant));
+      lineas.push("");
+    });
+    var sub = subtotal();
+    var env = costoEnvio();
+    lineas.push("Subtotal: " + mxn(sub));
+    lineas.push("Envío en CDMX: " + (env === 0 ? "cortesía" : mxn(env)));
+    lineas.push("Total: " + mxn(sub + env));
+    lineas.push("");
+    lineas.push("Me falta confirmar dirección de entrega y a nombre de quién va.");
+    return lineas.join("\n");
+  }
+
+  if(cSend){
+    cSend.addEventListener("click", function(){
+      if(items.length === 0){
+        if(cResumen){
+          cResumen.classList.remove("hidden");
+          cResumen.innerHTML = "<b>Tu pedido está vacío</b>Elige un arreglo del catálogo y vuelve aquí.";
+        }
+        return;
+      }
+      var txt = textoPedido();
+      if(cResumen){
+        cResumen.classList.remove("hidden");
+        cResumen.innerHTML = "<b>Así se envía tu pedido</b>" + esc(txt);
+        cResumen.scrollTop = 0;
+      }
+      window.open(WA + "?text=" + encodeURIComponent(txt), "_blank", "noopener");
+    });
+  }
+
+  pintarCart();
+
+  /* ============================================================
+     10. Suscripción
+     ============================================================ */
+  var PLANES = {
+    semanal:   { precio:690, entregas:4, label:"Semanal" },
+    quincenal: { precio:790, entregas:2, label:"Quincenal" },
+    mensual:   { precio:890, entregas:1, label:"Mensual" }
+  };
+  var susTotal = el("#susTotal");
+  var susDetalle = el("#susDetalle");
+  var susCta = el("#susCta");
+
+  function pintarSus(){
+    var sel = el('input[name="freq"]:checked');
+    var key = sel ? sel.value : "semanal";
+    var p = PLANES[key];
+    if(!p){ return; }
+    var total = p.precio * p.entregas;
+    if(susTotal){
+      susTotal.innerHTML = mxn(total) +
+        '<small id="susDetalle">' + p.label + " · " + p.entregas +
+        (p.entregas === 1 ? " entrega de " : " entregas de ") + mxn(p.precio) + "</small>";
+    }
+    if(susCta){
+      var msg = "Hola TALLO, quiero la suscripción floral " + p.label.toLowerCase() +
+        " (" + mxn(p.precio) + " por entrega, " + mxn(total) + " al mes). ¿Cómo la empiezo?";
+      susCta.href = WA + "?text=" + encodeURIComponent(msg);
+    }
+  }
+  els('input[name="freq"]').forEach(function(r){ r.addEventListener("change", pintarSus); });
+  pintarSus();
+
+  /* ============================================================
+     11. Formulario corporativo
+     ============================================================ */
+  var corpForm = el("#corpForm");
+  if(corpForm){
+    var cFechaInput = el("#cFecha");
+    if(cFechaInput){ cFechaInput.min = iso(HOY); }
+
+    corpForm.addEventListener("submit", function(ev){
+      ev.preventDefault();
+      var nombre = el("#cNombre");
+      var evento = el("#cEvento");
+      var fecha = el("#cFecha");
+      var presu = el("#cPresu");
+      var ok = true;
+
+      function marcar(input, errNode, cond, msg){
+        if(!input || !errNode){ return; }
+        if(cond){ errNode.textContent = ""; input.style.borderColor = ""; }
+        else { errNode.textContent = msg; input.style.borderColor = "#B8624B"; ok = false; }
+      }
+      marcar(nombre, el("#errNombre"), nombre && nombre.value.trim().length >= 3, "Escribe tu nombre completo.");
+      marcar(evento, el("#errEvento"), evento && evento.value !== "", "Elige el tipo de evento.");
+      marcar(fecha, el("#errFecha"), fecha && fecha.value !== "", "Necesitamos una fecha aproximada.");
+      marcar(presu, el("#errPresu"), presu && presu.value !== "", "Elige un rango de presupuesto.");
+
+      var okBox = el("#corpOk");
+      var okTxt = el("#corpOkTxt");
+      if(!ok){
+        if(okBox){ okBox.classList.add("hidden"); }
+        return;
+      }
+      if(okBox && okTxt){
+        okTxt.textContent = "Gracias, " + nombre.value.trim().split(" ")[0] +
+          ". Anotamos tu " + evento.value.toLowerCase() + " del " + fechaCorta(fecha.value) +
+          ". Te escribimos hoy mismo con dos propuestas y su rango de precio.";
+        okBox.classList.remove("hidden");
+      }
+      corpForm.reset();
+      if(cFechaInput){ cFechaInput.min = iso(HOY); }
+    });
+  }
+
+  /* ============================================================
+     12. Acordeón de cuidados
+     ============================================================ */
+  var acc = el("#acc");
+  if(acc){
+    els(".acc-btn", acc).forEach(function(btn){
+      btn.addEventListener("click", function(){
+        var panel = document.getElementById(btn.getAttribute("aria-controls"));
+        var abierto = btn.getAttribute("aria-expanded") === "true";
+        els(".acc-btn", acc).forEach(function(other){
+          if(other !== btn){
+            other.setAttribute("aria-expanded", "false");
+            var op = document.getElementById(other.getAttribute("aria-controls"));
+            if(op){ op.style.maxHeight = "0px"; }
+          }
+        });
+        btn.setAttribute("aria-expanded", abierto ? "false" : "true");
+        if(panel){ panel.style.maxHeight = abierto ? "0px" : (panel.scrollHeight + 20) + "px"; }
+      });
+    });
+  }
+
+  /* ============================================================
+     13. Esc global
+     ============================================================ */
+  document.addEventListener("keydown", function(ev){
+    if(ev.key === "Escape" || ev.key === "Esc"){
+      if(modalAbierto){ cerrarModal(); return; }
+      if(cartAbierto){ cerrarCart(); return; }
+      if(menuAbierto){ cerrarMenu(); if(openMenu){ openMenu.focus(); } }
+    }
+  });
+
+  /* ---------- recalcular altura de acordeón al redimensionar ---------- */
+  var rt = null;
+  window.addEventListener("resize", function(){
+    if(rt){ window.clearTimeout(rt); }
+    rt = window.setTimeout(function(){
+      els(".acc-btn").forEach(function(btn){
+        if(btn.getAttribute("aria-expanded") === "true"){
+          var p = document.getElementById(btn.getAttribute("aria-controls"));
+          if(p){ p.style.maxHeight = (p.scrollHeight + 20) + "px"; }
+        }
+      });
+    }, 160);
+  });
+
+})();
+</script>
+</body>
+</html>

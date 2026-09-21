@@ -1,0 +1,2311 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CUERVO — Barbería de autor en la Condesa, CDMX</title>
+<meta name="description" content="Barbería de autor en Tamaulipas 45, Condesa. Corte, barba y fade con cita en línea. Veinte minutos, cero improvisación. Abrimos de martes a domingo.">
+<meta name="theme-color" content="#16181A">
+<meta name="author" content="CUERVO Barbería">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_MX">
+<meta property="og:site_name" content="CUERVO">
+<meta property="og:title" content="CUERVO — Barbería de autor en la Condesa">
+<meta property="og:description" content="Corte, barba y fade en Tamaulipas 45, Condesa. Agenda en línea o llega sin cita. Veinte minutos, cero improvisación.">
+<meta property="og:image" content="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?auto=format&fit=crop&w=1600&q=75">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="CUERVO — Barbería de autor en la Condesa">
+<meta name="twitter:description" content="Corte, barba y fade en Tamaulipas 45, Condesa. Agenda en línea o llega sin cita.">
+<meta name="twitter:image" content="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?auto=format&fit=crop&w=1600&q=75">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2316181A'/%3E%3Cpath d='M4 27h24' stroke='%23A8703F' stroke-width='2'/%3E%3Ctext x='16' y='23' font-family='Helvetica,Arial,sans-serif' font-size='20' font-weight='900' fill='%23E8E2D6' text-anchor='middle'%3EC%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;900&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   CUERVO — barbería de autor
+   Paleta: carbón #16181A · tinta #0D0F10 · crema #E8E2D6
+           acero #7C848C · verde profundo #1F2E27 · cobre #A8703F
+   ============================================================ */
+
+:root{
+  --carbon:#16181A;
+  --tinta:#0D0F10;
+  --crema:#E8E2D6;
+  --acero:#7C848C;
+  --verde:#1F2E27;
+  --cobre:#A8703F;
+  --linea:rgba(232,226,214,.16);
+  --linea-fuerte:rgba(232,226,214,.30);
+  --head-h:78px;
+  --pad:clamp(18px,5vw,72px);
+  --maxw:1440px;
+  --ease:cubic-bezier(.22,.61,.36,1);
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body,h1,h2,h3,h4,p,figure,ul,ol,dl,dd,blockquote{margin:0}
+ul,ol{padding:0;list-style:none}
+img{max-width:100%;display:block}
+button,input,select,textarea{font:inherit;color:inherit}
+button{background:none;border:0;cursor:pointer;padding:0}
+
+html{scroll-behavior:smooth}
+body{
+  background:var(--carbon);
+  color:var(--crema);
+  font-family:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;
+  font-weight:400;
+  font-size:16px;
+  line-height:1.6;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+body.no-scroll{overflow:hidden}
+
+h1,h2,h3,h4,.arch{
+  font-family:'Archivo',system-ui,sans-serif;
+  font-weight:900;
+  letter-spacing:-.02em;
+  text-transform:uppercase;
+  line-height:.94;
+}
+
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--cobre);outline-offset:3px}
+
+.wrap{max-width:var(--maxw);margin:0 auto;padding-left:var(--pad);padding-right:var(--pad)}
+.rule{height:1px;background:var(--linea);border:0;margin:0}
+
+/* etiquetas / eyebrows */
+.eyebrow{
+  font-family:'Inter',sans-serif;
+  font-weight:500;
+  font-size:11px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--acero);
+}
+.eyebrow .num{color:var(--cobre)}
+
+/* subrayado que crece desde la izquierda */
+.ul-grow{position:relative;display:inline-block}
+.ul-grow::after{
+  content:"";position:absolute;left:0;bottom:-3px;height:1px;width:100%;
+  background:var(--cobre);transform:scaleX(0);transform-origin:left center;
+  transition:transform .45s var(--ease);
+}
+.ul-grow:hover::after,.ul-grow:focus-visible::after{transform:scaleX(1)}
+
+/* ---------- botones ---------- */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  min-height:48px;padding:0 26px;
+  font-family:'Inter',sans-serif;font-weight:500;font-size:12px;
+  letter-spacing:.12em;text-transform:uppercase;
+  border:1px solid transparent;background:var(--crema);color:var(--tinta);
+  transition:background .3s var(--ease),color .3s var(--ease),border-color .3s var(--ease),transform .3s var(--ease);
+}
+.btn:hover{background:var(--cobre);color:#fff}
+.btn:active{transform:translateY(1px)}
+.btn--ghost{background:transparent;color:var(--crema);border-color:var(--linea-fuerte)}
+.btn--ghost:hover{background:var(--crema);color:var(--tinta);border-color:var(--crema)}
+.btn--dark{background:var(--tinta);color:var(--crema)}
+.btn--dark:hover{background:var(--cobre);color:#fff}
+.btn--block{width:100%}
+.btn[disabled]{opacity:.35;cursor:not-allowed}
+.btn[disabled]:hover{background:var(--crema);color:var(--tinta)}
+
+/* ---------- reveal ---------- */
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.reveal.is-in{opacity:1;transform:none}
+.reveal[data-d="1"]{transition-delay:.08s}
+.reveal[data-d="2"]{transition-delay:.16s}
+.reveal[data-d="3"]{transition-delay:.24s}
+
+/* ============================================================
+   1 · HEADER
+   ============================================================ */
+section[id],div[id]{scroll-margin-top:96px}
+@media (max-width:860px){section[id],div[id]{scroll-margin-top:88px}}
+.site-head{
+  position:fixed;top:0;left:0;right:0;z-index:120;
+  background:rgba(13,15,16,.82);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid transparent;
+  transition:border-color .35s var(--ease),background .35s var(--ease);
+}
+.site-head.is-scrolled{border-bottom-color:var(--linea);background:rgba(13,15,16,.94)}
+.head-inner{
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+  height:var(--head-h);
+  transition:height .35s var(--ease);
+}
+.site-head.is-scrolled .head-inner{height:60px}
+.logo{
+  font-family:'Archivo',sans-serif;font-weight:900;
+  font-size:clamp(19px,2.2vw,24px);letter-spacing:.02em;text-transform:uppercase;
+  display:inline-flex;align-items:baseline;gap:9px;
+}
+.logo .dot{width:5px;height:5px;background:var(--cobre);display:inline-block;transform:translateY(-3px)}
+.logo small{
+  font-family:'Inter',sans-serif;font-weight:400;font-size:9px;
+  letter-spacing:.2em;color:var(--acero);text-transform:uppercase;
+}
+.nav{display:none}
+@media (min-width:1000px){
+  .nav{display:flex;align-items:center;gap:clamp(18px,2.4vw,34px)}
+}
+.nav a{
+  font-size:12px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--crema);opacity:.82;transition:opacity .3s var(--ease);
+  position:relative;padding:6px 0;
+}
+.nav a:hover{opacity:1}
+.nav a::after{
+  content:"";position:absolute;left:0;bottom:0;height:1px;width:100%;
+  background:var(--cobre);transform:scaleX(0);transform-origin:left center;
+  transition:transform .4s var(--ease);
+}
+.nav a:hover::after,.nav a:focus-visible::after{transform:scaleX(1)}
+.head-cta{display:none}
+@media (min-width:1000px){.head-cta{display:inline-flex;min-height:42px;padding:0 22px}}
+
+/* hamburguesa de dos líneas */
+.burger{
+  width:48px;height:48px;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  margin-right:-10px;
+}
+@media (min-width:1000px){.burger{display:none}}
+.burger span{display:block;width:26px;height:1px;background:var(--crema);transition:transform .4s var(--ease),opacity .3s var(--ease)}
+.burger span+span{margin-top:7px}
+.burger[aria-expanded="true"] span:first-child{transform:translateY(4px) rotate(45deg)}
+.burger[aria-expanded="true"] span:last-child{transform:translateY(-4px) rotate(-45deg)}
+
+/* menú móvil pantalla completa */
+.mobile-menu{
+  position:fixed;inset:0;z-index:110;background:var(--tinta);
+  display:flex;flex-direction:column;justify-content:center;
+  padding:var(--head-h) var(--pad) 40px;
+  opacity:0;visibility:hidden;transform:translateY(-8px);
+  transition:opacity .4s var(--ease),transform .4s var(--ease),visibility .4s;
+}
+.mobile-menu.is-open{opacity:1;visibility:visible;transform:none}
+.mobile-menu ol{border-top:1px solid var(--linea)}
+.mobile-menu li{border-bottom:1px solid var(--linea)}
+.mobile-menu a{
+  display:flex;align-items:baseline;gap:18px;padding:18px 0;
+  font-family:'Archivo',sans-serif;font-weight:700;text-transform:uppercase;
+  font-size:clamp(26px,8vw,38px);letter-spacing:-.02em;line-height:1;
+}
+.mobile-menu .idx{
+  font-family:'Inter',sans-serif;font-weight:400;font-size:11px;
+  letter-spacing:.16em;color:var(--cobre);flex:none;width:24px;
+}
+.mobile-menu .mm-foot{margin-top:34px;display:grid;gap:14px}
+.mobile-menu .mm-foot p{font-size:13px;color:var(--acero);line-height:1.5}
+
+/* ============================================================
+   2 · HERO
+   ============================================================ */
+.hero{position:relative;padding-top:var(--head-h);background:#0B0C0D}
+.hero-media{position:relative;min-height:clamp(480px,88vh,880px);overflow:hidden}
+.hero-media img{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  filter:grayscale(1) contrast(1.14) brightness(.82);
+}
+.hero-mask{
+  position:absolute;inset:0;
+  background:
+    linear-gradient(180deg,rgba(11,12,13,.72) 0%,rgba(11,12,13,.22) 34%,rgba(11,12,13,.86) 100%),
+    linear-gradient(90deg,rgba(11,12,13,.78) 0%,rgba(11,12,13,0) 62%);
+}
+.hero-grid{
+  position:absolute;inset:0;pointer-events:none;
+  background-image:linear-gradient(90deg,var(--linea) 1px,transparent 1px);
+  background-size:calc(100% / 3) 100%;
+  opacity:.5;
+}
+@media (min-width:900px){.hero-grid{background-size:calc(100% / 6) 100%}}
+.hero-inner{
+  position:relative;z-index:2;
+  min-height:clamp(480px,88vh,880px);
+  display:flex;flex-direction:column;justify-content:flex-end;
+  padding-top:56px;padding-bottom:0;
+}
+.hero-eyebrow{display:flex;align-items:center;gap:12px;margin-bottom:22px}
+.hero-eyebrow .bar{width:38px;height:1px;background:var(--cobre)}
+.hero h1{
+  font-size:clamp(33px,8.4vw,104px);
+  line-height:.9;
+  text-wrap:balance;
+  margin-bottom:26px;
+  overflow-wrap:break-word;
+}
+.hero h1 .l1{display:block}
+.hero h1 .l2{display:block;margin-left:clamp(0px,5.4vw,124px)}
+@media (max-width:560px){.hero h1 .l2{margin-left:0}}
+.hero h1 .thin{font-weight:500;color:#9AA4AC}
+.hero-lead{
+  max-width:44ch;font-size:clamp(15px,1.7vw,18px);color:rgba(232,226,214,.82);
+  margin-bottom:32px;
+}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:40px}
+@media (max-width:560px){.hero-actions .btn{flex:1 1 100%}}
+
+/* ficha técnica inferior */
+.hero-ficha{
+  position:relative;z-index:2;border-top:1px solid var(--linea-fuerte);
+  display:grid;grid-template-columns:1fr;
+}
+@media (min-width:760px){.hero-ficha{grid-template-columns:repeat(3,1fr)}}
+.ficha-cell{padding:18px 0;border-bottom:1px solid var(--linea)}
+@media (min-width:760px){
+  .ficha-cell{padding:22px clamp(14px,2.4vw,30px);border-bottom:0;border-left:1px solid var(--linea)}
+  .ficha-cell:first-child{padding-left:0;border-left:0}
+}
+.ficha-cell .k{display:block;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--acero);margin-bottom:6px}
+.ficha-cell .v{font-family:'Archivo',sans-serif;font-weight:700;text-transform:uppercase;font-size:clamp(14px,1.5vw,17px);letter-spacing:-.01em}
+
+/* ============================================================
+   3 · BARRA DE DATOS
+   ============================================================ */
+.datos{border-top:1px solid var(--linea);border-bottom:1px solid var(--linea);background:var(--tinta)}
+.datos-grid{display:grid;grid-template-columns:repeat(2,1fr)}
+@media (min-width:860px){.datos-grid{grid-template-columns:repeat(4,1fr)}}
+.dato{
+  padding:clamp(24px,3.6vw,44px) clamp(14px,2vw,28px);
+  border-left:1px solid var(--linea);border-bottom:1px solid var(--linea);
+  min-width:0;
+}
+.dato:nth-child(-n+2){border-top:0}
+@media (min-width:860px){.dato{border-bottom:0}}
+.dato:first-child{border-left:0}
+@media (max-width:859px){
+  .dato:nth-child(odd){border-left:0}
+  .dato:nth-child(n+3){border-bottom:0}
+}
+.dato .n{
+  display:block;font-family:'Archivo',sans-serif;font-weight:900;
+  font-size:clamp(34px,5.6vw,64px);line-height:.9;letter-spacing:-.03em;margin-bottom:10px;
+}
+.dato .n em{font-style:normal;color:var(--cobre);font-size:.42em;vertical-align:super;margin-left:2px}
+.dato .t{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--acero)}
+
+/* ============================================================
+   ENCABEZADOS DE SECCIÓN
+   ============================================================ */
+section{position:relative}
+.sec{padding:clamp(64px,9vw,132px) 0}
+.sec-head{
+  display:grid;gap:20px;align-items:end;
+  padding-bottom:clamp(28px,4vw,48px);margin-bottom:clamp(28px,4vw,52px);
+  border-bottom:1px solid var(--linea);
+}
+@media (min-width:900px){
+  .sec-head{grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:48px}
+}
+.sec-head h2{font-size:clamp(32px,6.2vw,76px);line-height:.94;text-wrap:balance}
+@media (min-width:820px){.sec-head h2{line-height:.95}}
+.sec-head .sub{color:var(--acero);font-size:15px;max-width:46ch}
+.sec-head .eyebrow{display:block;margin-bottom:16px}
+
+/* ============================================================
+   4 · SERVICIOS / CARTA
+   ============================================================ */
+.carta{border-top:1px solid var(--linea)}
+.sec-head + .carta,.sec-head + .planes,.sec-head + .resenas{border-top:0}
+.sec-head + .exp-grid > .exp-item:first-child{border-top:0}
+.carta-row{
+  padding:clamp(20px,2.6vw,30px) 0;border-bottom:1px solid var(--linea);
+  transition:background .35s var(--ease);
+}
+.carta-row:hover{background:rgba(232,226,214,.032)}
+.carta-head{display:flex;align-items:baseline;gap:12px;min-width:0}
+.carta-name{
+  font-family:'Archivo',sans-serif;font-weight:700;text-transform:uppercase;
+  font-size:clamp(19px,3vw,34px);letter-spacing:-.02em;line-height:1;flex:none;max-width:70%;
+}
+.carta-dots{
+  flex:1 1 auto;min-width:14px;height:1px;align-self:flex-end;margin-bottom:5px;
+  background-image:radial-gradient(circle,var(--acero) 1px,transparent 1.2px);
+  background-size:6px 2px;background-repeat:repeat-x;opacity:.55;
+}
+.carta-price{
+  font-family:'Archivo',sans-serif;font-weight:700;font-size:clamp(17px,2.4vw,28px);
+  letter-spacing:-.02em;flex:none;
+}
+.carta-foot{
+  display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;
+  gap:12px;margin-top:10px;
+}
+.carta-desc{color:var(--acero);font-size:14px;max-width:52ch;min-width:0}
+.carta-actions{display:flex;align-items:center;gap:16px;flex:none}
+.carta-dur{
+  font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--acero);
+  border:1px solid var(--linea);padding:6px 10px;
+}
+.carta-btn{
+  min-height:44px;padding:0 16px;display:inline-flex;align-items:center;gap:8px;
+  font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--crema);
+  border-bottom:1px solid var(--cobre);
+  transition:color .3s var(--ease),gap .3s var(--ease);
+}
+.carta-btn:hover{color:var(--cobre);gap:12px}
+.carta-btn svg{width:14px;height:14px;flex:none}
+.carta-nota{margin-top:26px;color:var(--acero);font-size:13px;max-width:62ch}
+
+/* ============================================================
+   5 · EQUIPO (lista + preview)
+   ============================================================ */
+.equipo-wrap{display:grid;gap:0}
+@media (min-width:960px){
+  .equipo-wrap{grid-template-columns:minmax(0,1fr) minmax(0,.9fr);gap:clamp(30px,4vw,64px);align-items:start}
+}
+.equipo-col{min-width:0}
+.equipo-lista{border-top:1px solid var(--linea);display:none}
+@media (min-width:960px){.equipo-lista{display:block}}
+.equipo-nota{display:none}
+@media (min-width:960px){
+  .equipo-nota{display:block;margin-top:38px}
+}
+.eq-quote{
+  max-width:46ch;font-size:17px;line-height:1.55;color:rgba(232,226,214,.82);
+  border-left:1px solid var(--cobre);padding-left:20px;min-height:82px;
+}
+.eq-datos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;margin:30px 0 26px;border-top:1px solid var(--linea)}
+.eq-datos > div{padding:16px 16px 16px 0;border-right:1px solid var(--linea);min-width:0}
+.eq-datos > div:last-child{border-right:0}
+.eq-datos > div + div{padding-left:16px}
+.eq-datos dt{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--acero);margin-bottom:8px}
+.eq-datos dd{font-family:'Archivo',sans-serif;font-weight:700;font-size:15px;text-transform:uppercase;letter-spacing:-.01em}
+.eq-cta{min-height:52px}
+.equipo-item{border-bottom:1px solid var(--linea)}
+.equipo-item button{
+  width:100%;display:grid;grid-template-columns:36px minmax(0,1fr) auto;
+  gap:16px;align-items:center;padding:clamp(18px,2.4vw,30px) 0;text-align:left;
+  transition:padding-left .4s var(--ease),color .3s var(--ease);
+}
+.equipo-item button:hover,.equipo-item.is-active button{padding-left:14px}
+.equipo-item .idx{font-size:11px;letter-spacing:.16em;color:var(--acero)}
+.equipo-item.is-active .idx{color:var(--cobre)}
+.equipo-item .nm{
+  font-family:'Archivo',sans-serif;font-weight:700;text-transform:uppercase;
+  font-size:clamp(22px,2.6vw,38px);letter-spacing:-.02em;line-height:1;
+  color:rgba(232,226,214,.5);transition:color .35s var(--ease);
+}
+.equipo-item.is-active .nm,.equipo-item button:hover .nm{color:var(--crema)}
+.equipo-item .esp{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--acero);text-align:right}
+.equipo-preview{position:relative;overflow:hidden;background:#101214;aspect-ratio:3/4;display:none}
+@media (min-width:960px){.equipo-preview{display:block;position:sticky;top:110px}}
+.equipo-preview img{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  filter:grayscale(1) contrast(1.1);
+  opacity:0;transform:scale(1.04);
+  transition:opacity .6s var(--ease),transform .9s var(--ease);
+}
+.equipo-preview img.is-on{opacity:1;transform:scale(1)}
+.equipo-preview .cap{
+  position:absolute;left:0;right:0;bottom:0;padding:20px;
+  background:linear-gradient(180deg,rgba(13,15,16,0),rgba(13,15,16,.9));
+  display:flex;justify-content:space-between;align-items:flex-end;gap:12px;
+}
+.equipo-preview .cap b{font-family:'Archivo',sans-serif;font-weight:700;text-transform:uppercase;font-size:15px;letter-spacing:.02em}
+.equipo-preview .cap span{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--acero);text-align:right}
+
+/* tarjetas móviles del equipo */
+.equipo-cards{display:grid;gap:1px;grid-template-columns:repeat(2,minmax(0,1fr));background:var(--linea);border-top:1px solid var(--linea);border-bottom:1px solid var(--linea)}
+@media (min-width:960px){.equipo-cards{display:none}}
+.equipo-card{background:var(--carbon);padding:0 14px 18px;min-width:0}
+.equipo-card .ph{aspect-ratio:4/5;background:#101214;overflow:hidden;margin:0 -14px 14px}
+.equipo-card img{width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.1)}
+.equipo-card h3{font-size:clamp(15px,4.1vw,20px);line-height:1.1;margin-bottom:7px;letter-spacing:-.01em}
+.equipo-card p{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--acero);line-height:1.7}
+.equipo-card .yrs{color:rgba(232,226,214,.42)}
+
+/* ============================================================
+   6 · GALERÍA
+   ============================================================ */
+.galeria{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;grid-auto-rows:78px}
+@media (min-width:700px){.galeria{grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-rows:96px;gap:12px}}
+@media (min-width:1200px){.galeria{grid-auto-rows:120px}}
+.gal-item{
+  position:relative;overflow:hidden;background:#101214;min-width:0;
+  border:0;padding:0;display:block;cursor:pointer;
+}
+.gal-item img{
+  width:100%;height:100%;object-fit:cover;
+  filter:grayscale(1) contrast(1.1);
+  transform:scale(1.01);
+  transition:filter .55s var(--ease),transform .8s var(--ease);
+}
+.gal-item:hover img,.gal-item:focus-visible img{filter:grayscale(0) contrast(1.02);transform:scale(1.05)}
+.gal-item .tag{
+  position:absolute;left:0;bottom:0;padding:8px 12px;background:rgba(13,15,16,.78);
+  font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--crema);
+  opacity:0;transform:translateY(6px);transition:opacity .4s var(--ease),transform .4s var(--ease);
+}
+.gal-item:hover .tag,.gal-item:focus-visible .tag{opacity:1;transform:none}
+.g-a{grid-row:span 4}
+.g-b{grid-row:span 3}
+.g-c{grid-row:span 5}
+.g-d{grid-row:span 3}
+.g-e{grid-row:span 4}
+.g-f{grid-row:span 3}
+.g-g{grid-row:span 4}
+.g-h{grid-row:span 4}
+@media (min-width:700px){
+  .g-a{grid-row:span 5}
+  .g-b{grid-row:span 3}
+  .g-c{grid-row:span 4}
+  .g-d{grid-row:span 4}
+  .g-e{grid-row:span 3}
+  .g-f{grid-row:span 5}
+  .g-g{grid-row:span 4}
+  .g-h{grid-row:span 4}
+}
+
+/* lightbox */
+.lb{
+  position:fixed;inset:0;z-index:200;display:none;
+  background:rgba(9,10,11,.95);
+  align-items:center;justify-content:center;padding:clamp(14px,4vw,52px);
+}
+.lb.is-open{display:flex}
+.lb-panel{position:relative;max-width:1060px;width:100%;max-height:100%;display:flex;flex-direction:column;gap:14px}
+.lb-panel img{width:100%;max-height:76vh;object-fit:contain;background:#0B0C0D}
+.lb-bar{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.lb-bar .cap{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--acero)}
+.lb-nav{display:flex;gap:8px}
+.lb-nav button,.lb-close{
+  width:46px;height:46px;display:grid;place-items:center;
+  border:1px solid var(--linea-fuerte);color:var(--crema);
+  transition:background .3s var(--ease),color .3s var(--ease);
+}
+.lb-nav button:hover,.lb-close:hover{background:var(--crema);color:var(--tinta)}
+.lb-close{position:absolute;top:-58px;right:0}
+@media (max-width:600px){.lb-close{top:-52px}}
+.lb svg{width:18px;height:18px}
+
+/* ============================================================
+   7 · EXPERIENCIA (verde profundo)
+   ============================================================ */
+.exp{background:var(--verde);color:var(--crema);border-top:1px solid rgba(232,226,214,.1)}
+.exp .sec-head{border-bottom-color:rgba(232,226,214,.18)}
+.exp .sec-head .sub{color:rgba(232,226,214,.62)}
+.exp .eyebrow{color:rgba(232,226,214,.55)}
+.exp-grid{display:grid;gap:0}
+@media (min-width:860px){.exp-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.exp-item{
+  padding:clamp(26px,3.4vw,44px) 0;border-top:1px solid rgba(232,226,214,.16);min-width:0;
+}
+@media (min-width:860px){
+  .exp-item{padding:clamp(26px,3vw,44px) clamp(18px,2.6vw,38px);border-top:0;border-left:1px solid rgba(232,226,214,.16)}
+  .exp-item:first-child{padding-left:0;border-left:0}
+}
+.exp-item .n{
+  display:block;font-family:'Archivo',sans-serif;font-weight:900;
+  font-size:clamp(52px,8vw,110px);line-height:.82;letter-spacing:-.04em;
+  color:rgba(232,226,214,.16);margin-bottom:14px;
+}
+.exp-item h3{font-size:clamp(18px,2.2vw,25px);margin-bottom:10px}
+.exp-item p{color:rgba(232,226,214,.7);font-size:15px;max-width:38ch}
+
+/* ============================================================
+   8 · MEMBRESÍA
+   ============================================================ */
+.planes{display:grid;gap:0;border-top:1px solid var(--linea)}
+@media (min-width:900px){.planes{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.plan{
+  padding:clamp(28px,3.4vw,42px) 0;border-bottom:1px solid var(--linea);
+  display:flex;flex-direction:column;min-width:0;
+}
+@media (min-width:900px){
+  .plan{padding:clamp(30px,3vw,46px) clamp(20px,2.4vw,34px);border-bottom:0;border-left:1px solid var(--linea)}
+  .plan:first-child{border-left:0}
+}
+.plan--dest{position:relative}
+@media (min-width:900px){
+  .plan--dest{border-left:1px solid var(--cobre);border-right:1px solid var(--cobre);background:rgba(168,112,63,.05)}
+}
+@media (max-width:899px){
+  .plan--dest{border-top:1px solid var(--cobre);border-bottom:1px solid var(--cobre);padding-left:18px;padding-right:18px;background:rgba(168,112,63,.05)}
+}
+.plan-tag{
+  font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--cobre);
+  margin-bottom:14px;display:inline-block;
+}
+.plan h3{font-size:clamp(24px,2.8vw,34px);margin-bottom:14px}
+.plan .precio{display:flex;align-items:baseline;gap:8px;margin-bottom:6px}
+.plan .precio b{font-family:'Archivo',sans-serif;font-weight:900;font-size:clamp(30px,4vw,46px);letter-spacing:-.03em}
+.plan .precio span{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--acero)}
+.plan .cargo{font-size:12px;color:var(--acero);margin-bottom:24px}
+.plan ul{display:grid;gap:0;margin-bottom:28px;border-top:1px solid var(--linea)}
+.plan li{
+  display:flex;gap:12px;align-items:flex-start;padding:12px 0;
+  border-bottom:1px solid var(--linea);font-size:14px;color:rgba(232,226,214,.86);
+}
+.plan li svg{width:15px;height:15px;flex:none;margin-top:4px;color:var(--cobre)}
+.plan .btn{margin-top:auto}
+
+/* ============================================================
+   9 · AGENDA
+   ============================================================ */
+.agenda{background:var(--tinta);border-top:1px solid var(--linea)}
+.agenda-shell{display:grid;gap:0}
+@media (min-width:1040px){
+  .agenda-shell{grid-template-columns:minmax(0,1fr) 330px;gap:clamp(30px,3.6vw,56px);align-items:start}
+}
+.pasos{display:flex;gap:0;border-top:1px solid var(--linea);border-bottom:1px solid var(--linea);margin-bottom:clamp(26px,3.4vw,40px);overflow:hidden}
+.paso{
+  flex:1 1 0;min-width:0;padding:14px 8px;text-align:center;position:relative;
+  border-left:1px solid var(--linea);
+}
+.paso:first-child{border-left:0}
+.paso .pn{display:block;font-size:10px;letter-spacing:.16em;color:var(--acero);margin-bottom:4px}
+.paso .pl{
+  display:block;font-family:'Archivo',sans-serif;font-weight:700;text-transform:uppercase;
+  font-size:11px;letter-spacing:0;color:rgba(232,226,214,.45);
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.paso.is-done .pn,.paso.is-active .pn{color:var(--cobre)}
+.paso.is-done .pl{color:rgba(232,226,214,.75)}
+.paso.is-active .pl{color:var(--crema)}
+.paso.is-active::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:2px;background:var(--cobre)}
+@media (max-width:640px){.paso .pl{font-size:9px}.paso{padding:12px 4px}}
+
+.step{display:none}
+.step.is-on{display:block;animation:stepIn .45s var(--ease) both}
+@keyframes stepIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.step-title{font-size:clamp(20px,2.6vw,30px);margin-bottom:6px}
+.step-hint{color:var(--acero);font-size:13px;margin-bottom:24px}
+
+.opt-list{display:grid;gap:1px;background:var(--linea);border-top:1px solid var(--linea);border-bottom:1px solid var(--linea)}
+@media (min-width:680px){.opt-list{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.opt{
+  background:var(--tinta);padding:18px;text-align:left;min-height:64px;
+  display:flex;align-items:center;justify-content:space-between;gap:14px;min-width:0;
+  transition:background .3s var(--ease);
+}
+.opt:hover{background:#141719}
+.opt.is-sel{background:#141719;box-shadow:inset 3px 0 0 var(--cobre)}
+.opt .o-main{min-width:0}
+.opt .o-name{
+  display:block;font-family:'Archivo',sans-serif;font-weight:700;text-transform:uppercase;
+  font-size:15px;letter-spacing:-.01em;margin-bottom:3px;
+}
+.opt .o-sub{display:block;font-size:12px;color:var(--acero)}
+.opt .o-price{font-family:'Archivo',sans-serif;font-weight:700;font-size:15px;flex:none}
+.opt.is-sel .o-price{color:var(--cobre)}
+
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{
+  min-height:48px;min-width:64px;padding:8px 14px;border:1px solid var(--linea);
+  display:inline-flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;
+  font-size:13px;transition:border-color .3s var(--ease),background .3s var(--ease),color .3s var(--ease);
+}
+.chip:hover:not([disabled]){border-color:var(--linea-fuerte);background:#141719}
+.chip .cd{font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--acero)}
+.chip .cn{font-family:'Archivo',sans-serif;font-weight:700;font-size:16px;letter-spacing:-.01em}
+.chip.is-sel{background:var(--crema);color:var(--tinta);border-color:var(--crema)}
+.chip.is-sel .cd{color:rgba(13,15,16,.6)}
+.chip[disabled]{opacity:.28;cursor:not-allowed;text-decoration:line-through}
+.chip-hora{min-width:78px}
+
+.campo{display:grid;gap:7px;margin-bottom:18px}
+.campo label{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--acero)}
+.campo input{
+  width:100%;min-height:50px;padding:0 15px;background:#131618;
+  border:1px solid var(--linea);color:var(--crema);
+  transition:border-color .3s var(--ease);
+}
+.campo input::placeholder{color:#565D63}
+.campo input:focus{outline:none;border-color:var(--cobre)}
+.campo input[aria-invalid="true"]{border-color:#B4553F}
+.campo .err{font-size:12px;color:#D08A72;min-height:0}
+.form-grid{display:grid;gap:0}
+@media (min-width:620px){.form-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:0 18px}}
+
+.step-nav{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px;padding-top:22px;border-top:1px solid var(--linea)}
+.back-btn{
+  min-height:48px;padding:0 18px;display:inline-flex;align-items:center;gap:9px;
+  font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--acero);
+  border:1px solid var(--linea);transition:color .3s var(--ease),border-color .3s var(--ease);
+}
+.back-btn:hover{color:var(--crema);border-color:var(--linea-fuerte)}
+.back-btn svg{width:14px;height:14px}
+
+/* resumen lateral */
+.resumen{
+  border:1px solid var(--linea);background:#121517;padding:24px;
+}
+@media (min-width:1040px){.resumen{position:sticky;top:96px}}
+@media (max-width:1039px){.resumen{margin-top:36px}}
+.resumen h3{font-size:16px;margin-bottom:18px;letter-spacing:.02em}
+.resumen dl{display:grid;gap:0;border-top:1px solid var(--linea)}
+.resumen .rw{display:flex;justify-content:space-between;gap:14px;padding:11px 0;border-bottom:1px solid var(--linea);font-size:13px}
+.resumen dt{color:var(--acero);flex:none}
+.resumen dd{text-align:right;min-width:0;word-break:break-word}
+.resumen .total{margin-top:16px;display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.resumen .total span{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--acero)}
+.resumen .total b{font-family:'Archivo',sans-serif;font-weight:900;font-size:28px;letter-spacing:-.02em}
+.resumen .nota{margin-top:14px;font-size:12px;color:var(--acero);line-height:1.5}
+
+.exito{border:1px solid var(--cobre);background:rgba(168,112,63,.08);padding:clamp(22px,3vw,34px)}
+.exito .ok{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.exito .ok svg{width:26px;height:26px;color:var(--cobre);flex:none}
+.exito h3{font-size:clamp(20px,2.6vw,28px)}
+.exito p{color:rgba(232,226,214,.8);font-size:14px;margin-bottom:20px;max-width:52ch}
+.exito .det{border-top:1px solid var(--linea);margin-bottom:22px}
+.exito .det div{display:flex;justify-content:space-between;gap:14px;padding:10px 0;border-bottom:1px solid var(--linea);font-size:13px}
+.exito .det span:first-child{color:var(--acero)}
+.exito .acciones{display:flex;flex-wrap:wrap;gap:10px}
+
+/* ============================================================
+   10 · HORARIOS Y UBICACIÓN
+   ============================================================ */
+.contacto-grid{display:grid;gap:clamp(34px,4vw,64px)}
+@media (min-width:960px){.contacto-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
+.horarios{border-top:1px solid var(--linea)}
+.hrow{
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+  padding:14px 0;border-bottom:1px solid var(--linea);font-size:14px;
+}
+.hrow .d{font-family:'Archivo',sans-serif;font-weight:700;text-transform:uppercase;font-size:13px;letter-spacing:.02em}
+.hrow .h{color:var(--acero);font-variant-numeric:tabular-nums}
+.hrow.is-today{padding-left:14px;box-shadow:inset 3px 0 0 var(--cobre)}
+.hrow.is-today .d{color:var(--crema)}
+.hrow.is-today .h{color:var(--crema)}
+.hrow.is-today .hoy{
+  font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--cobre);
+  border:1px solid var(--cobre);padding:3px 7px;margin-left:10px;
+}
+.hrow.cerrado .h{color:#5A6167}
+.info-block{border-top:1px solid var(--linea);padding-top:20px;margin-top:8px}
+.info-item{display:flex;gap:14px;padding:16px 0;border-bottom:1px solid var(--linea)}
+.info-item svg{width:18px;height:18px;flex:none;margin-top:3px;color:var(--cobre)}
+.info-item .k{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--acero);display:block;margin-bottom:5px}
+.info-item .v{font-size:15px;line-height:1.5}
+.info-item .v a:hover{color:var(--cobre)}
+.mapa{
+  aspect-ratio:16/10;background:#101214;position:relative;overflow:hidden;
+  border:1px solid var(--linea);
+}
+@media (min-width:960px){
+  .mapa{grid-column:1 / -1;aspect-ratio:24/7;margin-top:12px}
+}
+.mapa img{width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.1) brightness(.82)}
+.mapa .pin{
+  position:absolute;left:0;right:0;bottom:0;display:flex;flex-direction:column;align-items:flex-start;
+  gap:6px;text-align:left;padding:clamp(20px,3vw,34px);
+  background:linear-gradient(to top,rgba(11,12,13,.94) 0%,rgba(11,12,13,.74) 46%,rgba(11,12,13,0) 100%);
+}
+.mapa .pin::before{content:"";width:26px;height:1px;background:var(--cobre);margin-bottom:8px}
+.mapa .pin b{font-family:'Archivo',sans-serif;font-weight:700;text-transform:uppercase;font-size:15px}
+.mapa .pin span{font-size:12px;color:rgba(232,226,214,.75)}
+
+/* ============================================================
+   11 · RESEÑAS
+   ============================================================ */
+.resenas{display:grid;gap:0;border-top:1px solid var(--linea)}
+@media (min-width:860px){.resenas{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.resena{
+  padding:clamp(26px,3.2vw,42px) 0;border-bottom:1px solid var(--linea);min-width:0;
+}
+@media (min-width:860px){
+  .resena{padding:clamp(26px,3vw,44px) clamp(18px,2.4vw,34px);border-bottom:0;border-left:1px solid var(--linea)}
+  .resena:first-child{padding-left:0;border-left:0}
+}
+.resena blockquote{
+  font-family:'Archivo',sans-serif;font-weight:500;text-transform:none;
+  font-size:clamp(17px,2.1vw,23px);line-height:1.32;letter-spacing:-.015em;margin-bottom:22px;
+}
+.resena .q{display:block;color:var(--cobre);font-size:30px;line-height:.6;margin-bottom:14px}
+.resena footer{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--acero)}
+.resena footer b{display:block;color:var(--crema);font-weight:500;margin-bottom:4px}
+
+/* ============================================================
+   12 · FOOTER
+   ============================================================ */
+.site-foot{background:var(--tinta);border-top:1px solid var(--linea);padding-top:clamp(52px,6vw,86px)}
+.foot-top{display:grid;gap:36px;padding-bottom:clamp(38px,4vw,58px)}
+@media (min-width:860px){.foot-top{grid-template-columns:minmax(0,1.4fr) repeat(2,minmax(0,1fr));gap:clamp(24px,3vw,48px)}}
+.foot-brand .logo{font-size:clamp(30px,4.6vw,52px);margin-bottom:16px}
+.foot-brand p{color:var(--acero);font-size:14px;max-width:36ch}
+.foot-col h4{font-size:11px;letter-spacing:.16em;color:var(--acero);font-weight:500;margin-bottom:16px;font-family:'Inter',sans-serif}
+.foot-col li{font-size:14px}
+.foot-col li a{display:inline-flex;align-items:center;min-height:44px}
+.foot-col li a{color:rgba(232,226,214,.82);transition:color .3s var(--ease)}
+.foot-col li:not(:has(a)){padding:7px 0}
+.foot-col li a:hover{color:var(--cobre)}
+.foot-bottom{
+  border-top:1px solid var(--linea);padding:22px 0 30px;
+  display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:center;
+  font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--acero);
+}
+
+/* ============================================================
+   13 · BLOQUE COMERCIAL — crema invertido
+   ============================================================ */
+.venta{background:var(--crema);color:var(--tinta)}
+.venta .wrap{padding-top:clamp(60px,8vw,120px);padding-bottom:clamp(60px,8vw,120px)}
+.venta-eyebrow{
+  font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#7A6A55;
+  display:flex;align-items:center;gap:12px;margin-bottom:26px;
+}
+.venta-eyebrow .bar{width:38px;height:1px;background:var(--cobre)}
+.venta h2{
+  font-size:clamp(33px,7.4vw,90px);line-height:.98;color:var(--tinta);margin-bottom:22px;max-width:16ch;
+  text-wrap:balance;
+}
+.venta h2 em{font-style:normal;color:var(--cobre)}
+.venta-lead{font-size:clamp(15px,1.8vw,18px);color:#3A3D40;max-width:48ch;margin-bottom:clamp(32px,4vw,52px)}
+.venta-grid{display:grid;gap:clamp(30px,4vw,64px);align-items:start}
+@media (min-width:960px){.venta-grid{grid-template-columns:minmax(0,1.25fr) minmax(0,1fr)}}
+.venta-benes{border-top:1px solid rgba(13,15,16,.16)}
+.venta-benes li{
+  display:flex;align-items:center;gap:14px;padding:14px 0;
+  border-bottom:1px solid rgba(13,15,16,.16);font-size:15px;color:#22262A;
+}
+.venta-benes li svg{width:16px;height:16px;flex:none;color:var(--cobre)}
+.venta-box{border:1px solid rgba(13,15,16,.22);padding:clamp(24px,3vw,36px);background:rgba(255,255,255,.42)}
+.venta-precio{display:flex;align-items:baseline;gap:10px;margin-bottom:6px}
+.venta-precio b{font-family:'Archivo',sans-serif;font-weight:900;font-size:clamp(44px,6.4vw,74px);letter-spacing:-.04em;line-height:.9}
+.venta-precio span{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:#7A6A55}
+.venta-box .pago{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#7A6A55;margin-bottom:26px}
+.venta-box .btn{background:var(--tinta);color:var(--crema);width:100%;min-height:56px}
+.venta-box .btn:hover{background:var(--cobre);color:#fff}
+.venta-box .fine{margin-top:16px;font-size:12px;color:#5C6165;line-height:1.5;text-align:center}
+
+/* ============================================================
+   MISC
+   ============================================================ */
+.skip{
+  position:absolute;left:-9999px;top:0;background:var(--crema);color:var(--tinta);
+  padding:12px 18px;z-index:300;font-size:12px;letter-spacing:.12em;text-transform:uppercase;
+}
+.skip:focus{left:12px;top:12px}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{
+    animation-duration:.001ms !important;animation-iteration-count:1 !important;
+    transition-duration:.001ms !important;scroll-behavior:auto !important;
+  }
+  .reveal{opacity:1;transform:none}
+}
+</style>
+<link rel="stylesheet" href="../_shared/ziv-premium.css">
+<script src="../_shared/ziv-premium.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#contenido">Saltar al contenido</a>
+
+<!-- ============================================================
+     HEADER
+     ============================================================ -->
+<header class="site-head" id="siteHead">
+  <div class="wrap head-inner">
+    <a href="#top" class="logo" aria-label="CUERVO, inicio">
+      CUERVO<span class="dot" aria-hidden="true"></span><small>Est. 2017</small>
+    </a>
+
+    <nav class="nav" aria-label="Navegación principal">
+      <a href="#servicios">Servicios</a>
+      <a href="#equipo">Equipo</a>
+      <a href="#galeria">Galería</a>
+      <a href="#membresia">Membresía</a>
+      <a href="#agenda">Agenda</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+
+    <a class="btn head-cta" href="#agenda">Reservar</a>
+
+    <button class="burger" id="burger" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobileMenu">
+      <span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Menú de navegación">
+  <ol>
+    <li><a href="#servicios"><span class="idx">01</span>Servicios</a></li>
+    <li><a href="#equipo"><span class="idx">02</span>Equipo</a></li>
+    <li><a href="#galeria"><span class="idx">03</span>Galería</a></li>
+    <li><a href="#membresia"><span class="idx">04</span>Membresía</a></li>
+    <li><a href="#agenda"><span class="idx">05</span>Agenda</a></li>
+    <li><a href="#contacto"><span class="idx">06</span>Contacto</a></li>
+  </ol>
+  <div class="mm-foot">
+    <a class="btn btn--block" href="#agenda">Reservar cita</a>
+    <p>Tamaulipas 45, Condesa, CDMX<br>Martes a domingo · 55 4471 2098</p>
+  </div>
+</div>
+
+<main id="top">
+
+<!-- ============================================================
+     HERO
+     ============================================================ -->
+<section class="hero" id="contenido">
+  <div class="hero-media">
+    <img src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?auto=format&fit=crop&w=2000&q=80"
+         alt="Barbero trabajando un corte con máquina bajo luz dura en la barbería CUERVO"
+         fetchpriority="high" width="2000" height="1333">
+    <div class="hero-mask" aria-hidden="true"></div>
+    <div class="hero-grid" aria-hidden="true"></div>
+
+    <div class="wrap hero-inner">
+      <div class="hero-eyebrow">
+        <span class="bar" aria-hidden="true"></span>
+        <span class="eyebrow">Barbería de autor · Condesa, CDMX</span>
+      </div>
+
+      <h1>
+        <span class="l1">Veinte minutos.</span>
+        <span class="l2 thin">Cero improvisación.</span>
+      </h1>
+
+      <p class="hero-lead">
+        Seis sillones, cuatro barberos y una sola manera de trabajar: se mide, se corta, se termina.
+        Si llegas sin cita, te decimos el tiempo exacto de espera antes de sentarte.
+      </p>
+
+      <div class="hero-actions">
+        <a class="btn" href="#agenda">Reserva tu corte</a>
+        <a class="btn btn--ghost" href="#servicios">Ver la carta</a>
+      </div>
+
+      <div class="hero-ficha">
+        <div class="ficha-cell">
+          <span class="k">Horario</span>
+          <span class="v">Mar–Dom · 10:00–20:00</span>
+        </div>
+        <div class="ficha-cell">
+          <span class="k">Dónde</span>
+          <span class="v">Tamaulipas 45, Condesa</span>
+        </div>
+        <div class="ficha-cell">
+          <span class="k">Walk-in</span>
+          <span class="v">Sin cita también</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     BARRA DE DATOS
+     ============================================================ -->
+<section class="datos" aria-label="Datos de la barbería">
+  <div class="wrap">
+    <div class="datos-grid">
+      <div class="dato reveal">
+        <span class="n">09</span>
+        <span class="t">Años en la colonia</span>
+      </div>
+      <div class="dato reveal" data-d="1">
+        <span class="n">06</span>
+        <span class="t">Sillones</span>
+      </div>
+      <div class="dato reveal" data-d="2">
+        <span class="n">Condesa</span>
+        <span class="t">La colonia, desde 2017</span>
+      </div>
+      <div class="dato reveal" data-d="3">
+        <span class="n">45<em>min</em></span>
+        <span class="t">Duración media</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SERVICIOS — CARTA
+     ============================================================ -->
+<section class="sec" id="servicios">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <span class="eyebrow"><span class="num">01</span> — Carta</span>
+        <h2>Servicios<br>y precios</h2>
+      </div>
+      <p class="sub">
+        Precios cerrados. No hay extras escondidos ni "según el pelo".
+        Todo incluye lavado, toalla caliente al final y un café si lo quieres.
+      </p>
+    </div>
+
+    <div class="carta">
+      <article class="carta-row reveal">
+        <div class="carta-head">
+          <span class="carta-name">Corte</span>
+          <span class="carta-dots" aria-hidden="true"></span>
+          <span class="carta-price">$380</span>
+        </div>
+        <div class="carta-foot">
+          <p class="carta-desc">Diagnóstico de crecimiento, corte a tijera o máquina y peinado con producto mate.</p>
+          <div class="carta-actions">
+            <span class="carta-dur">45 min</span>
+            <button class="carta-btn" data-servicio="corte">
+              reservar
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </button>
+          </div>
+        </div>
+      </article>
+
+      <article class="carta-row reveal">
+        <div class="carta-head">
+          <span class="carta-name">Corte + barba</span>
+          <span class="carta-dots" aria-hidden="true"></span>
+          <span class="carta-price">$520</span>
+        </div>
+        <div class="carta-foot">
+          <p class="carta-desc">El servicio que más pedimos. Corte completo, perfilado de barba y aceite templado.</p>
+          <div class="carta-actions">
+            <span class="carta-dur">70 min</span>
+            <button class="carta-btn" data-servicio="corte-barba">
+              reservar
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </button>
+          </div>
+        </div>
+      </article>
+
+      <article class="carta-row reveal">
+        <div class="carta-head">
+          <span class="carta-name">Barba</span>
+          <span class="carta-dots" aria-hidden="true"></span>
+          <span class="carta-price">$260</span>
+        </div>
+        <div class="carta-foot">
+          <p class="carta-desc">Perfilado a navaja, definición de línea de cuello y bálsamo. Sin apuro.</p>
+          <div class="carta-actions">
+            <span class="carta-dur">30 min</span>
+            <button class="carta-btn" data-servicio="barba">
+              reservar
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </button>
+          </div>
+        </div>
+      </article>
+
+      <article class="carta-row reveal">
+        <div class="carta-head">
+          <span class="carta-name">Fade</span>
+          <span class="carta-dots" aria-hidden="true"></span>
+          <span class="carta-price">$420</span>
+        </div>
+        <div class="carta-foot">
+          <p class="carta-desc">Degradado limpio de piel a largo, trabajado a mano libre. Skin, mid o low.</p>
+          <div class="carta-actions">
+            <span class="carta-dur">50 min</span>
+            <button class="carta-btn" data-servicio="fade">
+              reservar
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </button>
+          </div>
+        </div>
+      </article>
+
+      <article class="carta-row reveal">
+        <div class="carta-head">
+          <span class="carta-name">Tratamiento facial</span>
+          <span class="carta-dots" aria-hidden="true"></span>
+          <span class="carta-price">$340</span>
+        </div>
+        <div class="carta-foot">
+          <p class="carta-desc">Vapor, limpieza profunda y mascarilla de carbón. Pensado para piel que se irrita al rasurar.</p>
+          <div class="carta-actions">
+            <span class="carta-dur">40 min</span>
+            <button class="carta-btn" data-servicio="facial">
+              reservar
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </button>
+          </div>
+        </div>
+      </article>
+
+      <article class="carta-row reveal">
+        <div class="carta-head">
+          <span class="carta-name">Paquete completo</span>
+          <span class="carta-dots" aria-hidden="true"></span>
+          <span class="carta-price">$690</span>
+        </div>
+        <div class="carta-foot">
+          <p class="carta-desc">Corte, barba y facial en una sola visita. Reserva antes: se llena los viernes.</p>
+          <div class="carta-actions">
+            <span class="carta-dur">95 min</span>
+            <button class="carta-btn" data-servicio="completo">
+              reservar
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </button>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <p class="carta-nota reveal">
+      Efectivo, tarjeta y transferencia. Si cancelas con menos de 2 horas, la siguiente cita se aparta con anticipo.
+    </p>
+  </div>
+</section>
+
+<!-- ============================================================
+     EQUIPO
+     ============================================================ -->
+<section class="sec" id="equipo" style="border-top:1px solid var(--linea)">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <span class="eyebrow"><span class="num">02</span> — Equipo</span>
+        <h2>Quién<br>te atiende</h2>
+      </div>
+      <p class="sub">
+        Cuatro barberos, cuatro manos distintas. Puedes elegir con quién te sientas
+        o dejar que te tome el primero disponible: los cuatro trabajan con el mismo estándar.
+      </p>
+    </div>
+
+    <div class="equipo-wrap">
+     <div class="equipo-col">
+      <ul class="equipo-lista" id="equipoLista">
+        <li class="equipo-item is-active" data-barbero="0">
+          <button type="button">
+            <span class="idx">01</span>
+            <span class="nm">Emilio Vargas</span>
+            <span class="esp">Fades &amp; máquina</span>
+          </button>
+        </li>
+        <li class="equipo-item" data-barbero="1">
+          <button type="button">
+            <span class="idx">02</span>
+            <span class="nm">Nicolás Rueda</span>
+            <span class="esp">Tijera &amp; textura</span>
+          </button>
+        </li>
+        <li class="equipo-item" data-barbero="2">
+          <button type="button">
+            <span class="idx">03</span>
+            <span class="nm">Damián Ortiz</span>
+            <span class="esp">Barba &amp; navaja</span>
+          </button>
+        </li>
+        <li class="equipo-item" data-barbero="3">
+          <button type="button">
+            <span class="idx">04</span>
+            <span class="nm">Ruy Camargo</span>
+            <span class="esp">Clásicos</span>
+          </button>
+        </li>
+      </ul>
+
+      <div class="equipo-nota" id="equipoNota">
+        <p class="eq-quote" id="eqQuote">Llegó de Guadalajara en 2019. Si quieres un degradado donde no se vea dónde empieza, es con él.</p>
+        <dl class="eq-datos">
+          <div><dt>Experiencia</dt><dd id="eqAnios">9 años</dd></div>
+          <div><dt>Especialidad</dt><dd id="eqEsp">Fades &amp; máquina</dd></div>
+          <div><dt>En silla</dt><dd id="eqDias">Mar a Sáb</dd></div>
+        </dl>
+        <button class="btn btn--ghost eq-cta" type="button" id="eqCta">Agendar con Emilio</button>
+      </div>
+     </div>
+
+      <div class="equipo-preview" id="equipoPreview" aria-hidden="true">
+        <img class="is-on" data-barbero="0" src="https://images.unsplash.com/photo-1599351431613-18ef1fdd27e1?auto=format&fit=crop&w=900&q=75" alt="" loading="lazy" decoding="async">
+        <img data-barbero="1" src="https://images.unsplash.com/photo-1517832606299-7ae9b720a186?auto=format&fit=crop&w=900&q=75" alt="" loading="lazy" decoding="async">
+        <img data-barbero="2" src="https://images.unsplash.com/photo-1657105052497-f996284ffff8?auto=format&fit=crop&w=900&q=75" alt="" loading="lazy" decoding="async">
+        <img data-barbero="3" src="https://images.unsplash.com/photo-1678356164573-9a534fe43958?auto=format&fit=crop&w=900&q=75" alt="" loading="lazy" decoding="async">
+        <div class="cap">
+          <b id="previewNombre">Emilio Vargas</b>
+          <span id="previewEsp">9 años · Fades &amp; máquina</span>
+        </div>
+      </div>
+
+      <ul class="equipo-cards">
+        <li class="equipo-card reveal">
+          <div class="ph"><img src="https://images.unsplash.com/photo-1599351431613-18ef1fdd27e1?auto=format&fit=crop&w=900&q=75" alt="Retrato de Emilio Vargas, barbero especialista en fades" loading="lazy" decoding="async"></div>
+          <h3>Emilio Vargas</h3>
+          <p>Fades &amp; máquina<br><span class="yrs">9 años</span></p>
+        </li>
+        <li class="equipo-card reveal" data-d="1">
+          <div class="ph"><img src="https://images.unsplash.com/photo-1517832606299-7ae9b720a186?auto=format&fit=crop&w=900&q=75" alt="Retrato de Nicolás Rueda, barbero especialista en tijera y texturas" loading="lazy" decoding="async"></div>
+          <h3>Nicolás Rueda</h3>
+          <p>Tijera &amp; textura<br><span class="yrs">7 años</span></p>
+        </li>
+        <li class="equipo-card reveal" data-d="2">
+          <div class="ph"><img src="https://images.unsplash.com/photo-1657105052497-f996284ffff8?auto=format&fit=crop&w=900&q=75" alt="Retrato de Damián Ortiz, barbero especialista en barba y navaja" loading="lazy" decoding="async"></div>
+          <h3>Damián Ortiz</h3>
+          <p>Barba &amp; navaja<br><span class="yrs">12 años</span></p>
+        </li>
+        <li class="equipo-card reveal" data-d="3">
+          <div class="ph"><img src="https://images.unsplash.com/photo-1678356164573-9a534fe43958?auto=format&fit=crop&w=900&q=75" alt="Retrato de Ruy Camargo, barbero especialista en cortes clásicos" loading="lazy" decoding="async"></div>
+          <h3>Ruy Camargo</h3>
+          <p>Clásicos<br><span class="yrs">5 años</span></p>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     GALERÍA
+     ============================================================ -->
+<section class="sec" id="galeria" style="border-top:1px solid var(--linea)">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <span class="eyebrow"><span class="num">03</span> — Trabajo</span>
+        <h2>Lo que sale<br>de esta silla</h2>
+      </div>
+      <p class="sub">
+        Fotos reales del local y de cortes terminados. Toca cualquiera para verla
+        en grande, sin filtros ni retoque.
+      </p>
+    </div>
+
+    <div class="galeria reveal" id="galeriaGrid">
+      <button class="gal-item g-a" type="button" data-i="0">
+        <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=900&q=75" alt="Corte clásico terminado con raya marcada" loading="lazy" decoding="async">
+        <span class="tag">Clásico con raya</span>
+      </button>
+      <button class="gal-item g-b" type="button" data-i="1">
+        <img src="https://images.unsplash.com/photo-1647140655214-e4a2d914971f?auto=format&fit=crop&w=900&q=75" alt="Detalle de perfilado de barba con navaja" loading="lazy" decoding="async">
+        <span class="tag">Perfilado a navaja</span>
+      </button>
+      <button class="gal-item g-c" type="button" data-i="2">
+        <img src="https://images.unsplash.com/photo-1605497788044-5a32c7078486?auto=format&fit=crop&w=900&q=75" alt="Interior de la barbería con sillones y espejos" loading="lazy" decoding="async">
+        <span class="tag">El local</span>
+      </button>
+      <button class="gal-item g-d" type="button" data-i="3">
+        <img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&w=900&q=75" alt="Fade trabajado a máquina en la nuca" loading="lazy" decoding="async">
+        <span class="tag">Mid fade</span>
+      </button>
+      <button class="gal-item g-e" type="button" data-i="4">
+        <img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?auto=format&fit=crop&w=900&q=75" alt="Barbero trabajando el contorno del corte" loading="lazy" decoding="async">
+        <span class="tag">Contornos</span>
+      </button>
+      <button class="gal-item g-f" type="button" data-i="5">
+        <img src="https://images.unsplash.com/photo-1621645582931-d1d3e6564943?auto=format&fit=crop&w=900&q=75" alt="Cliente con toalla caliente durante el servicio de barba" loading="lazy" decoding="async">
+        <span class="tag">Toalla caliente</span>
+      </button>
+      <button class="gal-item g-g" type="button" data-i="6">
+        <img src="https://images.unsplash.com/photo-1536520002442-39764a41e987?auto=format&fit=crop&w=900&q=75" alt="Corte con textura despeinada terminado" loading="lazy" decoding="async">
+        <span class="tag">Textura suelta</span>
+      </button>
+      <button class="gal-item g-h" type="button" data-i="7">
+        <img src="https://images.unsplash.com/photo-1596728325488-58c87691e9af?auto=format&fit=crop&w=900&q=75" alt="Herramientas de trabajo sobre la estación del barbero" loading="lazy" decoding="async">
+        <span class="tag">Estación</span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- lightbox -->
+<div class="lb" id="lightbox" role="dialog" aria-modal="true" aria-label="Imagen ampliada">
+  <div class="lb-panel">
+    <button class="lb-close" id="lbClose" type="button" aria-label="Cerrar imagen">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+    <img id="lbImg" alt="">
+    <div class="lb-bar">
+      <span class="cap" id="lbCap"></span>
+      <div class="lb-nav">
+        <button type="button" id="lbPrev" aria-label="Imagen anterior">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
+        </button>
+        <button type="button" id="lbNext" aria-label="Imagen siguiente">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     EXPERIENCIA
+     ============================================================ -->
+<section class="sec exp" aria-labelledby="expTitulo">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <span class="eyebrow"><span class="num">04</span> — La visita</span>
+        <h2 id="expTitulo">Cómo<br>funciona aquí</h2>
+      </div>
+      <p class="sub">
+        No hay lista de espera imaginaria ni "ahorita te atiendo". Tres momentos, en orden, siempre iguales.
+      </p>
+    </div>
+
+    <div class="exp-grid">
+      <article class="exp-item reveal">
+        <span class="n" aria-hidden="true">01</span>
+        <h3>Se habla antes</h3>
+        <p>Cinco minutos de diagnóstico: cómo te crece, cómo te peinas entre semana y qué no quieres volver a ver.</p>
+      </article>
+      <article class="exp-item reveal" data-d="1">
+        <span class="n" aria-hidden="true">02</span>
+        <h3>Se trabaja</h3>
+        <p>Silla arriba, teléfono abajo. Corte a mano libre, revisión en espejo doble y ajuste antes del lavado.</p>
+      </article>
+      <article class="exp-item reveal" data-d="2">
+        <span class="n" aria-hidden="true">03</span>
+        <h3>Se explica</h3>
+        <p>Te decimos qué producto usar, cuánta cantidad y en cuántas semanas conviene volver. Sin venta forzada.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     MEMBRESÍA
+     ============================================================ -->
+<section class="sec" id="membresia" style="border-top:1px solid var(--linea)">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <span class="eyebrow"><span class="num">05</span> — Membresía</span>
+        <h2>Para quien<br>viene siempre</h2>
+      </div>
+      <p class="sub">
+        Si te cortas cada tres o cuatro semanas, sale más barato así. Sin plazo forzoso:
+        se cancela con un mensaje y se cobra el mes en curso.
+      </p>
+    </div>
+
+    <div class="planes">
+      <article class="plan reveal">
+        <span class="plan-tag">Plan 01</span>
+        <h3>Básico</h3>
+        <div class="precio"><b>$890</b><span>/ mes</span></div>
+        <p class="cargo">Un corte al mes + prioridad de horario</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 12l5 5L20 6"/></svg>1 corte al mes</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 12l5 5L20 6"/></svg>Retoque de contornos gratis a los 15 días</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 12l5 5L20 6"/></svg>10% en productos</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 12l5 5L20 6"/></svg>Agenda abierta 7 días antes</li>
+        </ul>
+        <button class="btn btn--ghost" type="button" data-plan="Básico" data-precio="$890">Contratar por WhatsApp</button>
+      </article>
+
+      <article class="plan plan--dest reveal" data-d="1">
+        <span class="plan-tag">Plan 02 · El que más se lleva</span>
+        <h3>Cuervo</h3>
+        <div class="precio"><b>$1,290</b><span>/ mes</span></div>
+        <p class="cargo">Corte y barba cada dos semanas</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 12l5 5L20 6"/></svg>2 cortes al mes</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 12l5 5L20 6"/></svg>2 perfilados de barba</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 12l5 5L20 6"/></svg>1 facial al trimestre</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 12l5 5L20 6"/></svg>15% en productos</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 12l5 5L20 6"/></svg>Barbero fijo garantizado</li>
+        </ul>
+        <button class="btn" type="button" data-plan="Cuervo" data-precio="$1,290">Contratar por WhatsApp</button>
+      </article>
+
+      <article class="plan reveal" data-d="2">
+        <span class="plan-tag">Plan 03</span>
+        <h3>Ilimitado</h3>
+        <div class="precio"><b>$1,890</b><span>/ mes</span></div>
+        <p class="cargo">Las visitas que quieras, cuando quieras</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 12l5 5L20 6"/></svg>Cortes y barba sin límite</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 12l5 5L20 6"/></svg>1 facial al mes</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 12l5 5L20 6"/></svg>20% en productos</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 12l5 5L20 6"/></svg>Horario extendido: entras 09:00</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 12l5 5L20 6"/></svg>Un invitado con 50% al mes</li>
+        </ul>
+        <button class="btn btn--ghost" type="button" data-plan="Ilimitado" data-precio="$1,890">Contratar por WhatsApp</button>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     AGENDA
+     ============================================================ -->
+<section class="sec agenda" id="agenda">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <span class="eyebrow"><span class="num">06</span> — Agenda</span>
+        <h2>Aparta<br>tu silla</h2>
+      </div>
+      <p class="sub">
+        Cinco pasos y listo. Al terminar se abre WhatsApp con tu cita ya escrita: sólo la envías y queda confirmada.
+      </p>
+    </div>
+
+    <div class="agenda-shell">
+      <div>
+        <ol class="pasos" id="pasos">
+          <li class="paso is-active" data-p="1"><span class="pn">01</span><span class="pl">Servicio</span></li>
+          <li class="paso" data-p="2"><span class="pn">02</span><span class="pl">Barbero</span></li>
+          <li class="paso" data-p="3"><span class="pn">03</span><span class="pl">Día</span></li>
+          <li class="paso" data-p="4"><span class="pn">04</span><span class="pl">Hora</span></li>
+          <li class="paso" data-p="5"><span class="pn">05</span><span class="pl">Datos</span></li>
+        </ol>
+
+        <!-- PASO 1 -->
+        <div class="step is-on" data-step="1">
+          <h3 class="step-title">¿Qué te hacemos?</h3>
+          <p class="step-hint">Elige un servicio para continuar.</p>
+          <div class="opt-list" id="listaServicios"></div>
+        </div>
+
+        <!-- PASO 2 -->
+        <div class="step" data-step="2">
+          <h3 class="step-title">¿Con quién?</h3>
+          <p class="step-hint">Si no tienes preferencia, deja que te tome el primero disponible.</p>
+          <div class="opt-list" id="listaBarberos"></div>
+          <div class="step-nav">
+            <button class="back-btn" type="button" data-back="1">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
+              Atrás
+            </button>
+          </div>
+        </div>
+
+        <!-- PASO 3 -->
+        <div class="step" data-step="3">
+          <h3 class="step-title">¿Qué día?</h3>
+          <p class="step-hint">Próximos 14 días. Los lunes cerramos.</p>
+          <div class="chips" id="listaDias"></div>
+          <div class="step-nav">
+            <button class="back-btn" type="button" data-back="2">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
+              Atrás
+            </button>
+          </div>
+        </div>
+
+        <!-- PASO 4 -->
+        <div class="step" data-step="4">
+          <h3 class="step-title">¿A qué hora?</h3>
+          <p class="step-hint" id="hintHoras">Los horarios tachados ya están ocupados.</p>
+          <div class="chips" id="listaHoras"></div>
+          <div class="step-nav">
+            <button class="back-btn" type="button" data-back="3">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
+              Atrás
+            </button>
+          </div>
+        </div>
+
+        <!-- PASO 5 -->
+        <div class="step" data-step="5">
+          <h3 class="step-title">Tus datos</h3>
+          <p class="step-hint">Sólo para confirmarte por WhatsApp. No mandamos publicidad.</p>
+          <form id="formCita" novalidate>
+            <div class="form-grid">
+              <div class="campo">
+                <label for="cNombre">Nombre</label>
+                <input type="text" id="cNombre" name="nombre" placeholder="Tu nombre" autocomplete="name" required>
+                <span class="err" id="errNombre" aria-live="polite"></span>
+              </div>
+              <div class="campo">
+                <label for="cTel">Teléfono</label>
+                <input type="tel" id="cTel" name="telefono" placeholder="55 0000 0000" autocomplete="tel" inputmode="tel" required>
+                <span class="err" id="errTel" aria-live="polite"></span>
+              </div>
+            </div>
+            <div class="step-nav">
+              <button class="back-btn" type="button" data-back="4">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
+                Atrás
+              </button>
+              <button class="btn" type="submit">Confirmar cita</button>
+            </div>
+          </form>
+        </div>
+
+        <!-- PASO 6 · éxito -->
+        <div class="step" data-step="6">
+          <div class="exito">
+            <div class="ok">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 12l5 5L20 6"/></svg>
+              <h3>Cita apartada</h3>
+            </div>
+            <p id="exitoTexto">Tu lugar queda guardado 20 minutos. Confírmala por WhatsApp para dejarla fija.</p>
+            <div class="det" id="exitoDetalle"></div>
+            <div class="acciones">
+              <a class="btn" id="btnWhats" href="https://wa.me/525540161213" target="_blank" rel="noopener">Confirmar por WhatsApp</a>
+              <button class="btn btn--ghost" type="button" id="btnOtra">Agendar otra</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <aside class="resumen" aria-label="Resumen de tu cita">
+        <h3>Tu cita</h3>
+        <dl>
+          <div class="rw"><dt>Servicio</dt><dd id="rServicio">—</dd></div>
+          <div class="rw"><dt>Barbero</dt><dd id="rBarbero">—</dd></div>
+          <div class="rw"><dt>Día</dt><dd id="rDia">—</dd></div>
+          <div class="rw"><dt>Hora</dt><dd id="rHora">—</dd></div>
+          <div class="rw"><dt>Duración</dt><dd id="rDur">—</dd></div>
+        </dl>
+        <div class="total"><span>Total</span><b id="rTotal">$0</b></div>
+        <p class="nota">Se paga en el local. Si necesitas cambiar la hora, avisa con 2 horas de anticipación.</p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     HORARIOS Y UBICACIÓN
+     ============================================================ -->
+<section class="sec" id="contacto" style="border-top:1px solid var(--linea)">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <span class="eyebrow"><span class="num">07</span> — Dónde y cuándo</span>
+        <h2>Tamaulipas 45,<br>Condesa</h2>
+      </div>
+      <p class="sub">
+        Entre Michoacán y Vicente Suárez, junto a la tintorería. Puerta negra sin letrero grande: es esa.
+      </p>
+    </div>
+
+    <div class="contacto-grid">
+      <div class="reveal">
+        <span class="eyebrow" style="display:block;margin-bottom:16px">Horarios</span>
+        <div class="horarios" id="horarios">
+          <div class="hrow cerrado" data-dow="1"><span class="d">Lunes</span><span class="h">Cerrado</span></div>
+          <div class="hrow" data-dow="2"><span class="d">Martes</span><span class="h">10:00 — 20:00</span></div>
+          <div class="hrow" data-dow="3"><span class="d">Miércoles</span><span class="h">10:00 — 20:00</span></div>
+          <div class="hrow" data-dow="4"><span class="d">Jueves</span><span class="h">10:00 — 20:00</span></div>
+          <div class="hrow" data-dow="5"><span class="d">Viernes</span><span class="h">10:00 — 21:00</span></div>
+          <div class="hrow" data-dow="6"><span class="d">Sábado</span><span class="h">09:00 — 21:00</span></div>
+          <div class="hrow" data-dow="0"><span class="d">Domingo</span><span class="h">11:00 — 18:00</span></div>
+        </div>
+        <p style="margin-top:18px;color:var(--acero);font-size:13px;max-width:46ch">
+          El último servicio entra 45 minutos antes del cierre. Los sábados abrimos una hora antes por los walk-in.
+        </p>
+      </div>
+
+      <div class="reveal" data-d="1">
+        <span class="eyebrow" style="display:block;margin-bottom:16px">Contacto</span>
+        <div class="info-block" style="border-top:0;padding-top:0;margin-top:0">
+          <div class="info-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 21s7-5.6 7-11a7 7 0 10-14 0c0 5.4 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+            <div>
+              <span class="k">Dirección</span>
+              <span class="v">Tamaulipas 45, local B<br>Hipódromo Condesa, 06140, CDMX</span>
+            </div>
+          </div>
+          <div class="info-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a1 1 0 01-1.1 1A16 16 0 014 5.1 1 1 0 015 4z"/></svg>
+            <div>
+              <span class="k">Teléfono</span>
+              <span class="v"><a class="ul-grow" href="tel:+525544712098">55 4471 2098</a></span>
+            </div>
+          </div>
+          <div class="info-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="5" width="18" height="14"/><path d="M3 6l9 7 9-7"/></svg>
+            <div>
+              <span class="k">Correo</span>
+              <span class="v"><a class="ul-grow" href="mailto:hola@cuervobarberia.mx">hola@cuervobarberia.mx</a></span>
+            </div>
+          </div>
+          <div class="info-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="7" width="18" height="12"/><path d="M7 7V5h10v2M3 12h18"/></svg>
+            <div>
+              <span class="k">Estacionamiento</span>
+              <span class="v">Parquímetro en la calle hasta las 20:00. Pensión a media cuadra sobre Michoacán, $45 la hora, validamos una hora con cualquier servicio.</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="mapa reveal">
+        <img src="https://images.unsplash.com/photo-1605497788044-5a32c7078486?auto=format&fit=crop&w=1600&q=75" alt="Fachada e interior de la barbería CUERVO en la colonia Condesa" loading="lazy" decoding="async">
+        <div class="pin">
+          <b>Tamaulipas 45 · Condesa</b>
+          <span>Metro Patriotismo a 8 min caminando</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     RESEÑAS
+     ============================================================ -->
+<section class="sec" style="border-top:1px solid var(--linea)" aria-labelledby="resTitulo">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <span class="eyebrow"><span class="num">08</span> — Clientes</span>
+        <h2 id="resTitulo">Lo que<br>dicen</h2>
+      </div>
+      <p class="sub">Tres opiniones tal como llegaron. Sin editar, sin adornar.</p>
+    </div>
+
+    <div class="resenas">
+      <article class="resena reveal">
+        <span class="q" aria-hidden="true">“</span>
+        <blockquote>Llevaba tres años cambiando de barbería. Aquí llevo dos años con el mismo barbero y ya ni le explico.</blockquote>
+        <footer><b>Andrés M.</b>Corte + barba · cliente desde 2023</footer>
+      </article>
+      <article class="resena reveal" data-d="1">
+        <span class="q" aria-hidden="true">“</span>
+        <blockquote>Entré sin cita un sábado, me dijeron cuarenta minutos y fueron cuarenta minutos. Eso ya no pasa en ningún lado.</blockquote>
+        <footer><b>Iván R.</b>Fade · primera visita</footer>
+      </article>
+      <article class="resena reveal" data-d="2">
+        <span class="q" aria-hidden="true">“</span>
+        <blockquote>Me rasuraba y quedaba con la piel roja dos días. Damián me cambió la técnica y el problema se acabó.</blockquote>
+        <footer><b>Paolo G.</b>Barba y facial · membresía Cuervo</footer>
+      </article>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============================================================
+     FOOTER DE LA MARCA
+     ============================================================ -->
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <span class="logo">CUERVO<span class="dot" aria-hidden="true"></span></span>
+        <p>Barbería de autor en la Condesa desde 2017. Corte, barba y nada de teatro.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Navegar</h4>
+        <ul>
+          <li><a class="ul-grow" href="#servicios">Servicios</a></li>
+          <li><a class="ul-grow" href="#equipo">Equipo</a></li>
+          <li><a class="ul-grow" href="#galeria">Galería</a></li>
+          <li><a class="ul-grow" href="#membresia">Membresía</a></li>
+          <li><a class="ul-grow" href="#agenda">Agendar</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Contacto</h4>
+        <ul>
+          <li>Tamaulipas 45, local B</li>
+          <li>Hipódromo Condesa, CDMX</li>
+          <li><a class="ul-grow" href="tel:+525544712098">55 4471 2098</a></li>
+          <li><a class="ul-grow" href="mailto:hola@cuervobarberia.mx">hola@cuervobarberia.mx</a></li>
+          <li>Mar–Dom · 10:00–20:00</li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© <span id="anio">2026</span> CUERVO Barbería</span>
+      <span>Condesa · Ciudad de México</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================================================
+     BLOQUE COMERCIAL — $1,950 MXN
+     ============================================================ -->
+<section class="venta" aria-labelledby="ventaTitulo">
+  <div class="wrap">
+    <div class="venta-eyebrow">
+      <span class="bar" aria-hidden="true"></span>
+      <span>¿Te gustó esta página?</span>
+    </div>
+
+    <h2 id="ventaTitulo">¿Tienes una barbería? <em>Tu página podría verse así.</em></h2>
+    <p class="venta-lead">
+      Diseñamos páginas web profesionales para negocios como el tuyo: lista para tu celular,
+      con tus servicios, tus precios y tu agenda conectada a WhatsApp.
+    </p>
+
+    <div class="venta-grid">
+      <ul class="venta-benes">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 12l5 5L20 6"/></svg>Diseño profesional, hecho para tu marca</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 12l5 5L20 6"/></svg>Adaptada a celular, tableta y computadora</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 12l5 5L20 6"/></svg>WhatsApp integrado en todos los botones</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 12l5 5L20 6"/></svg>Catálogo, citas o carrito según tu negocio</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 12l5 5L20 6"/></svg>Editable: cambias precios y fotos cuando quieras</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 12l5 5L20 6"/></svg>Dominio incluido por 1 año</li>
+      </ul>
+
+      <div class="venta-box">
+        <div class="venta-precio"><b>$1,950</b><span>MXN</span></div>
+        <p class="pago">Pago único</p>
+        <a class="btn"
+           href="https://wa.me/525540161213?text=Hola%2C%20vi%20una%20de%20sus%20p%C3%A1ginas%20demo%20y%20quiero%20informaci%C3%B3n%20para%20hacer%20una%20p%C3%A1gina%20para%20mi%20negocio."
+           target="_blank" rel="noopener">Quiero mi página</a>
+        <p class="fine">Te respondemos el mismo día. Entrega típica: 5 días hábiles.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+(function(){
+  'use strict';
+
+  var reduce = false;
+  try {
+    reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  } catch (e) { reduce = false; }
+
+  var WA = 'https://wa.me/525540161213';
+
+  /* ==========================================================
+     Año en el footer
+     ========================================================== */
+  var anio = document.getElementById('anio');
+  if (anio) { anio.textContent = String(new Date().getFullYear()); }
+
+  /* ==========================================================
+     Header compacto al hacer scroll
+     ========================================================== */
+  var head = document.getElementById('siteHead');
+  if (head) {
+    var lastState = false;
+    var onScroll = function(){
+      var s = window.pageYOffset > 40;
+      if (s !== lastState) {
+        lastState = s;
+        head.classList.toggle('is-scrolled', s);
+      }
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  }
+
+  /* ==========================================================
+     Menú móvil
+     ========================================================== */
+  var burger = document.getElementById('burger');
+  var menu = document.getElementById('mobileMenu');
+
+  function cerrarMenu(){
+    if (!menu || !burger) { return; }
+    menu.classList.remove('is-open');
+    burger.setAttribute('aria-expanded', 'false');
+    burger.setAttribute('aria-label', 'Abrir menú');
+    document.body.classList.remove('no-scroll');
+  }
+  function abrirMenu(){
+    if (!menu || !burger) { return; }
+    menu.classList.add('is-open');
+    burger.setAttribute('aria-expanded', 'true');
+    burger.setAttribute('aria-label', 'Cerrar menú');
+    document.body.classList.add('no-scroll');
+  }
+  if (burger && menu) {
+    burger.addEventListener('click', function(){
+      if (menu.classList.contains('is-open')) { cerrarMenu(); } else { abrirMenu(); }
+    });
+    var mlinks = menu.querySelectorAll('a');
+    for (var mi = 0; mi < mlinks.length; mi++) {
+      mlinks[mi].addEventListener('click', cerrarMenu);
+    }
+  }
+
+  /* ==========================================================
+     Reveal al scroll
+     ========================================================== */
+  var revs = document.querySelectorAll('.reveal');
+  if (revs.length) {
+    if (reduce || !('IntersectionObserver' in window)) {
+      for (var ri = 0; ri < revs.length; ri++) { revs[ri].classList.add('is-in'); }
+    } else {
+      var io = new IntersectionObserver(function(entries){
+        for (var i = 0; i < entries.length; i++) {
+          if (entries[i].isIntersecting) {
+            entries[i].target.classList.add('is-in');
+            io.unobserve(entries[i].target);
+          }
+        }
+      }, { rootMargin: '0px 0px -8% 0px', threshold: 0.06 });
+      for (var rj = 0; rj < revs.length; rj++) { io.observe(revs[rj]); }
+    }
+  }
+
+  /* ==========================================================
+     Equipo — lista + preview
+     ========================================================== */
+  var BARBEROS = [
+    { id: 'emilio',  nombre: 'Emilio Vargas',  esp: 'Fades & máquina',  anios: '9 años',
+      dias: 'Mar a Sáb', pila: 'Emilio',
+      nota: 'Llegó de Guadalajara en 2019. Si quieres un degradado donde no se vea dónde empieza, es con él.' },
+    { id: 'nicolas', nombre: 'Nicolás Rueda',  esp: 'Tijera & textura', anios: '7 años',
+      dias: 'Mié a Dom', pila: 'Nicolás',
+      nota: 'Trabaja casi todo a tijera. El indicado si tienes pelo grueso o no quieres verse recién cortado.' },
+    { id: 'damian',  nombre: 'Damián Ortiz',   esp: 'Barba & navaja',   anios: '12 años',
+      dias: 'Mar a Sáb', pila: 'Damián',
+      nota: 'Doce años de navaja y toalla caliente. La barba larga de la casa pasa toda por su silla.' },
+    { id: 'ruy',     nombre: 'Ruy Camargo',    esp: 'Clásicos',         anios: '5 años',
+      dias: 'Jue a Dom', pila: 'Ruy',
+      nota: 'El más joven del equipo. Pompadour, side part y todo lo que se peine hacia un lado.' }
+  ];
+
+  var lista = document.getElementById('equipoLista');
+  var preview = document.getElementById('equipoPreview');
+  var pvNombre = document.getElementById('previewNombre');
+  var pvEsp = document.getElementById('previewEsp');
+
+  if (lista && preview) {
+    var items = lista.querySelectorAll('.equipo-item');
+    var imgs = preview.querySelectorAll('img');
+
+    var eqQuote = document.getElementById('eqQuote');
+    var eqAnios = document.getElementById('eqAnios');
+    var eqEsp = document.getElementById('eqEsp');
+    var eqDias = document.getElementById('eqDias');
+    var eqCta = document.getElementById('eqCta');
+    var activo = 0;
+
+    var activar = function(idx){
+      activo = idx;
+      for (var i = 0; i < items.length; i++) {
+        items[i].classList.toggle('is-active', i === idx);
+      }
+      for (var j = 0; j < imgs.length; j++) {
+        imgs[j].classList.toggle('is-on', j === idx);
+      }
+      var b = BARBEROS[idx];
+      if (b) {
+        if (pvNombre) { pvNombre.textContent = b.nombre; }
+        if (pvEsp) { pvEsp.textContent = b.anios + ' · ' + b.esp; }
+        if (eqQuote) { eqQuote.textContent = b.nota; }
+        if (eqAnios) { eqAnios.textContent = b.anios; }
+        if (eqEsp) { eqEsp.textContent = b.esp; }
+        if (eqDias) { eqDias.textContent = b.dias; }
+        if (eqCta) { eqCta.textContent = 'Agendar con ' + b.pila; }
+      }
+    };
+
+    if (eqCta) {
+      eqCta.addEventListener('click', function(){
+        var destino = document.getElementById('agenda');
+        if (destino) { destino.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' }); }
+        seleccionaBarbero(BARBEROS[activo].id);
+      });
+    }
+
+    for (var k = 0; k < items.length; k++) {
+      (function(el, idx){
+        var btn = el.querySelector('button');
+        if (!btn) { return; }
+        btn.addEventListener('mouseenter', function(){ activar(idx); });
+        btn.addEventListener('focus', function(){ activar(idx); });
+        btn.addEventListener('click', function(){ activar(idx); });
+      })(items[k], k);
+    }
+  }
+
+  /* ==========================================================
+     Galería + lightbox
+     ========================================================== */
+  var gal = document.getElementById('galeriaGrid');
+  var lb = document.getElementById('lightbox');
+  var lbImg = document.getElementById('lbImg');
+  var lbCap = document.getElementById('lbCap');
+  var lbClose = document.getElementById('lbClose');
+  var lbPrev = document.getElementById('lbPrev');
+  var lbNext = document.getElementById('lbNext');
+  var lbIdx = 0;
+  var lbFuente = [];
+  var lastFocus = null;
+
+  if (gal && lb && lbImg) {
+    var gitems = gal.querySelectorAll('.gal-item');
+    for (var gi = 0; gi < gitems.length; gi++) {
+      var gim = gitems[gi].querySelector('img');
+      var gtag = gitems[gi].querySelector('.tag');
+      lbFuente.push({
+        src: gim ? gim.getAttribute('src').replace('w=900&q=75', 'w=1600&q=80') : '',
+        alt: gim ? gim.getAttribute('alt') : '',
+        cap: gtag ? gtag.textContent : ''
+      });
+      (function(el, idx){
+        el.addEventListener('click', function(){ abrirLb(idx, el); });
+      })(gitems[gi], gi);
+    }
+  }
+
+  function pintaLb(){
+    var d = lbFuente[lbIdx];
+    if (!d || !lbImg) { return; }
+    lbImg.setAttribute('src', d.src);
+    lbImg.setAttribute('alt', d.alt);
+    if (lbCap) { lbCap.textContent = d.cap + ' — ' + (lbIdx + 1) + ' / ' + lbFuente.length; }
+  }
+  function abrirLb(idx, origen){
+    if (!lb) { return; }
+    lbIdx = idx;
+    lastFocus = origen || document.activeElement;
+    pintaLb();
+    lb.classList.add('is-open');
+    document.body.classList.add('no-scroll');
+    if (lbClose) { lbClose.focus(); }
+  }
+  function cerrarLb(){
+    if (!lb) { return; }
+    lb.classList.remove('is-open');
+    document.body.classList.remove('no-scroll');
+    if (lastFocus && typeof lastFocus.focus === 'function') { lastFocus.focus(); }
+  }
+  function mueveLb(dir){
+    if (!lbFuente.length) { return; }
+    lbIdx = (lbIdx + dir + lbFuente.length) % lbFuente.length;
+    pintaLb();
+  }
+  if (lbClose) { lbClose.addEventListener('click', cerrarLb); }
+  if (lbPrev) { lbPrev.addEventListener('click', function(){ mueveLb(-1); }); }
+  if (lbNext) { lbNext.addEventListener('click', function(){ mueveLb(1); }); }
+  if (lb) {
+    lb.addEventListener('click', function(ev){
+      if (ev.target === lb) { cerrarLb(); }
+    });
+  }
+
+  document.addEventListener('keydown', function(ev){
+    if (ev.key === 'Escape') {
+      if (lb && lb.classList.contains('is-open')) { cerrarLb(); }
+      if (menu && menu.classList.contains('is-open')) {
+        cerrarMenu();
+        if (burger) { burger.focus(); }
+      }
+    }
+    if (lb && lb.classList.contains('is-open')) {
+      if (ev.key === 'ArrowLeft') { mueveLb(-1); }
+      if (ev.key === 'ArrowRight') { mueveLb(1); }
+    }
+  });
+
+  /* ==========================================================
+     Membresía → WhatsApp
+     ========================================================== */
+  var planBtns = document.querySelectorAll('[data-plan]');
+  for (var pb = 0; pb < planBtns.length; pb++) {
+    (function(btn){
+      btn.addEventListener('click', function(){
+        var plan = btn.getAttribute('data-plan') || '';
+        var precio = btn.getAttribute('data-precio') || '';
+        var txt = 'Hola CUERVO. Quiero contratar la membresía ' + plan + ' (' + precio + ' al mes). ¿Cómo la activo?';
+        window.open(WA + '?text=' + encodeURIComponent(txt), '_blank', 'noopener');
+      });
+    })(planBtns[pb]);
+  }
+
+  /* ==========================================================
+     AGENDA
+     ========================================================== */
+  var SERVICIOS = [
+    { id: 'corte',       nombre: 'Corte',              precio: 380, dur: 45, desc: 'Lavado, corte y peinado' },
+    { id: 'corte-barba', nombre: 'Corte + barba',      precio: 520, dur: 70, desc: 'El más pedido' },
+    { id: 'barba',       nombre: 'Barba',              precio: 260, dur: 30, desc: 'Perfilado a navaja' },
+    { id: 'fade',        nombre: 'Fade',               precio: 420, dur: 50, desc: 'Skin, mid o low' },
+    { id: 'facial',      nombre: 'Tratamiento facial', precio: 340, dur: 40, desc: 'Vapor y carbón' },
+    { id: 'completo',    nombre: 'Paquete completo',   precio: 690, dur: 95, desc: 'Corte, barba y facial' }
+  ];
+
+  var DIAS_CORTO = ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'];
+  var DIAS_LARGO = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'];
+  var MESES = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
+  var MESES_CORTO = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'];
+
+  var cita = { servicio: null, barbero: null, dia: null, hora: null, nombre: '', tel: '' };
+  var pasoActual = 1;
+
+  var elServicios = document.getElementById('listaServicios');
+  var elBarberos = document.getElementById('listaBarberos');
+  var elDias = document.getElementById('listaDias');
+  var elHoras = document.getElementById('listaHoras');
+  var elPasos = document.getElementById('pasos');
+
+  function mxn(n){
+    return '$' + String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  }
+
+  /* ---- construir lista de servicios ---- */
+  if (elServicios) {
+    var htmlS = '';
+    for (var s = 0; s < SERVICIOS.length; s++) {
+      var sv = SERVICIOS[s];
+      htmlS += '<button class="opt" type="button" data-id="' + sv.id + '">' +
+                 '<span class="o-main">' +
+                   '<span class="o-name">' + sv.nombre + '</span>' +
+                   '<span class="o-sub">' + sv.desc + ' · ' + sv.dur + ' min</span>' +
+                 '</span>' +
+                 '<span class="o-price">' + mxn(sv.precio) + '</span>' +
+               '</button>';
+    }
+    elServicios.innerHTML = htmlS;
+    var sbtns = elServicios.querySelectorAll('.opt');
+    for (var sb = 0; sb < sbtns.length; sb++) {
+      (function(btn){
+        btn.addEventListener('click', function(){
+          seleccionaServicio(btn.getAttribute('data-id'));
+          irA(2);
+        });
+      })(sbtns[sb]);
+    }
+  }
+
+  /* ---- construir lista de barberos ---- */
+  if (elBarberos) {
+    var htmlB = '<button class="opt" type="button" data-id="cualquiera">' +
+                  '<span class="o-main">' +
+                    '<span class="o-name">El primero disponible</span>' +
+                    '<span class="o-sub">Te asignamos al que se desocupe antes</span>' +
+                  '</span>' +
+                  '<span class="o-price">—</span>' +
+                '</button>';
+    for (var b = 0; b < BARBEROS.length; b++) {
+      var bb = BARBEROS[b];
+      htmlB += '<button class="opt" type="button" data-id="' + bb.id + '">' +
+                 '<span class="o-main">' +
+                   '<span class="o-name">' + bb.nombre + '</span>' +
+                   '<span class="o-sub">' + bb.esp + ' · ' + bb.anios + '</span>' +
+                 '</span>' +
+                 '<span class="o-price">—</span>' +
+               '</button>';
+    }
+    elBarberos.innerHTML = htmlB;
+    var bbtns = elBarberos.querySelectorAll('.opt');
+    for (var bi = 0; bi < bbtns.length; bi++) {
+      (function(btn){
+        btn.addEventListener('click', function(){
+          seleccionaBarbero(btn.getAttribute('data-id'));
+          irA(3);
+        });
+      })(bbtns[bi]);
+    }
+  }
+
+  function nombreBarbero(id){
+    if (!id) { return null; }
+    if (id === 'cualquiera') { return 'El primero disponible'; }
+    for (var i = 0; i < BARBEROS.length; i++) {
+      if (BARBEROS[i].id === id) { return BARBEROS[i].nombre; }
+    }
+    return null;
+  }
+  function servicioPorId(id){
+    for (var i = 0; i < SERVICIOS.length; i++) {
+      if (SERVICIOS[i].id === id) { return SERVICIOS[i]; }
+    }
+    return null;
+  }
+
+  function marcaSel(cont, id){
+    if (!cont) { return; }
+    var opts = cont.querySelectorAll('.opt');
+    for (var i = 0; i < opts.length; i++) {
+      opts[i].classList.toggle('is-sel', opts[i].getAttribute('data-id') === id);
+    }
+  }
+
+  function seleccionaServicio(id){
+    var sv = servicioPorId(id);
+    if (!sv) { return; }
+    cita.servicio = sv;
+    marcaSel(elServicios, id);
+    pintaResumen();
+  }
+  function seleccionaBarbero(id){
+    if (!id) { return; }
+    cita.barbero = id;
+    marcaSel(elBarberos, id);
+    if (cita.dia) { pintaHoras(); }
+    pintaResumen();
+  }
+
+  /* ---- días reales, cerrado lunes ---- */
+  function construyeDias(){
+    var out = [];
+    var hoy = new Date();
+    hoy.setHours(0, 0, 0, 0);
+    for (var i = 1; i <= 14; i++) {
+      var d = new Date(hoy.getTime());
+      d.setDate(hoy.getDate() + i);
+      out.push(d);
+    }
+    return out;
+  }
+  function claveDia(d){
+    var m = d.getMonth() + 1;
+    var dd = d.getDate();
+    return d.getFullYear() + '-' + (m < 10 ? '0' + m : m) + '-' + (dd < 10 ? '0' + dd : dd);
+  }
+  function diaLargo(d){
+    return DIAS_LARGO[d.getDay()] + ' ' + d.getDate() + ' de ' + MESES[d.getMonth()];
+  }
+
+  var DIAS = construyeDias();
+
+  if (elDias) {
+    var htmlD = '';
+    for (var di = 0; di < DIAS.length; di++) {
+      var dd2 = DIAS[di];
+      var cerrado = dd2.getDay() === 1;
+      htmlD += '<button class="chip" type="button" data-k="' + claveDia(dd2) + '"' + (cerrado ? ' disabled aria-label="Lunes, cerrado"' : '') + '>' +
+                 '<span class="cd">' + DIAS_CORTO[dd2.getDay()] + '</span>' +
+                 '<span class="cn">' + dd2.getDate() + '</span>' +
+                 '<span class="cd">' + MESES_CORTO[dd2.getMonth()] + '</span>' +
+               '</button>';
+    }
+    elDias.innerHTML = htmlD;
+    var dbtns = elDias.querySelectorAll('.chip');
+    for (var dj = 0; dj < dbtns.length; dj++) {
+      (function(btn){
+        if (btn.hasAttribute('disabled')) { return; }
+        btn.addEventListener('click', function(){
+          var k = btn.getAttribute('data-k');
+          for (var z = 0; z < DIAS.length; z++) {
+            if (claveDia(DIAS[z]) === k) { cita.dia = DIAS[z]; break; }
+          }
+          cita.hora = null;
+          var all = elDias.querySelectorAll('.chip');
+          for (var q = 0; q < all.length; q++) { all[q].classList.toggle('is-sel', all[q] === btn); }
+          pintaHoras();
+          pintaResumen();
+          irA(4);
+        });
+      })(dbtns[dj]);
+    }
+  }
+
+  /* ---- horarios deterministas ---- */
+  function horasDelDia(){
+    var out = [];
+    for (var h = 10; h <= 20; h++) {
+      out.push((h < 10 ? '0' + h : h) + ':00');
+      if (h < 20) { out.push((h < 10 ? '0' + h : h) + ':30'); }
+    }
+    return out;
+  }
+  function hash(str){
+    var h = 2166136261;
+    for (var i = 0; i < str.length; i++) {
+      h ^= str.charCodeAt(i);
+      h = (h * 16777619) >>> 0;
+    }
+    return h >>> 0;
+  }
+  function ocupado(clave, barbero, hora){
+    return (hash(clave + '|' + (barbero || 'x') + '|' + hora) % 100) < 34;
+  }
+
+  function pintaHoras(){
+    if (!elHoras) { return; }
+    if (!cita.dia) { elHoras.innerHTML = ''; return; }
+    var clave = claveDia(cita.dia);
+    var horas = horasDelDia();
+    var html = '';
+    var libres = 0;
+    for (var i = 0; i < horas.length; i++) {
+      var busy = ocupado(clave, cita.barbero, horas[i]);
+      if (!busy) { libres++; }
+      html += '<button class="chip chip-hora" type="button" data-h="' + horas[i] + '"' +
+              (busy ? ' disabled aria-label="' + horas[i] + ', ocupado"' : '') + '>' +
+              '<span class="cn">' + horas[i] + '</span></button>';
+    }
+    elHoras.innerHTML = html;
+    var hint = document.getElementById('hintHoras');
+    if (hint) {
+      hint.textContent = libres + ' horarios libres el ' + diaLargo(cita.dia) + '. Los tachados ya están ocupados.';
+    }
+    var hbtns = elHoras.querySelectorAll('.chip');
+    for (var j = 0; j < hbtns.length; j++) {
+      (function(btn){
+        if (btn.hasAttribute('disabled')) { return; }
+        btn.addEventListener('click', function(){
+          cita.hora = btn.getAttribute('data-h');
+          var all = elHoras.querySelectorAll('.chip');
+          for (var q = 0; q < all.length; q++) { all[q].classList.toggle('is-sel', all[q] === btn); }
+          pintaResumen();
+          irA(5);
+        });
+      })(hbtns[j]);
+    }
+  }
+
+  /* ---- resumen ---- */
+  function pintaResumen(){
+    var rS = document.getElementById('rServicio');
+    var rB = document.getElementById('rBarbero');
+    var rD = document.getElementById('rDia');
+    var rH = document.getElementById('rHora');
+    var rDur = document.getElementById('rDur');
+    var rT = document.getElementById('rTotal');
+    if (rS) { rS.textContent = cita.servicio ? cita.servicio.nombre : '—'; }
+    if (rB) { rB.textContent = cita.barbero ? nombreBarbero(cita.barbero) : '—'; }
+    if (rD) { rD.textContent = cita.dia ? diaLargo(cita.dia) : '—'; }
+    if (rH) { rH.textContent = cita.hora ? cita.hora + ' h' : '—'; }
+    if (rDur) { rDur.textContent = cita.servicio ? cita.servicio.dur + ' min' : '—'; }
+    if (rT) { rT.textContent = cita.servicio ? mxn(cita.servicio.precio) : '$0'; }
+  }
+
+  /* ---- navegación de pasos ---- */
+  function irA(n){
+    pasoActual = n;
+    var steps = document.querySelectorAll('.step');
+    for (var i = 0; i < steps.length; i++) {
+      steps[i].classList.toggle('is-on', String(n) === steps[i].getAttribute('data-step'));
+    }
+    if (elPasos) {
+      var ps = elPasos.querySelectorAll('.paso');
+      for (var j = 0; j < ps.length; j++) {
+        var pn = parseInt(ps[j].getAttribute('data-p'), 10);
+        ps[j].classList.toggle('is-active', pn === n);
+        ps[j].classList.toggle('is-done', pn < n);
+      }
+    }
+  }
+
+  var backs = document.querySelectorAll('[data-back]');
+  for (var bk = 0; bk < backs.length; bk++) {
+    (function(btn){
+      btn.addEventListener('click', function(){
+        irA(parseInt(btn.getAttribute('data-back'), 10));
+      });
+    })(backs[bk]);
+  }
+
+  /* ---- botones "reservar" de la carta ---- */
+  var cartaBtns = document.querySelectorAll('[data-servicio]');
+  for (var cb = 0; cb < cartaBtns.length; cb++) {
+    (function(btn){
+      btn.addEventListener('click', function(){
+        seleccionaServicio(btn.getAttribute('data-servicio'));
+        irA(2);
+        var sec = document.getElementById('agenda');
+        if (sec) { sec.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' }); }
+      });
+    })(cartaBtns[cb]);
+  }
+
+  /* ---- validación y envío ---- */
+  var form = document.getElementById('formCita');
+  if (form) {
+    form.addEventListener('submit', function(ev){
+      ev.preventDefault();
+      var inNombre = document.getElementById('cNombre');
+      var inTel = document.getElementById('cTel');
+      var erN = document.getElementById('errNombre');
+      var erT = document.getElementById('errTel');
+      var ok = true;
+
+      var vN = inNombre ? inNombre.value.trim() : '';
+      var vT = inTel ? inTel.value.replace(/[^\d]/g, '') : '';
+
+      if (vN.length < 2) {
+        ok = false;
+        if (erN) { erN.textContent = 'Escribe tu nombre.'; }
+        if (inNombre) { inNombre.setAttribute('aria-invalid', 'true'); }
+      } else {
+        if (erN) { erN.textContent = ''; }
+        if (inNombre) { inNombre.removeAttribute('aria-invalid'); }
+      }
+
+      if (vT.length < 10) {
+        ok = false;
+        if (erT) { erT.textContent = 'Necesitamos 10 dígitos.'; }
+        if (inTel) { inTel.setAttribute('aria-invalid', 'true'); }
+      } else {
+        if (erT) { erT.textContent = ''; }
+        if (inTel) { inTel.removeAttribute('aria-invalid'); }
+      }
+
+      if (!cita.servicio) { ok = false; irA(1); return; }
+      if (!cita.barbero) { ok = false; irA(2); return; }
+      if (!cita.dia) { ok = false; irA(3); return; }
+      if (!cita.hora) { ok = false; irA(4); return; }
+      if (!ok) {
+        if (vN.length < 2 && inNombre) { inNombre.focus(); }
+        else if (inTel) { inTel.focus(); }
+        return;
+      }
+
+      cita.nombre = vN;
+      cita.tel = inTel ? inTel.value.trim() : '';
+
+      var det = document.getElementById('exitoDetalle');
+      if (det) {
+        det.innerHTML =
+          '<div><span>Servicio</span><span>' + cita.servicio.nombre + ' · ' + mxn(cita.servicio.precio) + '</span></div>' +
+          '<div><span>Barbero</span><span>' + nombreBarbero(cita.barbero) + '</span></div>' +
+          '<div><span>Cuándo</span><span>' + diaLargo(cita.dia) + ' · ' + cita.hora + ' h</span></div>' +
+          '<div><span>A nombre de</span><span>' + cita.nombre + '</span></div>' +
+          '<div><span>Teléfono</span><span>' + cita.tel + '</span></div>';
+      }
+
+      var msg =
+        'Hola CUERVO, quiero confirmar mi cita.\n\n' +
+        'Servicio: ' + cita.servicio.nombre + ' (' + mxn(cita.servicio.precio) + ', ' + cita.servicio.dur + ' min)\n' +
+        'Barbero: ' + nombreBarbero(cita.barbero) + '\n' +
+        'Día: ' + diaLargo(cita.dia) + '\n' +
+        'Hora: ' + cita.hora + ' h\n' +
+        'Nombre: ' + cita.nombre + '\n' +
+        'Teléfono: ' + cita.tel + '\n\n' +
+        'Tamaulipas 45, Condesa. Gracias.';
+
+      var link = document.getElementById('btnWhats');
+      if (link) { link.setAttribute('href', WA + '?text=' + encodeURIComponent(msg)); }
+
+      irA(6);
+      var sec2 = document.getElementById('agenda');
+      if (sec2) { sec2.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' }); }
+    });
+  }
+
+  var btnOtra = document.getElementById('btnOtra');
+  if (btnOtra) {
+    btnOtra.addEventListener('click', function(){
+      cita = { servicio: null, barbero: null, dia: null, hora: null, nombre: '', tel: '' };
+      marcaSel(elServicios, '');
+      marcaSel(elBarberos, '');
+      if (elDias) {
+        var dc = elDias.querySelectorAll('.chip');
+        for (var i = 0; i < dc.length; i++) { dc[i].classList.remove('is-sel'); }
+      }
+      if (elHoras) { elHoras.innerHTML = ''; }
+      var f = document.getElementById('formCita');
+      if (f) { f.reset(); }
+      var e1 = document.getElementById('errNombre');
+      var e2 = document.getElementById('errTel');
+      if (e1) { e1.textContent = ''; }
+      if (e2) { e2.textContent = ''; }
+      pintaResumen();
+      irA(1);
+    });
+  }
+
+  pintaResumen();
+
+  /* ==========================================================
+     Horarios — resaltar hoy
+     ========================================================== */
+  var tabla = document.getElementById('horarios');
+  if (tabla) {
+    var dow = new Date().getDay();
+    var rows = tabla.querySelectorAll('.hrow');
+    for (var rr = 0; rr < rows.length; rr++) {
+      if (parseInt(rows[rr].getAttribute('data-dow'), 10) === dow) {
+        rows[rr].classList.add('is-today');
+        var dcell = rows[rr].querySelector('.d');
+        if (dcell) {
+          var badge = document.createElement('span');
+          badge.className = 'hoy';
+          badge.textContent = 'Hoy';
+          dcell.appendChild(badge);
+        }
+      }
+    }
+  }
+
+})();
+</script>
+</body>
+</html>

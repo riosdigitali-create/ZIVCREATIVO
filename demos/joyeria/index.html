@@ -1,0 +1,2030 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MARÉ — Joyería de autor | Taller y showroom en Polanco, CDMX</title>
+<meta name="description" content="MARÉ es un taller de joyería de autor en Polanco. Piezas hechas a mano en oro 14k, plata .925 y vermeil, con piedras naturales. Showroom con cita en Emilio Castelar 90.">
+<meta name="theme-color" content="#F6F4F0">
+<meta property="og:type" content="website">
+<meta property="og:title" content="MARÉ — Joyería de autor">
+<meta property="og:description" content="Piezas que sobreviven a las modas. Taller y showroom con cita en Emilio Castelar 90, Polanco, CDMX.">
+<meta property="og:image" content="https://images.unsplash.com/photo-1611652022419-a9419f74343d?auto=format&fit=crop&w=1600&q=75">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23F6F4F0'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-family='Georgia,serif' font-size='19' fill='%23171614'%3EM%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400;1,6..96,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   MARÉ — joyería de autor
+   Sistema: marfil dominante, hairlines de 1px, silencio.
+   ============================================================ */
+
+:root{
+  --marfil:#F6F4F0;
+  --blanco:#FFFFFF;
+  --piedra:#DAD5CC;
+  --gris:#6E6B66;
+  --negro:#171614;
+  --metal:#9A8E7B;
+
+  --serif:'Bodoni Moda','Didot','Times New Roman',serif;
+  --sans:'Jost','Helvetica Neue',Helvetica,Arial,sans-serif;
+
+  --pad:clamp(20px,5.2vw,80px);
+  --maxw:1400px;
+  --ease:cubic-bezier(.22,.61,.36,1);
+  --dur:700ms;
+  --hdr:64px;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  background:var(--marfil);
+  color:var(--negro);
+  font-family:var(--sans);
+  font-weight:300;
+  font-size:16px;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  overflow-x:hidden;
+}
+img{display:block;max-width:100%;height:auto;object-fit:cover;background:var(--piedra)}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
+a{color:inherit;text-decoration:none}
+h1,h2,h3,h4,p,figure,blockquote,ul,ol{margin:0;padding:0}
+ul,ol{list-style:none}
+input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:1px solid var(--negro);outline-offset:3px}
+::selection{background:var(--piedra);color:var(--negro)}
+
+/* --------- utilidades tipográficas --------- */
+.wrap{max-width:var(--maxw);margin:0 auto;padding-left:var(--pad);padding-right:var(--pad)}
+.narrow{max-width:920px;margin-left:auto;margin-right:auto}
+.eyebrow{
+  font-family:var(--sans);font-weight:400;font-size:11px;line-height:1.4;
+  letter-spacing:.10em;text-transform:uppercase;color:var(--gris);
+}
+.eyebrow--metal{color:var(--metal)}
+.serif{font-family:var(--serif);font-weight:400}
+.it{font-style:italic}
+.display{
+  font-family:var(--serif);font-weight:400;
+  font-size:clamp(2.35rem,6.4vw,4.6rem);
+  line-height:1.02;letter-spacing:-.012em;text-wrap:balance;
+}
+.h2{
+  font-family:var(--serif);font-weight:400;
+  font-size:clamp(1.85rem,4.1vw,3.1rem);
+  line-height:1.08;letter-spacing:-.008em;text-wrap:balance;
+}
+.h3{
+  font-family:var(--serif);font-weight:400;
+  font-size:clamp(1.25rem,2.2vw,1.7rem);
+  line-height:1.18;
+}
+.lede{font-size:clamp(1rem,1.35vw,1.1rem);line-height:1.75;color:var(--gris);font-weight:300}
+.small{font-size:13px;line-height:1.6;color:var(--gris)}
+.tiny{font-size:11px;letter-spacing:.10em;text-transform:uppercase;color:var(--gris)}
+.num{font-variant-numeric:tabular-nums}
+.hair{height:1px;background:var(--piedra);border:0;width:100%}
+.hair--metal{background:var(--metal);opacity:.45}
+
+/* --------- reveal casi imperceptible --------- */
+.rv{opacity:0;transform:translateY(9px);transition:opacity var(--dur) var(--ease),transform var(--dur) var(--ease)}
+.rv.in{opacity:1;transform:none}
+.rv.d1{transition-delay:70ms}
+.rv.d2{transition-delay:140ms}
+.rv.d3{transition-delay:210ms}
+.rv.d4{transition-delay:280ms}
+
+/* --------- enlace con subrayado que crece --------- */
+.link{
+  position:relative;display:inline-block;
+  font-size:12px;letter-spacing:.10em;text-transform:uppercase;color:var(--negro);
+  padding-bottom:6px;
+}
+.link::after{
+  content:'';position:absolute;left:0;bottom:0;height:1px;width:100%;
+  background:var(--negro);transform:scaleX(.22);transform-origin:left;
+  transition:transform var(--dur) var(--ease);
+}
+.link:hover::after,.link:focus-visible::after{transform:scaleX(1)}
+.link--metal{color:var(--metal)}
+.link--metal::after{background:var(--metal)}
+.link--light{color:var(--marfil)}
+.link--light::after{background:var(--marfil)}
+
+/* --------- botones --------- */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  min-height:48px;padding:0 26px;
+  font-size:11.5px;letter-spacing:.10em;text-transform:uppercase;font-weight:400;
+  border:1px solid var(--negro);background:var(--negro);color:var(--marfil);
+  transition:background var(--dur) var(--ease),color var(--dur) var(--ease),border-color var(--dur) var(--ease);
+}
+.btn:hover{background:transparent;color:var(--negro)}
+.btn--ghost{background:transparent;color:var(--negro);border-color:var(--piedra)}
+.btn--ghost:hover{border-color:var(--negro);background:transparent}
+.btn--light{background:var(--marfil);color:var(--negro);border-color:var(--marfil)}
+.btn--light:hover{background:transparent;color:var(--marfil)}
+.btn--block{width:100%}
+
+/* ============================================================
+   1. HEADER
+   ============================================================ */
+.hdr{
+  position:fixed;top:0;left:0;right:0;z-index:60;
+  background:rgba(246,244,240,.94);
+  -webkit-backdrop-filter:saturate(120%) blur(8px);
+  backdrop-filter:saturate(120%) blur(8px);
+  transition:box-shadow var(--dur) var(--ease);
+}
+.hdr::after{
+  content:'';position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--piedra);
+  opacity:0;transition:opacity var(--dur) var(--ease);
+}
+.hdr.scrolled::after{opacity:1}
+.hdr__in{
+  max-width:var(--maxw);margin:0 auto;padding:0 var(--pad);
+  min-height:var(--hdr);
+  display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:12px;
+}
+.hdr__nav{display:none}
+.hdr__logo{
+  grid-column:2;justify-self:center;
+  font-family:var(--serif);font-weight:400;font-size:19px;
+  letter-spacing:.34em;text-indent:.34em;line-height:1;
+  white-space:nowrap;
+}
+.hdr__side{display:flex;align-items:center;gap:4px;min-width:0}
+.hdr__side--r{grid-column:3;justify-self:end}
+.iconbtn{
+  width:44px;height:44px;display:inline-flex;align-items:center;justify-content:center;
+  position:relative;color:var(--negro);
+}
+.iconbtn svg{width:19px;height:19px;stroke:currentColor;stroke-width:1.5;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.bagcount{
+  position:absolute;top:7px;right:5px;
+  min-width:15px;height:15px;padding:0 3px;border-radius:999px;
+  background:var(--negro);color:var(--marfil);
+  font-size:9px;line-height:15px;text-align:center;letter-spacing:0;
+  opacity:0;transform:scale(.7);transition:opacity 400ms var(--ease),transform 400ms var(--ease);
+}
+.bagcount.on{opacity:1;transform:none}
+.hdr__cita{display:none}
+
+@media(min-width:960px){
+  :root{--hdr:78px}
+  .hdr__nav{display:flex;align-items:center;gap:26px}
+  .hdr__burger{display:none}
+  .hdr__cita{display:inline-block;font-size:11px;letter-spacing:.10em;text-transform:uppercase;padding:0 6px 0 14px}
+}
+.navlink{
+  font-size:11px;letter-spacing:.10em;text-transform:uppercase;color:var(--negro);
+  position:relative;padding:6px 0;
+}
+.navlink::after{
+  content:'';position:absolute;left:0;bottom:0;height:1px;width:100%;background:var(--negro);
+  transform:scaleX(0);transform-origin:left;transition:transform var(--dur) var(--ease);
+}
+.navlink:hover::after,.navlink:focus-visible::after{transform:scaleX(1)}
+
+/* menú lateral móvil, estrecho y silencioso */
+.mnav{
+  position:fixed;inset:0 auto 0 0;width:min(84vw,330px);z-index:80;
+  background:var(--marfil);border-right:1px solid var(--piedra);
+  transform:translateX(-101%);visibility:hidden;
+  transition:transform var(--dur) var(--ease),visibility var(--dur) var(--ease);
+  display:flex;flex-direction:column;padding:26px var(--pad) 34px;
+  overflow-y:auto;
+}
+.mnav.open{transform:none;visibility:visible}
+.mnav__top{display:flex;align-items:center;justify-content:space-between;margin-bottom:38px}
+.mnav__list{display:flex;flex-direction:column}
+.mnav__list a{
+  font-family:var(--serif);font-size:1.55rem;line-height:1;padding:17px 0;
+  border-bottom:1px solid var(--piedra);
+}
+.mnav__list a:first-child{border-top:1px solid var(--piedra)}
+.mnav__foot{margin-top:auto;padding-top:34px}
+.scrim{
+  position:fixed;inset:0;z-index:70;background:rgba(23,22,20,.28);
+  opacity:0;visibility:hidden;transition:opacity var(--dur) var(--ease),visibility var(--dur)}
+.scrim.on{opacity:1;visibility:visible}
+
+/* ============================================================
+   2. HERO — composición de galería
+   ============================================================ */
+.hero{padding-top:calc(var(--hdr) + clamp(46px,9vw,104px));padding-bottom:clamp(56px,9vw,120px)}
+.hero__in{display:flex;flex-direction:column;align-items:center;text-align:center}
+.hero__eyebrow{margin-bottom:clamp(26px,4.4vw,46px)}
+.hero__frame{
+  width:min(86%,392px);aspect-ratio:3/4;overflow:hidden;background:var(--piedra);
+}
+.hero__frame img{width:100%;height:100%}
+.hero__cap{
+  margin-top:14px;font-size:11px;letter-spacing:.10em;text-transform:uppercase;color:var(--metal);
+}
+.hero__title{margin-top:clamp(30px,4.6vw,52px);max-width:15ch}
+.hero__sub{margin-top:20px;max-width:44ch}
+.hero__cta{margin-top:clamp(26px,3.6vw,38px)}
+@media(min-width:860px){
+  .hero__frame{width:min(100%,446px)}
+  .hero__title{max-width:18ch}
+}
+
+/* ============================================================
+   3. LA COLECCIÓN — rejilla de 3 con proporciones distintas
+   ============================================================ */
+.section{padding-block:clamp(58px,9vw,130px)}
+.section--tight{padding-block:clamp(44px,6.5vw,90px)}
+.sechead{display:flex;flex-direction:column;gap:16px;margin-bottom:clamp(34px,5vw,64px)}
+.sechead__row{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:16px}
+
+.col3{display:grid;gap:clamp(38px,5vw,44px);grid-template-columns:1fr}
+.colitem figure{margin:0}
+.colitem__ph{overflow:hidden;background:var(--piedra)}
+.colitem__ph img{width:100%;height:100%;transition:transform 1200ms var(--ease)}
+.colitem:hover .colitem__ph img{transform:scale(1.018)}
+.colitem--a .colitem__ph{aspect-ratio:3/4}
+.colitem--b .colitem__ph{aspect-ratio:1/1}
+.colitem--c .colitem__ph{aspect-ratio:4/5}
+.colitem__meta{display:flex;gap:14px;margin-top:16px;align-items:baseline}
+.colitem__n{font-family:var(--serif);font-size:13px;color:var(--metal);letter-spacing:.06em}
+.colitem__cap{font-family:var(--serif);font-style:italic;font-size:1.02rem;line-height:1.4;color:var(--negro)}
+.colitem__note{margin-top:6px}
+@media(min-width:900px){
+  .col3{grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(26px,3vw,44px);align-items:end}
+  .colitem--b{padding-bottom:clamp(30px,4vw,64px)}
+  .colitem--c{padding-bottom:clamp(12px,2vw,26px)}
+}
+
+/* ============================================================
+   4. PIEZAS DESTACADAS — tira horizontal con snap
+   ============================================================ */
+.strip{overflow:hidden}
+.strip__scroll{
+  display:flex;gap:clamp(18px,3vw,40px);
+  overflow-x:auto;overflow-y:hidden;
+  scroll-snap-type:x mandatory;
+  scroll-padding-left:var(--pad);
+  -webkit-overflow-scrolling:touch;
+  padding-inline:var(--pad);padding-bottom:6px;
+  scrollbar-width:none;
+}
+.strip__scroll::-webkit-scrollbar{display:none}
+.strip__item{
+  flex:0 0 auto;width:min(78vw,430px);scroll-snap-align:start;min-width:0;
+}
+.strip__item:last-child{padding-right:var(--pad)}
+.strip__ph{aspect-ratio:4/5;overflow:hidden;background:var(--piedra)}
+.strip__ph img{width:100%;height:100%}
+.strip__body{display:flex;justify-content:space-between;gap:16px;align-items:baseline;margin-top:16px}
+.strip__name{font-family:var(--serif);font-size:1.35rem;line-height:1.2}
+.strip__btn{font:inherit;color:inherit;text-align:left;position:relative;padding:0 0 3px;display:inline-block}
+.strip__btn::after{
+  content:'';position:absolute;left:0;bottom:0;height:1px;width:100%;background:var(--negro);
+  transform:scaleX(0);transform-origin:left;transition:transform var(--dur) var(--ease);
+}
+.strip__btn:hover::after,.strip__btn:focus-visible::after{transform:scaleX(1)}
+.strip__price{font-size:14px;letter-spacing:.02em;white-space:nowrap}
+.strip__desde{font-size:10.5px;letter-spacing:.10em;text-transform:uppercase;color:var(--gris);margin-right:3px}
+.strip__mat{margin-top:2px}
+.strip__hint{margin-top:clamp(20px,3vw,30px)}
+@media(min-width:900px){.strip__item{width:min(38vw,470px)}}
+
+/* ============================================================
+   5. HISTORIA — dos columnas + línea de tiempo mínima
+   ============================================================ */
+.hist{display:grid;gap:clamp(38px,5vw,72px);grid-template-columns:1fr;align-items:start}
+.hist__ph{aspect-ratio:4/5;overflow:hidden;background:var(--piedra)}
+.hist__ph img{width:100%;height:100%}
+.tl{margin-top:clamp(28px,4vw,44px);border-top:1px solid var(--piedra)}
+.tl__row{
+  display:grid;grid-template-columns:64px 1fr;gap:18px;
+  padding:18px 0;border-bottom:1px solid var(--piedra);align-items:baseline;
+}
+.tl__y{font-family:var(--serif);font-size:.95rem;color:var(--metal);letter-spacing:.04em}
+.tl__t{font-size:14.5px;line-height:1.6;color:var(--negro);font-weight:300}
+@media(min-width:900px){
+  .hist{grid-template-columns:.86fr 1fr;gap:clamp(48px,6vw,96px)}
+  .hist__ph{position:sticky;top:calc(var(--hdr) + 40px)}
+}
+
+/* ============================================================
+   6. MATERIALES — fichas divididas por hairlines
+   ============================================================ */
+.mats{display:grid;grid-template-columns:1fr;border-top:1px solid var(--piedra)}
+.mat{padding:26px 0;border-bottom:1px solid var(--piedra);min-width:0}
+.mat__ph{width:76px;aspect-ratio:1/1;overflow:hidden;background:var(--piedra);margin-bottom:16px}
+.mat__ph img{width:100%;height:100%}
+.mat__n{font-family:var(--serif);font-size:1.22rem;line-height:1.2;margin-bottom:8px}
+.mat__d{font-size:14px;line-height:1.65;color:var(--gris);font-weight:300}
+.mat__tech{margin-top:14px;padding-top:12px;border-top:1px solid var(--piedra);font-size:11px;letter-spacing:.10em;text-transform:uppercase;color:var(--metal)}
+@media(min-width:820px){
+  .mats{grid-template-columns:repeat(4,minmax(0,1fr));border-bottom:1px solid var(--piedra)}
+  .mat{border-bottom:0;border-left:1px solid var(--piedra);padding:34px clamp(18px,2.2vw,30px)}
+  .mat:first-child{border-left:0;padding-left:0}
+  .mat:last-child{padding-right:0}
+}
+
+/* ============================================================
+   7. CATÁLOGO
+   ============================================================ */
+.filters{display:flex;flex-direction:column;gap:18px;margin-bottom:clamp(28px,4vw,46px)}
+.filters__row{
+  display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;
+  margin-inline:calc(var(--pad) * -1);padding-inline:var(--pad);
+}
+.filters__row::-webkit-scrollbar{display:none}
+.chip{
+  flex:0 0 auto;min-height:44px;padding:0 18px;
+  font-size:11px;letter-spacing:.10em;text-transform:uppercase;color:var(--gris);
+  border:1px solid transparent;background:transparent;
+  transition:color var(--dur) var(--ease),border-color var(--dur) var(--ease);
+  display:inline-flex;align-items:center;
+}
+.chip:hover{color:var(--negro)}
+.chip[aria-pressed="true"]{color:var(--negro);border-color:var(--negro)}
+.filters__count{font-size:11px;letter-spacing:.10em;text-transform:uppercase;color:var(--metal)}
+
+.grid{
+  display:grid;gap:clamp(26px,3.4vw,44px) clamp(14px,2.4vw,30px);
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  transition:opacity 380ms var(--ease);
+}
+.grid.fading{opacity:0}
+@media(min-width:760px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(min-width:1160px){.grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+
+.card{text-align:left;width:100%;min-width:0;display:block;background:transparent}
+.card__ph{display:block;aspect-ratio:3/4;overflow:hidden;background:var(--blanco)}
+.card__ph img{width:100%;height:100%;transition:transform 1200ms var(--ease),opacity var(--dur) var(--ease)}
+.card:hover .card__ph img{transform:scale(1.02)}
+.card__tipo{margin-top:14px}
+.card__n{font-family:var(--serif);font-size:1.16rem;line-height:1.25;margin-top:5px}
+.card__mat{font-size:12.5px;color:var(--gris);margin-top:3px}
+.card__p{font-size:13.5px;margin-top:9px;letter-spacing:.02em}
+.card__p span{color:var(--gris);font-size:11px;letter-spacing:.10em;text-transform:uppercase;margin-right:5px}
+.empty{padding:48px 0;text-align:center}
+
+/* ============================================================
+   8. MODAL DE PIEZA
+   ============================================================ */
+.modal{
+  position:fixed;inset:0;z-index:100;display:none;
+  align-items:flex-end;justify-content:center;
+}
+.modal.on{display:flex}
+.modal__scrim{position:absolute;inset:0;background:rgba(23,22,20,.34);opacity:0;transition:opacity var(--dur) var(--ease)}
+.modal.on .modal__scrim{opacity:1}
+.modal__box{
+  position:relative;background:var(--blanco);width:100%;max-width:1120px;
+  max-height:94vh;overflow-y:auto;overscroll-behavior:contain;
+  transform:translateY(14px);opacity:0;
+  transition:transform var(--dur) var(--ease),opacity var(--dur) var(--ease);
+}
+.modal.on .modal__box{transform:none;opacity:1}
+.modal__close{
+  position:sticky;top:0;z-index:5;width:48px;height:48px;margin-left:auto;
+  display:flex;align-items:center;justify-content:center;background:var(--blanco);
+}
+.modal__close svg{width:16px;height:16px;stroke:currentColor;stroke-width:1.5;fill:none;stroke-linecap:round}
+.modal__grid{display:grid;grid-template-columns:1fr}
+.modal__media{padding:0}
+.modal__hero{aspect-ratio:3/4;overflow:hidden;background:var(--piedra)}
+.modal__hero img{width:100%;height:100%}
+.modal__thumbs{display:flex;gap:8px;padding:8px 8px 0}
+.mthumb{flex:0 0 auto;width:60px;aspect-ratio:3/4;overflow:hidden;background:var(--piedra);opacity:.5;transition:opacity var(--dur) var(--ease)}
+.mthumb img{width:100%;height:100%}
+.mthumb[aria-pressed="true"]{opacity:1}
+.modal__body{padding:26px clamp(20px,4.4vw,44px) 34px;min-width:0}
+.modal__name{font-family:var(--serif);font-size:clamp(1.7rem,3.4vw,2.4rem);line-height:1.06;margin-top:8px}
+.modal__price{font-size:1.12rem;letter-spacing:.02em;margin-top:14px}
+.modal__desc{margin-top:18px;font-size:15px;line-height:1.75;color:var(--gris);font-weight:300}
+.spec{margin-top:20px;border-top:1px solid var(--piedra)}
+.spec__row{display:grid;grid-template-columns:104px 1fr;gap:14px;padding:11px 0;border-bottom:1px solid var(--piedra);align-items:baseline}
+.spec__k{font-size:10.5px;letter-spacing:.10em;text-transform:uppercase;color:var(--metal)}
+.spec__v{font-size:13.5px;color:var(--negro);font-weight:300;min-width:0}
+.opt{margin-top:22px}
+.opt__lab{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:10px}
+.opt__row{display:flex;flex-wrap:wrap;gap:6px}
+.opt__b{
+  min-height:44px;padding:0 16px;border:1px solid var(--piedra);background:transparent;
+  font-size:11px;letter-spacing:.10em;text-transform:uppercase;color:var(--gris);
+  display:inline-flex;align-items:center;
+  transition:border-color var(--dur) var(--ease),color var(--dur) var(--ease);
+}
+.opt__b:hover{color:var(--negro)}
+.opt__b[aria-pressed="true"]{border-color:var(--negro);color:var(--negro)}
+.opt__b--talla{min-width:52px;justify-content:center;letter-spacing:.04em;font-size:12.5px}
+.modal__note{margin-top:20px;padding-top:16px;border-top:1px solid var(--piedra);font-size:12.5px;color:var(--gris);line-height:1.6}
+.modal__add{margin-top:20px}
+.modal__warn{margin-top:10px;font-size:12px;color:#8a5b3f;min-height:18px}
+@media(min-width:880px){
+  .modal{align-items:center;padding:24px}
+  .modal__box{max-height:min(880px,92vh)}
+  .modal__grid{grid-template-columns:.92fr 1fr}
+  .modal__media{display:flex;flex-direction:column;min-height:0}
+  .modal__hero{position:relative;aspect-ratio:auto;flex:1 1 auto;min-height:340px}
+  .modal__hero img{position:absolute;inset:0;width:100%;height:100%}
+  .modal__thumbs{padding:8px 0 8px 8px}
+  .mthumb{width:70px}
+  .modal__body{padding:44px clamp(28px,3.4vw,52px)}
+  .modal__close{position:absolute;top:12px;right:12px;margin:0}
+}
+
+/* ============================================================
+   9. BOLSA
+   ============================================================ */
+.bag{
+  position:fixed;top:0;right:0;bottom:0;z-index:90;
+  width:min(92vw,420px);background:var(--marfil);
+  border-left:1px solid var(--piedra);
+  transform:translateX(101%);visibility:hidden;
+  transition:transform var(--dur) var(--ease),visibility var(--dur) var(--ease);
+  display:flex;flex-direction:column;
+}
+.bag.open{transform:none;visibility:visible}
+.bag__top{display:flex;align-items:center;justify-content:space-between;padding:18px var(--pad) 16px;border-bottom:1px solid var(--piedra)}
+.bag__list{flex:1 1 auto;overflow-y:auto;overscroll-behavior:contain;padding:0 var(--pad)}
+.bagit{display:grid;grid-template-columns:66px 1fr;gap:16px;padding:20px 0;border-bottom:1px solid var(--piedra);min-width:0}
+.bagit__ph{display:block;width:66px;aspect-ratio:3/4;overflow:hidden;background:var(--piedra)}
+.bagit__ph img{width:100%;height:100%}
+.bagit__b{min-width:0}
+.bagit__n{font-family:var(--serif);font-size:1.05rem;line-height:1.2}
+.bagit__o{font-size:12px;color:var(--gris);margin-top:4px}
+.bagit__f{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:12px}
+.qty{display:flex;align-items:center;border:1px solid var(--piedra)}
+.qty button{width:34px;height:34px;display:inline-flex;align-items:center;justify-content:center;color:var(--gris);transition:color var(--dur) var(--ease)}
+.qty button:hover{color:var(--negro)}
+.qty span{min-width:26px;text-align:center;font-size:13px}
+.bagit__p{font-size:13.5px;white-space:nowrap}
+.bagit__x{font-size:10.5px;letter-spacing:.10em;text-transform:uppercase;color:var(--gris);margin-top:10px;display:inline-block;padding:6px 0;transition:color var(--dur) var(--ease)}
+.bagit__x:hover{color:var(--negro)}
+.bag__empty{padding:56px 0;text-align:center}
+.bag__foot{border-top:1px solid var(--piedra);padding:20px var(--pad) 26px}
+.bag__sub{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.bag__sublab{font-size:11px;letter-spacing:.10em;text-transform:uppercase;color:var(--gris)}
+.bag__subval{font-family:var(--serif);font-size:1.5rem}
+.bag__perks{margin:14px 0 18px;display:flex;flex-direction:column;gap:6px}
+.bag__perks li{font-size:12px;color:var(--gris);padding-left:14px;position:relative}
+.bag__perks li::before{content:'';position:absolute;left:0;top:.72em;width:6px;height:1px;background:var(--metal)}
+.bag__done{margin-top:12px;font-size:12.5px;color:var(--metal);line-height:1.6}
+
+/* ============================================================
+   10. EDITORIAL a sangre
+   ============================================================ */
+.edi{position:relative;overflow:hidden;background:var(--negro)}
+.edi__ph{aspect-ratio:4/5;max-height:82vh}
+.edi__ph img{width:100%;height:100%;opacity:.82}
+.edi__ov{
+  position:absolute;inset:0;display:flex;align-items:flex-end;
+  padding:var(--pad);
+  background:linear-gradient(to top,rgba(23,22,20,.56) 0%,rgba(23,22,20,.16) 46%,rgba(23,22,20,0) 74%);
+}
+.edi__q{
+  font-family:var(--serif);font-style:italic;font-weight:400;color:var(--marfil);
+  font-size:clamp(1.4rem,3.6vw,2.6rem);line-height:1.22;max-width:20ch;
+}
+.edi__cr{margin-top:14px;font-size:10.5px;letter-spacing:.10em;text-transform:uppercase;color:rgba(246,244,240,.72)}
+@media(min-width:820px){.edi__ph{aspect-ratio:21/9}.edi__q{max-width:22ch}}
+
+/* ============================================================
+   11. REGALOS
+   ============================================================ */
+.gifts{display:grid;gap:1px;background:var(--piedra);border-block:1px solid var(--piedra);grid-template-columns:1fr}
+.gift{background:var(--marfil);padding:30px 0;text-align:left;min-width:0;
+  transition:background var(--dur) var(--ease)}
+.gift:hover{background:var(--blanco)}
+.gift__r{font-family:var(--serif);font-size:clamp(1.3rem,2.4vw,1.75rem);line-height:1.15}
+.gift__d{font-size:13.5px;color:var(--gris);margin-top:10px;line-height:1.6}
+.gift__go{margin-top:18px;display:inline-block}
+@media(min-width:820px){
+  .gifts{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .gift{padding:34px clamp(18px,2.4vw,30px)}
+  .gift:first-child{padding-left:0}
+  .gift:last-child{padding-right:0}
+}
+
+/* ============================================================
+   12. CITA
+   ============================================================ */
+.cita{display:grid;gap:clamp(34px,4.6vw,72px);grid-template-columns:1fr;align-items:start}
+.form{display:grid;gap:16px}
+.field{display:flex;flex-direction:column;gap:7px;min-width:0}
+.field label{font-size:10.5px;letter-spacing:.10em;text-transform:uppercase;color:var(--gris)}
+.field input,.field select{
+  width:100%;min-height:46px;padding:10px 0;background:transparent;
+  border:0;border-bottom:1px solid var(--piedra);border-radius:0;
+  font-size:15px;font-weight:300;color:var(--negro);
+  transition:border-color var(--dur) var(--ease);
+  -webkit-appearance:none;appearance:none;
+}
+.field select{background-image:linear-gradient(45deg,transparent 50%,var(--gris) 50%),linear-gradient(135deg,var(--gris) 50%,transparent 50%);
+  background-position:calc(100% - 11px) calc(50% + 1px),calc(100% - 6px) calc(50% + 1px);
+  background-size:5px 5px,5px 5px;background-repeat:no-repeat;padding-right:26px}
+.field input:focus,.field select:focus{outline:none;border-color:var(--negro)}
+.field input:focus-visible,.field select:focus-visible{outline:none;border-color:var(--negro)}
+.field.bad input,.field.bad select{border-color:#9c5f3f}
+.field__err{font-size:11.5px;color:#9c5f3f;min-height:0}
+.field.bad .field__err{min-height:16px}
+.form__foot{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:8px}
+.form__ok{margin-top:14px;padding-top:14px;border-top:1px solid var(--metal);font-size:13.5px;color:var(--negro);line-height:1.65;display:none}
+.form__ok.on{display:block}
+.showroom__data{margin-top:26px;border-top:1px solid var(--piedra)}
+.showroom__data div{display:grid;grid-template-columns:112px 1fr;gap:14px;padding:13px 0;border-bottom:1px solid var(--piedra);align-items:baseline}
+@media(min-width:900px){.cita{grid-template-columns:1fr 1fr}}
+
+/* ============================================================
+   13. ACORDEÓN
+   ============================================================ */
+.acc{border-top:1px solid var(--piedra)}
+.acc__i{border-bottom:1px solid var(--piedra)}
+.acc__b{
+  width:100%;display:flex;align-items:baseline;justify-content:space-between;gap:20px;
+  padding:20px 0;text-align:left;min-height:44px;
+}
+.acc__t{font-family:var(--serif);font-size:clamp(1.02rem,1.9vw,1.24rem);line-height:1.3;min-width:0}
+.acc__s{flex:0 0 auto;width:11px;height:11px;position:relative;margin-top:.5em}
+.acc__s::before,.acc__s::after{content:'';position:absolute;background:var(--negro);transition:transform var(--dur) var(--ease),opacity var(--dur) var(--ease)}
+.acc__s::before{left:0;top:5px;width:11px;height:1px}
+.acc__s::after{left:5px;top:0;width:1px;height:11px}
+.acc__b[aria-expanded="true"] .acc__s::after{transform:scaleY(0);opacity:0}
+.acc__p{overflow:hidden;height:0;transition:height var(--dur) var(--ease)}
+.acc__in{padding:0 0 22px;max-width:62ch;font-size:14.5px;line-height:1.75;color:var(--gris);font-weight:300}
+.acc__in p + p{margin-top:10px}
+
+/* ============================================================
+   14. FOOTER
+   ============================================================ */
+.ftr{border-top:1px solid var(--piedra);padding-block:clamp(46px,6vw,78px)}
+.ftr__grid{display:grid;gap:34px;grid-template-columns:1fr}
+.ftr__logo{font-family:var(--serif);font-size:24px;letter-spacing:.32em;text-indent:.32em;line-height:1}
+.ftr__cl{font-size:11px;letter-spacing:.10em;text-transform:uppercase;color:var(--metal);margin-bottom:14px;display:block}
+.ftr__li{font-size:14px;line-height:1.85;color:var(--gris);font-weight:300}
+.ftr__li a:hover{color:var(--negro)}
+.ftr__bot{margin-top:clamp(36px,5vw,60px);padding-top:20px;border-top:1px solid var(--piedra);
+  display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:center}
+@media(min-width:760px){.ftr__grid{grid-template-columns:1.25fr 1fr 1fr 1fr;gap:clamp(20px,3vw,44px)}}
+
+/* ============================================================
+   15. BLOQUE COMERCIAL
+   ============================================================ */
+.sell{background:var(--negro);color:var(--marfil);padding-block:clamp(64px,9vw,132px)}
+.sell__in{max-width:760px;margin:0 auto;text-align:center}
+.sell__eye{color:var(--metal);font-size:11px;letter-spacing:.10em;text-transform:uppercase}
+.sell__t{
+  font-family:var(--serif);font-weight:400;color:var(--marfil);
+  font-size:clamp(2rem,5.4vw,3.7rem);line-height:1.06;letter-spacing:-.01em;
+  margin-top:22px;
+}
+.sell__p{margin-top:20px;font-size:clamp(.98rem,1.3vw,1.06rem);line-height:1.75;color:rgba(246,244,240,.66);font-weight:300}
+.sell__ul{margin-top:clamp(34px,5vw,52px);border-top:1px solid rgba(154,142,123,.42);text-align:left}
+.sell__ul li{
+  padding:14px 2px;border-bottom:1px solid rgba(154,142,123,.42);
+  font-size:14px;font-weight:300;color:rgba(246,244,240,.86);
+  display:flex;align-items:baseline;gap:14px;
+}
+.sell__ul li i{font-style:normal;font-family:var(--serif);font-size:12px;color:var(--metal);min-width:22px}
+.sell__price{margin-top:clamp(34px,5vw,52px)}
+.sell__n{font-family:var(--serif);font-size:clamp(2.6rem,7.4vw,4.6rem);line-height:1;letter-spacing:-.015em}
+.sell__cur{font-family:var(--sans);font-size:13px;letter-spacing:.10em;color:var(--metal);margin-left:10px;vertical-align:middle}
+.sell__once{margin-top:12px;font-size:11px;letter-spacing:.10em;text-transform:uppercase;color:rgba(246,244,240,.6)}
+.sell__btn{margin-top:clamp(28px,4vw,40px)}
+.sell__fine{margin-top:20px;font-size:12px;color:rgba(246,244,240,.5)}
+
+/* --------- reduced motion --------- */
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{
+    animation-duration:.001ms !important;animation-iteration-count:1 !important;
+    transition-duration:.001ms !important;scroll-behavior:auto !important;
+  }
+  .rv{opacity:1;transform:none}
+  .strip__scroll{scroll-snap-type:none}
+}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+</style>
+<link rel="stylesheet" href="../_shared/ziv-premium.css">
+<script src="../_shared/ziv-premium.js" defer></script>
+</head>
+<body>
+
+<a class="link" href="#catalogo" style="position:absolute;left:-9999px;top:0" onfocus="this.style.left='12px';this.style.top='12px';this.style.zIndex='200';this.style.background='#fff';this.style.padding='10px'" onblur="this.style.left='-9999px'">Ir al catálogo</a>
+
+<!-- ============================================================
+     HEADER
+     ============================================================ -->
+<header class="hdr" id="hdr">
+  <div class="hdr__in">
+    <div class="hdr__side">
+      <button class="iconbtn hdr__burger" id="burger" aria-label="Abrir menú" aria-expanded="false" aria-controls="mnav">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7h18M3 12h18M3 17h18"/></svg>
+      </button>
+      <nav class="hdr__nav" aria-label="Principal">
+        <a class="navlink" href="#coleccion">Colección</a>
+        <a class="navlink" href="#catalogo">Piezas</a>
+        <a class="navlink" href="#materiales">Materiales</a>
+        <a class="navlink" href="#casa">La casa</a>
+      </nav>
+    </div>
+
+    <a class="hdr__logo" href="#top" aria-label="MARÉ, inicio">MARÉ</a>
+
+    <div class="hdr__side hdr__side--r">
+      <a class="hdr__cita navlink" href="#cita">Agendar cita</a>
+      <button class="iconbtn" id="openBag" aria-label="Abrir la bolsa" aria-expanded="false" aria-controls="bag">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 8h12l-1 12H7L6 8z"/><path d="M9.5 8V6.5a2.5 2.5 0 0 1 5 0V8"/></svg>
+        <span class="bagcount num" id="bagCount" aria-hidden="true">0</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- menú móvil -->
+<nav class="mnav" id="mnav" aria-label="Menú móvil" aria-hidden="true">
+  <div class="mnav__top">
+    <span class="eyebrow">Menú</span>
+    <button class="iconbtn" id="closeMnav" aria-label="Cerrar menú">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+  </div>
+  <div class="mnav__list">
+    <a href="#coleccion" data-mclose>Colección</a>
+    <a href="#destacadas" data-mclose>Destacadas</a>
+    <a href="#catalogo" data-mclose>Piezas</a>
+    <a href="#materiales" data-mclose>Materiales</a>
+    <a href="#casa" data-mclose>La casa</a>
+    <a href="#regalos" data-mclose>Regalos</a>
+    <a href="#cita" data-mclose>Agendar cita</a>
+  </div>
+  <div class="mnav__foot">
+    <span class="eyebrow">Showroom con cita</span>
+    <p class="small" style="margin-top:10px">Emilio Castelar 90, Polanco<br>Ciudad de México</p>
+    <p class="small" style="margin-top:8px">55 4016 1213</p>
+  </div>
+</nav>
+<div class="scrim" id="scrim" hidden></div>
+
+<main id="top">
+
+<!-- ============================================================
+     HERO — composición de galería
+     ============================================================ -->
+<section class="hero">
+  <div class="wrap hero__in">
+    <p class="eyebrow hero__eyebrow rv">Colección Marea Baja · 2026</p>
+
+    <figure class="hero__frame rv d1" style="margin:0">
+      <img src="https://images.unsplash.com/photo-1611652022419-a9419f74343d?auto=format&fit=crop&w=2000&q=80"
+           alt="Anillo de oro delgado sobre una superficie de piedra clara, fotografiado con luz natural"
+           width="900" height="1200" fetchpriority="high" decoding="async">
+    </figure>
+    <p class="hero__cap rv d2">Anillo Vestigio — oro 14k</p>
+
+    <h1 class="display hero__title rv d2">Piezas que sobreviven a las modas.</h1>
+    <p class="lede hero__sub rv d3">Joyería de autor hecha a mano en nuestro taller de Polanco. Series cortas, formas que envejecen bien, metales que se pueden heredar.</p>
+
+    <p class="hero__cta rv d4"><a class="link" href="#coleccion">Ver la colección</a></p>
+  </div>
+</section>
+
+<!-- ============================================================
+     LA COLECCIÓN
+     ============================================================ -->
+<section class="section" id="coleccion" aria-labelledby="colTitle">
+  <div class="wrap">
+    <div class="sechead">
+      <div class="sechead__row">
+        <div>
+          <p class="eyebrow rv">La colección</p>
+          <h2 class="h2 rv d1" id="colTitle" style="margin-top:14px;max-width:15ch">Tres formas de empezar una historia</h2>
+        </div>
+        <p class="lede rv d2" style="max-width:38ch">Cada temporada trabajamos sobre una sola idea. Ésta se llama Marea Baja: lo que el agua deja cuando se retira.</p>
+      </div>
+    </div>
+
+    <div class="col3">
+      <article class="colitem colitem--a rv">
+        <figure>
+          <div class="colitem__ph">
+            <img src="https://images.unsplash.com/photo-1617038220319-276d3cfab638?auto=format&fit=crop&w=900&q=75"
+                 alt="Aretes de aro dorados apoyados sobre tela de lino color hueso" loading="lazy" decoding="async" width="900" height="1200">
+          </div>
+          <figcaption class="colitem__meta">
+            <span class="colitem__n num">I</span>
+            <span>
+              <span class="colitem__cap">La línea recta que se dobla una sola vez.</span>
+              <span class="small colitem__note" style="display:block">Aretes Umbral · plata .925</span>
+            </span>
+          </figcaption>
+        </figure>
+      </article>
+
+      <article class="colitem colitem--b rv d1">
+        <figure>
+          <div class="colitem__ph">
+            <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=900&q=75"
+                 alt="Collar delgado con dije pequeño sobre fondo neutro claro" loading="lazy" decoding="async" width="900" height="900">
+          </div>
+          <figcaption class="colitem__meta">
+            <span class="colitem__n num">II</span>
+            <span>
+              <span class="colitem__cap">Un peso mínimo que igual se nota todo el día.</span>
+              <span class="small colitem__note" style="display:block">Collar Meridiano · oro 14k</span>
+            </span>
+          </figcaption>
+        </figure>
+      </article>
+
+      <article class="colitem colitem--c rv d2">
+        <figure>
+          <div class="colitem__ph">
+            <img src="https://images.unsplash.com/photo-1602173574767-37ac01994b2a?auto=format&fit=crop&w=900&q=75"
+                 alt="Manos con varios anillos delgados apilados, luz suave lateral" loading="lazy" decoding="async" width="900" height="1125">
+          </div>
+          <figcaption class="colitem__meta">
+            <span class="colitem__n num">III</span>
+            <span>
+              <span class="colitem__cap">Se apilan, se separan, se vuelven a apilar.</span>
+              <span class="small colitem__note" style="display:block">Anillos Sal y Cinta · vermeil</span>
+            </span>
+          </figcaption>
+        </figure>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PIEZAS DESTACADAS — tira horizontal
+     ============================================================ -->
+<section class="section section--tight strip" id="destacadas" aria-labelledby="dstTitle">
+  <div class="wrap">
+    <div class="sechead">
+      <div class="sechead__row">
+        <div>
+          <p class="eyebrow rv">Destacadas</p>
+          <h2 class="h2 rv d1" id="dstTitle" style="margin-top:14px">Tres piezas de esta casa</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="strip__scroll" id="stripScroll">
+    <article class="strip__item rv">
+      <div class="strip__ph">
+        <img src="https://images.unsplash.com/photo-1543294001-f7cd5d7fb516?auto=format&fit=crop&w=900&q=75"
+             alt="Anillo ancho de oro con acabado martillado sobre superficie clara" loading="lazy" decoding="async" width="900" height="1125">
+      </div>
+      <div class="strip__body">
+        <div style="min-width:0">
+          <h3 class="strip__name"><button class="strip__btn" type="button" data-open="eclipse" aria-haspopup="dialog">Eclipse</button></h3>
+          <p class="small strip__mat">Anillo de sello · pulido a siete pasos</p>
+        </div>
+        <p class="strip__price num"><span class="strip__desde">Desde</span> $6,800</p>
+      </div>
+    </article>
+
+    <article class="strip__item rv d1">
+      <div class="strip__ph">
+        <img src="https://images.unsplash.com/photo-1616837874254-8d5aaa63e273?auto=format&fit=crop&w=900&q=75"
+             alt="Par de aretes largos de plata colgando frente a fondo neutro" loading="lazy" decoding="async" width="900" height="1125">
+      </div>
+      <div class="strip__body">
+        <div style="min-width:0">
+          <h3 class="strip__name"><button class="strip__btn" type="button" data-open="medialuna" aria-haspopup="dialog">Media Luna</button></h3>
+          <p class="small strip__mat">Aretes sólidos · pulidos a espejo</p>
+        </div>
+        <p class="strip__price num"><span class="strip__desde">Desde</span> $3,100</p>
+      </div>
+    </article>
+
+    <article class="strip__item rv d2">
+      <div class="strip__ph">
+        <img src="https://images.unsplash.com/photo-1585960622850-ed33c41d6418?auto=format&fit=crop&w=900&q=75"
+             alt="Collar de cadena fina con eslabones irregulares sobre mármol claro" loading="lazy" decoding="async" width="900" height="1125">
+      </div>
+      <div class="strip__body">
+        <div style="min-width:0">
+          <h3 class="strip__name"><button class="strip__btn" type="button" data-open="rio" aria-haspopup="dialog">Piedra de Río</button></h3>
+          <p class="small strip__mat">Collar con cuarzo rutilado engastado</p>
+        </div>
+        <p class="strip__price num"><span class="strip__desde">Desde</span> $4,200</p>
+      </div>
+    </article>
+  </div>
+
+  <div class="wrap">
+    <p class="strip__hint rv"><a class="link" href="#catalogo">Ver todas las piezas</a></p>
+  </div>
+</section>
+
+<!-- ============================================================
+     LA CASA
+     ============================================================ -->
+<section class="section" id="casa" aria-labelledby="casaTitle">
+  <div class="wrap">
+    <div class="hist">
+      <figure class="hist__ph rv" style="margin:0">
+        <img src="https://images.unsplash.com/photo-1633934542430-0905ccb5f050?auto=format&fit=crop&w=900&q=75"
+             alt="Mesa de taller de joyería con herramientas y una pieza en proceso" loading="lazy" decoding="async" width="900" height="1125">
+      </figure>
+
+      <div>
+        <p class="eyebrow rv">La casa</p>
+        <h2 class="h2 rv d1" id="casaTitle" style="margin-top:14px;max-width:17ch">Un taller antes que una tienda</h2>
+        <p class="lede rv d2" style="margin-top:22px;max-width:52ch">MARÉ nació de un banco de trabajo prestado y un encargo pequeño: un anillo de compromiso que no se pareciera a ninguno. Desde entonces trabajamos igual — series cortas, cada pieza terminada a mano, nada que no podamos reparar nosotros mismos veinte años después.</p>
+        <p class="lede rv d2" style="margin-top:16px;max-width:52ch">No hacemos temporadas por calendario ni descuentos por fecha. Hacemos joyería que se pueda usar diario y heredar después.</p>
+
+        <div class="tl">
+          <div class="tl__row rv">
+            <span class="tl__y num">2014</span>
+            <p class="tl__t">Ana Berrondo termina su formación en orfebrería y empieza a trabajar por encargo desde un departamento en la Roma.</p>
+          </div>
+          <div class="tl__row rv d1">
+            <span class="tl__y num">2017</span>
+            <p class="tl__t">Primer taller propio con dos bancos y un horno de fundición. Nace la serie de anillos martillados que todavía hacemos.</p>
+          </div>
+          <div class="tl__row rv d2">
+            <span class="tl__y num">2021</span>
+            <p class="tl__t">Abrimos el showroom de Polanco: sólo con cita, una pieza a la vez, sin vitrinas cerradas.</p>
+          </div>
+          <div class="tl__row rv d3">
+            <span class="tl__y num">2025</span>
+            <p class="tl__t">Incorporamos oro reciclado certificado y garantía de por vida en soldaduras para toda pieza firmada MARÉ.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     MATERIALES
+     ============================================================ -->
+<section class="section" id="materiales" aria-labelledby="matTitle">
+  <div class="wrap">
+    <div class="sechead">
+      <div class="sechead__row">
+        <div>
+          <p class="eyebrow rv">Materiales</p>
+          <h2 class="h2 rv d1" id="matTitle" style="margin-top:14px">Cuatro, y nada más</h2>
+        </div>
+        <p class="lede rv d2" style="max-width:36ch">Trabajamos con pocos materiales para conocerlos bien. Cada pieza indica el suyo y su nota técnica.</p>
+      </div>
+    </div>
+
+    <div class="mats">
+      <article class="mat rv">
+        <div class="mat__ph">
+          <img src="https://images.unsplash.com/photo-1599458349289-18f0ee82e6ed?auto=format&fit=crop&w=500&q=70"
+               alt="Detalle macro de una superficie de oro amarillo pulido" loading="lazy" decoding="async" width="500" height="500">
+        </div>
+        <h3 class="mat__n">Oro 14k</h3>
+        <p class="mat__d">Oro reciclado certificado, aleado en el taller. Es el material que recomendamos para uso diario y para piezas que se van a heredar.</p>
+        <p class="mat__tech">585 milésimas · no se decolora</p>
+      </article>
+
+      <article class="mat rv d1">
+        <div class="mat__ph">
+          <img src="https://images.unsplash.com/photo-1590166223826-12dee1677420?auto=format&fit=crop&w=500&q=70"
+               alt="Detalle macro de plata pulida con reflejos suaves" loading="lazy" decoding="async" width="500" height="500">
+        </div>
+        <h3 class="mat__n">Plata .925</h3>
+        <p class="mat__d">Plata ley con acabado satinado o espejo. Se oxida con el tiempo; la limpiamos y la volvemos a pulir sin costo cuando la traes al taller.</p>
+        <p class="mat__tech">925 milésimas · repulido incluido</p>
+      </article>
+
+      <article class="mat rv d2">
+        <div class="mat__ph">
+          <img src="https://images.unsplash.com/photo-1631982690223-8aa4be0a2497?auto=format&fit=crop&w=500&q=70"
+               alt="Aretes dorados sobre superficie texturizada color arena" loading="lazy" decoding="async" width="500" height="500">
+        </div>
+        <h3 class="mat__n">Vermeil</h3>
+        <p class="mat__d">Base de plata .925 con baño grueso de oro de 2.5 micras. El punto medio honesto entre la plata y el oro sólido.</p>
+        <p class="mat__tech">2.5 micras · rebañado a los 3 años</p>
+      </article>
+
+      <article class="mat rv d3">
+        <div class="mat__ph">
+          <img src="https://images.unsplash.com/photo-1620656798579-1984d9e87df7?auto=format&fit=crop&w=500&q=70"
+               alt="Piedras naturales sin engastar sobre tela clara" loading="lazy" decoding="async" width="500" height="500">
+        </div>
+        <h3 class="mat__n">Piedras naturales</h3>
+        <p class="mat__d">Cuarzo rutilado, piedra lunar, ónix y turmalina, seleccionadas pieza por pieza. Ninguna es idéntica a la de la foto y ése es el punto.</p>
+        <p class="mat__tech">Corte cabujón · engaste a bisel</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CATÁLOGO
+     ============================================================ -->
+<section class="section" id="catalogo" aria-labelledby="catTitle">
+  <div class="wrap">
+    <div class="sechead">
+      <div class="sechead__row">
+        <div>
+          <p class="eyebrow rv">Todas las piezas</p>
+          <h2 class="h2 rv d1" id="catTitle" style="margin-top:14px">El catálogo</h2>
+        </div>
+        <p class="lede rv d2" style="max-width:34ch">Cada pieza se hace por encargo en el taller. Elige metal y talla dentro de la ficha.</p>
+      </div>
+    </div>
+
+    <div class="filters">
+      <div class="filters__row" role="group" aria-label="Filtrar por tipo de pieza" id="tipoFilters">
+        <button class="chip" type="button" data-tipo="Todas" aria-pressed="true">Todas</button>
+        <button class="chip" type="button" data-tipo="Anillos" aria-pressed="false">Anillos</button>
+        <button class="chip" type="button" data-tipo="Aretes" aria-pressed="false">Aretes</button>
+        <button class="chip" type="button" data-tipo="Collares" aria-pressed="false">Collares</button>
+        <button class="chip" type="button" data-tipo="Pulseras" aria-pressed="false">Pulseras</button>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between">
+        <div class="filters__row" role="group" aria-label="Filtrar por rango de precio" id="precioFilters" style="margin:0;padding:0">
+          <button class="chip" type="button" data-precio="todos" aria-pressed="true">Cualquier precio</button>
+          <button class="chip" type="button" data-precio="bajo" aria-pressed="false">Hasta $2,500</button>
+          <button class="chip" type="button" data-precio="medio" aria-pressed="false">$2,500 – $5,000</button>
+          <button class="chip" type="button" data-precio="alto" aria-pressed="false">Más de $5,000</button>
+        </div>
+        <p class="filters__count num" id="count" aria-live="polite">12 piezas</p>
+      </div>
+      <hr class="hair">
+    </div>
+
+    <div class="grid" id="grid"></div>
+    <div class="empty" id="empty" hidden>
+      <p class="h3 it serif">Nada en ese rango, todavía.</p>
+      <p class="small" style="margin-top:10px">Quita algún filtro o escríbenos: hacemos piezas por encargo.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     EDITORIAL
+     ============================================================ -->
+<section class="edi" aria-label="Editorial de la casa">
+  <div class="edi__ph">
+    <img src="https://images.unsplash.com/photo-1601821765780-754fa98637c1?auto=format&fit=crop&w=2000&q=80"
+         alt="Retrato editorial de una mujer de perfil con aretes de oro y luz de tarde" loading="lazy" decoding="async" width="2000" height="1100">
+  </div>
+  <div class="edi__ov">
+    <div class="wrap" style="width:100%;padding-left:0;padding-right:0">
+      <blockquote class="edi__q rv">“Una pieza buena no se nota el primer día. Se nota el año doce.”</blockquote>
+      <p class="edi__cr rv d1">Ana Berrondo · fundadora y orfebre — Taller MARÉ, Polanco</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     REGALOS
+     ============================================================ -->
+<section class="section" id="regalos" aria-labelledby="regTitle">
+  <div class="wrap">
+    <div class="sechead">
+      <div class="sechead__row">
+        <div>
+          <p class="eyebrow rv">Guía de regalo</p>
+          <h2 class="h2 rv d1" id="regTitle" style="margin-top:14px">Si vas a regalar</h2>
+        </div>
+        <p class="lede rv d2" style="max-width:36ch">Elige un rango y te mostramos exactamente lo que hay dentro. Todo se entrega en estuche de lino con grabado incluido.</p>
+      </div>
+    </div>
+
+    <div class="gifts rv">
+      <button class="gift" type="button" data-gift="bajo">
+        <p class="eyebrow eyebrow--metal">Primer regalo</p>
+        <p class="gift__r num" style="margin-top:12px">Hasta $2,500</p>
+        <p class="gift__d">Piezas ligeras de plata y vermeil: aros, cadenas finas, la pulsera Cordel. Se usan diario sin pensarlo.</p>
+        <span class="link gift__go">Ver estas piezas</span>
+      </button>
+
+      <button class="gift" type="button" data-gift="medio">
+        <p class="eyebrow eyebrow--metal">Fecha que importa</p>
+        <p class="gift__r num" style="margin-top:12px">$2,500 – $5,000</p>
+        <p class="gift__d">Collares con piedra, aretes de mayor peso y anillos apilables. El rango que más se regala en cumpleaños.</p>
+        <span class="link gift__go">Ver estas piezas</span>
+      </button>
+
+      <button class="gift" type="button" data-gift="alto">
+        <p class="eyebrow eyebrow--metal">Pieza de vida</p>
+        <p class="gift__r num" style="margin-top:12px">Más de $5,000</p>
+        <p class="gift__d">Oro 14k sólido y piedras seleccionadas a mano. Aquí están los anillos que se usan para pedir algo.</p>
+        <span class="link gift__go">Ver estas piezas</span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CITA EN SHOWROOM
+     ============================================================ -->
+<section class="section" id="cita" aria-labelledby="citaTitle">
+  <div class="wrap">
+    <div class="cita">
+      <div>
+        <p class="eyebrow rv">Showroom</p>
+        <h2 class="h2 rv d1" id="citaTitle" style="margin-top:14px;max-width:15ch">Ven a ver las piezas de cerca</h2>
+        <p class="lede rv d2" style="margin-top:22px;max-width:46ch">Atendemos con cita, de una persona a la vez. Sacamos las piezas de la vitrina, te las pruebas con calma y, si quieres algo distinto, lo dibujamos ahí mismo.</p>
+
+        <div class="showroom__data rv d2">
+          <div><span class="tiny">Dirección</span><span class="small" style="color:var(--negro)">Emilio Castelar 90, Polanco<br>Miguel Hidalgo, CDMX</span></div>
+          <div><span class="tiny">Horarios</span><span class="small" style="color:var(--negro)">Martes a viernes, 11:00 – 19:00<br>Sábado, 11:00 – 15:00</span></div>
+          <div><span class="tiny">Teléfono</span><span class="small" style="color:var(--negro)">55 4016 1213</span></div>
+          <div><span class="tiny">Duración</span><span class="small" style="color:var(--negro)">45 minutos aproximadamente</span></div>
+        </div>
+      </div>
+
+      <div class="rv d1">
+        <form class="form" id="citaForm" novalidate>
+          <div class="field" id="f-nombre">
+            <label for="i-nombre">Nombre</label>
+            <input id="i-nombre" name="nombre" type="text" autocomplete="name" placeholder="Como quieres que te llamemos">
+            <span class="field__err" id="e-nombre"></span>
+          </div>
+          <div class="field" id="f-tel">
+            <label for="i-tel">WhatsApp</label>
+            <input id="i-tel" name="tel" type="tel" inputmode="tel" autocomplete="tel" placeholder="10 dígitos">
+            <span class="field__err" id="e-tel"></span>
+          </div>
+          <div class="field" id="f-dia">
+            <label for="i-dia">Día preferido</label>
+            <select id="i-dia" name="dia">
+              <option value="">Elige un día</option>
+              <option>Martes</option>
+              <option>Miércoles</option>
+              <option>Jueves</option>
+              <option>Viernes</option>
+              <option>Sábado</option>
+            </select>
+            <span class="field__err" id="e-dia"></span>
+          </div>
+          <div class="field" id="f-pieza">
+            <label for="i-pieza">Pieza de interés</label>
+            <select id="i-pieza" name="pieza">
+              <option value="">Elige una opción</option>
+              <option>Anillo de compromiso</option>
+              <option>Anillos de la colección</option>
+              <option>Aretes</option>
+              <option>Collares</option>
+              <option>Pulseras</option>
+              <option>Pieza por encargo</option>
+            </select>
+            <span class="field__err" id="e-pieza"></span>
+          </div>
+
+          <div class="form__foot">
+            <button class="btn" type="submit">Solicitar cita</button>
+            <a class="link" id="citaWa" href="https://wa.me/525540161213" target="_blank" rel="noopener">O escríbenos por WhatsApp</a>
+          </div>
+          <p class="form__ok" id="citaOk" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CUIDADOS Y GARANTÍA
+     ============================================================ -->
+<section class="section section--tight" id="cuidados" aria-labelledby="cuiTitle">
+  <div class="wrap narrow" style="padding-left:0;padding-right:0">
+    <div class="wrap" style="max-width:none">
+      <p class="eyebrow rv">Cuidados y garantía</p>
+      <h2 class="h2 rv d1" id="cuiTitle" style="margin-top:14px;margin-bottom:clamp(28px,4vw,46px)">Cómo cuidar tu pieza</h2>
+
+      <div class="acc" id="acc">
+        <div class="acc__i">
+          <button class="acc__b" type="button" aria-expanded="false" aria-controls="p1" id="b1">
+            <span class="acc__t">Uso diario y qué evitar</span><span class="acc__s" aria-hidden="true"></span>
+          </button>
+          <div class="acc__p" id="p1" role="region" aria-labelledby="b1">
+            <div class="acc__in">
+              <p>Quítate la pieza antes de nadar, entrenar o dormir. El cloro y el agua salada afectan las soldaduras y opacan el baño de vermeil.</p>
+              <p>Ponte la joyería al final: después de la crema, el perfume y el fijador. Los alcoholes son lo que más rápido apaga el brillo.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="acc__i">
+          <button class="acc__b" type="button" aria-expanded="false" aria-controls="p2" id="b2">
+            <span class="acc__t">Limpieza en casa</span><span class="acc__s" aria-hidden="true"></span>
+          </button>
+          <div class="acc__p" id="p2" role="region" aria-labelledby="b2">
+            <div class="acc__in">
+              <p>Agua tibia, una gota de jabón neutro y un cepillo de cerdas muy suaves. Enjuaga y seca con paño de algodón, nunca con papel.</p>
+              <p>En plata, el paño de pulido que va en el estuche basta para el oscurecimiento normal. No uses pastas abrasivas ni limpiadores de supermercado en piezas con piedra.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="acc__i">
+          <button class="acc__b" type="button" aria-expanded="false" aria-controls="p3" id="b3">
+            <span class="acc__t">Guardado</span><span class="acc__s" aria-hidden="true"></span>
+          </button>
+          <div class="acc__p" id="p3" role="region" aria-labelledby="b3">
+            <div class="acc__in">
+              <p>Guarda cada pieza por separado en la bolsa de lino que viene en el estuche: el roce entre metales es la causa más común de rayones.</p>
+              <p>Evita el baño y las cajas herméticas de plástico. La humedad acelera la oxidación de la plata.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="acc__i">
+          <button class="acc__b" type="button" aria-expanded="false" aria-controls="p4" id="b4">
+            <span class="acc__t">Garantía y servicio de taller</span><span class="acc__s" aria-hidden="true"></span>
+          </button>
+          <div class="acc__p" id="p4" role="region" aria-labelledby="b4">
+            <div class="acc__in">
+              <p>Toda pieza firmada MARÉ tiene garantía de por vida en soldaduras: si una unión cede por uso normal, la reparamos sin costo.</p>
+              <p>El primer repulido y el ajuste de talla del primer año van incluidos. Después, el ajuste tiene un costo de servicio de $450 y se entrega en cinco días hábiles.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="acc__i">
+          <button class="acc__b" type="button" aria-expanded="false" aria-controls="p5" id="b5">
+            <span class="acc__t">Envíos, cambios y grabado</span><span class="acc__s" aria-hidden="true"></span>
+          </button>
+          <div class="acc__p" id="p5" role="region" aria-labelledby="b5">
+            <div class="acc__in">
+              <p>Enviamos asegurado sin costo a toda la República. Las piezas se hacen por encargo: la entrega es de 7 días hábiles, más el tiempo de mensajería.</p>
+              <p>Cambio de talla dentro de los primeros 30 días. El grabado interior, hasta 18 caracteres, es gratuito y se hace a mano en el taller.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer class="ftr">
+  <div class="wrap">
+    <div class="ftr__grid">
+      <div class="rv">
+        <p class="ftr__logo">MARÉ</p>
+        <p class="small" style="margin-top:18px;max-width:30ch">Joyería de autor hecha a mano en Ciudad de México. Series cortas, garantía de por vida en soldaduras.</p>
+      </div>
+
+      <div class="rv d1">
+        <span class="ftr__cl">Showroom con cita</span>
+        <p class="ftr__li">Emilio Castelar 90<br>Polanco, Miguel Hidalgo<br>CDMX, 11560</p>
+        <p class="ftr__li" style="margin-top:12px"><a href="#cita">Agendar una visita</a></p>
+      </div>
+
+      <div class="rv d2">
+        <span class="ftr__cl">Horarios</span>
+        <p class="ftr__li">Martes a viernes · 11:00 – 19:00<br>Sábado · 11:00 – 15:00<br>Domingo y lunes · cerrado</p>
+        <p class="ftr__li" style="margin-top:12px">55 4016 1213</p>
+      </div>
+
+      <div class="rv d3">
+        <span class="ftr__cl">Casa</span>
+        <p class="ftr__li"><a href="#catalogo">Catálogo</a></p>
+        <p class="ftr__li"><a href="#materiales">Materiales</a></p>
+        <p class="ftr__li"><a href="#cuidados">Cuidados y garantía</a></p>
+        <p class="ftr__li"><a href="https://wa.me/525540161213" target="_blank" rel="noopener">WhatsApp del taller</a></p>
+        <p class="ftr__li"><a href="#regalos">Instagram · @mare.taller</a></p>
+      </div>
+    </div>
+
+    <div class="ftr__bot">
+      <p class="tiny">© 2026 MARÉ Joyería · Hecho a mano en CDMX</p>
+      <p class="tiny">Garantía de por vida en soldaduras</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================================================
+     BLOQUE COMERCIAL
+     ============================================================ -->
+<section class="sell" aria-labelledby="sellTitle">
+  <div class="wrap">
+    <div class="sell__in">
+      <p class="sell__eye rv">¿Te gustó esta página?</p>
+      <h2 class="sell__t rv d1" id="sellTitle">¿Vendes piezas únicas?<br>Tu página podría verse así.</h2>
+      <p class="sell__p rv d2">Diseñamos páginas web profesionales para negocios como el tuyo. Una sola, hecha a la medida, lista para recibir clientes desde el celular.</p>
+
+      <ul class="sell__ul rv d2">
+        <li><i>01</i><span>Diseño profesional, pensado para tu marca</span></li>
+        <li><i>02</i><span>Adaptada a celular</span></li>
+        <li><i>03</i><span>WhatsApp integrado</span></li>
+        <li><i>04</i><span>Catálogo, citas o carrito según tu negocio</span></li>
+        <li><i>05</i><span>Editable</span></li>
+        <li><i>06</i><span>Dominio por 1 año</span></li>
+      </ul>
+
+      <div class="sell__price rv d3">
+        <p class="sell__n num">$1,950<span class="sell__cur">MXN</span></p>
+        <p class="sell__once">Pago único</p>
+      </div>
+
+      <p class="sell__btn rv d3">
+        <a class="btn btn--light" href="https://wa.me/525540161213?text=Hola%2C%20vi%20una%20de%20sus%20p%C3%A1ginas%20demo%20y%20quiero%20informaci%C3%B3n%20para%20hacer%20una%20p%C3%A1gina%20para%20mi%20negocio." target="_blank" rel="noopener">Quiero mi página</a>
+      </p>
+      <p class="sell__fine rv d4">Te respondemos por WhatsApp el mismo día.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     MODAL DE PIEZA
+     ============================================================ -->
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="mName" aria-hidden="true">
+  <div class="modal__scrim" id="modalScrim"></div>
+  <div class="modal__box" id="modalBox">
+    <button class="modal__close" id="modalClose" aria-label="Cerrar ficha de la pieza">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+    <div class="modal__grid">
+      <div class="modal__media">
+        <div class="modal__hero"><img id="mHero" alt="" decoding="async"></div>
+        <div class="modal__thumbs" id="mThumbs"></div>
+      </div>
+      <div class="modal__body">
+        <p class="eyebrow eyebrow--metal" id="mTipo">Anillos</p>
+        <h2 class="modal__name" id="mName">Pieza</h2>
+        <p class="modal__price num" id="mPrice">$0</p>
+        <p class="modal__desc" id="mDesc"></p>
+
+        <div class="spec">
+          <div class="spec__row"><span class="spec__k">Hechura</span><span class="spec__v" id="mFab"></span></div>
+          <div class="spec__row"><span class="spec__k">Medidas</span><span class="spec__v" id="mMed"></span></div>
+          <div class="spec__row"><span class="spec__k">Peso</span><span class="spec__v" id="mPeso"></span></div>
+        </div>
+
+        <div class="opt">
+          <div class="opt__lab"><span class="tiny">Metal</span><span class="tiny" id="mMetalSel"></span></div>
+          <div class="opt__row" id="mMetales" role="group" aria-label="Elegir metal"></div>
+        </div>
+
+        <div class="opt" id="mTallaWrap">
+          <div class="opt__lab"><span class="tiny">Talla</span><span class="tiny">Anillos 4 – 9</span></div>
+          <div class="opt__row" id="mTallas" role="group" aria-label="Elegir talla"></div>
+        </div>
+
+        <p class="modal__note">Hecho a mano por encargo · entrega en 7 días hábiles · grabado interior gratuito hasta 18 caracteres.</p>
+
+        <div class="modal__add">
+          <button class="btn btn--block" type="button" id="mAdd">Añadir a la bolsa</button>
+          <p class="modal__warn" id="mWarn" role="status" aria-live="polite"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     BOLSA
+     ============================================================ -->
+<aside class="bag" id="bag" role="dialog" aria-modal="true" aria-labelledby="bagTitle" aria-hidden="true">
+  <div class="bag__top">
+    <h2 class="eyebrow" id="bagTitle">Tu bolsa</h2>
+    <button class="iconbtn" id="closeBag" aria-label="Cerrar la bolsa">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+  </div>
+
+  <div class="bag__list" id="bagList"></div>
+
+  <div class="bag__foot">
+    <div class="bag__sub">
+      <span class="bag__sublab">Subtotal</span>
+      <span class="bag__subval num" id="bagSub">$0</span>
+    </div>
+    <ul class="bag__perks">
+      <li>Envío asegurado sin costo a toda la República</li>
+      <li>Grabado interior gratuito, hasta 18 caracteres</li>
+      <li>Hecho a mano · entrega en 7 días hábiles</li>
+    </ul>
+    <button class="btn btn--block" type="button" id="checkout">Finalizar pedido</button>
+    <p class="bag__done" id="bagDone" role="status" aria-live="polite"></p>
+  </div>
+</aside>
+
+<script>
+(function(){
+  'use strict';
+
+  /* ==========================================================
+     DATOS — catálogo de piezas
+     ========================================================== */
+  var U = 'https://images.unsplash.com/';
+  function img(id, w, q){ return U + id + '?auto=format&fit=crop&w=' + w + '&q=' + q; }
+
+  var TALLAS = [4,5,6,7,8,9];
+
+  var PIEZAS = [
+    {
+      id:'vestigio', nombre:'Vestigio', tipo:'Anillos', base:2180,
+      desc:'La banda con la que empezó todo. Se forja en una sola pieza y se martilla sobre yunque hasta que la superficie deja de ser plana: cada golpe queda a la vista, así que no hay dos anillos idénticos.',
+      fab:'Forjado en una pieza, martillado a mano y acabado satén.',
+      med:'Ancho 4 mm · grosor 1.8 mm',
+      peso:'3.4 g en plata .925',
+      imgs:['photo-1622398925373-3f91b1e275f5','photo-1602173574767-37ac01994b2a','photo-1611652022419-a9419f74343d'],
+      alt:'Anillo martillado delgado sobre superficie clara',
+      metales:[{k:'plata',n:'Plata .925',d:0},{k:'vermeil',n:'Vermeil',d:900},{k:'oro',n:'Oro 14k',d:4600}],
+      tallas:true
+    },
+    {
+      id:'umbral', nombre:'Umbral', tipo:'Aretes', base:1650,
+      desc:'Un aro que se dobla una sola vez y se queda ahí. Pensado para no quitártelo: el cierre va hacia adentro y no se engancha con la ropa ni con el pelo.',
+      fab:'Alambre trefilado en taller, doblado a mano y pulido a espejo.',
+      med:'Diámetro 18 mm · calibre 1.2 mm',
+      peso:'1.8 g el par en plata .925',
+      imgs:['photo-1598560917807-1bae44bd2be8','photo-1617038220319-276d3cfab638','photo-1631982690223-8aa4be0a2497'],
+      alt:'Par de aros pequeños de plata sobre fondo neutro',
+      metales:[{k:'plata',n:'Plata .925',d:0},{k:'vermeil',n:'Vermeil',d:700},{k:'oro',n:'Oro 14k',d:3400}],
+      tallas:false
+    },
+    {
+      id:'meridiano', nombre:'Meridiano', tipo:'Collares', base:3450,
+      desc:'Cadena veneciana con una barra horizontal soldada al centro. La barra puede llevar grabado por dentro, que es donde suelen ir las fechas que sólo entienden dos personas.',
+      fab:'Barra fresada y soldada al hilo; cierre de mosquetón reforzado.',
+      med:'Cadena 42 cm ajustable a 45 · barra 22 mm',
+      peso:'4.1 g en plata .925',
+      imgs:['photo-1611107683227-e9060eccd846','photo-1599643478518-a784e5dc4c8f','photo-1585960622850-ed33c41d6418'],
+      alt:'Collar de cadena fina con barra horizontal al centro',
+      metales:[{k:'plata',n:'Plata .925',d:0},{k:'vermeil',n:'Vermeil',d:1100},{k:'oro',n:'Oro 14k',d:5900}],
+      tallas:false
+    },
+    {
+      id:'cordel', nombre:'Cordel', tipo:'Pulseras', base:1980,
+      desc:'Tres hilos de metal trenzados a mano, uno por uno. Es la pieza que más nos piden en pares: se hace bien con otra pulsera encima y se lleva perfecto en la muñeca sola.',
+      fab:'Trenzado manual sobre plantilla, remates soldados y limados.',
+      med:'Largo 17 cm con extensión de 2 cm',
+      peso:'5.6 g en plata .925',
+      imgs:['photo-1713950920412-97799efdf870','photo-1590166223826-12dee1677420','photo-1620656798579-1984d9e87df7'],
+      alt:'Pulsera trenzada de metal sobre superficie de lino claro',
+      metales:[{k:'plata',n:'Plata .925',d:0},{k:'vermeil',n:'Vermeil',d:850},{k:'oro',n:'Oro 14k',d:4900}],
+      tallas:false
+    },
+    {
+      id:'sal', nombre:'Sal', tipo:'Anillos', base:5600,
+      desc:'Una banda ancha con textura de grano fino, como sal seca sobre piedra. Lleva un cabujón de piedra lunar engastado a bisel, escogido pieza por pieza: el destello nunca cae en el mismo lugar.',
+      fab:'Texturizado con buril, engaste a bisel cerrado y pulido final.',
+      med:'Ancho 6 mm · piedra de 5 mm',
+      peso:'5.1 g en plata .925',
+      imgs:['photo-1685970731194-e27b477e87ba','photo-1543294001-f7cd5d7fb516','photo-1599458349289-18f0ee82e6ed'],
+      alt:'Anillo ancho texturizado con piedra clara engastada',
+      metales:[{k:'plata',n:'Plata .925',d:0},{k:'vermeil',n:'Vermeil',d:1200},{k:'oro',n:'Oro 14k',d:6400}],
+      tallas:true
+    },
+    {
+      id:'lluvia', nombre:'Lluvia', tipo:'Aretes', base:2350,
+      desc:'Dos gotas alargadas que cuelgan de un poste, con movimiento pero sin ruido. Pesan poco para su tamaño porque se trabajan huecas, cosa que se agradece después de la cuarta hora.',
+      fab:'Repujado hueco en dos mitades, soldadas y pulidas a mano.',
+      med:'Caída total 34 mm · ancho 9 mm',
+      peso:'2.9 g el par en plata .925',
+      imgs:['photo-1611955167811-4711904bb9f8','photo-1616837874254-8d5aaa63e273','photo-1633934542430-0905ccb5f050'],
+      alt:'Aretes largos con forma de gota colgando sobre fondo claro',
+      metales:[{k:'plata',n:'Plata .925',d:0},{k:'vermeil',n:'Vermeil',d:800},{k:'oro',n:'Oro 14k',d:4100}],
+      tallas:false
+    },
+    {
+      id:'rio', nombre:'Piedra de Río', tipo:'Collares', base:4200,
+      desc:'Un cabujón de cuarzo rutilado sostenido por cuatro uñas mínimas, casi invisibles de frente. Elegimos las piedras por las agujas doradas de adentro; ninguna se repite.',
+      fab:'Engaste de cuatro uñas limadas a mano sobre base pulida.',
+      med:'Piedra 12 × 9 mm · cadena 45 cm',
+      peso:'6.2 g en plata .925',
+      imgs:['photo-1603561596973-8166e9e089d1','photo-1620656798579-1984d9e87df7','photo-1601821765780-754fa98637c1'],
+      alt:'Collar con piedra natural ovalada engastada, sobre mármol claro',
+      metales:[{k:'plata',n:'Plata .925',d:0},{k:'vermeil',n:'Vermeil',d:950},{k:'oro',n:'Oro 14k',d:5400}],
+      tallas:false
+    },
+    {
+      id:'eclipse', nombre:'Eclipse', tipo:'Anillos', base:6800,
+      desc:'La pieza que más se usa para pedir algo. Un disco liso montado sobre una banda delgada, sin ornamento: todo el trabajo está en el pulido, que tarda casi tanto como la fabricación.',
+      fab:'Disco torneado, soldado a la banda y pulido en siete pasos.',
+      med:'Disco 11 mm · banda 2 mm',
+      peso:'3.9 g en plata .925',
+      imgs:['photo-1628926379972-9843ad139a8c','photo-1543294001-f7cd5d7fb516','photo-1622398925373-3f91b1e275f5'],
+      alt:'Anillo de sello con disco liso pulido sobre fondo neutro',
+      metales:[{k:'plata',n:'Plata .925',d:0},{k:'vermeil',n:'Vermeil',d:1400},{k:'oro',n:'Oro 14k',d:7600}],
+      tallas:true
+    },
+    {
+      id:'junco', nombre:'Junco', tipo:'Pulseras', base:2750,
+      desc:'Un brazalete rígido abierto, con las puntas ligeramente desalineadas para que entre por el lado angosto de la muñeca. Se abre y se cierra con los dedos, sin broche que fallar.',
+      fab:'Barra redonda curvada en horma y templada para conservar forma.',
+      med:'Diámetro interior 58 mm · calibre 3 mm',
+      peso:'11.4 g en plata .925',
+      imgs:['photo-1631982686092-e6561a853187','photo-1713950920412-97799efdf870','photo-1590166223826-12dee1677420'],
+      alt:'Brazalete rígido abierto de metal sobre superficie clara',
+      metales:[{k:'plata',n:'Plata .925',d:0},{k:'vermeil',n:'Vermeil',d:1000},{k:'oro',n:'Oro 14k',d:6900}],
+      tallas:false
+    },
+    {
+      id:'medialuna', nombre:'Media Luna', tipo:'Aretes', base:3100,
+      desc:'Media luna sólida que se apoya en el lóbulo en lugar de colgar. Le tomó dos años encontrar el ángulo: si se inclina un grado más, se despega de la oreja.',
+      fab:'Corte con sierra de pelo, limado a mano y pulido a espejo.',
+      med:'Alto 21 mm · ancho 19 mm',
+      peso:'4.4 g el par en plata .925',
+      imgs:['photo-1614606140245-2c33ece9e2cf','photo-1616837874254-8d5aaa63e273','photo-1617038220319-276d3cfab638'],
+      alt:'Aretes en forma de media luna pulida sobre fondo claro',
+      metales:[{k:'plata',n:'Plata .925',d:0},{k:'vermeil',n:'Vermeil',d:900},{k:'oro',n:'Oro 14k',d:5200}],
+      tallas:false
+    },
+    {
+      id:'hilo', nombre:'Hilo', tipo:'Collares', base:1450,
+      desc:'La cadena más delgada que podemos soldar sin comprometer la resistencia. Se lleva sola o debajo de otro collar más pesado, que es como más nos gusta verla.',
+      fab:'Eslabón forzado, soldadura pieza por pieza y cierre de resorte.',
+      med:'40 cm ajustable a 43 · calibre 0.9 mm',
+      peso:'1.6 g en plata .925',
+      imgs:['photo-1705326455036-0fab8ecba04d','photo-1599643478518-a784e5dc4c8f','photo-1611107683227-e9060eccd846'],
+      alt:'Cadena muy delgada extendida sobre superficie de tela clara',
+      metales:[{k:'plata',n:'Plata .925',d:0},{k:'vermeil',n:'Vermeil',d:600},{k:'oro',n:'Oro 14k',d:3100}],
+      tallas:false
+    },
+    {
+      id:'cinta', nombre:'Cinta', tipo:'Anillos', base:5900,
+      desc:'Una banda que se tuerce sobre sí misma una vez y regresa. De frente parece un anillo liso; de lado se ve el giro. Es el que más se pide en par, uno de oro y otro de plata.',
+      fab:'Torsión en caliente sobre mandril, recocido y pulido a mano.',
+      med:'Ancho 3.5 mm · grosor 1.6 mm',
+      peso:'3.6 g en plata .925',
+      imgs:['photo-1535632066927-ab7c9ab60908','photo-1602173574767-37ac01994b2a','photo-1628926379972-9843ad139a8c'],
+      alt:'Anillo con banda torcida de metal, luz suave lateral',
+      metales:[{k:'plata',n:'Plata .925',d:0},{k:'vermeil',n:'Vermeil',d:1100},{k:'oro',n:'Oro 14k',d:6600}],
+      tallas:true
+    }
+  ];
+
+  /* ==========================================================
+     UTILIDADES
+     ========================================================== */
+  function $(s,c){ return (c||document).querySelector(s); }
+  function $$(s,c){ return Array.prototype.slice.call((c||document).querySelectorAll(s)); }
+  function mxn(n){ return '$' + Number(n).toLocaleString('es-MX'); }
+  function metalDe(p,k){
+    for(var i=0;i<p.metales.length;i++){ if(p.metales[i].k===k) return p.metales[i]; }
+    return p.metales[0];
+  }
+  function precioDe(p,k){ return p.base + metalDe(p,k).d; }
+  function piezaPorId(id){
+    for(var i=0;i<PIEZAS.length;i++){ if(PIEZAS[i].id===id) return PIEZAS[i]; }
+    return null;
+  }
+  var reduce = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)').matches : false;
+
+  /* almacenamiento seguro */
+  var mem = {};
+  var store = {
+    get:function(k){
+      try{ var v = window.localStorage.getItem(k); return v === null ? (mem[k]||null) : v; }
+      catch(e){ return mem[k]||null; }
+    },
+    set:function(k,v){
+      mem[k]=v;
+      try{ window.localStorage.setItem(k,v); }catch(e){ /* memoria */ }
+    }
+  };
+
+  /* ==========================================================
+     REVEAL
+     ========================================================== */
+  var revealables = $$('.rv');
+  if('IntersectionObserver' in window && !reduce){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); }
+      });
+    },{rootMargin:'0px 0px -8% 0px',threshold:.06});
+    revealables.forEach(function(el){ io.observe(el); });
+  } else {
+    revealables.forEach(function(el){ el.classList.add('in'); });
+  }
+  function observeNew(scope){
+    if(!('IntersectionObserver' in window) || reduce){
+      $$('.rv',scope).forEach(function(el){ el.classList.add('in'); });
+      return;
+    }
+    $$('.rv',scope).forEach(function(el){ if(!el.classList.contains('in')) io.observe(el); });
+  }
+
+  /* ==========================================================
+     HEADER — hairline al hacer scroll
+     ========================================================== */
+  var hdr = $('#hdr');
+  function onScroll(){
+    if(!hdr) return;
+    if(window.pageYOffset > 12) hdr.classList.add('scrolled');
+    else hdr.classList.remove('scrolled');
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  /* ==========================================================
+     MENÚ MÓVIL
+     ========================================================== */
+  var mnav = $('#mnav'), burger = $('#burger'), closeMnav = $('#closeMnav'), scrim = $('#scrim');
+
+  function lockScroll(on){
+    document.body.style.overflow = on ? 'hidden' : '';
+  }
+  function anyPanelOpen(){
+    return (mnav && mnav.classList.contains('open')) || (bag && bag.classList.contains('open'));
+  }
+  function showScrim(on){
+    if(!scrim) return;
+    if(on){ scrim.hidden = false; requestAnimationFrame(function(){ scrim.classList.add('on'); }); }
+    else { scrim.classList.remove('on'); setTimeout(function(){ if(!anyPanelOpen()) scrim.hidden = true; }, reduce?0:700); }
+  }
+  function openMnav(){
+    if(!mnav) return;
+    mnav.classList.add('open');
+    mnav.setAttribute('aria-hidden','false');
+    if(burger) burger.setAttribute('aria-expanded','true');
+    showScrim(true); lockScroll(true);
+    if(closeMnav) closeMnav.focus();
+  }
+  function shutMnav(returnFocus){
+    if(!mnav) return;
+    mnav.classList.remove('open');
+    mnav.setAttribute('aria-hidden','true');
+    if(burger) burger.setAttribute('aria-expanded','false');
+    if(!anyPanelOpen()){ showScrim(false); lockScroll(false); }
+    if(returnFocus && burger) burger.focus();
+  }
+  if(burger) burger.addEventListener('click', openMnav);
+  if(closeMnav) closeMnav.addEventListener('click', function(){ shutMnav(true); });
+  $$('[data-mclose]').forEach(function(a){ a.addEventListener('click', function(){ shutMnav(false); }); });
+
+  /* ==========================================================
+     CATÁLOGO — render y filtros
+     ========================================================== */
+  var grid = $('#grid'), empty = $('#empty'), countEl = $('#count');
+  var fTipo = 'Todas', fPrecio = 'todos';
+
+  function enRango(p, r){
+    if(r === 'todos') return true;
+    if(r === 'bajo') return p.base <= 2500;
+    if(r === 'medio') return p.base > 2500 && p.base <= 5000;
+    if(r === 'alto') return p.base > 5000;
+    return true;
+  }
+  function filtradas(){
+    return PIEZAS.filter(function(p){
+      return (fTipo === 'Todas' || p.tipo === fTipo) && enRango(p, fPrecio);
+    });
+  }
+  function cardHTML(p){
+    return '<button class="card rv" type="button" data-open="' + p.id + '" aria-haspopup="dialog">' +
+      '<span class="card__ph"><img src="' + img(p.imgs[0],900,75) + '" alt="' + p.alt + '" loading="lazy" decoding="async" width="900" height="1200"></span>' +
+      '<span class="eyebrow card__tipo" style="display:block">' + p.tipo + '</span>' +
+      '<span class="card__n" style="display:block">' + p.nombre + '</span>' +
+      '<span class="card__p num" style="display:block"><span>Desde</span>' + mxn(p.base) + '</span>' +
+    '</button>';
+  }
+  function render(){
+    if(!grid) return;
+    var list = filtradas();
+    grid.innerHTML = list.map(cardHTML).join('');
+    if(empty) empty.hidden = list.length !== 0;
+    if(countEl) countEl.textContent = list.length === 1 ? '1 pieza' : (list.length + ' piezas');
+    observeNew(grid);
+    $$('[data-open]', grid).forEach(function(b){
+      b.addEventListener('click', function(){ abrirModal(b.getAttribute('data-open'), b); });
+    });
+  }
+  function refiltrar(){
+    if(!grid) return;
+    if(reduce){ render(); return; }
+    grid.classList.add('fading');
+    setTimeout(function(){
+      render();
+      requestAnimationFrame(function(){ grid.classList.remove('fading'); });
+    }, 300);
+  }
+
+  $$('#tipoFilters .chip').forEach(function(b){
+    b.addEventListener('click', function(){
+      fTipo = b.getAttribute('data-tipo');
+      $$('#tipoFilters .chip').forEach(function(o){ o.setAttribute('aria-pressed', String(o === b)); });
+      refiltrar();
+    });
+  });
+  $$('#precioFilters .chip').forEach(function(b){
+    b.addEventListener('click', function(){
+      fPrecio = b.getAttribute('data-precio');
+      $$('#precioFilters .chip').forEach(function(o){ o.setAttribute('aria-pressed', String(o === b)); });
+      refiltrar();
+    });
+  });
+
+  /* guía de regalo → filtra de verdad */
+  $$('[data-gift]').forEach(function(b){
+    b.addEventListener('click', function(){
+      var r = b.getAttribute('data-gift');
+      fPrecio = r; fTipo = 'Todas';
+      $$('#precioFilters .chip').forEach(function(o){ o.setAttribute('aria-pressed', String(o.getAttribute('data-precio') === r)); });
+      $$('#tipoFilters .chip').forEach(function(o){ o.setAttribute('aria-pressed', String(o.getAttribute('data-tipo') === 'Todas')); });
+      refiltrar();
+      var cat = $('#catalogo');
+      if(cat) cat.scrollIntoView({behavior: reduce ? 'auto' : 'smooth', block:'start'});
+    });
+  });
+
+  render();
+
+  /* ==========================================================
+     MODAL DE PIEZA
+     ========================================================== */
+  var modal = $('#modal'), modalBox = $('#modalBox'), modalScrim = $('#modalScrim'), modalClose = $('#modalClose');
+  var mHero = $('#mHero'), mThumbs = $('#mThumbs'), mTipo = $('#mTipo'), mName = $('#mName'),
+      mPrice = $('#mPrice'), mDesc = $('#mDesc'), mFab = $('#mFab'), mMed = $('#mMed'), mPeso = $('#mPeso'),
+      mMetales = $('#mMetales'), mMetalSel = $('#mMetalSel'), mTallaWrap = $('#mTallaWrap'), mTallas = $('#mTallas'),
+      mAdd = $('#mAdd'), mWarn = $('#mWarn');
+
+  var actual = null, metalSel = null, tallaSel = null, lastFocus = null;
+
+  function pintarPrecio(){
+    if(!actual || !mPrice) return;
+    mPrice.textContent = mxn(precioDe(actual, metalSel));
+    if(mMetalSel) mMetalSel.textContent = metalDe(actual, metalSel).n;
+  }
+  function setMetal(k){
+    metalSel = k;
+    $$('#mMetales .opt__b').forEach(function(b){ b.setAttribute('aria-pressed', String(b.getAttribute('data-k') === k)); });
+    pintarPrecio();
+  }
+  function setTalla(t){
+    tallaSel = t;
+    $$('#mTallas .opt__b').forEach(function(b){ b.setAttribute('aria-pressed', String(b.getAttribute('data-t') === String(t))); });
+    if(mWarn) mWarn.textContent = '';
+  }
+  function setFoto(i){
+    if(!actual || !mHero) return;
+    mHero.src = img(actual.imgs[i], 1200, 78);
+    mHero.alt = actual.alt;
+    $$('#mThumbs .mthumb').forEach(function(b,j){ b.setAttribute('aria-pressed', String(j === i)); });
+  }
+
+  function abrirModal(id, origen){
+    var p = piezaPorId(id);
+    if(!p || !modal) return;
+    actual = p; lastFocus = origen || document.activeElement; tallaSel = null;
+
+    if(mTipo) mTipo.textContent = p.tipo;
+    if(mName) mName.textContent = p.nombre;
+    if(mDesc) mDesc.textContent = p.desc;
+    if(mFab) mFab.textContent = p.fab;
+    if(mMed) mMed.textContent = p.med;
+    if(mPeso) mPeso.textContent = p.peso;
+    if(mWarn) mWarn.textContent = '';
+
+    if(mThumbs){
+      mThumbs.innerHTML = p.imgs.map(function(src,i){
+        return '<button class="mthumb" type="button" data-i="' + i + '" aria-pressed="' + (i===0) + '" aria-label="Ver imagen ' + (i+1) + ' de ' + p.nombre + '">' +
+               '<img src="' + img(src,500,70) + '" alt="" loading="lazy" decoding="async"></button>';
+      }).join('');
+      $$('#mThumbs .mthumb').forEach(function(b){
+        b.addEventListener('click', function(){ setFoto(Number(b.getAttribute('data-i'))); });
+      });
+    }
+    setFoto(0);
+
+    if(mMetales){
+      mMetales.innerHTML = p.metales.map(function(m){
+        return '<button class="opt__b" type="button" data-k="' + m.k + '" aria-pressed="false">' + m.n + '</button>';
+      }).join('');
+      $$('#mMetales .opt__b').forEach(function(b){
+        b.addEventListener('click', function(){ setMetal(b.getAttribute('data-k')); });
+      });
+    }
+    setMetal(p.metales[0].k);
+
+    if(mTallaWrap && mTallas){
+      if(p.tallas){
+        mTallaWrap.hidden = false;
+        mTallas.innerHTML = TALLAS.map(function(t){
+          return '<button class="opt__b opt__b--talla" type="button" data-t="' + t + '" aria-pressed="false">' + t + '</button>';
+        }).join('');
+        $$('#mTallas .opt__b').forEach(function(b){
+          b.addEventListener('click', function(){ setTalla(Number(b.getAttribute('data-t'))); });
+        });
+      } else {
+        mTallaWrap.hidden = true;
+        mTallas.innerHTML = '';
+      }
+    }
+
+    modal.classList.add('on');
+    modal.setAttribute('aria-hidden','false');
+    lockScroll(true);
+    if(modalBox) modalBox.scrollTop = 0;
+    setTimeout(function(){ if(modalClose) modalClose.focus(); }, 40);
+  }
+
+  function cerrarModal(){
+    if(!modal) return;
+    modal.classList.remove('on');
+    modal.setAttribute('aria-hidden','true');
+    if(!anyPanelOpen()) lockScroll(false);
+    if(lastFocus && lastFocus.focus) lastFocus.focus();
+    actual = null;
+  }
+  if(modalClose) modalClose.addEventListener('click', cerrarModal);
+  if(modalScrim) modalScrim.addEventListener('click', cerrarModal);
+
+  /* las piezas destacadas abren su ficha */
+  $$('.strip__btn[data-open]').forEach(function(b){
+    b.addEventListener('click', function(){ abrirModal(b.getAttribute('data-open'), b); });
+  });
+
+  if(mAdd) mAdd.addEventListener('click', function(){
+    if(!actual) return;
+    if(actual.tallas && !tallaSel){
+      if(mWarn) mWarn.textContent = 'Elige una talla para continuar.';
+      var first = $('#mTallas .opt__b');
+      if(first) first.focus();
+      return;
+    }
+    agregar(actual, metalSel, tallaSel);
+    cerrarModal();
+    abrirBag();
+  });
+
+  /* ==========================================================
+     BOLSA
+     ========================================================== */
+  var bag = $('#bag'), openBagBtn = $('#openBag'), closeBagBtn = $('#closeBag'),
+      bagList = $('#bagList'), bagSub = $('#bagSub'), bagCount = $('#bagCount'),
+      checkout = $('#checkout'), bagDone = $('#bagDone');
+
+  var carrito = [];
+  (function cargar(){
+    var raw = store.get('mare_bolsa');
+    if(!raw) return;
+    try{
+      var parsed = JSON.parse(raw);
+      if(Object.prototype.toString.call(parsed) === '[object Array]'){
+        carrito = parsed.filter(function(it){ return it && piezaPorId(it.id); });
+      }
+    }catch(e){ carrito = []; }
+  })();
+  function guardar(){
+    try{ store.set('mare_bolsa', JSON.stringify(carrito)); }catch(e){ /* nada */ }
+  }
+  function claveDe(id,k,t){ return id + '|' + k + '|' + (t || '-'); }
+
+  function agregar(p, k, t){
+    var key = claveDe(p.id, k, t);
+    var found = null;
+    for(var i=0;i<carrito.length;i++){ if(carrito[i].key === key){ found = carrito[i]; break; } }
+    if(found) found.q += 1;
+    else carrito.push({key:key, id:p.id, metal:k, talla:t || null, q:1});
+    guardar(); pintarBag();
+  }
+  function cambiar(key, delta){
+    for(var i=0;i<carrito.length;i++){
+      if(carrito[i].key === key){
+        carrito[i].q += delta;
+        if(carrito[i].q < 1) carrito.splice(i,1);
+        break;
+      }
+    }
+    guardar(); pintarBag();
+  }
+  function quitar(key){
+    carrito = carrito.filter(function(it){ return it.key !== key; });
+    guardar(); pintarBag();
+  }
+  function subtotal(){
+    return carrito.reduce(function(s,it){
+      var p = piezaPorId(it.id);
+      return p ? s + precioDe(p, it.metal) * it.q : s;
+    },0);
+  }
+  function totalPiezas(){
+    return carrito.reduce(function(s,it){ return s + it.q; },0);
+  }
+
+  function pintarBag(){
+    if(bagCount){
+      var n = totalPiezas();
+      bagCount.textContent = String(n);
+      bagCount.classList.toggle('on', n > 0);
+      if(openBagBtn) openBagBtn.setAttribute('aria-label', n > 0 ? ('Abrir la bolsa, ' + n + ' pieza' + (n===1?'':'s')) : 'Abrir la bolsa');
+    }
+    if(bagSub) bagSub.textContent = mxn(subtotal());
+    if(!bagList) return;
+
+    if(carrito.length === 0){
+      bagList.innerHTML = '<div class="bag__empty">' +
+        '<p class="h3 serif it">Tu bolsa está vacía.</p>' +
+        '<p class="small" style="margin-top:10px">Las piezas se hacen por encargo; puedes reservar la tuya desde el catálogo.</p>' +
+        '</div>';
+      if(checkout) checkout.disabled = false;
+      return;
+    }
+
+    bagList.innerHTML = carrito.map(function(it){
+      var p = piezaPorId(it.id);
+      if(!p) return '';
+      var m = metalDe(p, it.metal);
+      var linea = precioDe(p, it.metal) * it.q;
+      return '<article class="bagit">' +
+        '<span class="bagit__ph"><img src="' + img(p.imgs[0],500,70) + '" alt="' + p.alt + '" loading="lazy" decoding="async"></span>' +
+        '<div class="bagit__b">' +
+          '<h3 class="bagit__n">' + p.nombre + '</h3>' +
+          '<p class="bagit__o">' + m.n + (it.talla ? (' · talla ' + it.talla) : '') + '</p>' +
+          '<div class="bagit__f">' +
+            '<span class="qty">' +
+              '<button type="button" data-less="' + it.key + '" aria-label="Quitar una unidad de ' + p.nombre + '">–</button>' +
+              '<span class="num">' + it.q + '</span>' +
+              '<button type="button" data-more="' + it.key + '" aria-label="Agregar una unidad de ' + p.nombre + '">+</button>' +
+            '</span>' +
+            '<span class="bagit__p num">' + mxn(linea) + '</span>' +
+          '</div>' +
+          '<button class="bagit__x" type="button" data-del="' + it.key + '">Eliminar</button>' +
+        '</div>' +
+      '</article>';
+    }).join('');
+
+    $$('[data-less]', bagList).forEach(function(b){ b.addEventListener('click', function(){ cambiar(b.getAttribute('data-less'), -1); }); });
+    $$('[data-more]', bagList).forEach(function(b){ b.addEventListener('click', function(){ cambiar(b.getAttribute('data-more'), 1); }); });
+    $$('[data-del]', bagList).forEach(function(b){ b.addEventListener('click', function(){ quitar(b.getAttribute('data-del')); }); });
+  }
+
+  var bagLastFocus = null;
+  function abrirBag(){
+    if(!bag) return;
+    bagLastFocus = document.activeElement;
+    bag.classList.add('open');
+    bag.setAttribute('aria-hidden','false');
+    if(openBagBtn) openBagBtn.setAttribute('aria-expanded','true');
+    showScrim(true); lockScroll(true);
+    setTimeout(function(){ if(closeBagBtn) closeBagBtn.focus(); }, 40);
+  }
+  function cerrarBag(){
+    if(!bag) return;
+    bag.classList.remove('open');
+    bag.setAttribute('aria-hidden','true');
+    if(openBagBtn) openBagBtn.setAttribute('aria-expanded','false');
+    if(!anyPanelOpen()){ showScrim(false); lockScroll(false); }
+    if(bagLastFocus && bagLastFocus.focus) bagLastFocus.focus();
+    if(bagDone) bagDone.textContent = '';
+  }
+  if(openBagBtn) openBagBtn.addEventListener('click', abrirBag);
+  if(closeBagBtn) closeBagBtn.addEventListener('click', cerrarBag);
+  if(scrim) scrim.addEventListener('click', function(){
+    if(mnav && mnav.classList.contains('open')) shutMnav(false);
+    if(bag && bag.classList.contains('open')) cerrarBag();
+  });
+
+  pintarBag();
+
+  /* checkout → resumen + WhatsApp */
+  if(checkout) checkout.addEventListener('click', function(){
+    if(carrito.length === 0){
+      if(bagDone) bagDone.textContent = 'Agrega al menos una pieza antes de finalizar.';
+      return;
+    }
+    var lineas = carrito.map(function(it){
+      var p = piezaPorId(it.id);
+      if(!p) return '';
+      var m = metalDe(p, it.metal);
+      return '• ' + p.nombre + ' — ' + m.n + (it.talla ? (', talla ' + it.talla) : '') + ' × ' + it.q + ' — ' + mxn(precioDe(p, it.metal) * it.q);
+    }).filter(Boolean);
+
+    var msg = 'Hola MARÉ, quiero reservar este pedido:\n\n' +
+      lineas.join('\n') +
+      '\n\nSubtotal: ' + mxn(subtotal()) +
+      '\nPiezas: ' + totalPiezas() +
+      '\nEnvío asegurado sin costo y grabado gratuito.' +
+      '\n\n¿Me confirman disponibilidad y tiempo de entrega?';
+
+    if(bagDone) bagDone.textContent = 'Resumen listo: ' + totalPiezas() + ' pieza' + (totalPiezas()===1?'':'s') + ' por ' + mxn(subtotal()) + '. Abrimos WhatsApp para confirmarlo con el taller.';
+    window.open('https://wa.me/525540161213?text=' + encodeURIComponent(msg), '_blank', 'noopener');
+  });
+
+  /* ==========================================================
+     ESC global
+     ========================================================== */
+  document.addEventListener('keydown', function(e){
+    if(e.key !== 'Escape' && e.key !== 'Esc') return;
+    if(modal && modal.classList.contains('on')){ cerrarModal(); return; }
+    if(bag && bag.classList.contains('open')){ cerrarBag(); return; }
+    if(mnav && mnav.classList.contains('open')){ shutMnav(true); }
+  });
+
+  /* trampa de foco simple en modal y bolsa */
+  function trap(container){
+    if(!container) return;
+    container.addEventListener('keydown', function(e){
+      if(e.key !== 'Tab') return;
+      var f = $$('a[href],button:not([disabled]),input,select,textarea,[tabindex]:not([tabindex="-1"])', container)
+        .filter(function(el){ return el.offsetParent !== null; });
+      if(f.length === 0) return;
+      var first = f[0], last = f[f.length-1];
+      if(e.shiftKey && document.activeElement === first){ e.preventDefault(); last.focus(); }
+      else if(!e.shiftKey && document.activeElement === last){ e.preventDefault(); first.focus(); }
+    });
+  }
+  trap(modalBox); trap(bag); trap(mnav);
+
+  /* ==========================================================
+     ACORDEÓN
+     ========================================================== */
+  $$('#acc .acc__b').forEach(function(btn){
+    var panel = document.getElementById(btn.getAttribute('aria-controls'));
+    if(!panel) return;
+    btn.addEventListener('click', function(){
+      var abierto = btn.getAttribute('aria-expanded') === 'true';
+      $$('#acc .acc__b').forEach(function(o){
+        var pp = document.getElementById(o.getAttribute('aria-controls'));
+        if(o !== btn && pp){ o.setAttribute('aria-expanded','false'); pp.style.height = '0px'; }
+      });
+      if(abierto){
+        btn.setAttribute('aria-expanded','false');
+        panel.style.height = '0px';
+      } else {
+        btn.setAttribute('aria-expanded','true');
+        panel.style.height = panel.scrollHeight + 'px';
+      }
+    });
+  });
+  window.addEventListener('resize', function(){
+    $$('#acc .acc__b').forEach(function(o){
+      if(o.getAttribute('aria-expanded') === 'true'){
+        var pp = document.getElementById(o.getAttribute('aria-controls'));
+        if(pp) pp.style.height = pp.scrollHeight + 'px';
+      }
+    });
+  });
+
+  /* ==========================================================
+     FORMULARIO DE CITA
+     ========================================================== */
+  var form = $('#citaForm'), citaOk = $('#citaOk'), citaWa = $('#citaWa');
+
+  function marcar(id, msg){
+    var f = $('#f-' + id), e = $('#e-' + id);
+    if(f) f.classList.toggle('bad', !!msg);
+    if(e) e.textContent = msg || '';
+    return !msg;
+  }
+
+  if(form) form.addEventListener('submit', function(ev){
+    ev.preventDefault();
+    var nombre = $('#i-nombre'), tel = $('#i-tel'), dia = $('#i-dia'), pieza = $('#i-pieza');
+    var ok = true;
+
+    var vN = nombre ? nombre.value.trim() : '';
+    ok = marcar('nombre', vN.length < 2 ? 'Escribe tu nombre.' : '') && ok;
+
+    var vT = tel ? tel.value.replace(/\D/g,'') : '';
+    ok = marcar('tel', vT.length !== 10 ? 'Necesitamos 10 dígitos para escribirte.' : '') && ok;
+
+    var vD = dia ? dia.value : '';
+    ok = marcar('dia', vD ? '' : 'Elige un día.') && ok;
+
+    var vP = pieza ? pieza.value : '';
+    ok = marcar('pieza', vP ? '' : 'Elige qué te interesa ver.') && ok;
+
+    if(!ok){
+      var bad = $('.field.bad input, .field.bad select');
+      if(bad) bad.focus();
+      if(citaOk) citaOk.classList.remove('on');
+      return;
+    }
+
+    var texto = 'Hola MARÉ, quiero agendar una cita en el showroom.\n\n' +
+      'Nombre: ' + vN + '\n' +
+      'WhatsApp: ' + vT + '\n' +
+      'Día preferido: ' + vD + '\n' +
+      'Pieza de interés: ' + vP;
+
+    if(citaWa) citaWa.href = 'https://wa.me/525540161213?text=' + encodeURIComponent(texto);
+
+    if(citaOk){
+      citaOk.textContent = 'Listo, ' + vN + '. Tenemos tu solicitud para el ' + vD.toLowerCase() + ' en Emilio Castelar 90. Te confirmamos el horario por WhatsApp al ' + vT + ' dentro de las próximas dos horas hábiles.';
+      citaOk.classList.add('on');
+    }
+    form.reset();
+  });
+
+  /* ==========================================================
+     Año en el footer (sin contadores animados)
+     ========================================================== */
+  var y = new Date().getFullYear();
+  $$('.ftr__bot .tiny').forEach(function(el){
+    if(el.textContent.indexOf('©') === 0) el.textContent = '© ' + y + ' MARÉ Joyería · Hecho a mano en CDMX';
+  });
+
+})();
+</script>
+</body>
+</html>

@@ -175,10 +175,8 @@ test("Nueva oferta: cinco categorías, precios y avisos responsables", async () 
   assert.match(html, /Ver ejemplos de negocios en línea/);
   assert.match(html, /https:\/\/ismaelrios\.ziv\.mx\//);
   assert.doesNotMatch(html, /https:\/\/ziv\.mx\/(?:\?view=templates|shop\/distrito-demo)/);
-  assert.match(html, /demos-ecommerce\.html\?demo=hamburguesas/);
-  assert.match(html, /demos-ecommerce\.html\?demo=perfumeria/);
-  for (const category of ["hamburguesas", "alitas", "pizza", "abarrotes", "tenis", "dulceria", "muebles", "postres"])
-    assert.match(html, new RegExp(`demos-ecommerce\\.html\\?demo=${category}`));
+  for (const demo of ["burgers-pizza", "tenis", "ropa", "joyeria", "floreria", "barberia", "lashes", "unas", "spa", "inmobiliaria"])
+    assert.match(html, new RegExp(`/demos/${demo}/`));
   assert.match(html, /Hasta 15,000 contactos/);
   assert.match(html, /<b>100<\/b><span>contactos<\/span><strong>\$280<\/strong>/);
   assert.match(html, /<b>300<\/b><span>contactos<\/span><strong>\$350<\/strong>/);
@@ -191,14 +189,23 @@ test("Nueva oferta: cinco categorías, precios y avisos responsables", async () 
   }
 });
 
-test("Galería ecommerce propia contiene diez demos y ningún enlace a ziv.mx", async () => {
+test("Galería ecommerce enlaza las diez demos reales y ningún enlace a ziv.mx", async () => {
   const html = await fs.readFile(new URL("../demos-ecommerce.html", import.meta.url), "utf8");
-  assert.equal((html.match(/class="demo-card /g) || []).length, 10);
-  assert.equal((html.match(/\/assets\/demo-gallery\//g) || []).length, 10);
-  assert.equal((html.match(/data-open-demo=/g) || []).length, 10);
+  assert.equal((html.match(/class="demo-project /g) || []).length, 10);
   assert.doesNotMatch(html, /href="https:\/\/ziv\.mx/);
-  for (const category of ["hamburguesas", "alitas", "pizza", "abarrotes", "tenis", "dulceria", "muebles", "ferreteria", "postres", "perfumeria"])
-    assert.match(html, new RegExp(`id="${category}"`));
+  const demos = [
+    ["burgers-pizza", "DOBLE HUMO"], ["tenis", "VELTRA"], ["ropa", "ATRIO"],
+    ["joyeria", "MARÉ"], ["floreria", "TALLO"], ["barberia", "CUERVO"],
+    ["lashes", "IRIS"], ["unas", "CIRUELA"], ["spa", "CASA YUMA"],
+    ["inmobiliaria", "CANTERA"],
+  ];
+  for (const [slug, name] of demos) {
+    assert.match(html, new RegExp(`href="/demos/${slug}/"`));
+    assert.ok(html.includes(name));
+    const demo = await fs.readFile(new URL(`../demos/${slug}/index.html`, import.meta.url), "utf8");
+    assert.match(demo, /<!doctype html>/i);
+    assert.match(demo, new RegExp(name, "i"));
+  }
 });
 
 test("Portada muestra ocho proyectos públicos y ningún panel privado", async () => {

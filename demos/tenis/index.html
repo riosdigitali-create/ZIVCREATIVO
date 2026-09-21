@@ -1,0 +1,2051 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VELTRA — Performance Store | Tenis deportivos en CDMX</title>
+<meta name="description" content="VELTRA es una tienda de tenis deportivos en CDMX. Running, training, lifestyle y basketball. Envío 24–48 h, cambios en 30 días y prueba en tienda antes de comprar.">
+<meta name="theme-color" content="#0A0A0A">
+<meta property="og:type" content="website">
+<meta property="og:title" content="VELTRA — Performance Store">
+<meta property="og:description" content="Tenis deportivos de la casa. Running, training, lifestyle y basketball. Envío 24–48 h en CDMX y cambios en 30 días.">
+<meta property="og:image" content="https://images.unsplash.com/photo-1608245449230-4ac19066d2d0?auto=format&fit=crop&w=1600&q=75">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%230A0A0A'/%3E%3Cpath d='M12 16 L32 48 L52 16 L42 16 L32 33 L22 16 Z' fill='%23D9FF3D'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   VELTRA — PERFORMANCE STORE
+   Base
+   ============================================================ */
+:root{
+  --negro:#0A0A0A;
+  --blanco:#FFFFFF;
+  --volt:#D9FF3D;
+  --gris:#8C8C8C;
+  --gris-claro:#F2F2F2;
+  --linea:rgba(10,10,10,.16);
+  --linea-inv:rgba(255,255,255,.18);
+  --header-h:64px;
+  --barra-h:60px;
+  --ease:cubic-bezier(.22,.61,.36,1);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body,h1,h2,h3,h4,p,ul,ol,li,figure,blockquote,dl,dd{margin:0;padding:0}
+ul,ol{list-style:none}
+img{max-width:100%;display:block}
+button,input,select,textarea{font:inherit;color:inherit}
+html,body{overflow-x:hidden}
+body{
+  background:var(--negro);
+  color:var(--blanco);
+  font-family:'Space Grotesk',system-ui,-apple-system,'Segoe UI',sans-serif;
+  font-weight:400;
+  line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+body.no-scroll{overflow:hidden}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--volt);outline-offset:3px}
+.seccion-clara :focus-visible{outline-color:var(--negro)}
+::selection{background:var(--volt);color:var(--negro)}
+
+/* Tipografía */
+.tt{
+  font-family:'Archivo Black','Space Grotesk',sans-serif;
+  font-weight:400;
+  text-transform:uppercase;
+  letter-spacing:-.03em;
+  line-height:.94;
+  text-wrap:balance;
+}
+.mono{
+  font-size:.7rem;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  font-weight:500;
+}
+.gris{color:var(--gris)}
+.volt{color:var(--volt)}
+
+/* Layout */
+.wrap{width:100%;max-width:1360px;margin:0 auto;padding:0 20px}
+.seccion{padding:clamp(56px,9vw,120px) 0}
+.seccion-oscura{background:var(--negro);color:var(--blanco)}
+.seccion-clara{background:var(--blanco);color:var(--negro)}
+.seccion-gris{background:var(--gris-claro);color:var(--negro)}
+.sr-only{
+  position:absolute;width:1px;height:1px;padding:0;margin:-1px;
+  overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0;
+}
+a.sr-only:focus-visible{
+  position:fixed;top:10px;left:10px;z-index:200;width:auto;height:auto;
+  clip:auto;margin:0;padding:12px 18px;background:var(--volt);color:var(--negro);
+  border-radius:2px;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;
+}
+
+/* Botones rectos */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  min-height:48px;padding:14px 26px;border:1px solid transparent;border-radius:2px;
+  font-size:.78rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  cursor:pointer;background:none;transition:background-color .25s var(--ease),color .25s var(--ease),border-color .25s var(--ease),transform .18s var(--ease);
+}
+.btn:active{transform:translateY(1px)}
+.btn-volt{background:var(--volt);color:var(--negro);border-color:var(--volt)}
+.btn-volt:hover{background:var(--blanco);border-color:var(--blanco)}
+.btn-negro{background:var(--negro);color:var(--blanco);border-color:var(--negro)}
+.btn-negro:hover{background:var(--volt);color:var(--negro);border-color:var(--volt)}
+.btn-blanco{background:var(--blanco);color:var(--negro);border-color:var(--blanco)}
+.btn-blanco:hover{background:var(--volt);border-color:var(--volt)}
+.btn-linea{border-color:currentColor;color:inherit;background:transparent}
+.btn-linea:hover{background:var(--blanco);color:var(--negro);border-color:var(--blanco)}
+.seccion-clara .btn-linea:hover{background:var(--negro);color:var(--blanco);border-color:var(--negro)}
+.btn-block{width:100%}
+.btn[disabled]{opacity:.4;cursor:not-allowed}
+
+/* ============================================================
+   Header
+   ============================================================ */
+section[id],div[id]{scroll-margin-top:calc(var(--header-h) + 24px)}
+.header{
+  position:fixed;top:0;left:0;right:0;z-index:70;
+  background:var(--negro);
+  border-bottom:1px solid var(--linea-inv);
+}
+.header-in{
+  height:var(--header-h);
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+}
+.logo{display:flex;align-items:baseline;gap:8px;flex-shrink:0}
+.logo-marca{font-family:'Archivo Black',sans-serif;font-size:1.28rem;letter-spacing:-.04em;text-transform:uppercase;line-height:1}
+.logo-punto{width:7px;height:7px;background:var(--volt);display:block;transform:translateY(-2px)}
+.logo-sub{font-size:.55rem;letter-spacing:.28em;color:var(--gris);text-transform:uppercase;display:none}
+.nav-desk{display:none;align-items:center;gap:26px}
+.nav-desk button,.nav-desk a{
+  background:none;border:0;padding:8px 0;cursor:pointer;
+  font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;font-weight:500;
+  color:var(--blanco);position:relative;
+}
+.nav-desk button::after,.nav-desk a::after{
+  content:"";position:absolute;left:0;bottom:2px;width:100%;height:1px;
+  background:var(--volt);transform:scaleX(0);transform-origin:right;
+  transition:transform .32s var(--ease);
+}
+.nav-desk button:hover::after,.nav-desk a:hover::after{transform:scaleX(1);transform-origin:left}
+.header-acc{display:flex;align-items:center;gap:8px}
+.carrito-btn{
+  position:relative;display:inline-flex;align-items:center;gap:9px;
+  min-height:44px;padding:10px 14px;border:1px solid var(--linea-inv);border-radius:2px;
+  background:transparent;color:var(--blanco);cursor:pointer;
+  font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;
+  transition:background-color .25s var(--ease),color .25s var(--ease),border-color .25s;
+}
+.carrito-btn:hover{background:var(--volt);color:var(--negro);border-color:var(--volt)}
+.carrito-btn svg{width:18px;height:18px;flex-shrink:0}
+.carrito-btn .etq{display:none}
+.badge{
+  min-width:20px;height:20px;padding:0 5px;background:var(--volt);color:var(--negro);
+  border-radius:2px;font-size:.68rem;font-weight:700;line-height:20px;text-align:center;
+  transition:transform .3s var(--ease);
+}
+.badge.pulso{transform:scale(1.35)}
+.carrito-btn:hover .badge{background:var(--negro);color:var(--volt)}
+.burger{
+  width:44px;height:44px;border:1px solid var(--linea-inv);border-radius:2px;
+  background:transparent;display:inline-flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:5px;cursor:pointer;
+}
+.burger span{display:block;width:18px;height:1.5px;background:var(--blanco);transition:transform .3s var(--ease),opacity .2s}
+.burger[aria-expanded="true"] span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.burger[aria-expanded="true"] span:nth-child(2){opacity:0}
+.burger[aria-expanded="true"] span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+
+/* Menú móvil */
+.menu-movil{
+  position:fixed;inset:var(--header-h) 0 0;z-index:69;
+  background:var(--negro);
+  transform:translateY(-100%);
+  transition:transform .45s var(--ease);
+  display:flex;flex-direction:column;
+  padding:28px 20px calc(var(--barra-h) + 32px);
+  overflow-y:auto;visibility:hidden;
+}
+.menu-movil.abierto{transform:translateY(0);visibility:visible}
+.menu-movil ul{display:flex;flex-direction:column;border-top:1px solid var(--linea-inv)}
+.menu-movil li{border-bottom:1px solid var(--linea-inv)}
+.menu-movil button,.menu-movil a{
+  width:100%;text-align:left;background:none;border:0;cursor:pointer;
+  padding:20px 0;display:flex;align-items:center;justify-content:space-between;gap:12px;
+  font-family:'Archivo Black',sans-serif;text-transform:uppercase;letter-spacing:-.02em;
+  font-size:1.6rem;color:var(--blanco);
+}
+.menu-movil .num{font-family:'Space Grotesk',sans-serif;font-size:.66rem;letter-spacing:.2em;color:var(--gris)}
+.menu-movil-pie{margin-top:auto;padding-top:32px;font-size:.78rem;color:var(--gris);line-height:1.7}
+
+/* Barra inferior móvil */
+.barra-movil{
+  position:fixed;left:0;right:0;bottom:0;z-index:68;
+  height:var(--barra-h);
+  display:grid;grid-template-columns:1fr 1fr;
+  background:var(--negro);border-top:1px solid var(--linea-inv);
+}
+.barra-movil button{
+  background:none;border:0;color:var(--blanco);cursor:pointer;
+  display:flex;align-items:center;justify-content:center;gap:9px;
+  font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;font-weight:700;
+}
+.barra-movil button + button{border-left:1px solid var(--linea-inv);background:var(--volt);color:var(--negro)}
+.barra-movil svg{width:17px;height:17px}
+.barra-movil .badge{background:var(--negro);color:var(--volt)}
+
+/* ============================================================
+   Hero
+   ============================================================ */
+.hero{padding-top:var(--header-h);background:var(--negro);position:relative}
+.hero-grid{display:grid;grid-template-columns:1fr}
+.hero-txt{padding:44px 20px 40px;display:flex;flex-direction:column;justify-content:flex-end;min-width:0}
+.hero-eyebrow{display:flex;align-items:center;gap:12px;margin-bottom:22px}
+.hero-eyebrow .barrita{width:34px;height:2px;background:var(--volt);flex-shrink:0}
+.hero-eyebrow span{font-size:.64rem;letter-spacing:.24em;text-transform:uppercase;color:var(--gris)}
+.hero-title{font-size:clamp(3.6rem,17vw,10rem);line-height:.88;margin-bottom:0;text-wrap:normal}
+.hero-title span{display:block}
+.hero-title .l2{color:var(--volt)}
+.hero-linea{width:100%;height:2px;background:var(--volt);margin:18px 0 22px}
+.hero-copy{font-size:clamp(.95rem,3.4vw,1.06rem);color:#CFCFCF;max-width:44ch;line-height:1.65}
+.hero-cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}
+.hero-cta .btn{flex:1 1 190px}
+.hero-meta{
+  display:flex;flex-wrap:wrap;gap:0 26px;margin-top:34px;
+  padding-top:18px;border-top:1px solid var(--linea-inv);
+}
+.hero-meta div{padding:8px 0;min-width:0}
+.hero-meta dt{font-size:.6rem;letter-spacing:.2em;color:var(--gris);text-transform:uppercase}
+.hero-meta dd{font-family:'Archivo Black',sans-serif;font-size:1.05rem;letter-spacing:-.02em;margin-top:4px;text-transform:uppercase}
+.hero-foto{position:relative;background:#1a1a1a;aspect-ratio:4/3;min-width:0}
+.hero-foto img{width:100%;height:100%;object-fit:cover}
+.hero-tag{
+  position:absolute;left:0;bottom:0;background:var(--volt);color:var(--negro);
+  padding:10px 16px;font-size:.64rem;letter-spacing:.2em;font-weight:700;text-transform:uppercase;
+}
+
+/* Marquee */
+.marquee{
+  background:var(--volt);color:var(--negro);
+  border-top:2px solid var(--negro);border-bottom:2px solid var(--negro);
+  overflow:hidden;position:relative;padding:12px 0;
+}
+.marquee-pista{display:flex;width:max-content;animation:correr 30s linear infinite}
+.marquee-set{display:flex;align-items:center;flex-shrink:0}
+.marquee-set span{
+  font-family:'Archivo Black',sans-serif;text-transform:uppercase;letter-spacing:-.01em;
+  font-size:clamp(.9rem,2.6vw,1.15rem);padding:0 22px;white-space:nowrap;
+  display:flex;align-items:center;gap:22px;
+}
+.marquee-set span::after{content:"";width:7px;height:7px;background:var(--negro);display:block;flex-shrink:0}
+@keyframes correr{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.marquee:hover .marquee-pista{animation-play-state:paused}
+
+/* ============================================================
+   Tira de categorías
+   ============================================================ */
+.cats{background:var(--negro);border-bottom:1px solid var(--linea-inv)}
+.cats-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:rgba(255,255,255,.14)}
+.cat-b{
+  position:relative;background:#141414;border:0;padding:0;cursor:pointer;
+  aspect-ratio:3/4;overflow:hidden;display:block;width:100%;min-width:0;
+}
+.cat-b img{
+  width:100%;height:100%;object-fit:cover;opacity:.5;
+  filter:grayscale(1);transition:transform .7s var(--ease),opacity .45s,filter .45s;
+}
+.cat-b:hover img,.cat-b:focus-visible img{transform:scale(1.07);opacity:.78;filter:grayscale(0)}
+.cat-b .vert{
+  position:absolute;left:14px;bottom:16px;
+  writing-mode:vertical-rl;transform:rotate(180deg);
+  font-family:'Archivo Black',sans-serif;text-transform:uppercase;letter-spacing:-.02em;
+  font-size:clamp(1.4rem,5.4vw,2.4rem);color:var(--blanco);
+}
+.cat-b:hover .vert{color:var(--volt)}
+.cat-b .idx{position:absolute;right:12px;top:12px;font-size:.62rem;letter-spacing:.2em;color:var(--gris)}
+.cat-b .flecha{
+  position:absolute;right:12px;bottom:16px;width:22px;height:22px;color:var(--volt);
+  opacity:0;transform:translateX(-6px);transition:opacity .3s,transform .3s var(--ease);
+}
+.cat-b:hover .flecha,.cat-b:focus-visible .flecha{opacity:1;transform:translateX(0)}
+
+/* ============================================================
+   Catálogo
+   ============================================================ */
+.cat-head{display:flex;flex-direction:column;gap:20px;margin-bottom:26px}
+.cat-titulo{font-size:clamp(2.4rem,10vw,5.2rem)}
+.cat-intro{font-size:.95rem;color:#4a4a4a;max-width:52ch;line-height:1.65}
+.barra-filtros{
+  display:flex;flex-direction:column;gap:14px;
+  border-top:1px solid var(--linea);border-bottom:1px solid var(--linea);
+  padding:14px 0;margin-bottom:26px;position:sticky;top:var(--header-h);
+  background:var(--blanco);z-index:30;
+}
+.filtros{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;padding-bottom:2px}
+.filtros::-webkit-scrollbar{display:none}
+.f-btn{
+  flex:0 0 auto;min-height:40px;padding:9px 15px;border:1px solid var(--linea);border-radius:2px;
+  background:transparent;color:var(--negro);cursor:pointer;white-space:nowrap;
+  font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;
+  transition:background-color .22s,color .22s,border-color .22s;
+}
+.f-btn:hover{border-color:var(--negro)}
+.f-btn[aria-pressed="true"]{background:var(--negro);color:var(--blanco);border-color:var(--negro)}
+.orden-fila{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.resultados{font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:#666}
+.resultados b{color:var(--negro)}
+.orden{display:flex;align-items:center;gap:9px}
+.orden label{font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:#666}
+.orden select{
+  min-height:40px;padding:8px 32px 8px 12px;border:1px solid var(--linea);border-radius:2px;
+  background:var(--blanco) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230A0A0A' stroke-width='1.5'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") no-repeat right 9px center/14px;
+  -webkit-appearance:none;appearance:none;cursor:pointer;
+  font-size:.72rem;font-weight:500;letter-spacing:.06em;color:var(--negro);
+}
+
+.grid-prod{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--linea)}
+.pcard{
+  position:relative;background:var(--blanco);border:0;padding:0;margin:0;
+  text-align:left;cursor:pointer;display:flex;flex-direction:column;min-width:0;width:100%;
+  font:inherit;color:inherit;
+}
+.pcard-media{position:relative;aspect-ratio:4/5;overflow:hidden;background:var(--gris-claro)}
+.pcard-media img{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  transition:opacity .55s var(--ease),transform .8s var(--ease);
+}
+.pcard-media .foto-b{opacity:0}
+.pcard:hover .pcard-media .foto-b,.pcard:focus-visible .pcard-media .foto-b{opacity:1}
+.pcard:hover .pcard-media .foto-a,.pcard:focus-visible .pcard-media .foto-a{transform:scale(1.05)}
+.etiqueta{
+  position:absolute;left:0;top:0;z-index:2;
+  padding:6px 10px;font-size:.56rem;letter-spacing:.18em;font-weight:700;text-transform:uppercase;
+}
+.etq-nuevo{background:var(--volt);color:var(--negro)}
+.etq-ultimas{background:var(--negro);color:var(--blanco)}
+.pcard-body{padding:16px 16px 20px;display:flex;flex-direction:column;gap:7px;flex:1}
+.pcard-cat{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:#6B6B6B}
+.pcard-nom{
+  font-family:'Archivo Black',sans-serif;text-transform:uppercase;letter-spacing:-.02em;
+  font-size:clamp(.88rem,3.5vw,1rem);line-height:1.15;color:var(--negro);min-height:2.3em;
+}
+.pcard-precio{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;margin-top:2px}
+.pcard-precio .ahora{font-weight:700;font-size:.98rem;color:var(--negro)}
+.pcard-precio .antes{font-size:.78rem;color:#767676;text-decoration:line-through}
+.swatches{display:flex;gap:5px;margin-top:auto;padding-top:10px}
+.sw{width:13px;height:13px;border-radius:2px;border:1px solid rgba(10,10,10,.25);display:block}
+.pcard-ver{
+  margin-top:10px;font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;font-weight:700;
+  display:flex;align-items:center;gap:7px;color:var(--negro);
+}
+.pcard-ver .lin{width:0;height:1px;background:var(--negro);transition:width .35s var(--ease)}
+.pcard:hover .pcard-ver .lin{width:26px}
+.sin-result{grid-column:1/-1;background:var(--blanco);padding:60px 20px;text-align:center}
+.sin-result p{color:#666;font-size:.9rem;margin-bottom:16px}
+
+/* ============================================================
+   Modal producto
+   ============================================================ */
+.overlay{
+  position:fixed;inset:0;z-index:90;background:rgba(10,10,10,.82);
+  opacity:0;visibility:hidden;transition:opacity .3s var(--ease),visibility .3s;
+  display:flex;align-items:flex-end;justify-content:center;
+}
+.overlay.abierto{opacity:1;visibility:visible}
+.modal{
+  position:relative;background:var(--blanco);color:var(--negro);
+  width:100%;max-width:1120px;max-height:94vh;overflow-y:auto;
+  -webkit-overflow-scrolling:touch;border-radius:2px;
+  transform:translateY(28px);transition:transform .38s var(--ease);
+}
+.overlay.abierto .modal{transform:translateY(0)}
+.modal-cerrar{
+  position:absolute;right:10px;top:10px;z-index:5;
+  width:44px;height:44px;border:1px solid var(--linea);border-radius:2px;
+  background:var(--blanco);color:var(--negro);cursor:pointer;
+  display:inline-flex;align-items:center;justify-content:center;
+  transition:background-color .2s,color .2s;
+}
+.modal-cerrar:hover{background:var(--negro);color:var(--blanco)}
+.modal-cerrar svg{width:18px;height:18px}
+.modal-grid{display:grid;grid-template-columns:1fr}
+.m-galeria{background:var(--gris-claro);padding:0;min-width:0}
+.m-principal{aspect-ratio:1/1;background:var(--gris-claro);overflow:hidden;position:relative}
+.m-principal img{width:100%;height:100%;object-fit:cover}
+.m-thumbs{display:flex;gap:1px;background:var(--linea);padding:1px 0 0}
+.m-thumb{
+  flex:1;border:0;padding:0;background:var(--gris-claro);cursor:pointer;
+  aspect-ratio:1/1;overflow:hidden;position:relative;min-width:0;
+}
+.m-thumb img{width:100%;height:100%;object-fit:cover;opacity:.6;transition:opacity .25s}
+.m-thumb[aria-pressed="true"] img,.m-thumb:hover img{opacity:1}
+.m-thumb[aria-pressed="true"]::after{content:"";position:absolute;inset:auto 0 0 0;height:3px;background:var(--volt)}
+.m-info{padding:26px 20px 30px;min-width:0;display:flex;flex-direction:column;gap:16px}
+.m-cat{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:#8C8C8C}
+.m-nom{font-size:clamp(1.9rem,7vw,3rem)}
+.m-precio{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.m-precio .ahora{font-family:'Archivo Black',sans-serif;font-size:1.7rem;letter-spacing:-.02em}
+.m-precio .antes{color:#9a9a9a;text-decoration:line-through;font-size:.95rem}
+.m-precio .off{background:var(--volt);color:var(--negro);padding:4px 8px;font-size:.6rem;letter-spacing:.14em;font-weight:700}
+.m-desc{font-size:.92rem;line-height:1.7;color:#3d3d3d}
+.m-bloque{border-top:1px solid var(--linea);padding-top:16px}
+.m-label{font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:#666;margin-bottom:10px;display:flex;justify-content:space-between;gap:10px}
+.m-label .elegido{color:var(--negro);font-weight:700}
+.colores{display:flex;gap:8px;flex-wrap:wrap}
+.color-b{
+  width:44px;height:44px;border:1px solid var(--linea);border-radius:2px;
+  background:var(--blanco);cursor:pointer;padding:5px;transition:border-color .2s;
+}
+.color-b i{display:block;width:100%;height:100%;border-radius:1px;border:1px solid rgba(10,10,10,.15)}
+.color-b[aria-pressed="true"]{border-color:var(--negro);box-shadow:inset 0 0 0 1px var(--negro)}
+.tallas{display:grid;grid-template-columns:repeat(auto-fill,minmax(58px,1fr));gap:6px}
+.talla-b{
+  min-height:46px;border:1px solid var(--linea);border-radius:2px;background:var(--blanco);
+  color:var(--negro);cursor:pointer;font-size:.8rem;font-weight:500;
+  transition:background-color .2s,color .2s,border-color .2s;
+}
+.talla-b:hover:not([disabled]){border-color:var(--negro)}
+.talla-b[aria-pressed="true"]{background:var(--negro);color:var(--blanco);border-color:var(--negro)}
+.talla-b[disabled]{
+  color:#c4c4c4;cursor:not-allowed;
+  background:repeating-linear-gradient(135deg,#fff 0 5px,#f4f4f4 5px 10px);
+}
+.aviso{font-size:.72rem;color:#B00020;min-height:1.1em}
+.acordeon{border-top:1px solid var(--linea);border-bottom:1px solid var(--linea)}
+.acordeon-btn{
+  width:100%;background:none;border:0;cursor:pointer;padding:16px 0;
+  display:flex;align-items:center;justify-content:space-between;gap:12px;text-align:left;
+  font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--negro);
+}
+.acordeon-btn .mas{width:14px;height:14px;position:relative;flex-shrink:0}
+.acordeon-btn .mas::before,.acordeon-btn .mas::after{
+  content:"";position:absolute;background:var(--negro);transition:transform .3s var(--ease);
+}
+.acordeon-btn .mas::before{left:0;top:6.25px;width:14px;height:1.5px}
+.acordeon-btn .mas::after{top:0;left:6.25px;height:14px;width:1.5px}
+.acordeon-btn[aria-expanded="true"] .mas::after{transform:scaleY(0)}
+.acordeon-panel{display:none;padding-bottom:18px}
+.acordeon-panel.abierto{display:block}
+.tabla-tallas{width:100%;border-collapse:collapse;font-size:.78rem}
+.tabla-tallas th,.tabla-tallas td{border-bottom:1px solid var(--linea);padding:9px 6px;text-align:left}
+.tabla-tallas th{font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:#666;font-weight:500}
+.nota-tallas{font-size:.74rem;color:#666;margin-top:10px;line-height:1.6}
+.ficha-mini{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--linea);margin-top:2px}
+.ficha-mini div{background:var(--blanco);padding:12px 10px;min-width:0}
+.ficha-mini dt{font-size:.56rem;letter-spacing:.16em;text-transform:uppercase;color:#8C8C8C}
+.ficha-mini dd{font-family:'Archivo Black',sans-serif;font-size:.95rem;letter-spacing:-.02em;margin-top:5px}
+.m-acciones{position:sticky;bottom:0;background:var(--blanco);padding-top:14px;border-top:1px solid var(--linea)}
+.btn.agregado{background:var(--negro)!important;color:var(--volt)!important;border-color:var(--negro)!important}
+
+/* ============================================================
+   Drawer carrito
+   ============================================================ */
+.drawer-overlay{
+  position:fixed;inset:0;z-index:95;background:rgba(10,10,10,.7);
+  opacity:0;visibility:hidden;transition:opacity .3s var(--ease),visibility .3s;
+}
+.drawer-overlay.abierto{opacity:1;visibility:visible}
+.drawer{
+  position:fixed;top:0;right:0;bottom:0;z-index:96;
+  width:min(430px,100%);background:var(--blanco);color:var(--negro);
+  transform:translateX(101%);transition:transform .42s var(--ease);
+  display:flex;flex-direction:column;
+}
+.drawer.abierto{transform:translateX(0)}
+.drawer-head{
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding:18px 20px;border-bottom:1px solid var(--linea);flex-shrink:0;
+}
+.drawer-head h2{font-family:'Archivo Black',sans-serif;font-size:1.15rem;letter-spacing:-.02em;text-transform:uppercase}
+.drawer-cerrar{
+  width:44px;height:44px;border:1px solid var(--linea);border-radius:2px;background:var(--blanco);
+  cursor:pointer;display:inline-flex;align-items:center;justify-content:center;color:var(--negro);
+  transition:background-color .2s,color .2s;
+}
+.drawer-cerrar:hover{background:var(--negro);color:var(--blanco)}
+.drawer-cerrar svg{width:18px;height:18px}
+.envio-barra{padding:14px 20px;border-bottom:1px solid var(--linea);background:var(--gris-claro);flex-shrink:0}
+.envio-txt{font-size:.72rem;letter-spacing:.04em;color:#3d3d3d;margin-bottom:9px;line-height:1.5}
+.envio-txt b{color:var(--negro)}
+.envio-track{height:4px;background:#dcdcdc;border-radius:2px;overflow:hidden}
+.envio-fill{height:100%;width:0;background:var(--negro);transition:width .5s var(--ease)}
+.envio-fill.full{background:var(--volt)}
+.drawer-body{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:0 20px}
+.linea-item{display:grid;grid-template-columns:76px 1fr;gap:14px;padding:18px 0;border-bottom:1px solid var(--linea)}
+.linea-foto{aspect-ratio:1/1;background:var(--gris-claro);overflow:hidden}
+.linea-foto img{width:100%;height:100%;object-fit:cover}
+.linea-info{min-width:0;display:flex;flex-direction:column;gap:6px}
+.linea-nom{font-family:'Archivo Black',sans-serif;font-size:.82rem;letter-spacing:-.01em;text-transform:uppercase;line-height:1.15}
+.linea-var{font-size:.68rem;color:#777;letter-spacing:.04em}
+.linea-pie{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:auto;flex-wrap:wrap}
+.qty{display:inline-flex;align-items:center;border:1px solid var(--linea);border-radius:2px}
+.qty button{
+  width:34px;height:34px;background:none;border:0;cursor:pointer;color:var(--negro);
+  font-size:1rem;line-height:1;display:inline-flex;align-items:center;justify-content:center;
+  transition:background-color .2s,color .2s;
+}
+.qty button:hover{background:var(--negro);color:var(--blanco)}
+.qty span{min-width:32px;text-align:center;font-size:.82rem;font-weight:700}
+.linea-precio{font-weight:700;font-size:.88rem}
+.quitar{
+  background:none;border:0;cursor:pointer;padding:6px 0;color:#8C8C8C;
+  font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;text-decoration:underline;
+  text-underline-offset:3px;align-self:flex-start;
+}
+.quitar:hover{color:#B00020}
+.vacio{padding:56px 0;text-align:center}
+.vacio .ic{width:46px;height:46px;margin:0 auto 18px;color:var(--gris)}
+.vacio h3{font-family:'Archivo Black',sans-serif;font-size:1.25rem;text-transform:uppercase;letter-spacing:-.02em;margin-bottom:8px}
+.vacio p{font-size:.85rem;color:#777;max-width:30ch;margin:0 auto 22px;line-height:1.6}
+.drawer-pie{border-top:1px solid var(--linea);padding:16px 20px calc(16px + env(safe-area-inset-bottom));flex-shrink:0;background:var(--blanco)}
+.fila-total{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:4px}
+.fila-total dt{font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:#666}
+.fila-total dd{font-size:.88rem;font-weight:700}
+.fila-total.grande dt{color:var(--negro);font-weight:700}
+.fila-total.grande dd{font-family:'Archivo Black',sans-serif;font-size:1.5rem;letter-spacing:-.02em}
+.drawer-pie .btn{margin-top:12px}
+.vaciar{
+  width:100%;background:none;border:0;cursor:pointer;padding:12px 0 2px;color:#8C8C8C;
+  font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;text-decoration:underline;text-underline-offset:3px;
+}
+.vaciar:hover{color:var(--negro)}
+.resumen{
+  border:1px solid var(--negro);border-radius:2px;padding:14px;margin-bottom:12px;
+  background:var(--gris-claro);
+}
+.resumen h3{font-family:'Archivo Black',sans-serif;font-size:.8rem;letter-spacing:.02em;text-transform:uppercase;margin-bottom:8px}
+.resumen ul{font-size:.74rem;color:#3d3d3d;line-height:1.7}
+.resumen li{display:flex;justify-content:space-between;gap:10px}
+.resumen .rt{display:flex;justify-content:space-between;gap:10px;border-top:1px solid var(--linea);margin-top:8px;padding-top:8px;font-weight:700;font-size:.8rem;color:var(--negro)}
+.resumen p{font-size:.7rem;color:#666;margin-top:8px;line-height:1.5}
+
+/* ============================================================
+   Editorial performance
+   ============================================================ */
+.editorial{position:relative;background:var(--negro);overflow:hidden}
+.editorial-foto{position:relative;min-height:clamp(420px,68vw,660px)}
+.editorial-foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.62}
+.editorial-foto::after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(100deg,rgba(10,10,10,.94) 0%,rgba(10,10,10,.86) 42%,rgba(10,10,10,.5) 78%,rgba(10,10,10,.3) 100%);
+}
+@media (max-width:767px){
+  .editorial-foto::after{background:linear-gradient(180deg,rgba(10,10,10,.9) 0%,rgba(10,10,10,.84) 55%,rgba(10,10,10,.9) 100%)}
+}
+.editorial-cont{position:relative;z-index:1;padding-top:clamp(44px,8vw,90px);padding-bottom:clamp(44px,8vw,90px)}
+.editorial-eyebrow{font-size:.62rem;letter-spacing:.24em;text-transform:uppercase;color:var(--volt);margin-bottom:18px}
+.editorial-tt{font-size:clamp(2.6rem,11vw,6.4rem);max-width:14ch}
+.editorial-p{margin-top:22px;max-width:46ch;color:#DEDEDE;font-size:clamp(.92rem,3.2vw,1.02rem);line-height:1.7}
+.ficha{margin-top:38px;border-top:1px solid var(--linea-inv);max-width:640px}
+.ficha-fila{display:grid;grid-template-columns:1fr auto;gap:14px;padding:16px 0;border-bottom:1px solid var(--linea-inv);align-items:baseline}
+.ficha-fila dt{font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:#B9B9B9}
+.ficha-fila dd{font-family:'Archivo Black',sans-serif;font-size:clamp(1.1rem,4.4vw,1.5rem);letter-spacing:-.02em;text-align:right}
+.ficha-fila dd small{display:block;font-family:'Space Grotesk',sans-serif;font-size:.68rem;line-height:1.5;letter-spacing:.06em;color:#ABABAB;margin-top:6px;text-transform:none;font-weight:400}
+
+/* ============================================================
+   Comparativa
+   ============================================================ */
+.comp-tt{font-size:clamp(2.1rem,8.6vw,4.4rem);margin-bottom:14px}
+.comp-sub{color:#4a4a4a;font-size:.95rem;max-width:50ch;margin-bottom:32px;line-height:1.65}
+.tabla-hint{
+  display:flex;align-items:center;gap:8px;margin-bottom:12px;
+  font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:#8C8C8C;
+}
+.tabla-hint svg{width:15px;height:15px;flex:none}
+@media (min-width:860px){.tabla-hint{display:none}}
+.tabla-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;position:relative}
+.comp{width:100%;min-width:620px;border-collapse:separate;border-spacing:0}
+.comp th,.comp td{border-bottom:1px solid var(--linea);padding:16px 14px;text-align:left;vertical-align:top;font-size:.85rem}
+.comp th:first-child,.comp td:first-child{padding-left:0}
+.comp thead th{border-bottom:1px solid var(--negro);padding-bottom:14px}
+.comp thead th:first-child{width:132px}
+.comp .mod{font-family:'Archivo Black',sans-serif;font-size:1rem;letter-spacing:-.02em;text-transform:uppercase;display:block}
+.comp .modcat{font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:#8C8C8C;margin-top:6px;display:block}
+.comp tbody th{
+  font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:#5E5E5E;font-weight:500;width:132px;
+}
+.comp thead th:first-child,.comp tbody th{
+  position:sticky;left:0;z-index:2;background:var(--blanco);
+  box-shadow:1px 0 0 var(--linea);
+}
+.comp td b{font-weight:700}
+.comp tr:last-child td,.comp tr:last-child th{border-bottom:0}
+.comp .destacado{background:var(--gris-claro)}
+
+/* ============================================================
+   Servicios
+   ============================================================ */
+.serv-tt{font-size:clamp(2.1rem,8.6vw,4.4rem);margin-bottom:34px}
+.serv-lista{border-top:1px solid var(--linea-inv)}
+.serv-item{
+  display:grid;grid-template-columns:1fr;gap:8px;
+  padding:26px 0;border-bottom:1px solid var(--linea-inv);
+}
+.serv-num{font-size:.62rem;letter-spacing:.2em;color:var(--volt)}
+.serv-nom{font-family:'Archivo Black',sans-serif;font-size:clamp(1.35rem,5.6vw,2.1rem);letter-spacing:-.02em;text-transform:uppercase}
+.serv-desc{color:#B4B4B4;font-size:.9rem;line-height:1.65;max-width:52ch}
+
+/* ============================================================
+   Footer
+   ============================================================ */
+.footer{background:var(--negro);border-top:1px solid var(--volt);padding:clamp(44px,7vw,80px) 0 34px}
+.footer-top{display:grid;grid-template-columns:1fr;gap:38px;margin-bottom:44px}
+.footer-marca .logo-marca{font-size:2.4rem}
+.footer-marca p{color:var(--gris);font-size:.86rem;line-height:1.7;margin-top:14px;max-width:36ch}
+.footer-col h3{font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--volt);margin-bottom:16px}
+.footer-col li{padding:6px 0;color:#B4B4B4;font-size:.85rem;line-height:1.6}
+.footer-col li b{color:var(--blanco);font-weight:700;display:block;font-size:.8rem;letter-spacing:.02em}
+.footer-col a{color:#C2C2C2;transition:color .2s;display:inline-block;padding:10px 0;line-height:1.4}
+.footer-col a:hover{color:var(--volt)}
+.footer-redes{display:flex;gap:8px;margin-top:16px;flex-wrap:wrap}
+.footer-redes a{
+  min-height:40px;display:inline-flex;align-items:center;gap:8px;padding:9px 13px;
+  border:1px solid var(--linea-inv);border-radius:2px;
+  font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;color:var(--blanco);
+  transition:background-color .22s,color .22s,border-color .22s;
+}
+.footer-redes a:hover{background:var(--volt);color:var(--negro);border-color:var(--volt)}
+.footer-redes svg{width:15px;height:15px}
+.footer-bajo{
+  border-top:1px solid var(--linea-inv);padding-top:22px;
+  display:flex;flex-wrap:wrap;gap:12px 22px;align-items:center;justify-content:space-between;
+}
+.footer-bajo p,.footer-bajo a{font-size:.66rem;letter-spacing:.1em;color:var(--gris);text-transform:uppercase}
+.footer-bajo a:hover{color:var(--volt)}
+.footer-legal{display:flex;flex-wrap:wrap;gap:8px 18px}
+
+/* ============================================================
+   Bloque comercial $1,950
+   ============================================================ */
+.oferta{background:var(--volt);color:var(--negro);padding:clamp(52px,9vw,110px) 0}
+.oferta-eyebrow{display:flex;align-items:center;gap:12px;margin-bottom:22px}
+.oferta-eyebrow .barrita{width:34px;height:2px;background:var(--negro)}
+.oferta-eyebrow span{font-size:.64rem;letter-spacing:.24em;text-transform:uppercase;font-weight:700}
+.oferta-tt{font-size:clamp(2.35rem,10.5vw,6.6rem);line-height:.99;max-width:16ch}
+.oferta-p{margin-top:22px;font-size:clamp(1rem,3.6vw,1.2rem);max-width:44ch;line-height:1.6;font-weight:500}
+.oferta-benef{
+  display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:rgba(10,10,10,.22);
+  margin:38px 0;border:1px solid rgba(10,10,10,.22);
+}
+.oferta-benef li{background:var(--volt);padding:16px 14px;min-width:0}
+.oferta-benef .bn{display:block;font-size:.55rem;letter-spacing:.18em;font-weight:700;opacity:.6}
+.oferta-benef .bt{
+  display:block;font-family:'Archivo Black',sans-serif;font-size:clamp(.78rem,3vw,.98rem);
+  letter-spacing:-.01em;text-transform:uppercase;line-height:1.15;margin-top:7px;
+}
+.oferta-cierre{display:grid;grid-template-columns:1fr;gap:26px;align-items:end;border-top:2px solid var(--negro);padding-top:30px}
+.oferta-precio .lbl{font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;font-weight:700;opacity:.6}
+.oferta-precio .num{font-family:'Archivo Black',sans-serif;font-size:clamp(3.4rem,15vw,7rem);letter-spacing:-.04em;line-height:.85;margin-top:8px}
+.oferta-precio .pago{font-size:.75rem;letter-spacing:.16em;text-transform:uppercase;font-weight:700;margin-top:10px}
+.oferta-cta{display:flex;flex-direction:column;gap:12px}
+.oferta-cta .btn{width:100%;min-height:60px;font-size:.85rem}
+.oferta-nota{font-size:.74rem;line-height:1.6;font-weight:500;opacity:.75}
+
+/* ============================================================
+   Reveal
+   ============================================================ */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.reveal.vis{opacity:1;transform:none}
+
+/* ============================================================
+   Toast
+   ============================================================ */
+.toast{
+  position:fixed;left:50%;bottom:calc(var(--barra-h) + 16px);transform:translate(-50%,20px);
+  z-index:120;background:var(--negro);color:var(--volt);border:1px solid var(--volt);
+  padding:13px 20px;border-radius:2px;font-size:.7rem;letter-spacing:.14em;
+  text-transform:uppercase;font-weight:700;opacity:0;visibility:hidden;
+  transition:opacity .3s,transform .35s var(--ease),visibility .3s;
+  max-width:calc(100% - 32px);text-align:center;
+}
+.toast.vis{opacity:1;visibility:visible;transform:translate(-50%,0)}
+
+/* ============================================================
+   Breakpoints
+   ============================================================ */
+@media (min-width:600px){
+  .grid-prod{grid-template-columns:repeat(2,1fr)}
+  .oferta-benef{grid-template-columns:repeat(3,1fr)}
+  .serv-item{grid-template-columns:80px 1fr 1.2fr;gap:20px;align-items:baseline}
+  .serv-num{padding-top:6px}
+}
+@media (min-width:768px){
+  :root{--header-h:74px}
+  body{padding-bottom:0}
+  .barra-movil{display:none}
+  .logo-sub{display:block}
+  .carrito-btn .etq{display:inline}
+  .hero-grid{grid-template-columns:1.05fr .95fr;align-items:stretch}
+  .hero-txt{padding:70px 0 60px 20px;max-width:none}
+  .hero-foto{aspect-ratio:auto;min-height:min(78vh,720px);clip-path:polygon(9% 0,100% 0,100% 100%,0 100%)}
+  .hero-title{font-size:clamp(4.4rem,10.5vw,9rem)}
+  .cats-grid{grid-template-columns:repeat(4,1fr)}
+  .cat-b{aspect-ratio:2/3}
+  .modal-grid{grid-template-columns:1.05fr 1fr}
+  .m-galeria{border-right:1px solid var(--linea)}
+  .m-info{padding:34px 32px 34px}
+  .m-principal{aspect-ratio:auto;height:calc(100% - 92px);min-height:340px}
+  .m-thumbs{height:92px}
+  .m-thumb{aspect-ratio:auto}
+  .overlay{align-items:center;padding:24px}
+  .modal{max-height:88vh}
+  .grid-prod{grid-template-columns:repeat(3,1fr)}
+  .cat-head{flex-direction:row;align-items:flex-end;justify-content:space-between;gap:40px}
+  .barra-filtros{flex-direction:row;align-items:center;justify-content:space-between;gap:24px}
+  .filtros{flex:1;min-width:0}
+  .orden-fila{flex:0 0 auto;gap:22px}
+  .footer-top{grid-template-columns:1.25fr 1fr 1fr 1fr;gap:32px}
+  .oferta-cierre{grid-template-columns:1fr auto;gap:48px}
+  .oferta-cta{min-width:320px}
+  .oferta-benef{grid-template-columns:repeat(3,1fr)}
+}
+@media (min-width:1024px){
+  .nav-desk{display:flex}
+  .burger{display:none}
+  .grid-prod{grid-template-columns:repeat(4,1fr)}
+  .pcard-body{padding:18px 18px 22px}
+  .oferta-benef{grid-template-columns:repeat(6,1fr)}
+  .editorial-cont{padding-top:110px;padding-bottom:110px}
+}
+@media (max-width:767px){
+  body{padding-bottom:var(--barra-h)}
+  .m-principal{aspect-ratio:4/3}
+  .m-thumb{aspect-ratio:3/2}
+  .m-info{padding:22px 20px 26px;gap:14px}
+  .m-nom{font-size:clamp(1.7rem,6.6vw,2.2rem)}
+  .m-desc{font-size:.88rem;line-height:1.65}
+  .toast{bottom:calc(var(--barra-h) + 14px)}
+  .drawer{width:100%}
+  .barra-filtros{top:var(--header-h)}
+  .filtros{flex-wrap:wrap;overflow-x:visible;gap:6px}
+  .f-btn{flex:0 1 auto}
+}
+@media (min-width:900px){
+  .serv-lista{
+    display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+    border-top:1px solid var(--linea-inv);border-bottom:1px solid var(--linea-inv);
+  }
+  .serv-item{
+    grid-template-columns:1fr;gap:14px;align-items:start;
+    padding:40px 34px 46px;border-bottom:0;border-left:1px solid var(--linea-inv);
+  }
+  .serv-item:first-child{padding-left:0;border-left:0}
+  .serv-item:last-child{padding-right:0}
+  .serv-num{padding-top:0}
+  .serv-nom{font-size:clamp(1.35rem,2.1vw,1.85rem);line-height:1.05}
+  .serv-desc{font-size:.88rem}
+  .serv-tt{margin-bottom:44px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    animation-duration:.001ms!important;animation-iteration-count:1!important;
+    transition-duration:.001ms!important;scroll-behavior:auto!important;
+  }
+  .marquee-pista{animation:none;transform:none}
+  .reveal{opacity:1;transform:none}
+}
+</style>
+<link rel="stylesheet" href="../_shared/ziv-premium.css">
+<script src="../_shared/ziv-premium.js" defer></script>
+</head>
+<body>
+
+<a class="sr-only" href="#catalogo">Saltar al catálogo</a>
+
+<!-- ==========================================================
+     HEADER
+     ========================================================== -->
+<header class="header">
+  <div class="wrap header-in">
+    <a class="logo" href="#top" aria-label="VELTRA, inicio">
+      <span class="logo-marca">VELTRA</span>
+      <span class="logo-punto" aria-hidden="true"></span>
+      <span class="logo-sub">Performance Store</span>
+    </a>
+
+    <nav class="nav-desk" aria-label="Categorías">
+      <button type="button" data-ir="running">Running</button>
+      <button type="button" data-ir="training">Training</button>
+      <button type="button" data-ir="lifestyle">Lifestyle</button>
+      <button type="button" data-ir="basketball">Basketball</button>
+      <a href="#tienda">Tienda</a>
+    </nav>
+
+    <div class="header-acc">
+      <button type="button" class="carrito-btn" id="abrirCarrito" aria-label="Abrir carrito de compras">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" aria-hidden="true">
+          <path d="M4 7h16l-1.4 12.2a1.6 1.6 0 0 1-1.6 1.4H7a1.6 1.6 0 0 1-1.6-1.4L4 7Z"/>
+          <path d="M9 10V6.5a3 3 0 0 1 6 0V10"/>
+        </svg>
+        <span class="etq">Carrito</span>
+        <span class="badge" data-badge>0</span>
+      </button>
+      <button type="button" class="burger" id="burger" aria-label="Abrir menú" aria-expanded="false" aria-controls="menuMovil">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Menú móvil -->
+<div class="menu-movil" id="menuMovil" aria-label="Menú principal">
+  <ul>
+    <li><button type="button" data-ir="running">Running <span class="num">01</span></button></li>
+    <li><button type="button" data-ir="training">Training <span class="num">02</span></button></li>
+    <li><button type="button" data-ir="lifestyle">Lifestyle <span class="num">03</span></button></li>
+    <li><button type="button" data-ir="basketball">Basketball <span class="num">04</span></button></li>
+    <li><button type="button" data-ir="todos">Todo el catálogo <span class="num">05</span></button></li>
+    <li><a href="#tienda" data-cerrar-menu>Tienda y servicios <span class="num">06</span></a></li>
+  </ul>
+  <div class="menu-movil-pie">
+    <p>Álvaro Obregón 214, Roma Norte<br>Lun a sáb 11:00–20:30 · Dom 12:00–18:00</p>
+    <p style="margin-top:12px">55 4726 1180</p>
+  </div>
+</div>
+
+<!-- Barra inferior móvil -->
+<div class="barra-movil">
+  <button type="button" data-ir="todos">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" aria-hidden="true">
+      <path d="M4 5h7v7H4zM13 5h7v7h-7zM4 14h7v5H4zM13 14h7v5h-7z"/>
+    </svg>
+    Catálogo
+  </button>
+  <button type="button" data-abrir-carrito aria-label="Abrir carrito de compras">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" aria-hidden="true">
+      <path d="M4 7h16l-1.4 12.2a1.6 1.6 0 0 1-1.6 1.4H7a1.6 1.6 0 0 1-1.6-1.4L4 7Z"/>
+      <path d="M9 10V6.5a3 3 0 0 1 6 0V10"/>
+    </svg>
+    Carrito
+    <span class="badge" data-badge>0</span>
+  </button>
+</div>
+
+<main id="top">
+
+<!-- ==========================================================
+     HERO
+     ========================================================== -->
+<section class="hero" aria-label="VELTRA, temporada 04">
+  <div class="hero-grid">
+    <div class="hero-txt">
+      <div class="hero-eyebrow">
+        <span class="barrita" aria-hidden="true"></span>
+        <span>Temporada 04 · Hecho para pisar</span>
+      </div>
+      <h1 class="tt hero-title">
+        <span class="l1">Pisa</span>
+        <span class="l2">Fuerte</span>
+      </h1>
+      <div class="hero-linea" aria-hidden="true"></div>
+      <p class="hero-copy">Doce modelos de la casa, con horma mexicana y suela VLT propia. Los armamos para correr, entrenar y aguantar la ciudad — no para verse bien en una foto.</p>
+      <div class="hero-cta">
+        <button type="button" class="btn btn-volt" id="ctaComprar">Comprar ahora</button>
+        <button type="button" class="btn btn-linea" data-ir="todos">Ver catálogo</button>
+      </div>
+      <dl class="hero-meta">
+        <div><dt>Modelos</dt><dd>12 de la casa</dd></div>
+        <div><dt>Tallas</dt><dd>24 – 30 MX</dd></div>
+        <div><dt>Envío CDMX</dt><dd>24 – 48 h</dd></div>
+      </dl>
+    </div>
+    <div class="hero-foto">
+      <img src="https://images.unsplash.com/photo-1608245449230-4ac19066d2d0?auto=format&fit=crop&w=2000&q=80"
+           alt="Atleta corriendo en la calle con tenis deportivos al amanecer"
+           width="2000" height="1333" fetchpriority="high" decoding="async">
+      <span class="hero-tag">VLT-2 · Suela de la casa</span>
+    </div>
+  </div>
+</section>
+
+<!-- Marquee -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-pista">
+    <div class="marquee-set">
+      <span>Envío gratis desde $2,500</span>
+      <span>Cambios en 30 días</span>
+      <span>3 y 6 meses sin intereses</span>
+      <span>Pruébalos en tienda</span>
+      <span>Envío 24–48 h en CDMX</span>
+      <span>Tallas 24 a 30 MX</span>
+    </div>
+    <div class="marquee-set">
+      <span>Envío gratis desde $2,500</span>
+      <span>Cambios en 30 días</span>
+      <span>3 y 6 meses sin intereses</span>
+      <span>Pruébalos en tienda</span>
+      <span>Envío 24–48 h en CDMX</span>
+      <span>Tallas 24 a 30 MX</span>
+    </div>
+  </div>
+</div>
+<p class="sr-only">Envío gratis desde $2,500. Cambios en 30 días. 3 y 6 meses sin intereses. Envío de 24 a 48 horas en CDMX. Tallas 24 a 30 MX.</p>
+
+<!-- ==========================================================
+     TIRA DE CATEGORÍAS
+     ========================================================== -->
+<section class="cats" aria-label="Categorías">
+  <div class="cats-grid">
+    <button type="button" class="cat-b" data-ir="running">
+      <img src="https://images.unsplash.com/photo-1486218119243-13883505764c?auto=format&fit=crop&w=900&q=75"
+           alt="Corredora entrenando en pista al aire libre" loading="lazy" decoding="async" width="900" height="1350">
+      <span class="idx">01</span>
+      <span class="vert">Running</span>
+      <svg class="flecha" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </button>
+    <button type="button" class="cat-b" data-ir="training">
+      <img src="https://images.unsplash.com/photo-1581390720106-b267ca740f83?auto=format&fit=crop&w=900&q=75"
+           alt="Persona entrenando fuerza en un gimnasio" loading="lazy" decoding="async" width="900" height="1350">
+      <span class="idx">02</span>
+      <span class="vert">Training</span>
+      <svg class="flecha" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </button>
+    <button type="button" class="cat-b" data-ir="lifestyle">
+      <img src="https://images.unsplash.com/photo-1543508282-6319a3e2621f?auto=format&fit=crop&w=900&q=75"
+           alt="Par de tenis casuales sobre fondo neutro" loading="lazy" decoding="async" width="900" height="1350">
+      <span class="idx">03</span>
+      <span class="vert">Lifestyle</span>
+      <svg class="flecha" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </button>
+    <button type="button" class="cat-b" data-ir="basketball">
+      <img src="https://images.unsplash.com/photo-1580692475446-c2fabbbbf835?auto=format&fit=crop&w=900&q=75"
+           alt="Jugador de básquetbol en cancha urbana" loading="lazy" decoding="async" width="900" height="1350">
+      <span class="idx">04</span>
+      <span class="vert">Basket</span>
+      <svg class="flecha" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </button>
+  </div>
+</section>
+
+<!-- ==========================================================
+     CATÁLOGO
+     ========================================================== -->
+<section class="seccion seccion-clara" id="catalogo" style="padding-top:clamp(44px,7vw,84px)">
+  <div class="wrap">
+    <div class="cat-head reveal">
+      <h2 class="tt cat-titulo">El catálogo</h2>
+      <p class="cat-intro">Todo lo que armamos esta temporada. Precios en pesos, tallas mexicanas y stock real de las tres sucursales.</p>
+    </div>
+
+    <div class="barra-filtros">
+      <div class="filtros" role="group" aria-label="Filtrar por categoría">
+        <button type="button" class="f-btn" data-filtro="todos" aria-pressed="true">Todos</button>
+        <button type="button" class="f-btn" data-filtro="running" aria-pressed="false">Running</button>
+        <button type="button" class="f-btn" data-filtro="training" aria-pressed="false">Training</button>
+        <button type="button" class="f-btn" data-filtro="lifestyle" aria-pressed="false">Lifestyle</button>
+        <button type="button" class="f-btn" data-filtro="basketball" aria-pressed="false">Basketball</button>
+      </div>
+      <div class="orden-fila">
+        <p class="resultados"><b data-conteo>12</b> modelos</p>
+        <div class="orden">
+          <label for="orden">Orden</label>
+          <select id="orden">
+            <option value="relevancia">Relevancia</option>
+            <option value="menor">Precio menor</option>
+            <option value="mayor">Precio mayor</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid-prod" id="gridProductos" aria-live="polite"></div>
+  </div>
+</section>
+
+<!-- ==========================================================
+     EDITORIAL PERFORMANCE
+     ========================================================== -->
+<section class="editorial" aria-label="Ficha técnica VELTRA KORE 3">
+  <div class="editorial-foto">
+    <img src="https://images.unsplash.com/photo-1594882645126-14020914d58d?auto=format&fit=crop&w=2000&q=75"
+         alt="Atleta en pleno esfuerzo durante un entrenamiento de velocidad" loading="lazy" decoding="async" width="2000" height="1333">
+    <div class="wrap editorial-cont">
+      <p class="editorial-eyebrow">Ficha técnica · KORE 3</p>
+      <h2 class="tt editorial-tt">El kilómetro 32 no perdona</h2>
+      <p class="editorial-p">La KORE 3 la probamos 900 km en asfalto de Reforma y en el circuito de Chapultepec antes de mandarla a producción. No es la más ligera del catálogo: es la que sigue respondiendo cuando ya te cansaste.</p>
+      <dl class="ficha">
+        <div class="ficha-fila">
+          <dt>Drop</dt>
+          <dd>8 mm<small>32 mm talón / 24 mm antepié</small></dd>
+        </div>
+        <div class="ficha-fila">
+          <dt>Peso</dt>
+          <dd>248 g<small>Talla 27 MX, sin plantilla extra</small></dd>
+        </div>
+        <div class="ficha-fila">
+          <dt>Caída y retorno</dt>
+          <dd>Espuma VLT-2<small>Pisada neutra · 38 % de retorno tras 900 km</small></dd>
+        </div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================
+     COMPARATIVA
+     ========================================================== -->
+<section class="seccion seccion-clara" aria-label="Comparativa de modelos">
+  <div class="wrap">
+    <h2 class="tt comp-tt reveal">¿Cuál te toca?</h2>
+    <p class="comp-sub reveal">Tres modelos que resuelven cosas distintas. Si dudas entre dos, aquí está la diferencia sin adornos.</p>
+    <p class="tabla-hint reveal">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 12h16M14 6l6 6-6 6"/></svg>
+      Desliza para comparar los tres
+    </p>
+    <div class="tabla-scroll reveal">
+      <table class="comp">
+        <caption class="sr-only">Comparativa entre KORE 3, AXIS PRO y RIM 02</caption>
+        <thead>
+          <tr>
+            <th scope="col"><span class="sr-only">Característica</span></th>
+            <th scope="col"><span class="mod">KORE 3</span><span class="modcat">Running</span></th>
+            <th scope="col" class="destacado"><span class="mod">AXIS PRO</span><span class="modcat">Training</span></th>
+            <th scope="col"><span class="mod">RIM 02</span><span class="modcat">Basketball</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Para qué es</th>
+            <td>Rodadas largas y tiradas de fondo en asfalto.</td>
+            <td class="destacado">Gimnasio, sentadilla, cuerdas y saltos.</td>
+            <td>Cancha techada y duelas rápidas.</td>
+          </tr>
+          <tr>
+            <th scope="row">Drop</th>
+            <td><b>8 mm</b></td>
+            <td class="destacado"><b>4 mm</b></td>
+            <td><b>6 mm</b></td>
+          </tr>
+          <tr>
+            <th scope="row">Amortiguación</th>
+            <td>Alta, espuma VLT-2 de perfil grueso.</td>
+            <td class="destacado">Baja: quieres sentir el piso al levantar peso.</td>
+            <td>Media, con cámara en talón para caídas.</td>
+          </tr>
+          <tr>
+            <th scope="row">Peso (talla 27)</th>
+            <td>248 g</td>
+            <td class="destacado">276 g</td>
+            <td>331 g</td>
+          </tr>
+          <tr>
+            <th scope="row">No la compres si…</th>
+            <td>Entrenas fuerza: la suela es demasiado blanda.</td>
+            <td class="destacado">Vas a correr más de 5 km seguidos.</td>
+            <td>Solo la quieres para diario: pesa.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================
+     SERVICIOS
+     ========================================================== -->
+<section class="seccion seccion-oscura" id="tienda" aria-label="Servicios de la tienda">
+  <div class="wrap">
+    <h2 class="tt serv-tt reveal">Cómo compramos aquí</h2>
+    <div class="serv-lista">
+      <article class="serv-item reveal">
+        <p class="serv-num">01</p>
+        <h3 class="serv-nom">Cambios en 30 días</h3>
+        <p class="serv-desc">Si la talla no quedó, la cambias sin discusión durante 30 días con tu ticket digital. Solo pedimos que la suela no traiga calle: pruébalos sobre alfombra o tapete.</p>
+      </article>
+      <article class="serv-item reveal">
+        <p class="serv-num">02</p>
+        <h3 class="serv-nom">Envío en 24–48 h en CDMX</h3>
+        <p class="serv-desc">Pedidos antes de las 14:00 salen el mismo día. Roma, Condesa, Del Valle, Polanco y Coyoacán suelen llegar al siguiente. Resto del país, 3 a 5 días hábiles.</p>
+      </article>
+      <article class="serv-item reveal">
+        <p class="serv-num">03</p>
+        <h3 class="serv-nom">Prueba en tienda</h3>
+        <p class="serv-desc">En Roma Norte tenemos banda para caminar y probar la pisada. Agenda no hace falta: llegas, pides el modelo y lo caminas diez minutos antes de decidir.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ==========================================================
+     FOOTER
+     ========================================================== -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-marca">
+        <span class="logo-marca">VELTRA</span>
+        <p>Tienda de tenis deportivos de la casa. Diseñamos, probamos y vendemos los doce modelos que ves aquí. Nada más.</p>
+        <div class="footer-redes">
+          <a href="#top" aria-label="Instagram de VELTRA">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" aria-hidden="true"><rect x="3" y="3" width="18" height="18"/><circle cx="12" cy="12" r="4"/><path d="M17.2 6.8h.01"/></svg>
+            Instagram
+          </a>
+          <a href="#top" aria-label="TikTok de VELTRA">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" aria-hidden="true"><path d="M14 4v10.5a3.5 3.5 0 1 1-3.5-3.5"/><path d="M14 4c.6 2.4 2.2 3.8 4.6 4"/></svg>
+            TikTok
+          </a>
+          <a href="#top" aria-label="Strava de VELTRA">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" aria-hidden="true"><path d="M9 15 4 5h4l1 2 1-2h4l-5 10Z"/><path d="M14 15h4l-2 4-2-4Z"/></svg>
+            Strava
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h3>Sucursales</h3>
+        <ul>
+          <li><b>Roma Norte</b>Álvaro Obregón 214, local B<br>Lun a sáb 11:00–20:30 · Dom 12:00–18:00</li>
+          <li><b>Polanco</b>Emilio Castelar 91<br>Lun a dom 11:00–21:00</li>
+          <li><b>Coyoacán</b>Av. Miguel Ángel de Quevedo 540<br>Lun a sáb 11:00–20:00 · Dom cerrado</li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h3>Contacto</h3>
+        <ul>
+          <li><b>Teléfono</b>55 4726 1180</li>
+          <li><b>Correo</b><a href="#top">hola@veltra.mx</a></li>
+          <li><b>Atención</b>Lun a sáb, 10:00–20:00</li>
+          <li><b>Mayoreo</b>Equipos y escuelas desde 12 pares</li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h3>Ayuda</h3>
+        <ul>
+          <li><a href="#catalogo">Guía de tallas MX</a></li>
+          <li><a href="#tienda">Cambios y devoluciones</a></li>
+          <li><a href="#tienda">Tiempos de envío</a></li>
+          <li><a href="#top">Aviso de privacidad</a></li>
+          <li><a href="#top">Términos y condiciones</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bajo">
+      <p>© 2026 VELTRA Performance Store · Ciudad de México</p>
+      <div class="footer-legal">
+        <a href="#top">Privacidad</a>
+        <a href="#top">Términos</a>
+        <a href="#top">Facturación</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ==========================================================
+     BLOQUE COMERCIAL $1,950
+     ========================================================== -->
+<section class="oferta" aria-label="Diseñamos páginas web para negocios">
+  <div class="wrap">
+    <div class="oferta-eyebrow">
+      <span class="barrita" aria-hidden="true"></span>
+      <span>¿Te gustó esta página?</span>
+    </div>
+    <h2 class="tt oferta-tt">¿Vendes producto? Tu tienda podría verse así.</h2>
+    <p class="oferta-p">Diseñamos páginas web profesionales para negocios como el tuyo. Catálogo, carrito y pedidos que caen directo a tu WhatsApp.</p>
+
+    <ul class="oferta-benef">
+      <li><span class="bn">01</span><span class="bt">Diseño profesional</span></li>
+      <li><span class="bn">02</span><span class="bt">Adaptada a celular</span></li>
+      <li><span class="bn">03</span><span class="bt">WhatsApp integrado</span></li>
+      <li><span class="bn">04</span><span class="bt">Catálogo, citas o carrito</span></li>
+      <li><span class="bn">05</span><span class="bt">Editable</span></li>
+      <li><span class="bn">06</span><span class="bt">Dominio por 1 año</span></li>
+    </ul>
+
+    <div class="oferta-cierre">
+      <div class="oferta-precio">
+        <p class="lbl">Precio</p>
+        <p class="num">$1,950</p>
+        <p class="pago">MXN · Pago único</p>
+      </div>
+      <div class="oferta-cta">
+        <a class="btn btn-negro" target="_blank" rel="noopener"
+           href="https://wa.me/525540161213?text=Hola%2C%20vi%20una%20de%20sus%20p%C3%A1ginas%20demo%20y%20quiero%20informaci%C3%B3n%20para%20hacer%20una%20p%C3%A1gina%20para%20mi%20negocio.">
+          Quiero mi página
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" width="17" height="17" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <p class="oferta-nota">Te la entregamos lista, publicada y con tu dominio. Si vendes producto, la armamos con carrito como esta.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================
+     MODAL PRODUCTO
+     ========================================================== -->
+<div class="overlay" id="overlayModal" role="dialog" aria-modal="true" aria-labelledby="modalNombre" aria-hidden="true">
+  <div class="modal" id="modal">
+    <button type="button" class="modal-cerrar" id="cerrarModal" aria-label="Cerrar ficha de producto">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+    <div class="modal-grid" id="modalGrid"></div>
+  </div>
+</div>
+
+<!-- ==========================================================
+     DRAWER CARRITO
+     ========================================================== -->
+<div class="drawer-overlay" id="drawerOverlay"></div>
+<aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="drawerTitulo" aria-hidden="true">
+  <div class="drawer-head">
+    <h2 id="drawerTitulo">Tu carrito</h2>
+    <button type="button" class="drawer-cerrar" id="cerrarDrawer" aria-label="Cerrar carrito">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+  </div>
+  <div class="envio-barra" id="envioBarra">
+    <p class="envio-txt" id="envioTxt">Agrega <b>$2,500</b> más y el envío corre por nuestra cuenta.</p>
+    <div class="envio-track"><div class="envio-fill" id="envioFill"></div></div>
+  </div>
+  <div class="drawer-body" id="drawerBody"></div>
+  <div class="drawer-pie" id="drawerPie" hidden>
+    <div id="resumenPedido"></div>
+    <dl class="fila-total"><dt>Subtotal</dt><dd id="subtotalTxt">$0</dd></dl>
+    <dl class="fila-total"><dt>Envío</dt><dd id="envioCostoTxt">Por calcular</dd></dl>
+    <dl class="fila-total grande"><dt>Total</dt><dd id="totalTxt">$0</dd></dl>
+    <button type="button" class="btn btn-negro btn-block" id="finalizar">Finalizar pedido</button>
+    <button type="button" class="vaciar" id="vaciar">Vaciar carrito</button>
+  </div>
+</aside>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+  'use strict';
+
+  /* ==========================================================
+     DATOS
+     ========================================================== */
+  var U = 'https://images.unsplash.com/';
+  function img(id, w, q){ return U + id + '?auto=format&fit=crop&w=' + w + '&q=' + q; }
+
+  var CATS = {
+    running:'Running',
+    training:'Training',
+    lifestyle:'Lifestyle',
+    basketball:'Basketball'
+  };
+
+  var PRODUCTOS = [
+    {
+      id:'kore3', nombre:'Veltra Kore 3', cat:'running', precio:2890, antes:3290, etiqueta:'NUEVO',
+      fotos:['photo-1542291026-7eec264c27ff','photo-1606107557195-0e29a4b5b4aa','photo-1552346154-21d32810aba3'],
+      colores:[{n:'Negro asfalto',hex:'#111111'},{n:'Volt',hex:'#D9FF3D'},{n:'Hueso',hex:'#E6E1D6'}],
+      tallas:[['24',true],['25',true],['25.5',false],['26',true],['26.5',true],['27',true],['27.5',true],['28',true],['29',false],['30',true]],
+      desc:'Mesh de un solo tejido con refuerzo termosellado en el mediopié: no hay costuras que te rocen en el kilómetro 20. Entresuela de espuma VLT-2 con placa de nylon parcial para que la pisada regrese sin volverse rígida. Suela de caucho de alta abrasión en las zonas donde se come el asfalto de la ciudad.',
+      specs:[['Drop','8 mm'],['Peso','248 g'],['Uso','Asfalto']],
+      resumen:'Rodadas largas en asfalto, pisada neutra.'
+    },
+    {
+      id:'axispro', nombre:'Veltra Axis Pro', cat:'training', precio:2450, antes:null, etiqueta:null,
+      fotos:['photo-1595950653106-6c9ebd614d3a','photo-1600269452121-4f2416e55c28','photo-1560769629-975ec94e6a86'],
+      colores:[{n:'Negro mate',hex:'#0E0E0E'},{n:'Gris cemento',hex:'#8C8C8C'}],
+      tallas:[['24',false],['25',true],['25.5',true],['26',true],['26.5',true],['27',true],['27.5',true],['28',true],['29',true],['30',false]],
+      desc:'Suela plana y ancha para levantar peso sin que el pie se mueva dentro del tenis. Talón firme con contrafuerte de TPU, malla reforzada en los costados para que aguante el roce de la cuerda y refuerzo de goma en el arco para los burpees. Drop bajo a propósito: aquí quieres sentir el piso.',
+      specs:[['Drop','4 mm'],['Peso','276 g'],['Uso','Gimnasio']],
+      resumen:'Fuerza, saltos y cuerda. Piso firme.'
+    },
+    {
+      id:'driftlow', nombre:'Veltra Drift Low', cat:'lifestyle', precio:1990, antes:2390, etiqueta:null,
+      fotos:['photo-1525966222134-fcfa99b8ae77','photo-1491553895911-0055eca6402d','photo-1543508282-6319a3e2621f'],
+      colores:[{n:'Blanco roto',hex:'#F4F2ED'},{n:'Verde militar',hex:'#3E4A32'},{n:'Negro',hex:'#101010'}],
+      tallas:[['24',true],['25',true],['25.5',true],['26',true],['26.5',false],['27',true],['27.5',true],['28',true],['29',true],['30',true]],
+      desc:'Piel sintética de flor corrida con perforaciones en el antepié y forro de textil reciclado. Corte bajo, horma recta y suela de goma vulcanizada de 12 mm que no marca los pisos. La pensamos para diario: aguanta ocho horas de pie y se limpia con un trapo húmedo.',
+      specs:[['Drop','10 mm'],['Peso','312 g'],['Uso','Diario']],
+      resumen:'Diario, ciudad y ocho horas de pie.'
+    },
+    {
+      id:'rim02', nombre:'Veltra Rim 02', cat:'basketball', precio:3190, antes:null, etiqueta:'NUEVO',
+      fotos:['photo-1600185365483-26d7a4cc7519','photo-1549298916-b41d501d3772','photo-1608231387042-66d1773070a5'],
+      colores:[{n:'Negro / Volt',hex:'#0D0D0D'},{n:'Blanco cancha',hex:'#F7F7F5'}],
+      tallas:[['25',true],['25.5',true],['26',true],['26.5',true],['27',true],['27.5',false],['28',true],['29',true],['30',true]],
+      desc:'Corte medio con banda de sujeción sobre el empeine para los cambios de dirección. Cámara de aire en el talón que absorbe las caídas y suela de espiga en zigzag pensada para duela: agarra en seco y suelta rápido. Puntera reforzada porque ahí es donde se rompen todas.',
+      specs:[['Drop','6 mm'],['Peso','331 g'],['Uso','Duela']],
+      resumen:'Cancha techada y cambios de dirección.'
+    },
+    {
+      id:'pulsoair', nombre:'Veltra Pulso Air', cat:'running', precio:2190, antes:null, etiqueta:null,
+      fotos:['photo-1512374382149-233c42b6a83b','photo-1600185365926-3a2ce3cdb9eb','photo-1571008887538-b36bb32f4571'],
+      colores:[{n:'Azul cobalto',hex:'#1D3FA8'},{n:'Gris humo',hex:'#6E6E6E'},{n:'Volt',hex:'#D9FF3D'}],
+      tallas:[['24',true],['24.5',true],['25',true],['26',true],['26.5',true],['27',true],['28',false],['29',true],['30',false]],
+      desc:'La entrenadora diaria del catálogo. Espuma VLT-1 de densidad media, más blanda que la KORE pero con menos retorno: perfecta para los 5 a 10 km de entre semana. Malla abierta en el empeine para que respire en calor y lengüeta acolchada para que la agujeta no marque.',
+      specs:[['Drop','9 mm'],['Peso','262 g'],['Uso','Diario / 10K']],
+      resumen:'Tu tenis de entre semana, 5 a 10 km.'
+    },
+    {
+      id:'gripflat', nombre:'Veltra Grip Flat', cat:'training', precio:1890, antes:null, etiqueta:'ÚLTIMAS PIEZAS',
+      fotos:['photo-1608667508764-33cf0726b13a','photo-1590333748338-d629e4564ad9','photo-1597892657493-6847b9640bac'],
+      colores:[{n:'Negro',hex:'#0B0B0B'},{n:'Arena',hex:'#C9BBA4'}],
+      tallas:[['25',true],['26',true],['26.5',false],['27',true],['27.5',false],['28',true],['29',false]],
+      desc:'Versión mínima de la AXIS: sin plataforma extra ni acolchados de más. Lona de algodón encerado, plantilla removible de 4 mm y suela de goma lisa con dibujo de rombo. Si entrenas descalzo pero el gimnasio no te deja, esta es la respuesta.',
+      specs:[['Drop','2 mm'],['Peso','241 g'],['Uso','Fuerza']],
+      resumen:'Casi descalzo, para sentadilla y peso muerto.'
+    },
+    {
+      id:'nocte', nombre:'Veltra Nocte', cat:'lifestyle', precio:2290, antes:null, etiqueta:null,
+      fotos:['photo-1574288763758-a17ce17c4088','photo-1581889470536-467bdbe30cd0','photo-1562183241-b937e95585b6'],
+      colores:[{n:'Negro total',hex:'#080808'},{n:'Vino',hex:'#5C1F2A'},{n:'Crema',hex:'#EDE6D8'}],
+      tallas:[['24',true],['25',true],['25.5',true],['26',true],['27',true],['27.5',true],['28',true],['29',false],['30',true]],
+      desc:'Todo negro, incluida la suela y los ojillos. Piel sintética con acabado mate que no brilla bajo luz artificial, forro de microfibra y suela de goma inyectada en una sola pieza. La usamos con traje y con pants; es la que menos se ve sucia.',
+      specs:[['Drop','8 mm'],['Peso','298 g'],['Uso','Diario']],
+      resumen:'Monocromática, va con todo.'
+    },
+    {
+      id:'arcohigh', nombre:'Veltra Arco High', cat:'basketball', precio:2790, antes:3190, etiqueta:null,
+      fotos:['photo-1639843093167-ed40b985c01e','photo-1461896836934-ffe607ba8211','photo-1600185365483-26d7a4cc7519'],
+      colores:[{n:'Hueso',hex:'#E8E3D9'},{n:'Naranja quemado',hex:'#C2521F'}],
+      tallas:[['25',true],['26',true],['26.5',true],['27',false],['27.5',true],['28',true],['29',true],['30',true]],
+      desc:'Bota alta clásica con caña acolchada y tres puntos de sujeción en el tobillo. Piel sintética gruesa con costuras dobles y suela de goma con dibujo circular. Es más pesada que la RIM porque prioriza el soporte: la recomendamos si ya te doblaste un tobillo.',
+      specs:[['Drop','7 mm'],['Peso','352 g'],['Uso','Cancha / calle']],
+      resumen:'Bota alta con soporte real de tobillo.'
+    },
+    {
+      id:'tempoelite', nombre:'Veltra Tempo Elite', cat:'running', precio:3690, antes:null, etiqueta:'NUEVO',
+      fotos:['photo-1606107557195-0e29a4b5b4aa','photo-1552346154-21d32810aba3','photo-1542291026-7eec264c27ff'],
+      colores:[{n:'Volt',hex:'#D9FF3D'},{n:'Negro competencia',hex:'#0A0A0A'}],
+      tallas:[['25',true],['25.5',true],['26',true],['26.5',true],['27',true],['27.5',true],['28',false],['29',true]],
+      desc:'La de competencia. Placa completa de fibra de carbono entre dos capas de espuma VLT-3, upper de monofilamento casi transparente y talón recortado para bajar gramos. Dura menos que la KORE —calculamos 350 km de vida útil— pero para media maratón no hay otra en el catálogo.',
+      specs:[['Drop','6 mm'],['Peso','197 g'],['Uso','Competencia']],
+      resumen:'Placa de carbono, para día de carrera.'
+    },
+    {
+      id:'bloque1', nombre:'Veltra Bloque 1', cat:'training', precio:2090, antes:null, etiqueta:null,
+      fotos:['photo-1600269452121-4f2416e55c28','photo-1595950653106-6c9ebd614d3a','photo-1525966222134-fcfa99b8ae77'],
+      colores:[{n:'Gris cemento',hex:'#9A9A9A'},{n:'Negro',hex:'#101010'},{n:'Volt',hex:'#D9FF3D'}],
+      tallas:[['24',true],['25',true],['26',true],['26.5',true],['27',true],['28',true],['29',true],['30',false]],
+      desc:'Híbrida: aguanta una clase de funcional completa, con sus saltos, sus desplantes y los 800 m de calentamiento. Entresuela dual —más firme atrás, más blanda adelante— y malla reforzada con hilo de nylon en los seis puntos donde más se rompe.',
+      specs:[['Drop','5 mm'],['Peso','284 g'],['Uso','Funcional']],
+      resumen:'Clase de funcional completa, sin cambiarte.'
+    },
+    {
+      id:'calzasuede', nombre:'Veltra Calza Suede', cat:'lifestyle', precio:1750, antes:2150, etiqueta:'ÚLTIMAS PIEZAS',
+      fotos:['photo-1491553895911-0055eca6402d','photo-1560769629-975ec94e6a86','photo-1574288763758-a17ce17c4088'],
+      colores:[{n:'Café tabaco',hex:'#6B4A2F'},{n:'Gris piedra',hex:'#8A8A85'}],
+      tallas:[['24',false],['25',true],['26',true],['26.5',true],['27',true],['27.5',false],['28',true],['29',true]],
+      desc:'Ante sintético de pelo corto con perfil bajo y suela de goma color miel. Sin logos grandes ni costuras a la vista: la única marca es el troquel del talón. Viene con un cepillo de cerda suave porque el ante hay que cuidarlo.',
+      specs:[['Drop','10 mm'],['Peso','305 g'],['Uso','Diario']],
+      resumen:'Ante de perfil bajo, silueta limpia.'
+    },
+    {
+      id:'saltoxt', nombre:'Veltra Salto XT', cat:'basketball', precio:2990, antes:null, etiqueta:null,
+      fotos:['photo-1549298916-b41d501d3772','photo-1608231387042-66d1773070a5','photo-1639843093167-ed40b985c01e'],
+      colores:[{n:'Azul noche',hex:'#182A55'},{n:'Negro / Rojo',hex:'#1A1113'},{n:'Blanco',hex:'#F5F5F3'}],
+      tallas:[['25',true],['26',true],['26.5',false],['27',true],['27.5',true],['28',true],['29',true],['30',true]],
+      desc:'Corte bajo para quien juega de base y necesita el tobillo libre. Placa de torsión bajo el arco, suela de espiga fina y sistema de agujeta que jala desde el mediopié para que el pie no se recorra en el primer paso. Probada tres meses en las canchas de la Deportiva Roma.',
+      specs:[['Drop','6 mm'],['Peso','318 g'],['Uso','Duela / base']],
+      resumen:'Corte bajo, para jugar de base.'
+    }
+  ];
+
+  var ENVIO_GRATIS = 2500;
+  var ENVIO_COSTO = 159;
+  var WA = '525540161213';
+
+  /* ==========================================================
+     UTILIDADES
+     ========================================================== */
+  function $(sel, ctx){ return (ctx || document).querySelector(sel); }
+  function $$(sel, ctx){ return Array.prototype.slice.call((ctx || document).querySelectorAll(sel)); }
+  function mxn(n){ return '$' + Number(n).toLocaleString('es-MX'); }
+  function esc(s){
+    return String(s).replace(/[&<>"']/g, function(c){
+      return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];
+    });
+  }
+  function prod(id){
+    for (var i=0;i<PRODUCTOS.length;i++){ if (PRODUCTOS[i].id === id) return PRODUCTOS[i]; }
+    return null;
+  }
+
+  /* ==========================================================
+     TOAST
+     ========================================================== */
+  var toastEl = $('#toast');
+  var toastT = null;
+  function toast(msg){
+    if (!toastEl) return;
+    toastEl.textContent = msg;
+    toastEl.classList.add('vis');
+    if (toastT) clearTimeout(toastT);
+    toastT = setTimeout(function(){ toastEl.classList.remove('vis'); }, 2200);
+  }
+
+  /* ==========================================================
+     BLOQUEO DE SCROLL (modal + drawer)
+     ========================================================== */
+  var capas = 0;
+  function lock(){
+    capas++;
+    document.body.classList.add('no-scroll');
+  }
+  function unlock(){
+    capas = Math.max(0, capas - 1);
+    if (capas === 0) document.body.classList.remove('no-scroll');
+  }
+
+  /* ==========================================================
+     CARRITO — estado + persistencia
+     ========================================================== */
+  var CLAVE = 'veltra_carrito_v1';
+  var carrito = [];
+
+  function cargar(){
+    try {
+      var raw = window.localStorage.getItem(CLAVE);
+      if (!raw) return;
+      var datos = JSON.parse(raw);
+      if (Object.prototype.toString.call(datos) === '[object Array]'){
+        carrito = datos.filter(function(l){ return l && l.id && prod(l.id); });
+      }
+    } catch (e){ carrito = []; }
+  }
+  function guardar(){
+    try { window.localStorage.setItem(CLAVE, JSON.stringify(carrito)); } catch (e){ /* memoria */ }
+  }
+
+  function subtotal(){
+    return carrito.reduce(function(s,l){ return s + l.precio * l.qty; }, 0);
+  }
+  function piezas(){
+    return carrito.reduce(function(s,l){ return s + l.qty; }, 0);
+  }
+
+  function agregar(p, color, talla){
+    var key = p.id + '|' + color + '|' + talla;
+    var linea = null;
+    for (var i=0;i<carrito.length;i++){ if (carrito[i].key === key) linea = carrito[i]; }
+    if (linea){ linea.qty = Math.min(10, linea.qty + 1); }
+    else {
+      carrito.push({
+        key:key, id:p.id, nombre:p.nombre, precio:p.precio,
+        color:color, talla:talla, qty:1, foto:p.fotos[0]
+      });
+    }
+    guardar();
+    pintarCarrito();
+    pulsoBadge();
+  }
+
+  function cambiarQty(key, delta){
+    for (var i=0;i<carrito.length;i++){
+      if (carrito[i].key === key){
+        carrito[i].qty += delta;
+        if (carrito[i].qty <= 0){ carrito.splice(i,1); }
+        else if (carrito[i].qty > 10){ carrito[i].qty = 10; toast('Máximo 10 pares por modelo'); }
+        break;
+      }
+    }
+    guardar();
+    pintarCarrito();
+  }
+
+  function quitar(key){
+    carrito = carrito.filter(function(l){ return l.key !== key; });
+    guardar();
+    pintarCarrito();
+  }
+
+  function pulsoBadge(){
+    $$('[data-badge]').forEach(function(b){
+      b.classList.add('pulso');
+      setTimeout(function(){ b.classList.remove('pulso'); }, 300);
+    });
+  }
+
+  /* ==========================================================
+     CARRITO — render
+     ========================================================== */
+  var drawerBody = $('#drawerBody');
+  var drawerPie = $('#drawerPie');
+  var envioTxt = $('#envioTxt');
+  var envioFill = $('#envioFill');
+  var envioBarra = $('#envioBarra');
+  var resumenPedido = $('#resumenPedido');
+
+  function pintarCarrito(){
+    var n = piezas();
+    $$('[data-badge]').forEach(function(b){ b.textContent = String(n); });
+
+    if (!drawerBody) return;
+
+    if (!carrito.length){
+      drawerBody.innerHTML =
+        '<div class="vacio">' +
+          '<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" aria-hidden="true">' +
+            '<path d="M4 7h16l-1.4 12.2a1.6 1.6 0 0 1-1.6 1.4H7a1.6 1.6 0 0 1-1.6-1.4L4 7Z"/>' +
+            '<path d="M9 10V6.5a3 3 0 0 1 6 0V10"/>' +
+          '</svg>' +
+          '<h3>Todavía nada aquí</h3>' +
+          '<p>Elige tu talla y tu color en el catálogo. Guardamos tu selección aunque cierres la página.</p>' +
+          '<button type="button" class="btn btn-negro" data-cerrar-y-catalogo>Ver el catálogo</button>' +
+        '</div>';
+      if (drawerPie) drawerPie.hidden = true;
+      if (envioBarra) envioBarra.hidden = true;
+      if (resumenPedido) resumenPedido.innerHTML = '';
+      return;
+    }
+
+    if (envioBarra) envioBarra.hidden = false;
+    if (drawerPie) drawerPie.hidden = false;
+
+    var html = '';
+    carrito.forEach(function(l){
+      html +=
+        '<div class="linea-item">' +
+          '<div class="linea-foto"><img src="' + img(l.foto, 500, 70) + '" alt="' + esc(l.nombre) + '" loading="lazy" decoding="async" width="500" height="500"></div>' +
+          '<div class="linea-info">' +
+            '<p class="linea-nom">' + esc(l.nombre) + '</p>' +
+            '<p class="linea-var">' + esc(l.color) + ' · Talla ' + esc(l.talla) + ' MX</p>' +
+            '<button type="button" class="quitar" data-quitar="' + esc(l.key) + '">Quitar</button>' +
+            '<div class="linea-pie">' +
+              '<span class="qty">' +
+                '<button type="button" data-menos="' + esc(l.key) + '" aria-label="Quitar una unidad de ' + esc(l.nombre) + '">−</button>' +
+                '<span>' + l.qty + '</span>' +
+                '<button type="button" data-mas="' + esc(l.key) + '" aria-label="Agregar una unidad de ' + esc(l.nombre) + '">+</button>' +
+              '</span>' +
+              '<span class="linea-precio">' + mxn(l.precio * l.qty) + '</span>' +
+            '</div>' +
+          '</div>' +
+        '</div>';
+    });
+    drawerBody.innerHTML = html;
+
+    var st = subtotal();
+    var gratis = st >= ENVIO_GRATIS;
+    var falta = Math.max(0, ENVIO_GRATIS - st);
+
+    if (envioTxt){
+      envioTxt.innerHTML = gratis
+        ? 'Listo: tu <b>envío es gratis</b>. Sale de Roma Norte en 24–48 h.'
+        : 'Agrega <b>' + mxn(falta) + '</b> más y el envío corre por nuestra cuenta.';
+    }
+    if (envioFill){
+      var pct = Math.min(100, Math.round((st / ENVIO_GRATIS) * 100));
+      envioFill.style.width = pct + '%';
+      envioFill.classList.toggle('full', gratis);
+    }
+
+    var envio = gratis ? 0 : ENVIO_COSTO;
+    var sub = $('#subtotalTxt'); if (sub) sub.textContent = mxn(st);
+    var ec = $('#envioCostoTxt'); if (ec) ec.textContent = gratis ? 'Gratis' : mxn(ENVIO_COSTO);
+    var tt = $('#totalTxt'); if (tt) tt.textContent = mxn(st + envio);
+
+    if (resumenPedido) resumenPedido.innerHTML = '';
+  }
+
+  /* ==========================================================
+     DRAWER
+     ========================================================== */
+  var drawer = $('#drawer');
+  var drawerOverlay = $('#drawerOverlay');
+  var ultimoFocoDrawer = null;
+
+  function abrirDrawer(){
+    if (!drawer) return;
+    ultimoFocoDrawer = document.activeElement;
+    drawer.classList.add('abierto');
+    drawer.setAttribute('aria-hidden','false');
+    if (drawerOverlay) drawerOverlay.classList.add('abierto');
+    lock();
+    var cerrar = $('#cerrarDrawer');
+    if (cerrar) setTimeout(function(){ cerrar.focus(); }, 60);
+  }
+  function cerrarDrawer(){
+    if (!drawer || !drawer.classList.contains('abierto')) return;
+    drawer.classList.remove('abierto');
+    drawer.setAttribute('aria-hidden','true');
+    if (drawerOverlay) drawerOverlay.classList.remove('abierto');
+    unlock();
+    if (ultimoFocoDrawer && ultimoFocoDrawer.focus) ultimoFocoDrawer.focus();
+    ultimoFocoDrawer = null;
+  }
+
+  var btnCarrito = $('#abrirCarrito');
+  if (btnCarrito) btnCarrito.addEventListener('click', abrirDrawer);
+  $$('[data-abrir-carrito]').forEach(function(b){ b.addEventListener('click', abrirDrawer); });
+  var btnCerrarDrawer = $('#cerrarDrawer');
+  if (btnCerrarDrawer) btnCerrarDrawer.addEventListener('click', cerrarDrawer);
+  if (drawerOverlay) drawerOverlay.addEventListener('click', cerrarDrawer);
+
+  if (drawerBody){
+    drawerBody.addEventListener('click', function(e){
+      var t = e.target.closest ? e.target.closest('button') : null;
+      if (!t) return;
+      if (t.hasAttribute('data-mas')) cambiarQty(t.getAttribute('data-mas'), 1);
+      else if (t.hasAttribute('data-menos')) cambiarQty(t.getAttribute('data-menos'), -1);
+      else if (t.hasAttribute('data-quitar')) quitar(t.getAttribute('data-quitar'));
+      else if (t.hasAttribute('data-cerrar-y-catalogo')){
+        cerrarDrawer();
+        irACatalogo('todos');
+      }
+    });
+  }
+
+  var btnVaciar = $('#vaciar');
+  if (btnVaciar){
+    btnVaciar.addEventListener('click', function(){
+      if (!carrito.length) return;
+      carrito = [];
+      guardar();
+      pintarCarrito();
+      toast('Carrito vacío');
+    });
+  }
+
+  /* ==========================================================
+     FINALIZAR PEDIDO → resumen + WhatsApp
+     ========================================================== */
+  var btnFinalizar = $('#finalizar');
+  if (btnFinalizar){
+    btnFinalizar.addEventListener('click', function(){
+      if (!carrito.length) return;
+
+      var st = subtotal();
+      var gratis = st >= ENVIO_GRATIS;
+      var envio = gratis ? 0 : ENVIO_COSTO;
+      var total = st + envio;
+
+      /* Resumen visible dentro del drawer */
+      if (resumenPedido){
+        var lis = carrito.map(function(l){
+          return '<li><span>' + esc(l.qty) + '× ' + esc(l.nombre) + ' · ' + esc(l.color) + ' · ' + esc(l.talla) + '</span><span>' + mxn(l.precio * l.qty) + '</span></li>';
+        }).join('');
+        resumenPedido.innerHTML =
+          '<div class="resumen">' +
+            '<h3>Resumen de tu pedido</h3>' +
+            '<ul>' + lis + '</ul>' +
+            '<div class="rt"><span>Envío</span><span>' + (gratis ? 'Gratis' : mxn(ENVIO_COSTO)) + '</span></div>' +
+            '<div class="rt"><span>Total</span><span>' + mxn(total) + '</span></div>' +
+            '<p>Abrimos WhatsApp con este detalle. Confirmamos existencia y te mandamos el link de pago.</p>' +
+          '</div>';
+      }
+
+      /* Mensaje de WhatsApp */
+      var lineas = [];
+      lineas.push('Hola VELTRA, quiero cerrar este pedido:');
+      lineas.push('');
+      carrito.forEach(function(l){
+        lineas.push('• ' + l.qty + 'x ' + l.nombre + ' — Color: ' + l.color + ' — Talla: ' + l.talla + ' MX — ' + mxn(l.precio * l.qty));
+      });
+      lineas.push('');
+      lineas.push('Subtotal: ' + mxn(st));
+      lineas.push('Envío: ' + (gratis ? 'Gratis' : mxn(ENVIO_COSTO)));
+      lineas.push('Total: ' + mxn(total));
+      lineas.push('');
+      lineas.push('Piezas: ' + piezas() + '. ¿Me confirman existencia y forma de pago?');
+
+      var url = 'https://wa.me/' + WA + '?text=' + encodeURIComponent(lineas.join('\n'));
+      window.open(url, '_blank', 'noopener');
+      toast('Pedido listo — abrimos WhatsApp');
+    });
+  }
+
+  /* ==========================================================
+     CATÁLOGO — filtros, orden y render
+     ========================================================== */
+  var grid = $('#gridProductos');
+  var conteo = $('[data-conteo]');
+  var selOrden = $('#orden');
+  var filtro = 'todos';
+  var orden = 'relevancia';
+
+  function listaVisible(){
+    var lista = PRODUCTOS.filter(function(p){ return filtro === 'todos' || p.cat === filtro; });
+    if (orden === 'menor') lista.sort(function(a,b){ return a.precio - b.precio; });
+    else if (orden === 'mayor') lista.sort(function(a,b){ return b.precio - a.precio; });
+    return lista;
+  }
+
+  function tarjeta(p){
+    var etq = '';
+    if (p.etiqueta === 'NUEVO') etq = '<span class="etiqueta etq-nuevo">Nuevo</span>';
+    else if (p.etiqueta === 'ÚLTIMAS PIEZAS') etq = '<span class="etiqueta etq-ultimas">Últimas piezas</span>';
+
+    var sw = p.colores.map(function(c){
+      return '<span class="sw" style="background:' + c.hex + '" title="' + esc(c.n) + '"></span>';
+    }).join('');
+
+    var precio = '<span class="ahora">' + mxn(p.precio) + '</span>';
+    if (p.antes) precio += '<span class="antes">' + mxn(p.antes) + '</span>';
+
+    return '' +
+      '<button type="button" class="pcard" data-abrir="' + p.id + '" aria-label="Ver ' + esc(p.nombre) + ', ' + mxn(p.precio) + '">' +
+        '<span class="pcard-media">' + etq +
+          '<img class="foto-a" src="' + img(p.fotos[0], 900, 75) + '" alt="' + esc(p.nombre) + ', vista principal" loading="lazy" decoding="async" width="900" height="1125">' +
+          '<img class="foto-b" src="' + img(p.fotos[1], 900, 75) + '" alt="" aria-hidden="true" loading="lazy" decoding="async" width="900" height="1125">' +
+        '</span>' +
+        '<span class="pcard-body">' +
+          '<span class="pcard-cat">' + esc(CATS[p.cat]) + '</span>' +
+          '<span class="pcard-nom">' + esc(p.nombre) + '</span>' +
+          '<span class="pcard-precio">' + precio + '</span>' +
+          '<span class="swatches">' + sw + '</span>' +
+          '<span class="pcard-ver"><span class="lin"></span>Ver ficha</span>' +
+        '</span>' +
+      '</button>';
+  }
+
+  function pintarGrid(){
+    if (!grid) return;
+    var lista = listaVisible();
+    if (conteo) conteo.textContent = String(lista.length);
+
+    if (!lista.length){
+      grid.innerHTML = '<div class="sin-result"><p>No hay modelos con ese filtro.</p><button type="button" class="btn btn-negro" data-filtro-reset>Ver todos</button></div>';
+      return;
+    }
+    grid.innerHTML = lista.map(tarjeta).join('');
+  }
+
+  $$('.f-btn').forEach(function(b){
+    b.addEventListener('click', function(){
+      filtro = b.getAttribute('data-filtro');
+      $$('.f-btn').forEach(function(o){
+        o.setAttribute('aria-pressed', o.getAttribute('data-filtro') === filtro ? 'true' : 'false');
+      });
+      pintarGrid();
+    });
+  });
+
+  if (selOrden){
+    selOrden.addEventListener('change', function(){
+      orden = selOrden.value;
+      pintarGrid();
+    });
+  }
+
+  if (grid){
+    grid.addEventListener('click', function(e){
+      var reset = e.target.closest ? e.target.closest('[data-filtro-reset]') : null;
+      if (reset){ aplicarFiltro('todos'); return; }
+      var card = e.target.closest ? e.target.closest('[data-abrir]') : null;
+      if (card) abrirModal(card.getAttribute('data-abrir'), card);
+    });
+  }
+
+  function aplicarFiltro(cat){
+    filtro = cat;
+    $$('.f-btn').forEach(function(o){
+      o.setAttribute('aria-pressed', o.getAttribute('data-filtro') === cat ? 'true' : 'false');
+    });
+    pintarGrid();
+  }
+
+  function irACatalogo(cat){
+    aplicarFiltro(cat);
+    var destino = $('#catalogo');
+    if (!destino) return;
+    var head = document.querySelector('.header');
+    var offset = head ? head.offsetHeight : 64;
+    var y = destino.getBoundingClientRect().top + window.pageYOffset - offset - 4;
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    window.scrollTo({ top: y, behavior: reduce ? 'auto' : 'smooth' });
+  }
+
+  $$('[data-ir]').forEach(function(b){
+    b.addEventListener('click', function(){
+      cerrarMenu();
+      irACatalogo(b.getAttribute('data-ir'));
+    });
+  });
+
+  /* ==========================================================
+     MODAL DE PRODUCTO
+     ========================================================== */
+  var overlay = $('#overlayModal');
+  var modal = $('#modal');
+  var modalGrid = $('#modalGrid');
+  var ultimoFocoModal = null;
+  var sel = { id:null, color:null, talla:null, foto:0 };
+
+  function fichaHTML(p){
+    var thumbs = p.fotos.map(function(f, i){
+      return '<button type="button" class="m-thumb" data-thumb="' + i + '" aria-pressed="' + (i === 0 ? 'true' : 'false') + '" aria-label="Ver foto ' + (i+1) + ' de ' + esc(p.nombre) + '">' +
+        '<img src="' + img(f, 500, 70) + '" alt="" aria-hidden="true" loading="lazy" decoding="async" width="500" height="500"></button>';
+    }).join('');
+
+    var colores = p.colores.map(function(c, i){
+      return '<button type="button" class="color-b" data-color="' + esc(c.n) + '" aria-pressed="' + (i === 0 ? 'true' : 'false') + '" aria-label="Color ' + esc(c.n) + '"><i style="background:' + c.hex + '"></i></button>';
+    }).join('');
+
+    var tallas = p.tallas.map(function(t){
+      var dis = t[1] ? '' : ' disabled aria-label="Talla ' + esc(t[0]) + ' agotada"';
+      return '<button type="button" class="talla-b" data-talla="' + esc(t[0]) + '" aria-pressed="false"' + dis + '>' + esc(t[0]) + '</button>';
+    }).join('');
+
+    var specs = p.specs.map(function(s){
+      return '<div><dt>' + esc(s[0]) + '</dt><dd>' + esc(s[1]) + '</dd></div>';
+    }).join('');
+
+    var precio = '<span class="ahora">' + mxn(p.precio) + '</span>';
+    if (p.antes){
+      var off = Math.round((1 - p.precio / p.antes) * 100);
+      precio += '<span class="antes">' + mxn(p.antes) + '</span><span class="off">−' + off + '%</span>';
+    }
+
+    return '' +
+      '<div class="m-galeria">' +
+        '<div class="m-principal"><img id="mFoto" src="' + img(p.fotos[0], 1200, 78) + '" alt="' + esc(p.nombre) + ', foto de producto" decoding="async" width="1200" height="1200"></div>' +
+        '<div class="m-thumbs">' + thumbs + '</div>' +
+      '</div>' +
+      '<div class="m-info">' +
+        '<div>' +
+          '<p class="m-cat">' + esc(CATS[p.cat]) + (p.etiqueta ? ' · ' + esc(p.etiqueta) : '') + '</p>' +
+          '<h2 class="tt m-nom" id="modalNombre">' + esc(p.nombre) + '</h2>' +
+        '</div>' +
+        '<div class="m-precio">' + precio + '</div>' +
+        '<p class="m-desc">' + esc(p.desc) + '</p>' +
+        '<dl class="ficha-mini">' + specs + '</dl>' +
+        '<div class="m-bloque">' +
+          '<p class="m-label"><span>Color</span><span class="elegido" id="colorElegido">' + esc(p.colores[0].n) + '</span></p>' +
+          '<div class="colores">' + colores + '</div>' +
+        '</div>' +
+        '<div class="m-bloque">' +
+          '<p class="m-label"><span>Talla MX</span><span class="elegido" id="tallaElegida">Elige tu talla</span></p>' +
+          '<div class="tallas">' + tallas + '</div>' +
+          '<p class="aviso" id="avisoTalla" role="alert"></p>' +
+        '</div>' +
+        '<div class="acordeon">' +
+          '<button type="button" class="acordeon-btn" id="btnGuia" aria-expanded="false" aria-controls="panelGuia">Guía de tallas <span class="mas" aria-hidden="true"></span></button>' +
+          '<div class="acordeon-panel" id="panelGuia">' +
+            '<table class="tabla-tallas">' +
+              '<thead><tr><th scope="col">MX</th><th scope="col">Largo del pie</th><th scope="col">US</th><th scope="col">EU</th></tr></thead>' +
+              '<tbody>' +
+                '<tr><td>24</td><td>24.0 cm</td><td>6</td><td>38</td></tr>' +
+                '<tr><td>25</td><td>25.0 cm</td><td>7</td><td>39.5</td></tr>' +
+                '<tr><td>26</td><td>26.0 cm</td><td>8</td><td>41</td></tr>' +
+                '<tr><td>27</td><td>27.0 cm</td><td>9</td><td>42.5</td></tr>' +
+                '<tr><td>28</td><td>28.0 cm</td><td>10</td><td>44</td></tr>' +
+                '<tr><td>29</td><td>29.0 cm</td><td>11</td><td>45</td></tr>' +
+                '<tr><td>30</td><td>30.0 cm</td><td>12</td><td>46</td></tr>' +
+              '</tbody>' +
+            '</table>' +
+            '<p class="nota-tallas">Mide tu pie por la tarde, de pie y con calcetín. Nuestra horma es recta: si tu pie es ancho, pide media talla más. Si dudas, en Roma Norte los pruebas antes de comprar.</p>' +
+          '</div>' +
+        '</div>' +
+        '<div class="m-acciones">' +
+          '<button type="button" class="btn btn-negro btn-block" id="btnAgregar">Agregar al carrito</button>' +
+        '</div>' +
+      '</div>';
+  }
+
+  function abrirModal(id, origen){
+    var p = prod(id);
+    if (!p || !overlay || !modalGrid) return;
+
+    ultimoFocoModal = origen || document.activeElement;
+    sel = { id:p.id, color:p.colores[0].n, talla:null, foto:0 };
+    modalGrid.innerHTML = fichaHTML(p);
+    if (modal) modal.scrollTop = 0;
+
+    overlay.classList.add('abierto');
+    overlay.setAttribute('aria-hidden','false');
+    lock();
+
+    var cerrar = $('#cerrarModal');
+    if (cerrar) setTimeout(function(){ cerrar.focus(); }, 60);
+  }
+
+  function cerrarModal(){
+    if (!overlay || !overlay.classList.contains('abierto')) return;
+    overlay.classList.remove('abierto');
+    overlay.setAttribute('aria-hidden','true');
+    unlock();
+    if (ultimoFocoModal && ultimoFocoModal.focus) ultimoFocoModal.focus();
+    ultimoFocoModal = null;
+  }
+
+  var btnCerrarModal = $('#cerrarModal');
+  if (btnCerrarModal) btnCerrarModal.addEventListener('click', cerrarModal);
+  if (overlay){
+    overlay.addEventListener('click', function(e){ if (e.target === overlay) cerrarModal(); });
+  }
+
+  if (modalGrid){
+    modalGrid.addEventListener('click', function(e){
+      var t = e.target.closest ? e.target.closest('button') : null;
+      if (!t) return;
+      var p = prod(sel.id);
+      if (!p) return;
+
+      /* Miniaturas */
+      if (t.hasAttribute('data-thumb')){
+        var i = parseInt(t.getAttribute('data-thumb'), 10) || 0;
+        sel.foto = i;
+        var foto = $('#mFoto');
+        if (foto) foto.src = img(p.fotos[i], 1200, 78);
+        $$('.m-thumb', modalGrid).forEach(function(o){
+          o.setAttribute('aria-pressed', o === t ? 'true' : 'false');
+        });
+        return;
+      }
+
+      /* Color */
+      if (t.hasAttribute('data-color')){
+        sel.color = t.getAttribute('data-color');
+        $$('.color-b', modalGrid).forEach(function(o){
+          o.setAttribute('aria-pressed', o === t ? 'true' : 'false');
+        });
+        var ce = $('#colorElegido');
+        if (ce) ce.textContent = sel.color;
+        return;
+      }
+
+      /* Talla */
+      if (t.hasAttribute('data-talla')){
+        if (t.disabled) return;
+        sel.talla = t.getAttribute('data-talla');
+        $$('.talla-b', modalGrid).forEach(function(o){
+          o.setAttribute('aria-pressed', o === t ? 'true' : 'false');
+        });
+        var te = $('#tallaElegida');
+        if (te) te.textContent = 'Talla ' + sel.talla + ' MX';
+        var av = $('#avisoTalla');
+        if (av) av.textContent = '';
+        return;
+      }
+
+      /* Acordeón guía de tallas */
+      if (t.id === 'btnGuia'){
+        var abierto = t.getAttribute('aria-expanded') === 'true';
+        t.setAttribute('aria-expanded', abierto ? 'false' : 'true');
+        var panel = $('#panelGuia');
+        if (panel) panel.classList.toggle('abierto', !abierto);
+        return;
+      }
+
+      /* Agregar al carrito */
+      if (t.id === 'btnAgregar'){
+        if (!sel.talla){
+          var aviso = $('#avisoTalla');
+          if (aviso) aviso.textContent = 'Elige una talla para continuar.';
+          var primera = $('.talla-b:not([disabled])', modalGrid);
+          if (primera) primera.focus();
+          return;
+        }
+        agregar(p, sel.color, sel.talla);
+        t.textContent = 'Agregado ✓';
+        t.classList.add('agregado');
+        t.disabled = true;
+        setTimeout(function(){
+          if (!t) return;
+          t.textContent = 'Agregar al carrito';
+          t.classList.remove('agregado');
+          t.disabled = false;
+        }, 1200);
+        return;
+      }
+    });
+  }
+
+  /* CTA hero → abre ficha del modelo destacado */
+  var ctaComprar = $('#ctaComprar');
+  if (ctaComprar){
+    ctaComprar.addEventListener('click', function(){ abrirModal('kore3', ctaComprar); });
+  }
+
+  /* ==========================================================
+     MENÚ MÓVIL
+     ========================================================== */
+  var burger = $('#burger');
+  var menuMovil = $('#menuMovil');
+
+  function cerrarMenu(){
+    if (!menuMovil || !burger) return;
+    menuMovil.classList.remove('abierto');
+    burger.setAttribute('aria-expanded','false');
+    burger.setAttribute('aria-label','Abrir menú');
+    if (document.body.classList.contains('menu-lock')){
+      document.body.classList.remove('menu-lock');
+      unlock();
+    }
+  }
+  function abrirMenu(){
+    if (!menuMovil || !burger) return;
+    menuMovil.classList.add('abierto');
+    burger.setAttribute('aria-expanded','true');
+    burger.setAttribute('aria-label','Cerrar menú');
+    document.body.classList.add('menu-lock');
+    lock();
+  }
+  if (burger){
+    burger.addEventListener('click', function(){
+      if (burger.getAttribute('aria-expanded') === 'true') cerrarMenu();
+      else abrirMenu();
+    });
+  }
+  $$('[data-cerrar-menu]').forEach(function(a){ a.addEventListener('click', cerrarMenu); });
+
+  /* ==========================================================
+     TECLADO: Esc + trampa de foco
+     ========================================================== */
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape' || e.key === 'Esc'){
+      if (overlay && overlay.classList.contains('abierto')){ cerrarModal(); return; }
+      if (drawer && drawer.classList.contains('abierto')){ cerrarDrawer(); return; }
+      if (menuMovil && menuMovil.classList.contains('abierto')){ cerrarMenu(); }
+      return;
+    }
+    if (e.key !== 'Tab') return;
+
+    var caja = null;
+    if (overlay && overlay.classList.contains('abierto')) caja = modal;
+    else if (drawer && drawer.classList.contains('abierto')) caja = drawer;
+    if (!caja) return;
+
+    var foco = $$('button:not([disabled]), a[href], select, input, [tabindex]:not([tabindex="-1"])', caja)
+      .filter(function(el){ return el.offsetParent !== null; });
+    if (!foco.length) return;
+
+    var primero = foco[0];
+    var ultimo = foco[foco.length - 1];
+    if (e.shiftKey && document.activeElement === primero){
+      e.preventDefault(); ultimo.focus();
+    } else if (!e.shiftKey && document.activeElement === ultimo){
+      e.preventDefault(); primero.focus();
+    }
+  });
+
+  /* ==========================================================
+     REVEAL
+     ========================================================== */
+  var reveals = $$('.reveal');
+  if (reveals.length){
+    if ('IntersectionObserver' in window){
+      var io = new IntersectionObserver(function(entries){
+        entries.forEach(function(en){
+          if (en.isIntersecting){
+            en.target.classList.add('vis');
+            io.unobserve(en.target);
+          }
+        });
+      }, { threshold:0.12, rootMargin:'0px 0px -40px 0px' });
+      reveals.forEach(function(el){ io.observe(el); });
+    } else {
+      reveals.forEach(function(el){ el.classList.add('vis'); });
+    }
+  }
+
+  /* ==========================================================
+     ARRANQUE
+     ========================================================== */
+  cargar();
+  pintarGrid();
+  pintarCarrito();
+
+})();
+</script>
+</body>
+</html>
