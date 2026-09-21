@@ -186,16 +186,14 @@ test("Nueva oferta: cinco categorías, precios y avisos responsables", async () 
   }
 });
 
-test("Portada muestra tres sistemas reales construidos", async () => {
+test("Portada muestra ocho proyectos públicos y ningún panel privado", async () => {
   const html = await fs.readFile(new URL("../index.html", import.meta.url), "utf8");
   const section = html.match(/<section[^>]*id="trabajo"[\s\S]*?<\/section>/)[0];
-  assert.deepEqual(
-    [...section.matchAll(/data-project="([^"]+)"/g)].map((x) => x[1]),
-    ["ziv-commerce", "ziv-crm", "aviv-credit"],
-  );
-  for (const url of ["https://ziv.mx/commerce", "https://crm.ziv.mx/", "https://aviv.mx/aviv-crm"])
+  for (const url of ["https://aviv.mx/", "https://reprofem.com.mx/", "https://ziv.mx/", "https://theimagemethod.com/", "https://aritzasalazar.com/", "https://maggiesalmeron.com/", "https://caesi.mx/", "https://mundosimz.com/"])
     assert.ok(section.includes(`href="${url}"`));
-  for (const name of ["ZIV COMMERCE HUB", "CRM ZIV", "CEREBRO AVIV"])
+  for (const name of ["AVIV", "REPROFEM", "ZIV", "THE IMAGE METHOD", "ARITZA SALAZAR", "MAGGIE SALMERÓN", "CAESI", "MUNDO SIMZ"])
     assert.ok(section.includes(name));
-  assert.match(section, /Sistemas que hemos/);
+  assert.equal((section.match(/class="public-project"/g) || []).length, 8);
+  assert.doesNotMatch(section, /crm\.ziv\.mx|aviv-crm|Commerce Hub|Cerebro Aviv/i);
+  assert.match(section, /Sitios reales que puedes/);
 });
