@@ -1,0 +1,371 @@
+.pricing-v2 {
+  background: #f5f4ef;
+  padding: 110px 0;
+}
+
+.pricing-v2-heading {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 40px;
+  align-items: end;
+  margin-bottom: 48px;
+}
+
+.pricing-v2-heading .eyebrow {
+  grid-column: 1 / -1;
+}
+
+.pricing-v2-heading h2 {
+  max-width: 800px;
+  font-size: clamp(48px, 6.5vw, 92px);
+  letter-spacing: -0.06em;
+  line-height: 0.94;
+}
+
+.pricing-v2-heading > p:last-child {
+  color: #62665b;
+  max-width: 480px;
+  margin: 0;
+  font-size: 17px;
+  line-height: 1.65;
+}
+
+.project-pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.project-pricing-card {
+  min-height: 720px;
+  border: 1px solid #cfd2c7;
+  border-radius: 10px;
+  padding: 34px;
+  display: flex;
+  flex-direction: column;
+  color: #171914;
+  background: #fff;
+}
+
+.project-pricing-card header {
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 28px;
+  margin-bottom: 26px;
+}
+
+.project-number,
+.project-includes {
+  display: block;
+  font: 700 11px/1.4 "Courier New", monospace;
+  letter-spacing: 0.08em;
+}
+
+.project-pricing-card h3 {
+  margin: 26px 0 22px;
+  font-size: clamp(35px, 3vw, 48px);
+  letter-spacing: -0.05em;
+  line-height: 0.95;
+}
+
+.project-price {
+  display: flex;
+  gap: 8px;
+  align-items: flex-end;
+  margin: 0 0 12px;
+}
+
+.project-price strong {
+  font-size: clamp(48px, 4.5vw, 68px);
+  letter-spacing: -0.07em;
+  line-height: 0.9;
+}
+
+.project-price span {
+  padding-bottom: 7px;
+  font: 700 11px/1 "Courier New", monospace;
+}
+
+.one-time-badge {
+  display: inline-flex;
+  width: fit-content;
+  padding: 8px 11px;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  font: 700 11px/1 "Courier New", monospace;
+  letter-spacing: 0.09em;
+}
+
+.project-summary {
+  min-height: 92px;
+  margin: 0 0 28px;
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+.project-includes {
+  margin-bottom: 16px;
+  opacity: 0.72;
+}
+
+.project-pricing-card ul {
+  display: grid;
+  gap: 12px;
+  margin: 0 0 26px;
+  padding: 0;
+  list-style: none;
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.project-pricing-card li {
+  position: relative;
+  padding-left: 18px;
+}
+
+.project-pricing-card li::before {
+  content: "↗";
+  position: absolute;
+  left: 0;
+  font-size: 11px;
+}
+
+.scope-note {
+  margin: 0 0 24px;
+  padding-top: 18px;
+  border-top: 1px solid currentColor;
+  opacity: 0.75;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.project-pricing-card .plan-cta {
+  width: 100%;
+  margin-top: auto;
+  border: 1px solid currentColor;
+  background: transparent;
+  color: inherit;
+}
+
+.project-pricing-card .plan-cta:hover {
+  background: #d6fb58;
+  color: #111;
+}
+
+.project-business {
+  color: #f5f4ef;
+  background: #20241b;
+  border-color: #20241b;
+}
+
+.project-ai {
+  color: #f7f8ee;
+  background: #111;
+  border-color: #111;
+}
+
+.project-ai .one-time-badge {
+  color: #111;
+  background: #d6fb58;
+  border-color: #d6fb58;
+}
+
+.payment-structure {
+  display: grid;
+  grid-template-columns: 190px 1fr;
+  gap: 24px;
+  align-items: center;
+  margin: 18px 0 100px;
+  padding: 28px 32px;
+  color: #f5f4ef;
+  background: #111;
+  border-radius: 8px;
+}
+
+.payment-structure span {
+  color: #d6fb58;
+  font: 700 11px/1.4 "Courier New", monospace;
+  letter-spacing: 0.08em;
+}
+
+.payment-structure p {
+  margin: 0;
+  font-size: 17px;
+}
+
+.individual-services {
+  padding-top: 10px;
+}
+
+.individual-services-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 30px;
+  margin-bottom: 34px;
+}
+
+.individual-services-heading h3 {
+  margin: 12px 0;
+  font-size: clamp(38px, 4.5vw, 64px);
+  letter-spacing: -0.055em;
+  line-height: 1;
+}
+
+.individual-services-heading > div > p:last-child {
+  color: #62665b;
+  font-size: 16px;
+}
+
+.individual-services-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  border-top: 1px solid #bfc3b7;
+  border-left: 1px solid #bfc3b7;
+}
+
+.individual-services-grid article {
+  min-height: 360px;
+  padding: 26px 22px;
+  border-right: 1px solid #bfc3b7;
+  border-bottom: 1px solid #bfc3b7;
+  display: flex;
+  flex-direction: column;
+}
+
+.individual-services-grid article > span {
+  color: #707668;
+  font: 11px/1 "Courier New", monospace;
+}
+
+.individual-services-grid h4 {
+  min-height: 62px;
+  margin: 22px 0 34px;
+  font-size: 25px;
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+}
+
+.individual-price {
+  margin: 0 0 10px;
+  font-size: 29px;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+}
+
+.individual-price small {
+  font: 700 10px/1.2 "Courier New", monospace;
+  letter-spacing: 0;
+}
+
+.individual-services-grid article > b {
+  color: #536632;
+  font: 700 10px/1.2 "Courier New", monospace;
+  letter-spacing: 0.08em;
+}
+
+.individual-services-grid article > p:last-child {
+  color: #62665b;
+  margin: auto 0 0;
+  padding-top: 28px;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.external-costs-note {
+  display: grid;
+  grid-template-columns: 0.8fr 1fr 1fr;
+  gap: 34px;
+  margin-top: 70px;
+  padding: 44px;
+  color: #f5f4ef;
+  background: #20241b;
+  border-radius: 10px;
+}
+
+.external-costs-note .eyebrow {
+  grid-column: 1 / -1;
+  color: #d6fb58;
+}
+
+.external-costs-note h3 {
+  margin: 0;
+  font-size: 29px;
+  letter-spacing: -0.035em;
+  line-height: 1.1;
+}
+
+.external-costs-note > p:not(.eyebrow) {
+  margin: 0;
+  color: #c7cbbb;
+  font-size: 14px;
+  line-height: 1.75;
+}
+
+@media (max-width: 1050px) {
+  .project-pricing-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .project-pricing-card {
+    min-height: auto;
+  }
+
+  .project-summary {
+    min-height: 0;
+  }
+
+  .individual-services-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 760px) {
+  .pricing-v2 {
+    padding: 66px 0;
+  }
+
+  .pricing-v2-heading {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .pricing-v2-heading h2 {
+    font-size: 48px;
+  }
+
+  .project-pricing-card {
+    padding: 27px 22px;
+  }
+
+  .project-price strong {
+    font-size: 55px;
+  }
+
+  .payment-structure {
+    grid-template-columns: 1fr;
+    margin-bottom: 70px;
+    padding: 25px 22px;
+  }
+
+  .individual-services-heading {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .individual-services-heading .button {
+    width: 100%;
+  }
+
+  .individual-services-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .individual-services-grid article {
+    min-height: 290px;
+  }
+
+  .external-costs-note {
+    grid-template-columns: 1fr;
+    padding: 30px 23px;
+  }
+}

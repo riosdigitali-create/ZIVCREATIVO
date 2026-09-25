@@ -15,19 +15,19 @@ const request = {
   business: " Magnolia & Co. ",
   activity: "Diseño de interiores",
   city: "Ciudad de México",
-  plan: "Ecommerce",
+  plan: "ZIV BUSINESS",
   acceptedPrice: true,
   contactConsent: true,
 };
 test("Servicios y destinatario correctos", () => {
   assert.equal(OFFER.price, 5900);
   assert.equal(OFFER.whatsapp, "525540161213");
-  assert.ok(OFFER.plans.includes("Catálogo"));
-  assert.ok(OFFER.plans.includes("Ecommerce"));
-  assert.ok(OFFER.plans.includes("CRM + Asistente IA"));
+  assert.ok(OFFER.plans.includes("Catálogo digital"));
+  assert.ok(OFFER.plans.includes("E-commerce"));
+  assert.ok(OFFER.plans.includes("CRM + IA"));
   assert.equal(validateDemoRequest(request), null);
   assert.match(buildDemoMessage(request), /Negocio: Magnolia & Co\./);
-  assert.match(buildDemoMessage(request), /Servicio de interés: Ecommerce/);
+  assert.match(buildDemoMessage(request), /Servicio de interés: ZIV BUSINESS/);
   assert.match(buildDemoMessage(request), /precios publicados en la sección de servicios/);
 });
 test("Rechaza datos incompletos y falta de aceptación del precio", () => {
@@ -154,33 +154,28 @@ test("Rediseño: navegación completa, imágenes locales y accesibilidad básica
   assert.match(css, /@media\(max-width:760px\)/);
 });
 
-test("Nueva oferta: cinco categorías, precios y avisos responsables", async () => {
+test("Oferta comercial: proyectos de pago único y costos externos transparentes", async () => {
   const html = await fs.readFile(new URL("../index.html", import.meta.url), "utf8");
-  for (const category of ["catalogo", "web", "ecommerce", "ia", "crm"])
-    assert.match(html, new RegExp(`data-plan-tab="${category}"`));
-  for (const price of ["$199", "$249", "$299", "$350", "$500", "$5,900", "$12,500", "$16,300"])
+  for (const price of ["$3,900", "$5,900", "$6,900", "$7,900", "$9,900", "$12,900", "$16,300", "$19,900"])
     assert.ok(html.includes(price));
-  assert.equal((html.match(/data-plan-tab=/g) || []).length, 5);
-  assert.equal((html.match(/data-plan-panel=/g) || []).length, 5);
-  assert.match(html, /¿Qué te gustaría construir\?/);
-  for (const choice of ["Catálogo digital", "Página web", "Página ecommerce", "Agente IA", "CRM"])
-    assert.ok(html.includes(choice));
-  assert.equal((html.match(/class="service-panel is-active"/g) || []).length, 0);
-  assert.match(html, /data-change-plan/);
-  assert.match(html, /no requiere API de Meta/i);
-  assert.match(html, /consumo de IA no incluidos/i);
-  assert.ok((html.match(/<summary>Ver proyectos y demos/g) || []).length >= 1);
-  assert.equal((html.match(/class="service-examples-link"/g) || []).length, 3);
-  assert.equal((html.match(/Ver las 10 demos/g) || []).length, 4);
-  assert.match(html, /Ver ejemplos de negocios en línea/);
-  assert.match(html, /https:\/\/ismaelrios\.ziv\.mx\//);
-  assert.doesNotMatch(html, /https:\/\/ziv\.mx\/(?:\?view=templates|shop\/distrito-demo)/);
-  for (const demo of ["burgers-pizza", "tenis", "ropa", "joyeria", "floreria", "barberia", "lashes", "unas", "spa", "inmobiliaria"])
-    assert.match(html, new RegExp(`/demos/${demo}/`));
-  assert.match(html, /Hasta 15,000 contactos/);
-  assert.match(html, /<b>100<\/b><span>contactos<\/span><strong>\$280<\/strong>/);
-  assert.match(html, /<b>300<\/b><span>contactos<\/span><strong>\$350<\/strong>/);
-  assert.match(html, /<b>Hasta 1,500<\/b><span>contactos<\/span><strong>\$500<\/strong>/);
+  for (const plan of ["ZIV WEB", "ZIV BUSINESS", "ZIV AI"])
+    assert.ok(html.includes(plan));
+  assert.equal((html.match(/class="project-pricing-card /g) || []).length, 3);
+  assert.ok((html.match(/PAGO ÚNICO/g) || []).length >= 8);
+  for (const solution of ["Catálogo digital", "E-commerce", "CRM", "Agente IA", "CRM + IA"])
+    assert.ok(html.includes(solution));
+  assert.match(html, /50% para comenzar/);
+  assert.match(html, /50% al aprobar/);
+  assert.match(html, /servicios externos son independientes/i);
+  assert.match(html, /Stripe, Mercado Pago/);
+  assert.match(html, /¿Tengo que pagar mensualidad\?/);
+  assert.match(html, /¿Después de pagar el sistema es mío\?/);
+  assert.match(html, /¿Qué pasa si después necesito nuevas funciones\?/);
+  assert.match(html, /Ver demos de e-commerce/);
+  assert.doesNotMatch(
+    html,
+    /\$(?:199|249|280|299|350|499|500)\b|\/ mes|planes mensuales|suscripción ZIV|plan mensual|renovación mensual/i,
+  );
   assert.doesNotMatch(html, /Somos Ismael|Abraham|525539480470/);
   for (const href of html.matchAll(/href="(https:\/\/wa\.me\/[^"?]+\?text=[^"]+)"/g)) {
     const url = new URL(href[1]);
@@ -188,7 +183,6 @@ test("Nueva oferta: cinco categorías, precios y avisos responsables", async () 
     assert.ok(url.searchParams.get("text")?.startsWith("Hola ZIV Creativo."));
   }
 });
-
 test("Galería ecommerce enlaza las diez demos reales y ningún enlace a ziv.mx", async () => {
   const html = await fs.readFile(new URL("../demos-ecommerce.html", import.meta.url), "utf8");
   assert.equal((html.match(/class="demo-project /g) || []).length, 10);
