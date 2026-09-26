@@ -213,3 +213,17 @@ test("Portada muestra nueve proyectos públicos y ningún panel privado", async 
   assert.doesNotMatch(section, /crm\.ziv\.mx|aviv-crm|Commerce Hub|Cerebro Aviv/i);
   assert.match(section, /Sitios reales que puedes/);
 });
+
+test("Las capturas de sitios sólo aparecen en Trabajo; el resto usa arte original", async () => {
+  const html = await fs.readFile(new URL("../index.html", import.meta.url), "utf8");
+  const work = html.match(/<section[^>]*id="trabajo"[\s\S]*?<\/section>/)?.[0];
+  assert.ok(work);
+  assert.equal((work.match(/src="\/thumbs\/public\//g) || []).length, 9);
+  assert.doesNotMatch(html.replace(work, ""), /src="\/thumbs\//);
+  for (const image of ["hero", "web", "business", "ai"]) {
+    const path = `/assets/editorial/studio-${image}-object.webp`;
+    assert.ok(html.includes(`src="${path}"`));
+    assert.ok((await fs.stat(new URL(".." + path, import.meta.url))).isFile());
+  }
+  assert.match(html, /studio-proof-cutout\.webp/);
+});

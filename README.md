@@ -6,14 +6,19 @@ Página estática para GitHub Pages. Publicación existente desde `main`, carpet
 
 ## Contenido
 
-- `index.html`: posicionamiento, niveles comerciales, comparador, muestras y formulario de contacto.
-- `assets/designjoy.css`: sistema visual de ZIV: fondo cálido, contraste negro/azul, galería, tarjetas editoriales, navegación responsive y microinteracciones.
+- `index.html`: portada del estudio, campañas de servicios, trabajos reales, oferta comercial, preguntas y formulario de contacto.
+- `assets/studio-ziv.css`: dirección visual vigente para portada, secciones comerciales, portafolio y galería de demos; usa arte original en las composiciones comerciales y reserva los proyectos reales para las galerías.
+- `assets/studio-motion.js`: revelados de scroll progresivos con `IntersectionObserver`; respeta la preferencia de movimiento reducido y no oculta contenido si JavaScript falla.
+- `assets/editorial/studio-*-object.webp` y `assets/editorial/studio-proof-cutout.webp`: cinco recursos editoriales originales con transparencia para portada, servicios, planes y estudio.
+- `assets/designjoy.css` y `assets/editorial-ziv.css`: estilos base conservados bajo la capa visual vigente.
 - `assets/web48.css`: estilos de la página de ventas anterior, conservados para recuperación.
 - `assets/offer.mjs`: validación y preparación del mensaje de WhatsApp según el nivel elegido.
-- `assets/web48-form.mjs`: interacción del formulario, sin guardar datos ni enviar mensajes automáticamente.
-- `portafolio.html`, `thumbs/` y `perfil-cutout.png`: portafolio anterior conservado.
+- `assets/web48-form.mjs`: validación y envío consentido de la solicitud al CRM privado; prepara el enlace de WhatsApp, pero nunca envía el mensaje automáticamente.
+- `portafolio.html`, `demos-ecommerce.html` y `thumbs/`: galerías públicas y capturas locales de proyectos y demos.
 
-Las seis muestras de la página de ventas son Aritza Salazar, Maggie Salmerón, CAESI, AVIV, The Image Method y Mundo Simz. Los tres primeros fueron agregados el 31 de agosto de 2026 sin reemplazar los anteriores. Mantener estas muestras en `index.html`: la publicación actual es estática y no depende de un generador externo.
+Las capturas de proyectos y demos se reservan para las galerías donde el visitante puede explorar el trabajo real. Portada, servicios y planes usan objetos originales generados con fondo transparente y canal alfa conservado. Los cuatro renders editoriales anteriores permanecen en el historial y en `assets/editorial/` para recuperación, pero ya no se cargan en la experiencia vigente. Este repositorio no implementa un checkout en producción: la contratación se inicia por WhatsApp o el formulario y las diez demos independientes mantienen su propia lógica.
+
+La sección «Trabajo» muestra nueve sitios públicos, incluido MAKERS26. Mantener sus enlaces y miniaturas en `index.html`: la publicación actual es estática y no depende de un generador externo.
 
 El rediseño del 31 de agosto conserva esas seis muestras y añade una galería visual de CIRUELA, CANTERA, DOBLE HUMO y VELTRA utilizando las miniaturas locales del portafolio. No incorpora imágenes, testimonios, clientes, precios ni condiciones de Designjoy. Conserva el formulario, el destinatario de WhatsApp, los metadatos sociales existentes y el dominio. El proyecto `web-ventas` es independiente y no se modifica para publicar esta portada estática.
 
