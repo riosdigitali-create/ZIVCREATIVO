@@ -9,14 +9,15 @@ Página estática para GitHub Pages. Publicación existente desde `main`, carpet
 - `index.html`: portada del estudio, campañas de servicios, trabajos reales, oferta comercial, preguntas y formulario de contacto.
 - `assets/studio-ziv.css`: dirección visual vigente para portada, secciones comerciales, portafolio y galería de demos; usa arte original en las composiciones comerciales y reserva los proyectos reales para las galerías.
 - `assets/studio-motion.js`: revelados de scroll progresivos con `IntersectionObserver`; respeta la preferencia de movimiento reducido y no oculta contenido si JavaScript falla.
-- `assets/editorial/studio-*-object.webp` y `assets/editorial/studio-proof-cutout.webp`: cinco recursos editoriales originales con transparencia para portada, servicios, planes y estudio.
+- `assets/editorial/studio-*-v2.webp`: cuatro imágenes originales con transparencia de herramientas y procesos digitales reconocibles para portada, servicios y planes.
+- `assets/marks/`: símbolos de ChatGPT, Claude y Gemini usados sólo para identificar tecnologías posibles, sin afiliación ni respaldo de sus titulares. Procedencia: Wikimedia Commons (ChatGPT) y Simple Icons (Claude, Google Gemini).
 - `assets/designjoy.css` y `assets/editorial-ziv.css`: estilos base conservados bajo la capa visual vigente.
 - `assets/web48.css`: estilos de la página de ventas anterior, conservados para recuperación.
 - `assets/offer.mjs`: validación y preparación del mensaje de WhatsApp según el nivel elegido.
 - `assets/web48-form.mjs`: validación y envío consentido de la solicitud al CRM privado; prepara el enlace de WhatsApp, pero nunca envía el mensaje automáticamente.
 - `portafolio.html`, `demos-ecommerce.html` y `thumbs/`: galerías públicas y capturas locales de proyectos y demos.
 
-Las capturas de proyectos y demos se reservan para las galerías donde el visitante puede explorar el trabajo real. Portada, servicios y planes usan objetos originales generados con fondo transparente y canal alfa conservado. Los cuatro renders editoriales anteriores permanecen en el historial y en `assets/editorial/` para recuperación, pero ya no se cargan en la experiencia vigente. Este repositorio no implementa un checkout en producción: la contratación se inicia por WhatsApp o el formulario y las diez demos independientes mantienen su propia lógica.
+Las capturas de proyectos y demos se reservan para las galerías donde el visitante puede explorar el trabajo real. Portada, servicios y planes usan dispositivos con interfaces ilustrativas de IA, web y comercio, aislados sobre transparencia real y sin placas de color detrás. Los renders abstractos anteriores permanecen en el historial y en `assets/editorial/` para recuperación, pero ya no se cargan en la experiencia vigente. Los nombres de herramientas de IA en la sección de estudio son referencias informativas, no una declaración de afiliación. Este repositorio no implementa un checkout en producción: la contratación se inicia por WhatsApp o el formulario y las diez demos independientes mantienen su propia lógica.
 
 La sección «Trabajo» muestra nueve sitios públicos, incluido MAKERS26. Mantener sus enlaces y miniaturas en `index.html`: la publicación actual es estática y no depende de un generador externo.
 

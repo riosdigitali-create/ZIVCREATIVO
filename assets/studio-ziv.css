@@ -287,3 +287,49 @@ body{background:var(--studio-paper)}
 .floating-nav{transition:transform .3s ease,opacity .3s ease}
 .studio-dock-hidden .floating-nav{transform:translate(-50%,calc(100% + 42px));opacity:0;pointer-events:none}
 @media(prefers-reduced-motion:reduce){.floating-nav{transition:none}}
+
+/* Recognizable workspaces, isolated on alpha. No backplates, frames or graphic boxes. */
+.studio-art-hero,.studio-art-hero:before,.studio-art-hero:after{background:none}
+.studio-art-hero:before,.studio-art-hero:after{content:none}
+.studio-art-hero{display:grid;place-items:center;overflow:visible}
+.studio-art-hero .hero-object{position:relative;width:118%;height:auto;max-height:640px;max-width:none;object-fit:contain;filter:none;animation:studio-device-float 8s ease-in-out infinite}
+.hero-toolmarks{display:flex;align-items:center;flex-wrap:wrap;gap:10px 22px;margin-top:27px}
+.hero-toolmarks>span:first-child{flex-basis:100%;font:10px 'DM Mono',monospace;letter-spacing:.13em;color:#72716a}
+.hero-toolmarks>span:not(:first-child){display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:600}
+.hero-toolmarks img{display:block;width:22px;height:22px;object-fit:contain}
+.hero-bottom{margin-top:30px}
+.step-card,.step-card:nth-child(2),.step-card:nth-child(3){min-height:560px;margin-bottom:75px}
+.stage-web.stage-object,.stage-business.stage-object,.stage-ai.stage-object,.editorial-step-visual{background:none;color:inherit;overflow:visible}
+.editorial-step-visual{height:560px}
+.stage-object img,.stage-web.stage-object img,.stage-business.stage-object img,.stage-ai.stage-object img{top:0;left:0;width:100%;height:100%;max-width:none;object-fit:contain;box-shadow:none;filter:none;transform:none}
+.step-card:hover .stage-web.stage-object img,.step-card:hover .stage-business.stage-object img,.step-card:hover .stage-ai.stage-object img{transform:translateY(-8px) scale(1.025)}
+.pricing-v2{background:var(--studio-paper)}
+.project-pricing-card,.project-pricing-card.project-business,.project-pricing-card.project-ai{background:transparent;color:var(--studio-ink);border-top:1px solid var(--studio-line);padding:50px 0;min-height:610px;margin:0;overflow:visible}
+.project-pricing-card:last-child{border-bottom:1px solid var(--studio-line)}
+.project-pricing-card:hover{box-shadow:none}
+.pricing-object,.pricing-object-web,.pricing-object-business,.pricing-object-ai{background:none;overflow:visible;min-height:500px}
+.pricing-object img,.pricing-object-ai img{top:0;left:0;width:100%;height:100%;object-fit:contain;filter:none;transform:none}
+.project-pricing-card:hover .pricing-object img,.project-pricing-card:hover .pricing-object-ai img{transform:translateY(-8px) scale(1.025)}
+.studio-proof{display:grid;grid-template-columns:1fr;gap:0;width:min(100%,550px);height:auto;aspect-ratio:auto;margin-top:65px}
+.studio-proof span{position:static;display:block;margin-bottom:18px;color:var(--studio-electric);font:11px 'DM Mono',monospace;letter-spacing:.13em}
+.studio-proof strong{display:block;padding:11px 0;border-top:1px solid var(--studio-line);font:500 clamp(46px,5vw,74px)/1 'DM Sans',sans-serif;letter-spacing:-.075em}
+.studio-proof div{display:grid;grid-template-columns:62px 1fr;align-items:center;gap:16px;border-top:1px solid var(--studio-line)}
+.studio-proof div:last-of-type{border-bottom:1px solid var(--studio-line)}
+.studio-proof div img{display:block;width:46px;height:46px;object-fit:contain;filter:none;transform:none}
+.studio-proof div strong{padding:11px 0;border:0}
+.studio-proof small{max-width:340px;margin-top:17px;font:12px/1.5 'DM Mono',monospace;color:#6b6b63}
+@keyframes studio-device-float{50%{transform:translateY(-12px)}}
+@media(max-width:760px){
+  .studio-art-hero .hero-object{width:105%;height:100%;max-height:none}
+  .hero-toolmarks{gap:10px 15px}.hero-toolmarks>span:not(:first-child){font-size:11px}
+  .editorial-step-visual{height:min(66vw,490px);min-height:300px}
+  .project-pricing-card,.project-pricing-card.project-business,.project-pricing-card.project-ai{padding:32px 0;min-height:0}
+  .pricing-object,.pricing-object-web,.pricing-object-business,.pricing-object-ai{width:100%;height:300px;min-height:0;margin:0 0 25px}
+  .studio-proof{margin-top:35px}.studio-proof strong{font-size:clamp(44px,12vw,65px)}
+}
+@media(max-width:540px){
+  .hero-bottom{display:none}.studio-collage{margin-top:24px}
+  .editorial-step-visual{height:250px;min-height:0}
+  .pricing-object,.pricing-object-web,.pricing-object-business,.pricing-object-ai{height:250px}
+}
+@media(prefers-reduced-motion:reduce){.studio-art-hero .hero-object{animation:none}}

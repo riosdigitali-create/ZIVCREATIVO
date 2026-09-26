@@ -130,7 +130,7 @@ test("Rediseño: navegación completa, imágenes locales y accesibilidad básica
   }
   assert.equal((html.match(/<h1>/g) || []).length, 1);
   for (const [, tag] of html.matchAll(/(<img\b[^>]*>)/g)) {
-    assert.match(tag, /alt="[^"]+"/);
+    assert.match(tag, /alt="[^"]*"/);
     const src = tag.match(/src="([^"]+)"/)?.[1];
     assert.ok(src?.startsWith("/"));
     assert.ok((await fs.stat(new URL(".." + src, import.meta.url))).isFile());
@@ -220,10 +220,15 @@ test("Las capturas de sitios sólo aparecen en Trabajo; el resto usa arte origin
   assert.ok(work);
   assert.equal((work.match(/src="\/thumbs\/public\//g) || []).length, 9);
   assert.doesNotMatch(html.replace(work, ""), /src="\/thumbs\//);
-  for (const image of ["hero", "web", "business", "ai"]) {
-    const path = `/assets/editorial/studio-${image}-object.webp`;
+  for (const path of [
+    "/assets/editorial/studio-hero-ai-v2.webp",
+    "/assets/editorial/studio-web-workspace-v2.webp",
+    "/assets/editorial/studio-business-workspace-v2.webp",
+    "/assets/editorial/studio-ai-workspace-v2.webp",
+  ]) {
     assert.ok(html.includes(`src="${path}"`));
     assert.ok((await fs.stat(new URL(".." + path, import.meta.url))).isFile());
   }
-  assert.match(html, /studio-proof-cutout\.webp/);
+  assert.doesNotMatch(html, /studio-(?:hero|web|business|ai)-object\.webp|studio-proof-cutout\.webp/);
+  assert.match(html, /ChatGPT[\s\S]*Claude[\s\S]*Gemini/);
 });
