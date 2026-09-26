@@ -235,4 +235,11 @@ test("Las capturas de sitios sólo aparecen en Trabajo; el resto usa arte origin
   }
   assert.doesNotMatch(html, /studio-(?:hero|web|business|ai)-object\.webp|studio-proof-cutout\.webp/);
   assert.match(html, /ChatGPT[\s\S]*Claude[\s\S]*Gemini/);
+  const toolmarks = html.match(/<ul class="hero-toolmarks-track"[\s\S]*?<\/ul>/)?.[0];
+  assert.ok(toolmarks);
+  assert.equal((toolmarks.match(/<li>/g) || []).length, 27);
+  for (const name of ["Meta", "Grok", "GitHub", "Cloudflare"])
+    assert.match(toolmarks, new RegExp(`>${name}<`));
+  for (const [, path] of toolmarks.matchAll(/src="(\/assets\/marks\/[^\"]+)"/g))
+    assert.ok((await fs.stat(new URL(".." + path, import.meta.url))).isFile());
 });
