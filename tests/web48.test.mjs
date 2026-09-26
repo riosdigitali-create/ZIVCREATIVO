@@ -245,6 +245,8 @@ test("Las capturas de sitios sólo aparecen en Trabajo; el resto usa arte origin
   const proof = html.split('<div class="studio-proof"')[1]?.split('<div class="benefits-grid">')[0];
   assert.ok(proof);
   assert.match(proof, /class="studio-proof-marquee"/);
+  assert.doesNotMatch(proof, /studio-proof-featured/);
+  assert.match(proof, /aria-label="27 aplicaciones y plataformas"/);
   const marks = (section) => [...section.matchAll(/src="(\/assets\/marks\/[^\"]+)"/g)].map((match) => match[1]).sort();
   assert.deepEqual(marks(proof), marks(toolmarks));
   const motion = await fs.readFile(new URL("../assets/studio-motion.js", import.meta.url), "utf8");
