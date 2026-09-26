@@ -242,4 +242,8 @@ test("Las capturas de sitios sólo aparecen en Trabajo; el resto usa arte origin
     assert.match(toolmarks, new RegExp(`>${name}<`));
   for (const [, path] of toolmarks.matchAll(/src="(\/assets\/marks\/[^\"]+)"/g))
     assert.ok((await fs.stat(new URL(".." + path, import.meta.url))).isFile());
+  const proof = html.split('<div class="studio-proof"')[1]?.split('<div class="benefits-grid">')[0];
+  assert.ok(proof);
+  const marks = (section) => [...section.matchAll(/src="(\/assets\/marks\/[^\"]+)"/g)].map((match) => match[1]).sort();
+  assert.deepEqual(marks(proof), marks(toolmarks));
 });
