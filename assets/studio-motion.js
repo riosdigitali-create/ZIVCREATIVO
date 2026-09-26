@@ -19,6 +19,17 @@
       });
     }, { passive: true });
   }
+  const marquee = document.querySelector('.studio-proof-marquee');
+  if (marquee && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const track = marquee.querySelector('.studio-proof-marquee-track');
+    const list = track?.querySelector('.studio-proof-grid');
+    if (list && !marquee.classList.contains('is-animated')) {
+      const duplicate = list.cloneNode(true);
+      duplicate.setAttribute('aria-hidden', 'true');
+      track.append(duplicate);
+      marquee.classList.add('is-animated');
+    }
+  }
   if (!('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   const targets = document.querySelectorAll('.step-card, .editorial-step-visual, .public-project, .project-pricing-card, .studio-proof');
   if (!targets.length) return;

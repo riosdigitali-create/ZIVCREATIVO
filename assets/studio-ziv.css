@@ -139,7 +139,8 @@ body{background:var(--studio-paper)}
 .payment-structure{margin-top:12px}
 
 /* The quieter sections still carry the same authored rhythm. */
-.benefits-section{position:relative;grid-template-columns:.9fr 1.1fr;gap:8vw;padding-block:150px 165px}
+.benefits-section{position:relative;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:8vw;padding-block:150px 165px}
+.benefits-section .section-heading{min-width:0}
 .benefits-section .section-heading h2{font-size:clamp(65px,6vw,110px);line-height:.88}
 .benefits-section .section-heading>p:not(.eyebrow){max-width:420px;font-size:17px;line-height:1.5}
 .studio-proof{position:relative;width:min(100%,570px);margin-top:30px;aspect-ratio:1.25;overflow:visible}
@@ -313,17 +314,24 @@ body{background:var(--studio-paper)}
 .pricing-object,.pricing-object-web,.pricing-object-business,.pricing-object-ai{background:none;overflow:visible;min-height:500px}
 .pricing-object img,.pricing-object-ai img{top:0;left:0;width:100%;height:100%;object-fit:contain;filter:none;transform:none}
 .project-pricing-card:hover .pricing-object img,.project-pricing-card:hover .pricing-object-ai img{transform:translateY(-8px) scale(1.025)}
-.studio-proof{display:block;width:min(100%,550px);height:auto;aspect-ratio:auto;margin-top:65px}
+.studio-proof{display:block;width:min(100%,550px);min-width:0;height:auto;aspect-ratio:auto;margin-top:65px}
 .studio-proof>span{position:static;display:block;margin-bottom:18px;color:var(--studio-electric);font:11px 'DM Mono',monospace;letter-spacing:.13em}
 .studio-proof-featured>div{display:grid;grid-template-columns:62px 1fr;align-items:center;gap:16px;border-top:1px solid var(--studio-line)}
 .studio-proof-featured>div:last-child{border-bottom:1px solid var(--studio-line)}
 .studio-proof-featured img{display:block;width:46px;height:46px;object-fit:contain;filter:none;transform:none}
 .studio-proof-featured strong{display:block;padding:11px 0;border:0;font:500 clamp(46px,5vw,74px)/1 'DM Sans',sans-serif;letter-spacing:-.075em}
-.studio-proof-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 12px;margin:34px 0 0;padding:0;list-style:none;text-align:left}
-.studio-proof-grid li{display:flex;align-items:center;gap:8px;min-width:0;min-height:49px;border-bottom:1px solid var(--studio-line);font:600 12px/1.25 'DM Sans',sans-serif}
-.studio-proof-grid img{display:block;flex:none;width:21px;height:21px;object-fit:contain;filter:none;transform:none}
+.studio-proof-marquee{width:100%;max-width:100%;margin-top:30px;border-top:1px solid var(--studio-line);border-bottom:1px solid var(--studio-line);overflow-x:auto;overflow-y:hidden;scrollbar-width:thin}
+.studio-proof-marquee-track{display:flex;width:max-content}
+.studio-proof-grid{display:flex;align-items:center;flex:none;gap:26px;margin:0;padding:14px 26px 14px 0;list-style:none;text-align:left}
+.studio-proof-grid li{display:inline-flex;align-items:center;gap:8px;flex:none;white-space:nowrap;font:600 13px/1.25 'DM Sans',sans-serif}
+.studio-proof-grid img{display:block;flex:none;width:23px;height:23px;object-fit:contain;filter:none;transform:none}
+.studio-proof-marquee.is-animated{overflow:hidden;mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent)}
+.studio-proof-marquee.is-animated .studio-proof-marquee-track{animation:studio-marks-scroll 62s linear infinite;will-change:transform}
+.studio-proof-marquee.is-animated:hover .studio-proof-marquee-track,.studio-proof-marquee.is-animated:focus-within .studio-proof-marquee-track{animation-play-state:paused}
+.studio-proof-grid[aria-hidden="true"]{pointer-events:none}
 .studio-proof>small{display:block;max-width:420px;margin-top:23px;font:12px/1.5 'DM Mono',monospace;color:#6b6b63}
-@media(max-width:1100px){.studio-proof-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@keyframes studio-marks-scroll{to{transform:translateX(-50%)}}
+@media(prefers-reduced-motion:reduce){.studio-proof-marquee.is-animated{overflow-x:auto;mask-image:none}.studio-proof-marquee.is-animated .studio-proof-marquee-track{animation:none;will-change:auto}.studio-proof-grid[aria-hidden="true"]{display:none}}
 @keyframes studio-device-float{50%{transform:translateY(-12px)}}
 @media(max-width:760px){
   .studio-art-hero .hero-object{width:105%;height:100%;max-height:none}
