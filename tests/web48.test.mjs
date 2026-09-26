@@ -205,13 +205,17 @@ test("Galería ecommerce enlaza las diez demos reales y ningún enlace a ziv.mx"
 test("Portada muestra nueve proyectos públicos y ningún panel privado", async () => {
   const html = await fs.readFile(new URL("../index.html", import.meta.url), "utf8");
   const section = html.match(/<section[^>]*id="trabajo"[\s\S]*?<\/section>/)[0];
-  for (const url of ["https://aviv.mx/", "https://reprofem.com.mx/", "https://ziv.mx/", "https://theimagemethod.com/", "https://aritzasalazar.com/", "https://maggiesalmeron.com/", "https://caesi.mx/", "https://mundosimz.com/", "https://makersconference.org/"])
+  for (const url of ["https://aviv.mx/", "https://reprofem.com.mx/", "https://ziv.mx/", "https://theimagemethod.com/", "https://academia.ziv.mx/", "https://maggiesalmeron.com/", "https://caesi.mx/", "https://mundosimz.com/", "https://makersconference.org/"])
     assert.ok(section.includes(`href="${url}"`));
-  for (const name of ["AVIV", "REPROFEM", "ZIV", "THE IMAGE METHOD", "ARITZA SALAZAR", "MAGGIE SALMERÓN", "CAESI", "MUNDO SIMZ", "MAKERS26"])
+  for (const name of ["AVIV", "REPROFEM", "ZIV", "THE IMAGE METHOD", "ACADEMIA IA", "MAGGIE SALMERÓN", "CAESI", "MUNDO SIMZ", "MAKERS26"])
     assert.ok(section.includes(name));
   assert.equal((section.match(/class="public-project"/g) || []).length, 9);
+  assert.doesNotMatch(section, /Aritza Salazar|aritzasalazar\.com/i);
   assert.doesNotMatch(section, /crm\.ziv\.mx|aviv-crm|Commerce Hub|Cerebro Aviv/i);
   assert.match(section, /Sitios reales que puedes/);
+  const portfolio = await fs.readFile(new URL("../portafolio.html", import.meta.url), "utf8");
+  assert.match(portfolio, /https:\/\/academia\.ziv\.mx\//);
+  assert.doesNotMatch(portfolio, /Aritza Salazar|aritzasalazar\.com/i);
 });
 
 test("Las capturas de sitios sólo aparecen en Trabajo; el resto usa arte original", async () => {
