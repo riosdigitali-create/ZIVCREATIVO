@@ -1,26 +1,26 @@
-# ZIV Creativo · Ismael Ríos
+# ZIV Creativo · E-commerce sin límites
 
 Sitio público: https://zivcreativo.shop/
 
 Sitio estático publicado mediante GitHub Pages desde `main`, carpeta raíz. Conservar `CNAME` y la publicación existente. El repositorio de `ziv.mx` es independiente.
 
-La portada presenta a Ismael Ríos y su especialidad en e-commerce, sistemas de ventas y automatización. Usa marfil, negro tinta, violeta y Manrope local, bajo licencia OFL incluida. No publica precios, promesas de ventas ni testimonios.
+La portada corresponde a `ZIV-Creativo-Ecommerce.zip`, proporcionado el 4 de noviembre de 2026. Presenta a Ismael Ríos con visuales espaciales, videos adaptados al dispositivo y un simulador local de publicación de mercancía en distintos canales.
 
-- `index.html`: experiencia completa, capacidades, demo, casos, presentación personal, proceso y contacto.
-- `assets/ismael.css`: estilos responsivos, foco visible y movimiento reducido.
-- `assets/ismael.mjs`: simulaciones locales de muebles, moda y servicios; preparación del mensaje de WhatsApp.
-- `assets/demo/`: imágenes ilustrativas de las simulaciones, reutilizadas de los recursos locales de ZIV. Productos, existencias, precios y personas de las simulaciones son ejemplos.
-- `assets/fonts/`: Manrope y su licencia.
-- `portafolio.html`, `demos-ecommerce.html`, `demos/`, `thumbs/`: trabajo y demos existentes conservados.
+- `index.html`, `style.css`: contenido y presentación de la portada.
+- `app.js`: animaciones, videos y control de movimiento.
+- `mission.js`: simulación de selección de canales y escaparates.
+- `sky.js`: efectos visuales del fondo.
+- `assets/`: imágenes, videos e iconos de canales.
+- `portafolio.html`, `demos-ecommerce.html`, `demos/`, `thumbs/`: portafolio y demos conservados.
 
-WhatsApp confirmado por la publicación anterior: +52 55 4016 1213. Correo solicitado: hola@ziv.mx. El formulario valida nombre, negocio, contacto y objetivo; muestra el texto y prepara un enlace de WhatsApp. No guarda datos ni envía mensajes, y no afirma que hubo un envío. Sin JavaScript, los enlaces directos a WhatsApp y correo continúan disponibles. La composición tipográfica de Ismael está preparada para sustituirse por una fotografía real.
+La simulación no publica productos, transmite mensajes ni realiza cobros reales. El contacto principal es `hola@ziv.mx`, mediante enlaces de correo.
 
-Las tres simulaciones no usan APIs, inteligencia artificial en vivo, pagos, mensajes ni reservas reales. Muestran el contexto que recibiría un panel y distinguen una intención de compra de una venta confirmada.
+## Verificación
 
-## Desarrollo y verificación
+Vista local: `python -m http.server 4178 --bind 127.0.0.1`.
 
-Vista local: `python -m http.server 4173 --bind 127.0.0.1`.
+Sintaxis: `node --check app.js`, `node --check mission.js`, `node --check sky.js`.
 
-Pruebas: `node --test tests/*.test.mjs`. Sintaxis: `node --check assets/ismael.mjs`.
+Revisar escritorio y móvil, carga de recursos, selección de canales, finalización y reinicio del simulador, control de movimiento y enlaces de contacto antes de publicar.
 
-Verificar escritorio y móvil, los tres giros, reinicio, menú y formulario antes de publicar. Los estilos, scripts y recursos anteriores siguen en el historial para recuperación; la portada actual sólo carga sus propios recursos.
+`assets/ismael.css`, `assets/ismael.mjs` y `tests/web48.test.mjs` pertenecen a la portada anterior. Sus pruebas de contenido no aplican a esta versión del ZIP.
