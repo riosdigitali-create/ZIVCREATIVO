@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#02050a"><title>Horizontes · Desde el borde</title>
+<style>
+:root{color-scheme:dark;--blue:#89c9ff;--ink:#edf4fc}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#02050a;color:var(--ink);font-family:system-ui,sans-serif}main{height:900svh}.horizon-canvas{position:fixed;inset:0;background:#02050a;pointer-events:none}.horizon-canvas canvas{display:block;width:100%;height:100%;opacity:0;transition:opacity .7s}.horizon-canvas[data-ready] canvas{opacity:1}.horizon-canvas[data-fallback] canvas{opacity:0}.poster{position:absolute;width:min(80vw,760px);right:5%;top:25%;opacity:.75}.horizon-canvas[data-ready]:not([data-fallback]) .poster{visibility:hidden}.veil{position:fixed;inset:0;pointer-events:none;background:linear-gradient(0deg,#02050acc,transparent 48%,#02050a55)}header,nav,article,footer,.tools{position:fixed;z-index:2}header{left:5%;top:5%;font-size:11px;letter-spacing:.33em;font-weight:600}header span{display:block;margin-top:8px;font-size:9px;letter-spacing:.19em;color:#a2b8cf;font-weight:400}.tools{right:5%;top:4.5%;display:flex;gap:8px}button{font:11px system-ui;color:#bdcee0;cursor:pointer;border:1px solid #a5d5ff30;border-radius:24px;background:#07111c66;padding:10px 15px;backdrop-filter:blur(12px)}button:hover{color:white;border-color:#a5d5ff88}button:focus-visible,a:focus-visible{outline:2px solid var(--blue);outline-offset:5px}nav{left:5%;top:30%;display:grid;gap:4px;border-left:1px solid #c3dfff30;padding:4px 0}nav button{border:0;border-radius:0;background:transparent;text-align:left;padding:12px 18px;letter-spacing:.1em;font-size:10px;backdrop-filter:none}nav button span{font-size:8px;opacity:.5;margin-right:15px}nav [aria-current=true]{color:white;box-shadow:-1px 0 var(--blue)}nav [aria-current=true] span{color:var(--blue);opacity:1}article{bottom:13%;left:6%;right:6%;pointer-events:none}#phase{font-size:9px;letter-spacing:.2em;color:#b4c9df}h1{font:normal clamp(55px,8vw,112px)/1.07 Georgia,serif;letter-spacing:-.05em;margin:16px 0}p{max-width:44ch;font-size:13px;line-height:1.8;color:#c4d3e4;margin:0}footer{bottom:4%;left:5%;right:5%;display:flex;align-items:center;justify-content:space-between;gap:25px;font-size:9px;letter-spacing:.12em;color:#9db2c9}footer a{color:inherit;text-decoration:none;font-size:8px;letter-spacing:0}#line{position:fixed;bottom:0;left:0;right:0;height:2px;background:var(--blue);transform:scaleX(0);transform-origin:left;z-index:5}.clean header,.clean nav,.clean article,.clean footer,.clean .veil{visibility:hidden}.clean #motion{display:none}.note{position:fixed;right:5%;bottom:10%;font-size:8px;letter-spacing:.15em;color:#8da8c1;writing-mode:vertical-rl}.clean .note{visibility:hidden}
+@media(max-width:650px){header{top:4%;font-size:9px}header span{font-size:7px}.tools{top:10%;right:5%}.tools button{font-size:10px;padding:8px 12px}nav{left:5%;right:5%;top:20%;display:flex;justify-content:space-between;border-left:0;border-bottom:1px solid #c3dfff30;gap:0;padding:0}nav button{padding:12px 4px;font-size:9px;letter-spacing:0}nav button span{display:none}nav [aria-current=true]{box-shadow:0 1px var(--blue)}article{left:6%;bottom:14%}h1{font-size:68px}p{font-size:12px;max-width:32ch}#phase{font-size:8px}footer{font-size:7px;align-items:flex-end;gap:15px}footer a{font-size:7px;max-width:120px;text-align:right}.note{display:none}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.horizon-canvas canvas{transition:none}}
+</style>
+</head>
+<body>
+<main aria-label="Recorrido visual por cinco planetas">
+<div class="horizon-canvas" aria-hidden="true"><img class="poster" src="assets/horizons/earth-fallback.webp" alt=""><canvas id="horizons"></canvas></div>
+<div class="veil" aria-hidden="true"></div>
+<header>HORIZONTES<span>DESDE EL BORDE · ZIV</span></header>
+<div class="tools"><button id="motion" aria-pressed="false">Pausar movimiento</button><button id="clean" aria-pressed="false">Ocultar guía</button></div>
+<nav aria-label="Elegir planeta"></nav>
+<article><small id="phase">01 / 05 · DESDE EL BORDE</small><h1>Mercurio</h1><p id="caption">Un horizonte de roca y cráteres, bajo la luz del Sol.</p></article>
+<span class="note">LUZ · RELIEVE · DISTANCIA</span>
+<footer><span>DESLIZA PARA ASCENDER ↓<br><br>RECORRIDO ARTÍSTICO · ESCALA INTERPRETATIVA</span><a href="https://www.solarsystemscope.com/textures/" target="_blank" rel="noopener">Mapas: Solar System Scope<br>CC BY 4.0 · Iluminación adaptada</a></footer>
+<div id="line" aria-hidden="true"></div>
+</main>
+<script type="module">
+import {Horizons,planets} from './horizons.js';
+const sources={};
+const media=matchMedia('(prefers-reduced-motion: reduce)');
+const details=['Un horizonte de roca y cráteres, bajo la luz del Sol.','Una envoltura de nubes cálidas que oculta la superficie.','Océanos, continentes y nubes bajo un delicado borde azul.','Cráteres y llanuras de polvo bajo una atmósfera tenue.','Bandas de nubes y tormentas en el gigante gaseoso.'];
+const buttons=planets.map((planet,index)=>{
+ const button=document.createElement('button');button.innerHTML=`<span>0${index+1}</span>${planet.name}`;
+ button.onclick=()=>scrollTo({top:Math.ceil((document.documentElement.scrollHeight-innerHeight)*index/5),behavior:media.matches?'instant':'smooth'});
+ document.querySelector('nav').append(button);return button;
+});
+let label='';
+const view=new Horizons(document.querySelector('#horizons'),{sources});
+view.onFrame=({index,t,progress})=>{
+ const phase=t<.38?'Desde el borde':t<.72?'Ascenso orbital':t<.82||index===4?'En órbita':'Tránsito';
+ const visualIndex=t>.93&&index<4?index+1:index;
+ const next=visualIndex+phase;
+ if(next!==label){
+  label=next;document.querySelector('h1').textContent=planets[visualIndex].name;
+  document.querySelector('#caption').textContent=details[visualIndex];
+  document.querySelector('#phase').textContent=`0${visualIndex+1} / 05 · ${phase.toUpperCase()}`;
+  buttons.forEach((button,i)=>button.setAttribute('aria-current',String(visualIndex===i)));
+ }
+ document.querySelector('#line').style.transform=`scaleX(${progress})`;
+};
+let paused=media.matches;
+const motion=document.querySelector('#motion');
+function sync(){view.setPaused(paused);motion.textContent=paused?'Activar movimiento':'Pausar movimiento';motion.setAttribute('aria-pressed',String(paused));}
+motion.onclick=()=>{paused=!paused;sync();};media.addEventListener('change',()=>{paused=media.matches;sync();});sync();
+const clean=document.querySelector('#clean');
+function guide(hidden){document.body.classList.toggle('clean',hidden);clean.textContent=hidden?'Mostrar guía':'Ocultar guía';clean.setAttribute('aria-pressed',String(hidden));}
+clean.onclick=()=>guide(!document.body.classList.contains('clean'));addEventListener('keydown',event=>{if(event.key==='Escape')guide(false);});
+</script>
+</body></html>

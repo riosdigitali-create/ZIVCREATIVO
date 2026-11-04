@@ -1,26 +1,34 @@
-# ZIV Creativo · E-commerce sin límites
+# ZIV Creativo · Horizontes azules
 
 Sitio público: https://zivcreativo.shop/
 
-Sitio estático publicado mediante GitHub Pages desde `main`, carpeta raíz. Conservar `CNAME` y la publicación existente. El repositorio de `ziv.mx` es independiente.
+Sitio estático publicado mediante GitHub Pages desde `main`, carpeta raíz. Conservar `CNAME`. El repositorio de `ziv.mx` es independiente.
 
-La portada corresponde a `ZIV-Creativo-Ecommerce.zip`, proporcionado el 4 de noviembre de 2026. Presenta a Ismael Ríos con visuales espaciales, videos adaptados al dispositivo y un simulador local de publicación de mercancía en distintos canales.
+La portada conserva el contenido y la demo del ZIP proporcionado por el usuario, con una paleta azul y un fondo continuo inspirado en su HTML «Horizontes · Desde el borde».
 
-- `index.html`, `style.css`: contenido y presentación de la portada.
-- `app.js`: animaciones, videos y control de movimiento.
-- `mission.js`: simulación de selección de canales y escaparates.
-- `sky.js`: efectos visuales del fondo.
-- `assets/`: imágenes, videos e iconos de canales.
-- `portafolio.html`, `demos-ecommerce.html`, `demos/`, `thumbs/`: portafolio y demos conservados.
+## Fondo
 
-La simulación no publica productos, transmite mensajes ni realiza cobros reales. El contacto principal es `hola@ziv.mx`, mediante enlaces de correo.
+`horizons.js` dibuja esferas texturizadas mediante WebGL, con iluminación direccional, borde atmosférico, nubes, reflejo oceánico y luces nocturnas en la Tierra. El desplazamiento recorre Mercurio, Venus, Tierra, Marte y Júpiter. El relieve y la órbita usan la misma superficie, sin superponer fotografías de terreno.
+
+El fondo se comparte entre todas las secciones. Los paneles translúcidos conservan la legibilidad. Sólo se dibujan cuadros al cargar imágenes, cambiar el tamaño o interpolar un desplazamiento; no hay un bucle de animación permanente. Se limita la resolución de dibujo y se respeta movimiento reducido. El control del pie permite pausar el fondo. Si WebGL no está disponible, se muestra una imagen estática.
+
+Mapas de Solar System Scope, CC BY 4.0; fuente, licencia y adaptaciones documentadas en `assets/horizons/credits.txt` y acreditadas en el pie. El recorrido es artístico, no representa distancias ni escalas científicas.
+
+## Archivos
+
+- `index.html`, `style.css`: portada y diseño responsivo.
+- `app.js`: inicializa el fondo, el control de movimiento y la aparición de contenido.
+- `mission.js`: simulación local de publicación, con producto y controles azules.
+- `horizontes.html`: recorrido independiente con selector de planetas y modo sin guía.
+- `scripts/export-horizons.py`: genera un HTML autónomo con todos los mapas y el motor incluidos. Ejemplo: `python scripts/export-horizons.py C:/ruta/Horizontes-Afinado.html`.
+- Portafolio, galerías y demos anteriores conservados.
+
+La demo no publica mercancía ni hace cobros. El contacto principal es `hola@ziv.mx`.
 
 ## Verificación
 
-Vista local: `python -m http.server 4178 --bind 127.0.0.1`.
+Vista local: `python -m http.server 4181 --bind 127.0.0.1`.
+Sintaxis: `node --check horizons.js`, `node --check app.js`, `node --check mission.js`.
+Revisar escritorio y móvil, recorrido, selección de canales, finalización, reinicio y pausa antes de publicar.
 
-Sintaxis: `node --check app.js`, `node --check mission.js`, `node --check sky.js`.
-
-Revisar escritorio y móvil, carga de recursos, selección de canales, finalización y reinicio del simulador, control de movimiento y enlaces de contacto antes de publicar.
-
-`assets/ismael.css`, `assets/ismael.mjs` y `tests/web48.test.mjs` pertenecen a la portada anterior. Sus pruebas de contenido no aplican a esta versión del ZIP.
+`assets/ismael.css`, `assets/ismael.mjs` y `tests/web48.test.mjs` pertenecen a una portada anterior; sus pruebas de contenido no aplican a esta versión.

@@ -1,0 +1,7 @@
+Planetary maps: Solar System Scope / INOVE
+Source: https://www.solarsystemscope.com/textures/
+License: Creative Commons Attribution 4.0 International
+https://creativecommons.org/licenses/by/4.0/
+
+Based on NASA imagery and elevation data, with artistic adjustments by Solar System Scope. Surface color maps are rendered here with lighting, atmosphere and camera movement. This journey is an artistic composition, not a scale model or scientific simulation.
+earth-fallback.webp: from the reference HTML supplied by the user.
