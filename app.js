@@ -1,8 +1,9 @@
-import {Horizons} from './horizons.js';
+import {Horizons} from './horizons.js?v=20261104-orbit1';
+import {OrbitalIntro} from './intro.js?v=20261104-orbit1';
 const media=matchMedia('(prefers-reduced-motion: reduce)');
 const motion=document.querySelector('#motion');
 let paused=media.matches;
-const background=new Horizons(document.querySelector('#horizons'));
+const background=new Horizons(document.querySelector('#horizons'),{order:[2,3,4,0,1],orbitalStart:true});
 const observer=new IntersectionObserver(entries=>{for(const entry of entries)if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target);}},{threshold:.08});
 for(const element of document.querySelectorAll('.reveal'))observer.observe(element);
 document.body.classList.add('js-motion');
@@ -17,3 +18,5 @@ media.addEventListener('change',()=>{paused=media.matches;applyMotion();});apply
 let progressFrame=0;
 function progress(){progressFrame=0;const max=Math.max(1,document.documentElement.scrollHeight-innerHeight);document.querySelector('#progress').style.transform=`scaleX(${Math.min(1,scrollY/max)})`;}
 addEventListener('scroll',()=>{if(!progressFrame)progressFrame=requestAnimationFrame(progress);},{passive:true});addEventListener('resize',progress);progress();
+
+new OrbitalIntro(background);

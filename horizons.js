@@ -11,8 +11,9 @@ const fragment=`precision highp float;
 uniform vec2 resolution;
 uniform vec4 bodyA,bodyB,settingsA,settingsB;
 uniform vec3 atmosphereA,atmosphereB;
-uniform sampler2D mapA,mapB,cloudMap,nightMap;
+uniform sampler2D mapA,mapB,cloudMap,nightMap,launchMap;
 uniform float skyOffset;
+uniform float flight;
 const float PI=3.14159265359;
 float hash(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453123);}
 vec3 stars(vec2 pixel){
@@ -63,10 +64,40 @@ vec4 sphere(vec2 pixel,vec4 body,vec4 settings,vec3 air,sampler2D surface){
   color=air;opacity=exp(-(d-1.)*145.)*smoothstep(-.25,.5,dot(edgeNormal,sun))*.21;
  }return vec4(color,opacity*body.w);
 }
+vec3 ascentClouds(vec3 space,vec2 pixel,float t){
+ vec2 uv=pixel/resolution;
+ float daylight=1.-smoothstep(.35,.77,t);
+ vec3 sky=mix(vec3(.035,.15,.34),vec3(.43,.69,.91),pow(uv.y,.8));
+ vec3 color=mix(space,sky,daylight);
+ float envelope=smoothstep(.015,.13,t)*(1.-smoothstep(.40,.75,t));
+ vec2 screen=(uv-.5)*vec2(resolution.x/resolution.y,1.);
+ vec3 ray=normalize(vec3(screen,1.05));
+ float travel=t*t*17.;
+ float transmission=1.;vec3 cloudColor=vec3(0.);
+ for(int i=0;i<9;i++){
+  float z=.32+float(i)*.39;
+  vec3 point=ray*z+vec3(0.,travel*.27,travel);
+  vec2 field=point.xy*.38+vec2(point.z*.083,point.z*.127);
+  float density=texture2D(launchMap,fract(field+vec2(.24,.39))).r;
+  float detail=texture2D(launchMap,fract(field*2.47+vec2(.61,.23))).r;
+  float raw=density*.72+detail*.28;
+  density=smoothstep(.20,.77,raw)*envelope*.44;
+  float light=texture2D(launchMap,fract(field+vec2(-.012,-.018)+vec2(.24,.39))).r;
+  vec3 shade=mix(vec3(.25,.40,.59),vec3(.95,.98,1.),clamp(.68+(raw-light)*2.4+float(i)*.015,0.,1.));
+  cloudColor+=transmission*density*shade;
+  transmission*=1.-density;
+ }
+ color=color*transmission+cloudColor;
+ // Forward scattering softens the cloud break without a white flash.
+ float haze=exp(-pow((t-.51)/.13,2.))*.14;
+ color=mix(color,vec3(.79,.89,1.),haze);
+ return color;
+}
 void main(){
  vec2 pixel=vec2(gl_FragCoord.x,resolution.y-gl_FragCoord.y);vec3 color=stars(pixel);
  vec4 a=sphere(pixel,bodyA,settingsA,atmosphereA,mapA),b=sphere(pixel,bodyB,settingsB,atmosphereB,mapB);
  color=mix(color,a.rgb,a.a);color=mix(color,b.rgb,b.a);
+ if(flight>=0.)color=ascentClouds(color,pixel,flight);
  vec2 vignette=(pixel/resolution-.5)*1.3;color*=1.-dot(vignette,vignette)*.17;
  gl_FragColor=vec4(color,1.);
 }`;
@@ -75,20 +106,22 @@ const smooth=v=>{v=clamp(v);return v*v*(3-2*v);};
 const mix=(a,b,t)=>a+(b-a)*t;
 
 export class Horizons {
- constructor(canvas,{base='assets/horizons/',sources={},onChange=()=>{}}={}){
+ constructor(canvas,{base='assets/horizons/',sources={},onChange=()=>{},order=[0,1,2,3,4],orbitalStart=false}={}){
   this.canvas=canvas;this.base=base;this.sources=sources;this.onChange=onChange;
+  this.order=order;this.orbitalStart=orbitalStart;this.flight=null;
+  this.ready=new Promise(resolve=>{this.resolveReady=resolve;});
   this.media=matchMedia('(prefers-reduced-motion: reduce)');this.paused=this.media.matches;
   this.target=0;this.current=0;this.frame=0;this.lastPlanet=-1;this.textures=new Map();
   this.gl=canvas.getContext('webgl',{alpha:false,antialias:false,depth:false,stencil:false,powerPreference:'low-power'});
-  if(!this.gl){canvas.parentElement.dataset.fallback='true';return;}
-  try{this.initialize();}catch(error){canvas.parentElement.dataset.fallback='true';console.warn('Horizontes: fondo estático disponible.',error.message);this.failed=true;return;}
+  if(!this.gl){canvas.parentElement.dataset.fallback='true';this.resolveReady(false);return;}
+  try{this.initialize();}catch(error){canvas.parentElement.dataset.fallback='true';console.warn('Horizontes: fondo estático disponible.',error.message);this.failed=true;this.resolveReady(false);return;}
   this.onScroll=()=>{this.target=this.progress();if(!this.paused||this.media.matches)this.schedule();};
   this.onResize=()=>this.schedule();
   this.onVisibility=()=>{if(document.hidden){cancelAnimationFrame(this.frame);this.frame=0;}else this.schedule();};
   this.onReduced=()=>this.setPaused(this.media.matches);
   this.onMotion=e=>this.setPaused(e.detail.paused);
   this.onContextLost=e=>{e.preventDefault();cancelAnimationFrame(this.frame);this.frame=0;canvas.parentElement.dataset.fallback='true';};
-  this.onContextRestored=()=>{this.textures.clear();this.initialize();this.schedule();};
+  this.onContextRestored=()=>{this.textures.clear();this.flightCloud=null;this.initialize();if(this.flight!==null)this.setFlight(this.flight);this.schedule();};
   addEventListener('scroll',this.onScroll,{passive:true});addEventListener('resize',this.onResize);
   addEventListener('ziv:motion',this.onMotion);document.addEventListener('visibilitychange',this.onVisibility);
   this.media.addEventListener('change',this.onReduced);
@@ -105,7 +138,7 @@ export class Horizons {
   this.program=program;gl.useProgram(program);this.buffer=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,this.buffer);
   gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,1,-1,-1,1,1,1]),gl.STATIC_DRAW);
   const p=gl.getAttribLocation(program,'position');gl.enableVertexAttribArray(p);gl.vertexAttribPointer(p,2,gl.FLOAT,false,0,0);
-  this.uniforms={};for(const n of ['resolution','bodyA','bodyB','settingsA','settingsB','atmosphereA','atmosphereB','mapA','mapB','cloudMap','nightMap','skyOffset'])this.uniforms[n]=gl.getUniformLocation(program,n);
+  this.uniforms={};for(const n of ['resolution','bodyA','bodyB','settingsA','settingsB','atmosphereA','atmosphereB','mapA','mapB','cloudMap','nightMap','launchMap','skyOffset','flight'])this.uniforms[n]=gl.getUniformLocation(program,n);
   this.cloud=this.texture('earth-clouds.jpg',[0,0,0]);this.night=this.texture('earth-night.jpg',[0,0,0]);
  }
  texture(file,color){
@@ -122,39 +155,51 @@ export class Horizons {
    const planetIndex=planets.findIndex(p=>p.file===file);
    if(planetIndex>=0){
     this.canvas.parentElement.dataset.ready='true';delete this.canvas.parentElement.dataset.fallback;
+    if(planetIndex===this.order[0])this.resolveReady(true);
     if(planetIndex<4&&!navigator.connection?.saveData){const next=planets[planetIndex+1];setTimeout(()=>{if(!this.destroyed&&!gl.isContextLost())this.texture(next.file,next.color);},100);}
    }
    this.schedule();
-  };image.onerror=()=>{if(file===planets[0].file)this.canvas.parentElement.dataset.fallback='true';};
+  };image.onerror=()=>{if(file===planets[this.order[0]].file){this.canvas.parentElement.dataset.fallback='true';this.resolveReady(false);}};
   image.src=this.sources[file]||this.base+file;return texture;
  }
  setPaused(value){if(this.paused===value)return;this.paused=value;if(!value)this.target=this.progress();cancelAnimationFrame(this.frame);this.frame=0;this.schedule();}
+ setFlight(value){this.flight=value===null?null:clamp(value);if(value!==null&&!this.flightCloud&&this.gl&&!this.failed)this.flightCloud=this.texture('../flight/cloud-density.webp',[.5,.5,.5]);this.schedule();}
  schedule(){if(this.gl&&!this.failed&&!this.frame&&!document.hidden&&!this.destroyed&&!this.gl.isContextLost())this.frame=requestAnimationFrame(t=>this.draw(t));}
  bodies(progress,w,h){
-  const p=Math.min(4.999999,progress*5),index=Math.floor(p),t=p-index,mobile=w<700;
+  const p=Math.min(4.999999,progress*5),sequenceIndex=Math.floor(p),index=this.order[sequenceIndex],t=p-sequenceIndex,mobile=w<700;
   const xNear=w*(mobile?.58:.64),xFar=w*(mobile?.57:.69);
-  const close=h*(mobile?1.85:2.6),far=Math.min(h*.34,w*.43),ascent=smooth(t/.73);
+  const firstOrbit=this.orbitalStart&&sequenceIndex===0;
+  const close=h*(mobile?1.85:2.6),far=firstOrbit?Math.min(h*.43,w*.56):Math.min(h*.34,w*.43),ascent=firstOrbit?1:smooth(t/.73);
   const radius=Math.exp(mix(Math.log(close),Math.log(far),ascent)),top=h*(mobile?.57:.54);
   let a={index,x:mix(xNear,xFar,ascent),y:mix(top,h*.51-far,ascent)+radius,r:radius,rotation:planets[index].rotation+t*.22},b=null;
-  if(index<4&&t>.82){
+  if(sequenceIndex<4&&t>.82){
    const flight=smooth((t-.82)/.18);a.x=mix(xFar,-w*.26,flight);a.y=mix(h*.51,h*.39,flight);a.r=mix(far,far*.38,flight);
    const r=Math.exp(mix(Math.log(h*.045),Math.log(close),flight));
-   b={index:index+1,x:mix(w*1.15,xNear,flight),y:mix(h*.46,top,flight)+r,r,rotation:planets[index+1].rotation};
+   const nextIndex=this.order[sequenceIndex+1];
+   b={index:nextIndex,x:mix(w*1.15,xNear,flight),y:mix(h*.46,top,flight)+r,r,rotation:planets[nextIndex].rotation};
   }return {a,b,index,t};
+ }
+ flightBody(progress,w,h){
+  const destination=this.bodies(0,w,h).a,q=smooth((progress-.31)/.69);
+  const r=Math.exp(mix(Math.log(h*6),Math.log(destination.r),q));
+  const top=mix(h*1.04,destination.y-destination.r,q);
+  return {a:{index:2,x:mix(w*.51,destination.x,q),y:top+r,r,rotation:planets[2].rotation},b:null,index:2,t:progress};
  }
  draw(time){
   this.frame=0;if(this.destroyed||this.gl.isContextLost())return;
-  const gl=this.gl,rect=this.canvas.getBoundingClientRect(),ratio=Math.min(devicePixelRatio||1,rect.width<700?1.25:1.5,Math.sqrt(1100000/(rect.width*rect.height)));
+  const gl=this.gl,rect=this.canvas.getBoundingClientRect(),ratio=Math.min(devicePixelRatio||1,rect.width<700?1.25:1.5,Math.sqrt((this.flight===null?1100000:650000)/(rect.width*rect.height)));
   const w=Math.round(rect.width*ratio),h=Math.round(rect.height*ratio);
   if(this.canvas.width!==w||this.canvas.height!==h){this.canvas.width=w;this.canvas.height=h;}
   gl.viewport(0,0,w,h);gl.useProgram(this.program);
   if(!this.paused){const dt=Math.min(50,this.lastTime?time-this.lastTime:16);this.current+=(this.target-this.current)*(1-Math.exp(-dt/95));}this.lastTime=time;
   if(!this.paused&&Math.abs(this.target-this.current)<.00002)this.current=this.target;
-  const progress=this.paused&&this.media.matches?(Math.min(4,Math.floor(this.target*5))+.73)/5:this.current,scene=this.bodies(progress,rect.width,rect.height);
+  const progress=this.paused&&this.media.matches?(Math.min(4,Math.floor(this.target*5))+.73)/5:this.current;
+  const scene=this.flight===null?this.bodies(progress,rect.width,rect.height):this.flightBody(this.flight,rect.width,rect.height);
   this.bindBody(scene.a,'A',0,ratio);this.bindBody(scene.b,'B',1,ratio);
   gl.activeTexture(gl.TEXTURE2);gl.bindTexture(gl.TEXTURE_2D,this.cloud);gl.uniform1i(this.uniforms.cloudMap,2);
   gl.activeTexture(gl.TEXTURE3);gl.bindTexture(gl.TEXTURE_2D,this.night);gl.uniform1i(this.uniforms.nightMap,3);
-  gl.uniform2f(this.uniforms.resolution,w,h);gl.uniform1f(this.uniforms.skyOffset,progress);gl.drawArrays(gl.TRIANGLE_STRIP,0,4);
+  gl.activeTexture(gl.TEXTURE4);gl.bindTexture(gl.TEXTURE_2D,this.flightCloud||this.cloud);gl.uniform1i(this.uniforms.launchMap,4);
+  gl.uniform2f(this.uniforms.resolution,w,h);gl.uniform1f(this.uniforms.skyOffset,this.flight===null?progress:this.flight*.1);gl.uniform1f(this.uniforms.flight,this.flight===null?-1:this.flight);gl.drawArrays(gl.TRIANGLE_STRIP,0,4);
   if(this.lastPlanet!==scene.index){this.lastPlanet=scene.index;this.onChange({index:scene.index,planet:planets[scene.index]});}
   this.onFrame?.({...scene,progress});
   if(!this.paused&&Math.abs(this.target-this.current)>.00002)this.schedule();

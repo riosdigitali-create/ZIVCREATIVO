@@ -8,7 +8,7 @@ La portada conserva el contenido y la demo del ZIP proporcionado por el usuario,
 
 ## Fondo
 
-`horizons.js` dibuja esferas texturizadas mediante WebGL, con iluminación direccional, borde atmosférico, nubes, reflejo oceánico y luces nocturnas en la Tierra. El desplazamiento recorre Mercurio, Venus, Tierra, Marte y Júpiter. El relieve y la órbita usan la misma superficie, sin superponer fotografías de terreno.
+`horizons.js` dibuja esferas texturizadas mediante WebGL, con iluminación direccional, borde atmosférico, nubes, reflejo oceánico y luces nocturnas en la Tierra. La portada comienza en órbita terrestre y continúa por Marte, Júpiter, Mercurio y Venus. El HTML independiente conserva su recorrido de Mercurio a Júpiter. El relieve y la órbita usan la misma superficie, sin superponer fotografías de terreno.
 
 El fondo se comparte entre todas las secciones. Los paneles translúcidos conservan la legibilidad. Sólo se dibujan cuadros al cargar imágenes, cambiar el tamaño o interpolar un desplazamiento; no hay un bucle de animación permanente. Se limita la resolución de dibujo y se respeta movimiento reducido. El control del pie permite pausar el fondo. Si WebGL no está disponible, se muestra una imagen estática.
 
@@ -32,3 +32,13 @@ Sintaxis: `node --check horizons.js`, `node --check app.js`, `node --check missi
 Revisar escritorio y móvil, recorrido, selección de canales, finalización, reinicio y pausa antes de publicar.
 
 `assets/ismael.css`, `assets/ismael.mjs` y `tests/web48.test.mjs` pertenecen a una portada anterior; sus pruebas de contenido no aplican a esta versión.
+
+## Intro orbital
+
+`intro.js` y `intro.css` añaden una entrada de 9.6 segundos: cabina, ascenso atmosférico, nubes, salida al espacio y llegada a la misma vista de la Tierra que usa la portada. El planeta y la cámara pertenecen al mismo motor que el fondo.
+
+Se reproduce una vez por sesión de pestaña, permite pausar, continuar, omitir con un botón o Escape y repetir desde el pie. Mientras está activa, la página está inerte y el foco permanece en los controles de la intro. Al salir, el foco pasa al título principal. Los enlaces directos a secciones y la preferencia de movimiento reducido acceden directamente al contenido.
+
+La entrada usa recursos locales, sin audio automático ni dependencias externas. El arranque libera el contenido si el módulo no carga; la falta de WebGL o una textura que no llega a tiempo también omite la entrada. Una pérdida del contexto gráfico termina la intro y permite acceder a la página.
+
+Cabina y nubes generadas mediante la herramienta integrada `image_gen`; archivos y prompts en `assets/flight/README.md`. Los archivos WebP suman aproximadamente 264 KB.
