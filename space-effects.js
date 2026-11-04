@@ -4,13 +4,14 @@ const ease=n=>{n=clamp(n);return n*n*(3-2*n);};
 
 // One lightweight, decorative layer. It never receives input or moves the page.
 export class SpaceEffects {
- constructor(canvas=document.querySelector('#space-effects')){
+ constructor(background,canvas=document.querySelector('#space-effects')){
   this.canvas=canvas;this.ctx=canvas?.getContext('2d',{alpha:true});
   if(!this.ctx)return;
   this.media=matchMedia('(prefers-reduced-motion: reduce)');
   this.time=0;this.frame=0;this.last=0;this.events=[];this.nextMeteor=random(18,26);this.nextFlare=3.4;
   this.scroll=0;this.scrollTarget=0;
   this.glow=this.makeGlow();this.nebula=this.makeNebula();
+  background?.setNebula(this.nebula);
   this.tick=this.tick.bind(this);this.resize=this.resize.bind(this);this.sync=this.sync.bind(this);
   this.onScroll=()=>{this.scrollTarget=scrollY/Math.max(1,document.documentElement.scrollHeight-innerHeight);};
   addEventListener('resize',this.resize);addEventListener('scroll',this.onScroll,{passive:true});
@@ -86,11 +87,7 @@ export class SpaceEffects {
   const ctx=this.ctx,w=this.w,h=this.h;if(!w||!h)return;
   ctx.setTransform(this.ratio,0,0,this.ratio,0,0);ctx.clearRect(0,0,w,h);
   ctx.globalCompositeOperation='lighter';
-  // Cached, transparent gas wisps drift at a different depth from the stars.
-  const swell=.50+.12*Math.sin(this.time*.16);
-  ctx.globalAlpha=swell;
-  const nw=Math.max(w*.85,520),nh=nw*2/3;
-  ctx.drawImage(this.nebula,w*.68-nw/2+Math.sin(this.time*.04)*15,h*.30-nh/2-this.scroll*45,nw,nh);
+  // Gas is drawn by Horizons behind both planets; this layer contains near events only.
   for(const star of this.stars){
    const y=((star.y*h-this.scroll*star.depth*45)%h+h)%h;
    ctx.globalAlpha=.22+.36*Math.pow(.5+.5*Math.sin(this.time*star.speed+star.phase),3);

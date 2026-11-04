@@ -11,7 +11,8 @@ const fragment=`precision highp float;
 uniform vec2 resolution;
 uniform vec4 bodyA,bodyB,settingsA,settingsB;
 uniform vec3 atmosphereA,atmosphereB;
-uniform sampler2D mapA,mapB,cloudMap,nightMap,launchMap;
+uniform sampler2D mapA,mapB,cloudMap,nightMap,launchMap,nebulaMap;
+uniform float nebulaStrength;
 uniform float skyOffset;
 uniform float flight;
 const float PI=3.14159265359;
@@ -31,6 +32,17 @@ vec3 stars(vec2 pixel){
 vec2 surfaceUV(vec3 n,float angle,float tilt){
  float c=cos(tilt),s=sin(tilt);n=vec3(c*n.x+s*n.y,-s*n.x+c*n.y,n.z);
  return vec2(fract(atan(n.z,n.x)/(2.*PI)+.5+angle/(2.*PI)),.5-asin(clamp(n.y,-1.,1.))/PI);
+}
+vec3 distantNebula(vec2 pixel){
+ if(nebulaStrength<=0.||flight>=0.)return vec3(0.);
+ float width=max(resolution.x*.95,resolution.y*.78);
+ vec2 size=vec2(width,width*2./3.);
+ // Very little parallax keeps this gas far beyond the planetary camera.
+ vec2 center=resolution*vec2(.70,.30-skyOffset*.012);
+ vec2 uv=(pixel-center)/size+.5;
+ if(uv.x<0.||uv.x>1.||uv.y<0.||uv.y>1.)return vec3(0.);
+ vec4 gas=texture2D(nebulaMap,uv);
+ return gas.rgb*gas.a*nebulaStrength;
 }
 vec4 sphere(vec2 pixel,vec4 body,vec4 settings,vec3 air,sampler2D surface){
  if(body.z<1.||body.w<.001)return vec4(0.);
@@ -98,7 +110,7 @@ vec3 ascentClouds(vec3 space,vec2 pixel,float t){
  return color;
 }
 void main(){
- vec2 pixel=vec2(gl_FragCoord.x,resolution.y-gl_FragCoord.y);vec3 color=stars(pixel);
+ vec2 pixel=vec2(gl_FragCoord.x,resolution.y-gl_FragCoord.y);vec3 color=stars(pixel)+distantNebula(pixel);
  vec4 a=sphere(pixel,bodyA,settingsA,atmosphereA,mapA),b=sphere(pixel,bodyB,settingsB,atmosphereB,mapB);
  color=mix(color,a.rgb,a.a);color=mix(color,b.rgb,b.a);
  if(flight>=0.)color=ascentClouds(color,pixel,flight);
@@ -142,8 +154,19 @@ export class Horizons {
   this.program=program;gl.useProgram(program);this.buffer=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,this.buffer);
   gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,1,-1,-1,1,1,1]),gl.STATIC_DRAW);
   const p=gl.getAttribLocation(program,'position');gl.enableVertexAttribArray(p);gl.vertexAttribPointer(p,2,gl.FLOAT,false,0,0);
-  this.uniforms={};for(const n of ['resolution','bodyA','bodyB','settingsA','settingsB','atmosphereA','atmosphereB','mapA','mapB','cloudMap','nightMap','launchMap','skyOffset','flight'])this.uniforms[n]=gl.getUniformLocation(program,n);
+  this.uniforms={};for(const n of ['resolution','bodyA','bodyB','settingsA','settingsB','atmosphereA','atmosphereB','mapA','mapB','cloudMap','nightMap','launchMap','nebulaMap','nebulaStrength','skyOffset','flight'])this.uniforms[n]=gl.getUniformLocation(program,n);
   this.cloud=this.texture('earth-clouds.jpg',[0,0,0]);this.night=this.texture('earth-night.jpg',[0,0,0]);
+  this.nebulaTexture=gl.createTexture();this.setNebula(this.nebulaSource||null);
+ }
+ setNebula(source){
+  this.nebulaSource=source;
+  const gl=this.gl;if(!gl||this.failed||gl.isContextLost()||!this.nebulaTexture)return;
+  gl.activeTexture(gl.TEXTURE5);gl.bindTexture(gl.TEXTURE_2D,this.nebulaTexture);
+  if(source)gl.texImage2D(gl.TEXTURE_2D,0,gl.RGBA,gl.RGBA,gl.UNSIGNED_BYTE,source);
+  else gl.texImage2D(gl.TEXTURE_2D,0,gl.RGBA,1,1,0,gl.RGBA,gl.UNSIGNED_BYTE,new Uint8Array(4));
+  gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_S,gl.CLAMP_TO_EDGE);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_T,gl.CLAMP_TO_EDGE);
+  gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MIN_FILTER,gl.LINEAR);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MAG_FILTER,gl.LINEAR);
+  this.schedule();
  }
  texture(file,color){
   if(this.textures.has(file))return this.textures.get(file);
@@ -219,6 +242,7 @@ export class Horizons {
   gl.activeTexture(gl.TEXTURE2);gl.bindTexture(gl.TEXTURE_2D,this.cloud);gl.uniform1i(this.uniforms.cloudMap,2);
   gl.activeTexture(gl.TEXTURE3);gl.bindTexture(gl.TEXTURE_2D,this.night);gl.uniform1i(this.uniforms.nightMap,3);
   gl.activeTexture(gl.TEXTURE4);gl.bindTexture(gl.TEXTURE_2D,this.flightCloud||this.cloud);gl.uniform1i(this.uniforms.launchMap,4);
+  gl.activeTexture(gl.TEXTURE5);gl.bindTexture(gl.TEXTURE_2D,this.nebulaTexture);gl.uniform1i(this.uniforms.nebulaMap,5);gl.uniform1f(this.uniforms.nebulaStrength,this.nebulaSource ? .32 : 0);
   gl.uniform2f(this.uniforms.resolution,w,h);gl.uniform1f(this.uniforms.skyOffset,this.flight===null?progress:0);gl.uniform1f(this.uniforms.flight,this.flight===null?-1:this.flight);gl.drawArrays(gl.TRIANGLE_STRIP,0,4);
   if(this.lastPlanet!==scene.index){this.lastPlanet=scene.index;this.canvas.dataset.planet=planets[scene.index].name;this.onChange({index:scene.index,planet:planets[scene.index]});}
   this.onFrame?.({...scene,progress});
@@ -228,12 +252,12 @@ export class Horizons {
   const gl=this.gl,p=planets[body?.index||0];
   gl.uniform4f(this.uniforms['body'+suffix],body?body.x*ratio:0,body?body.y*ratio:0,body?body.r*ratio:0,body?1:0);
   gl.uniform4f(this.uniforms['settings'+suffix],body?.rotation||0,p.tilt,body?.index||0,p.bump);gl.uniform3fv(this.uniforms['atmosphere'+suffix],p.air);
-  const texture=this.texture(p.file,p.color);gl.activeTexture(gl.TEXTURE0+slot);gl.bindTexture(gl.TEXTURE_2D,texture);gl.uniform1i(this.uniforms['map'+suffix],slot);
+  gl.activeTexture(gl.TEXTURE0+slot);const texture=this.texture(p.file,p.color);gl.bindTexture(gl.TEXTURE_2D,texture);gl.uniform1i(this.uniforms['map'+suffix],slot);
  }
  destroy(){
   this.destroyed=true;cancelAnimationFrame(this.frame);removeEventListener('scroll',this.onScroll);removeEventListener('resize',this.onResize);removeEventListener('ziv:motion',this.onMotion);
   document.removeEventListener('visibilitychange',this.onVisibility);this.media.removeEventListener('change',this.onReduced);
   this.canvas.removeEventListener('webglcontextlost',this.onContextLost);this.canvas.removeEventListener('webglcontextrestored',this.onContextRestored);
-  for(const t of this.textures.values())this.gl.deleteTexture(t);this.gl.deleteBuffer(this.buffer);this.gl.deleteProgram(this.program);
+  for(const t of this.textures.values())this.gl.deleteTexture(t);this.gl.deleteTexture(this.nebulaTexture);this.gl.deleteBuffer(this.buffer);this.gl.deleteProgram(this.program);
  }
 }

@@ -1,7 +1,7 @@
 import {AstronautOrbit} from './astronaut.js?v=20261104-ascent1';
-import {Horizons} from './horizons.js?v=20261104-ascent1';
+import {Horizons} from './horizons.js?v=20261104-depth1';
 import {OrbitalIntro} from './intro.js?v=20261104-ascent1';
-import {SpaceEffects} from './space-effects.js?v=20261104-effects2';
+import {SpaceEffects} from './space-effects.js?v=20261104-depth1';
 const media=matchMedia('(prefers-reduced-motion: reduce)');
 const motion=document.querySelector('#motion');
 let paused=media.matches;
@@ -23,4 +23,4 @@ addEventListener('scroll',()=>{if(!progressFrame)progressFrame=requestAnimationF
 
 new AstronautOrbit(background);
 new OrbitalIntro(background);
-new SpaceEffects();
+new SpaceEffects(background);
