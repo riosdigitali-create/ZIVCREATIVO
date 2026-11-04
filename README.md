@@ -1,36 +1,26 @@
-# ZIV Creativo · Sistemas digitales para negocios
+# ZIV Creativo · Ismael Ríos
 
 Sitio público: https://zivcreativo.shop/
 
-Página estática para GitHub Pages. Publicación existente desde `main`, carpeta raíz. El archivo `CNAME` conserva el dominio y no necesita cambiarse.
+Sitio estático publicado mediante GitHub Pages desde `main`, carpeta raíz. Conservar `CNAME` y la publicación existente. El repositorio de `ziv.mx` es independiente.
 
-## Contenido
+La portada presenta a Ismael Ríos y su especialidad en e-commerce, sistemas de ventas y automatización. Usa marfil, negro tinta, violeta y Manrope local, bajo licencia OFL incluida. No publica precios, promesas de ventas ni testimonios.
 
-- `index.html`: portada del estudio, campañas de servicios, trabajos reales, oferta comercial, preguntas y formulario de contacto.
-- `assets/studio-ziv.css`: dirección visual vigente para portada, secciones comerciales, portafolio y galería de demos; usa arte original en las composiciones comerciales y reserva los proyectos reales para las galerías.
-- `assets/studio-motion.js`: revelados de scroll progresivos con `IntersectionObserver`; respeta la preferencia de movimiento reducido y no oculta contenido si JavaScript falla.
-- `assets/editorial/studio-*-v2.webp`: cuatro imágenes originales con transparencia de herramientas y procesos digitales reconocibles para portada, servicios y planes.
-- `assets/marks/`: símbolos de ChatGPT, Claude y Gemini usados sólo para identificar tecnologías posibles, sin afiliación ni respaldo de sus titulares. Procedencia: Wikimedia Commons (ChatGPT) y Simple Icons (Claude, Google Gemini).
-- `assets/designjoy.css` y `assets/editorial-ziv.css`: estilos base conservados bajo la capa visual vigente.
-- `assets/web48.css`: estilos de la página de ventas anterior, conservados para recuperación.
-- `assets/offer.mjs`: validación y preparación del mensaje de WhatsApp según el nivel elegido.
-- `assets/web48-form.mjs`: validación y envío consentido de la solicitud al CRM privado; prepara el enlace de WhatsApp, pero nunca envía el mensaje automáticamente.
-- `portafolio.html`, `demos-ecommerce.html` y `thumbs/`: galerías públicas y capturas locales de proyectos y demos.
+- `index.html`: experiencia completa, capacidades, demo, casos, presentación personal, proceso y contacto.
+- `assets/ismael.css`: estilos responsivos, foco visible y movimiento reducido.
+- `assets/ismael.mjs`: simulaciones locales de muebles, moda y servicios; preparación del mensaje de WhatsApp.
+- `assets/demo/`: imágenes ilustrativas de las simulaciones, reutilizadas de los recursos locales de ZIV. Productos, existencias, precios y personas de las simulaciones son ejemplos.
+- `assets/fonts/`: Manrope y su licencia.
+- `portafolio.html`, `demos-ecommerce.html`, `demos/`, `thumbs/`: trabajo y demos existentes conservados.
 
-Las capturas de proyectos y demos se reservan para las galerías donde el visitante puede explorar el trabajo real. Portada, servicios y planes usan dispositivos con interfaces ilustrativas de IA, web y comercio, aislados sobre transparencia real y sin placas de color detrás. Los renders abstractos anteriores permanecen en el historial y en `assets/editorial/` para recuperación, pero ya no se cargan en la experiencia vigente. Los nombres de herramientas de IA en la sección de estudio son referencias informativas, no una declaración de afiliación. Este repositorio no implementa un checkout en producción: la contratación se inicia por WhatsApp o el formulario y las diez demos independientes mantienen su propia lógica.
+WhatsApp confirmado por la publicación anterior: +52 55 4016 1213. Correo solicitado: hola@ziv.mx. El formulario valida nombre, negocio, contacto y objetivo; muestra el texto y prepara un enlace de WhatsApp. No guarda datos ni envía mensajes, y no afirma que hubo un envío. Sin JavaScript, los enlaces directos a WhatsApp y correo continúan disponibles. La composición tipográfica de Ismael está preparada para sustituirse por una fotografía real.
 
-La sección «Trabajo» muestra nueve sitios públicos, incluido MAKERS26. Mantener sus enlaces y miniaturas en `index.html`: la publicación actual es estática y no depende de un generador externo.
+Las tres simulaciones no usan APIs, inteligencia artificial en vivo, pagos, mensajes ni reservas reales. Muestran el contexto que recibiría un panel y distinguen una intención de compra de una venta confirmada.
 
-El rediseño del 31 de agosto conserva esas seis muestras y añade una galería visual de CIRUELA, CANTERA, DOBLE HUMO y VELTRA utilizando las miniaturas locales del portafolio. No incorpora imágenes, testimonios, clientes, precios ni condiciones de Designjoy. Conserva el formulario, el destinatario de WhatsApp, los metadatos sociales existentes y el dominio. El proyecto `web-ventas` es independiente y no se modifica para publicar esta portada estática.
+## Desarrollo y verificación
 
-La oferta se presenta como proyectos de pago único: ZIV WEB por $5,900 MXN, ZIV BUSINESS por $12,900 MXN y ZIV AI por $19,900 MXN. Las soluciones individuales también se cotizan como implementaciones de pago único. Dominio, hosting, APIs, IA, WhatsApp, correo, envíos, Stripe, Mercado Pago y otras plataformas pueden generar costos independientes cobrados por sus proveedores. Las métricas comerciales son ilustrativas y no se prometen ventas ni cierres automáticos.
+Vista local: `python -m http.server 4173 --bind 127.0.0.1`.
 
-No hay cobros, claves ni API de Google Ads en este repositorio. La etiqueta de Google Ads `AW-18416108948` mide visitas y acciones relevantes; una solicitud guardada correctamente emite el evento `generate_lead`. El visitante elige el nivel, revisa el mensaje preparado y lo envía por sí mismo en WhatsApp. La página no activa anuncios ni gasto por sí sola.
+Pruebas: `node --test tests/*.test.mjs`. Sintaxis: `node --check assets/ismael.mjs`.
 
-## Verificación
-
-Con Node.js: `node --test tests/*.test.mjs`.
-
-## Recuperación
-
-La etiqueta `backup/pre-web48-2026-08-30` conserva el estado anterior completo. El historial no se reescribió. Para recuperar la portada anterior se puede restaurar `index.html` desde esa etiqueta en un nuevo commit; los recursos anteriores siguen presentes.
+Verificar escritorio y móvil, los tres giros, reinicio, menú y formulario antes de publicar. Los estilos, scripts y recursos anteriores siguen en el historial para recuperación; la portada actual sólo carga sus propios recursos.
