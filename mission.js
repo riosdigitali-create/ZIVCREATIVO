@@ -70,7 +70,7 @@ action.onclick=()=>{
   } else if(mode==='select'){
     mode='done'; byId('targets').hidden=true; byId('phase').textContent='03 / PUBLICACIÓN';
     byId('seller-title').textContent='Del panel al escaparate'; byId('seller-hint').textContent='Una ficha. '+selected.size+' '+(selected.size===1?'destino.':'destinos.');
-    showRoute(); byId('seller-status').textContent='Demostración de publicación completada.'; action.textContent='Volver a probar ↺';
+    showRoute(); byId('seller-status').textContent='Demostración de publicación completada.'; action.textContent='Volver a probar';
     action.focus({preventScroll:true});
   } else {
     mode='upload'; selected.clear();initialChannels.forEach(index => selected.add(index));
