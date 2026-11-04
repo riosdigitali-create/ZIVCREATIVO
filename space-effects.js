@@ -8,7 +8,7 @@ export class SpaceEffects {
   this.canvas=canvas;this.ctx=canvas?.getContext('2d',{alpha:true});
   if(!this.ctx)return;
   this.media=matchMedia('(prefers-reduced-motion: reduce)');
-  this.time=0;this.frame=0;this.last=0;this.events=[];this.nextMeteor=1.5;this.nextFlare=5.8;
+  this.time=0;this.frame=0;this.last=0;this.events=[];this.nextMeteor=random(18,26);this.nextFlare=3.4;
   this.scroll=0;this.scrollTarget=0;
   this.glow=this.makeGlow();this.nebula=this.makeNebula();
   this.tick=this.tick.bind(this);this.resize=this.resize.bind(this);this.sync=this.sync.bind(this);
@@ -33,7 +33,7 @@ export class SpaceEffects {
   for(let i=0;i<36;i++){
    const x=random(90,680),y=225+Math.sin(x*.008)*70+random(-45,45),r=random(40,135);
    const g=ctx.createRadialGradient(x,y,0,x,y,r);
-   g.addColorStop(0,i%3?'#1b83e21c':'#39cce51f');g.addColorStop(.4,'#126abd0d');g.addColorStop(1,'#0048a000');
+   g.addColorStop(0,i%3?'#1b83e24a':'#39cce54f');g.addColorStop(.4,'#126abd25');g.addColorStop(1,'#0048a000');
    ctx.fillStyle=g;ctx.fillRect(x-r,y-r,r*2,r*2);
   }
   for(let i=0;i<240;i++){
@@ -67,7 +67,7 @@ export class SpaceEffects {
    size:small?1:1.7,warm:Math.random()>.78});
  }
  spawnFlare(start=this.time){
-  this.events.push({kind:'flare',start,duration:random(4.2,5.5),x:random(.64,.91)*this.w,y:random(.12,.40)*this.h,size:this.mobile?65:110});
+  this.events.push({kind:'flare',start,duration:random(7,9),x:random(.68,.85)*this.w,y:random(.16,.32)*this.h,size:this.mobile?115:180});
  }
  tick(now){
   this.frame=0;
@@ -76,10 +76,9 @@ export class SpaceEffects {
   this.scroll+=(this.scrollTarget-this.scroll)*(1-Math.exp(-dt*3));
   if(this.time>=this.nextMeteor){
    this.spawnMeteor();
-   if(Math.random()>.35){this.spawnMeteor(this.time+.38,true);if(!this.mobile)this.spawnMeteor(this.time+.85,true);}
-   this.nextMeteor=this.time+random(this.mobile?11:9,17);
+   this.nextMeteor=this.time+random(40,65);
   }
-  if(this.time>=this.nextFlare){this.spawnFlare();this.nextFlare=this.time+random(13,22);}
+  if(this.time>=this.nextFlare){this.spawnFlare();this.nextFlare=this.time+random(28,42);}
   this.events=this.events.filter(event=>this.time<event.start+event.duration);
   this.paint();this.frame=requestAnimationFrame(this.tick);
  }
@@ -88,10 +87,10 @@ export class SpaceEffects {
   ctx.setTransform(this.ratio,0,0,this.ratio,0,0);ctx.clearRect(0,0,w,h);
   ctx.globalCompositeOperation='lighter';
   // Cached, transparent gas wisps drift at a different depth from the stars.
-  const swell=.24+.08*Math.sin(this.time*.16);
+  const swell=.50+.12*Math.sin(this.time*.16);
   ctx.globalAlpha=swell;
   const nw=Math.max(w*.85,520),nh=nw*2/3;
-  ctx.drawImage(this.nebula,w*.64-nw/2+Math.sin(this.time*.04)*15,h*.22-nh/2-this.scroll*45,nw,nh);
+  ctx.drawImage(this.nebula,w*.68-nw/2+Math.sin(this.time*.04)*15,h*.30-nh/2-this.scroll*45,nw,nh);
   for(const star of this.stars){
    const y=((star.y*h-this.scroll*star.depth*45)%h+h)%h;
    ctx.globalAlpha=.22+.36*Math.pow(.5+.5*Math.sin(this.time*star.speed+star.phase),3);
@@ -125,12 +124,17 @@ export class SpaceEffects {
   ctx.restore();
  }
  drawFlare(event,p){
-  const ctx=this.ctx,alpha=Math.pow(Math.sin(p*Math.PI),3)*.72,size=event.size;
+  const ctx=this.ctx,alpha=Math.pow(Math.sin(p*Math.PI),2)*.86,size=event.size;
   ctx.save();ctx.translate(event.x,event.y);ctx.globalAlpha=alpha;
+  // A broad corona and a slowly opening halo distinguish this from a shooting star.
+  const corona=ctx.createRadialGradient(0,0,2,0,0,size*.68);
+  corona.addColorStop(0,'#c6f0ff66');corona.addColorStop(.16,'#4abfff38');corona.addColorStop(.5,'#1688e810');corona.addColorStop(1,'#006aff00');
+  ctx.fillStyle=corona;ctx.fillRect(-size,-size,size*2,size*2);
   ctx.drawImage(this.glow,-size/2,-size/2,size,size);
+  ctx.strokeStyle='#7bccff38';ctx.lineWidth=.8;ctx.beginPath();ctx.arc(0,0,size*(.21+.11*ease(p)),0,Math.PI*2);ctx.stroke();
   const beam=ctx.createLinearGradient(-size,0,size,0);
   beam.addColorStop(0,'#65caff00');beam.addColorStop(.46,'#77cfff33');beam.addColorStop(.5,'#d9f8ff');beam.addColorStop(.54,'#77cfff33');beam.addColorStop(1,'#65caff00');
-  ctx.fillStyle=beam;ctx.fillRect(-size,-.45,size*2,.9);
+  ctx.fillStyle=beam;ctx.fillRect(-size,-.65,size*2,1.3);
   ctx.scale(.48,1);ctx.rotate(Math.PI/2);ctx.fillRect(-size*.38,-.45,size*.76,.9);
   ctx.restore();
  }

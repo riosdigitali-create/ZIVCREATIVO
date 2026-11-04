@@ -62,7 +62,7 @@ action.onclick=()=>{
     mode='select';
     byId('product-sheet').hidden=false; byId('targets').hidden=false;
     byId('phase').textContent='02 / CANALES'; byId('seller-title').textContent='Ficha lista';
-    byId('seller-hint').textContent='Elige tus escaparates.'; action.textContent='Publicar mercancía ↗';
+    byId('seller-hint').textContent='Elige tus escaparates.'; action.textContent='Publicar mercancía';
     renderChoices();
     byId('dispatch').hidden=false;
     byId('shelves').replaceChildren();
@@ -76,7 +76,7 @@ action.onclick=()=>{
     mode='upload'; selected.clear();initialChannels.forEach(index => selected.add(index));
     for(const id of ['dispatch','targets','product-sheet']) byId(id).hidden=true;
     byId('phase').textContent='01 / PRODUCTO';byId('seller-title').textContent='Nueva mercancía';
-    byId('seller-hint').textContent='Prueba con esta chancla.';action.textContent='Subir mercancía ↑';
+    byId('seller-hint').textContent='Prueba con esta chancla.';action.textContent='Subir mercancía';
     byId('seller-status').textContent='Simulación · Sin publicaciones reales';
   }
 };
