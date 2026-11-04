@@ -167,13 +167,14 @@ export class Horizons {
  schedule(){if(this.gl&&!this.failed&&!this.frame&&!document.hidden&&!this.destroyed&&!this.gl.isContextLost())this.frame=requestAnimationFrame(t=>this.draw(t));}
  bodies(progress,w,h){
   const p=Math.min(4.999999,progress*5),sequenceIndex=Math.floor(p),index=this.order[sequenceIndex],t=p-sequenceIndex,mobile=w<700;
-  const xNear=w*(mobile?.58:.64),xFar=w*(mobile?.57:.69);
   const firstOrbit=this.orbitalStart&&sequenceIndex===0;
-  const close=h*(mobile?1.85:2.6),far=firstOrbit?Math.min(h*.43,w*.56):Math.min(h*.34,w*.43),ascent=firstOrbit?1:smooth(t/.73);
+  const xNear=w*(mobile?.58:.64),xFar=firstOrbit?w*(mobile?.62:.76):w*(mobile?.57:.69);
+  const orbitY=h*(firstOrbit?(mobile?.76:.53):.51);
+  const close=h*(mobile?1.85:2.6),far=firstOrbit?Math.min(h*.34,w*.38):Math.min(h*.34,w*.43),ascent=firstOrbit?1:smooth(t/.73);
   const radius=Math.exp(mix(Math.log(close),Math.log(far),ascent)),top=h*(mobile?.57:.54);
-  let a={index,x:mix(xNear,xFar,ascent),y:mix(top,h*.51-far,ascent)+radius,r:radius,rotation:planets[index].rotation+t*.22},b=null;
+  let a={index,x:mix(xNear,xFar,ascent),y:mix(top,orbitY-far,ascent)+radius,r:radius,rotation:planets[index].rotation+t*.22},b=null;
   if(sequenceIndex<4&&t>.82){
-   const flight=smooth((t-.82)/.18);a.x=mix(xFar,-w*.26,flight);a.y=mix(h*.51,h*.39,flight);a.r=mix(far,far*.38,flight);
+   const flight=smooth((t-.82)/.18);a.x=mix(xFar,-w*.26,flight);a.y=mix(orbitY,h*.39,flight);a.r=mix(far,far*.38,flight);
    const r=Math.exp(mix(Math.log(h*.045),Math.log(close),flight));
    const nextIndex=this.order[sequenceIndex+1];
    b={index:nextIndex,x:mix(w*1.15,xNear,flight),y:mix(h*.46,top,flight)+r,r,rotation:planets[nextIndex].rotation};

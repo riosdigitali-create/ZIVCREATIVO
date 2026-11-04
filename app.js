@@ -1,5 +1,5 @@
-import {Horizons} from './horizons.js?v=20261104-orbit1';
-import {OrbitalIntro} from './intro.js?v=20261104-orbit1';
+import {Horizons} from './horizons.js?v=20261104-framing1';
+import {OrbitalIntro} from './intro.js?v=20261104-framing1';
 const media=matchMedia('(prefers-reduced-motion: reduce)');
 const motion=document.querySelector('#motion');
 let paused=media.matches;
