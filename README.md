@@ -35,7 +35,7 @@ Revisar escritorio y móvil, recorrido, selección de canales, finalización, re
 
 ## Intro orbital
 
-`intro.js` y `intro.css` añaden una entrada de 9.6 segundos: cabina, ascenso atmosférico, nubes, salida al espacio y llegada a la misma vista de la Tierra que usa la portada. El planeta y la cámara pertenecen al mismo motor que el fondo.
+`intro.js` y `intro.css` añaden una entrada de 9.6 segundos: cabina, ascenso atmosférico, nubes, salida al espacio y llegada a la misma vista de la Tierra que usa la portada. El planeta y la cámara pertenecen al mismo motor que el fondo. Durante el ascenso, las nubes y la franja atmosférica descienden por el parabrisas, sin deriva lateral. La Tierra permanece centrada y se aleja hacia abajo; su encuadre final se ajusta al desvanecerse la cabina. Las estrellas permanecen estables en esta secuencia.
 
 Se reproduce una vez por sesión de pestaña, permite pausar, continuar, omitir con un botón o Escape y repetir desde el pie. Mientras está activa, la página está inerte y el foco permanece en los controles de la intro. Al salir, el foco pasa al título principal. Los enlaces directos a secciones y la preferencia de movimiento reducido acceden directamente al contenido.
 

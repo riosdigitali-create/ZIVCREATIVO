@@ -75,8 +75,8 @@ export class OrbitalIntro {
   this.element.style.setProperty('--cockpit-opacity',1-smooth(.77,.99,p));
   this.element.style.setProperty('--cockpit-scale',1+.08*smooth(.70,1,p));
   const vibration=Math.sin(p*193)*Math.sin(Math.PI*p)*(.2+smooth(.08,.25,p))*(1-smooth(.52,.78,p));
-  this.element.style.setProperty('--shake-x',`${vibration*.65}px`);
-  this.element.style.setProperty('--shake-y',`${Math.cos(p*257)*vibration*.45}px`);
+  this.element.style.setProperty('--shake-x','0px');
+  this.element.style.setProperty('--shake-y',`${Math.cos(p*257)*vibration*.85}px`);
   this.element.style.setProperty('--flight-progress',p);
   this.element.style.setProperty('--glass-opacity',.22*(1-smooth(.45,.85,p)));
   const phase=p<.14?'SISTEMAS LISTOS':p<.51?'ASCENSO ATMOSFÉRICO':p<.77?'CRUZANDO EL LÍMITE':'ÓRBITA ALCANZADA';

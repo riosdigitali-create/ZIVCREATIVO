@@ -66,22 +66,26 @@ vec4 sphere(vec2 pixel,vec4 body,vec4 settings,vec3 air,sampler2D surface){
 }
 vec3 ascentClouds(vec3 space,vec2 pixel,float t){
  vec2 uv=pixel/resolution;
- float daylight=1.-smoothstep(.35,.77,t);
+ // The atmosphere slips below the windscreen as the capsule gains altitude.
+ float clearance=smoothstep(.16,.76,t);
+ float horizon=mix(-.45,1.35,clearance);
+ float daylight=smoothstep(horizon-.28,horizon+.28,uv.y)*(1.-smoothstep(.55,.82,t));
  vec3 sky=mix(vec3(.035,.15,.34),vec3(.43,.69,.91),pow(uv.y,.8));
  vec3 color=mix(space,sky,daylight);
- float envelope=smoothstep(.015,.13,t)*(1.-smoothstep(.40,.75,t));
+ float envelope=smoothstep(.015,.13,t)*(1.-smoothstep(.40,.73,t));
  vec2 screen=(uv-.5)*vec2(resolution.x/resolution.y,1.);
- vec3 ray=normalize(vec3(screen,1.05));
- float travel=t*t*17.;
+ vec3 ray=normalize(vec3(screen+vec2(0.,.16),1.15));
+ float travel=t*t*8.;
  float transmission=1.;vec3 cloudColor=vec3(0.);
  for(int i=0;i<9;i++){
   float z=.32+float(i)*.39;
-  vec3 point=ray*z+vec3(0.,travel*.27,travel);
-  vec2 field=point.xy*.38+vec2(point.z*.083,point.z*.127);
+  // Keep the lateral coordinate fixed: cloud features travel DOWN, never sideways.
+  vec3 point=ray*z+vec3(0.,-travel/(.7+z*.22),0.);
+  vec2 field=point.xy*.38+vec2(z*.083,z*.127);
   float density=texture2D(launchMap,fract(field+vec2(.24,.39))).r;
   float detail=texture2D(launchMap,fract(field*2.47+vec2(.61,.23))).r;
   float raw=density*.72+detail*.28;
-  density=smoothstep(.20,.77,raw)*envelope*.44;
+  density=smoothstep(.20,.77,raw)*envelope*.44*smoothstep(horizon-.35,horizon+.3,uv.y);
   float light=texture2D(launchMap,fract(field+vec2(-.012,-.018)+vec2(.24,.39))).r;
   vec3 shade=mix(vec3(.25,.40,.59),vec3(.95,.98,1.),clamp(.68+(raw-light)*2.4+float(i)*.015,0.,1.));
   cloudColor+=transmission*density*shade;
@@ -185,10 +189,15 @@ export class Horizons {
   }return {a,b,index,t};
  }
  flightBody(progress,w,h){
-  const destination=this.bodies(0,w,h).a,q=smooth((progress-.31)/.69);
-  const r=Math.exp(mix(Math.log(h*6),Math.log(destination.r),q));
-  const top=mix(h*1.04,destination.y-destination.r,q);
-  return {a:{index:2,x:mix(w*.51,destination.x,q),y:top+r,r,rotation:planets[2].rotation},b:null,index:2,t:progress};
+  const destination=this.bodies(0,w,h).a;
+  const climb=smooth((progress-.10)/.64),arrival=smooth((progress-.76)/.24);
+  // Keep the Earth centred and falling below us while the cockpit is visible.
+  // Only frame the final orbital view during the cockpit's dissolve.
+  const retreatRadius=Math.exp(mix(Math.log(h*6),Math.log(h*.72),climb));
+  const retreatTop=mix(h*.58,h*.98,climb);
+  const r=Math.exp(mix(Math.log(retreatRadius),Math.log(destination.r),arrival));
+  const top=mix(retreatTop,destination.y-destination.r,arrival);
+  return {a:{index:2,x:mix(w*.5,destination.x,arrival),y:top+r,r,rotation:planets[2].rotation},b:null,index:2,t:progress};
  }
  draw(time){
   this.frame=0;if(this.destroyed||this.gl.isContextLost())return;
@@ -210,7 +219,7 @@ export class Horizons {
   gl.activeTexture(gl.TEXTURE2);gl.bindTexture(gl.TEXTURE_2D,this.cloud);gl.uniform1i(this.uniforms.cloudMap,2);
   gl.activeTexture(gl.TEXTURE3);gl.bindTexture(gl.TEXTURE_2D,this.night);gl.uniform1i(this.uniforms.nightMap,3);
   gl.activeTexture(gl.TEXTURE4);gl.bindTexture(gl.TEXTURE_2D,this.flightCloud||this.cloud);gl.uniform1i(this.uniforms.launchMap,4);
-  gl.uniform2f(this.uniforms.resolution,w,h);gl.uniform1f(this.uniforms.skyOffset,this.flight===null?progress:this.flight*.1);gl.uniform1f(this.uniforms.flight,this.flight===null?-1:this.flight);gl.drawArrays(gl.TRIANGLE_STRIP,0,4);
+  gl.uniform2f(this.uniforms.resolution,w,h);gl.uniform1f(this.uniforms.skyOffset,this.flight===null?progress:0);gl.uniform1f(this.uniforms.flight,this.flight===null?-1:this.flight);gl.drawArrays(gl.TRIANGLE_STRIP,0,4);
   if(this.lastPlanet!==scene.index){this.lastPlanet=scene.index;this.canvas.dataset.planet=planets[scene.index].name;this.onChange({index:scene.index,planet:planets[scene.index]});}
   this.onFrame?.({...scene,progress});
   if(!this.paused&&Math.abs(this.target-this.current)>.00002)this.schedule();
