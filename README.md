@@ -48,3 +48,7 @@ Cabina y nubes generadas mediante la herramienta integrada `image_gen`; archivos
 La portada usa el recorte transparente proporcionado por Ismael, optimizado a WebP en `assets/ismael-astronaut.webp`. `astronaut.js` coloca el retrato junto al título, añade una oscilación suave y comparte el progreso de cámara para reducirlo, acercarlo visualmente al planeta y desvanecerlo al salir de la portada. El retrato se adapta a escritorio y móvil y permanece oculto durante el despegue. La preferencia de movimiento reducido y el control de pausa usan una imagen estática que sale con el contenido.
 
 La cámara interpola el desplazamiento con amortiguación de 420 ms y una velocidad máxima de 0.30 recorridos por segundo, con una ventana de transición más amplia entre planetas. Las texturas se precargan en el orden del recorrido para evitar apariciones sin detalle al desplazar rápido.
+
+## Efectos del espacio
+
+`space-effects.js` añade una capa Canvas 2D decorativa: estrellas con brillo lento, nebulosa azul con profundidad, cometas y pequeñas lluvias de meteoros a intervalos aleatorios, y destellos de difracción ocasionales. No usa archivos externos ni sonido. La capa está detrás del contenido y deja pasar todos los clics y gestos. Se oculta durante el despegue y con movimiento reducido; el control general de pausa congela los efectos y las pestañas ocultas suspenden el dibujo. El render está limitado a 30 fps, 900 mil píxeles y menos estrellas en móvil; las texturas de luz y gas se preparan una vez y se reutilizan.
