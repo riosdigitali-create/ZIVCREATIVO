@@ -1,5 +1,6 @@
-import {Horizons} from './horizons.js?v=20261104-framing1';
-import {OrbitalIntro} from './intro.js?v=20261104-framing1';
+import {AstronautOrbit} from './astronaut.js?v=20261104-portrait1';
+import {Horizons} from './horizons.js?v=20261104-portrait1';
+import {OrbitalIntro} from './intro.js?v=20261104-portrait1';
 const media=matchMedia('(prefers-reduced-motion: reduce)');
 const motion=document.querySelector('#motion');
 let paused=media.matches;
@@ -19,4 +20,5 @@ let progressFrame=0;
 function progress(){progressFrame=0;const max=Math.max(1,document.documentElement.scrollHeight-innerHeight);document.querySelector('#progress').style.transform=`scaleX(${Math.min(1,scrollY/max)})`;}
 addEventListener('scroll',()=>{if(!progressFrame)progressFrame=requestAnimationFrame(progress);},{passive:true});addEventListener('resize',progress);progress();
 
+new AstronautOrbit(background);
 new OrbitalIntro(background);

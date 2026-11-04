@@ -116,7 +116,7 @@ export class Horizons {
   if(!this.gl){canvas.parentElement.dataset.fallback='true';this.resolveReady(false);return;}
   try{this.initialize();}catch(error){canvas.parentElement.dataset.fallback='true';console.warn('Horizontes: fondo estático disponible.',error.message);this.failed=true;this.resolveReady(false);return;}
   this.onScroll=()=>{this.target=this.progress();if(!this.paused||this.media.matches)this.schedule();};
-  this.onResize=()=>this.schedule();
+  this.onResize=()=>{this.target=this.progress();this.schedule();};
   this.onVisibility=()=>{if(document.hidden){cancelAnimationFrame(this.frame);this.frame=0;}else this.schedule();};
   this.onReduced=()=>this.setPaused(this.media.matches);
   this.onMotion=e=>this.setPaused(e.detail.paused);
@@ -156,7 +156,8 @@ export class Horizons {
    if(planetIndex>=0){
     this.canvas.parentElement.dataset.ready='true';delete this.canvas.parentElement.dataset.fallback;
     if(planetIndex===this.order[0])this.resolveReady(true);
-    if(planetIndex<4&&!navigator.connection?.saveData){const next=planets[planetIndex+1];setTimeout(()=>{if(!this.destroyed&&!gl.isContextLost())this.texture(next.file,next.color);},100);}
+    const nextIndex=this.order[this.order.indexOf(planetIndex)+1];
+    if(nextIndex!==undefined&&!navigator.connection?.saveData){const next=planets[nextIndex];setTimeout(()=>{if(!this.destroyed&&!gl.isContextLost())this.texture(next.file,next.color);},100);}
    }
    this.schedule();
   };image.onerror=()=>{if(file===planets[this.order[0]].file){this.canvas.parentElement.dataset.fallback='true';this.resolveReady(false);}};
@@ -170,11 +171,14 @@ export class Horizons {
   const firstOrbit=this.orbitalStart&&sequenceIndex===0;
   const xNear=w*(mobile?.58:.64),xFar=firstOrbit?w*(mobile?.62:.76):w*(mobile?.57:.69);
   const orbitY=h*(firstOrbit?(mobile?.76:.53):.51);
-  const close=h*(mobile?1.85:2.6),far=firstOrbit?Math.min(h*.34,w*.38):Math.min(h*.34,w*.43),ascent=firstOrbit?1:smooth(t/.73);
-  const radius=Math.exp(mix(Math.log(close),Math.log(far),ascent)),top=h*(mobile?.57:.54);
-  let a={index,x:mix(xNear,xFar,ascent),y:mix(top,orbitY-far,ascent)+radius,r:radius,rotation:planets[index].rotation+t*.22},b=null;
-  if(sequenceIndex<4&&t>.82){
-   const flight=smooth((t-.82)/.18);a.x=mix(xFar,-w*.26,flight);a.y=mix(orbitY,h*.39,flight);a.r=mix(far,far*.38,flight);
+  const close=h*(mobile?1.85:2.6),far=firstOrbit?Math.min(h*.34,w*.38):Math.min(h*.34,w*.43),ascent=firstOrbit?1:smooth(t/.57);
+  const retreat=firstOrbit?smooth(t/.60):0;
+  const radius=firstOrbit?far*(1-.20*retreat):Math.exp(mix(Math.log(close),Math.log(far),ascent)),top=h*(mobile?.57:.54);
+  const settledX=xFar+(firstOrbit?w*.025:0),settledY=firstOrbit?h*(mobile?.60:.49):orbitY,settledRadius=firstOrbit?far*.80:far;
+  let a={index,x:firstOrbit?mix(xFar,settledX,retreat):mix(xNear,xFar,ascent),y:firstOrbit?mix(orbitY,settledY,retreat):mix(top,orbitY-far,ascent)+radius,r:radius,rotation:planets[index].rotation+t*.22},b=null;
+  // Give the handoff room to breathe, including during a fast flick or scrollbar jump.
+  if(sequenceIndex<4&&t>.64){
+   const flight=smooth((t-.64)/.36);a.x=mix(settledX,-w*.26,flight);a.y=mix(settledY,h*.39,flight);a.r=mix(settledRadius,settledRadius*.38,flight);
    const r=Math.exp(mix(Math.log(h*.045),Math.log(close),flight));
    const nextIndex=this.order[sequenceIndex+1];
    b={index:nextIndex,x:mix(w*1.15,xNear,flight),y:mix(h*.46,top,flight)+r,r,rotation:planets[nextIndex].rotation};
@@ -192,7 +196,13 @@ export class Horizons {
   const w=Math.round(rect.width*ratio),h=Math.round(rect.height*ratio);
   if(this.canvas.width!==w||this.canvas.height!==h){this.canvas.width=w;this.canvas.height=h;}
   gl.viewport(0,0,w,h);gl.useProgram(this.program);
-  if(!this.paused){const dt=Math.min(50,this.lastTime?time-this.lastTime:16);this.current+=(this.target-this.current)*(1-Math.exp(-dt/95));}this.lastTime=time;
+  if(!this.paused){
+   const dt=Math.min(50,this.lastTime?time-this.lastTime:16);
+   const distance=this.target-this.current;
+   const eased=distance*(1-Math.exp(-dt/420));
+   const limit=.30*dt/1000;
+   this.current+=Math.max(-limit,Math.min(limit,eased));
+  }this.lastTime=time;
   if(!this.paused&&Math.abs(this.target-this.current)<.00002)this.current=this.target;
   const progress=this.paused&&this.media.matches?(Math.min(4,Math.floor(this.target*5))+.73)/5:this.current;
   const scene=this.flight===null?this.bodies(progress,rect.width,rect.height):this.flightBody(this.flight,rect.width,rect.height);
@@ -201,7 +211,7 @@ export class Horizons {
   gl.activeTexture(gl.TEXTURE3);gl.bindTexture(gl.TEXTURE_2D,this.night);gl.uniform1i(this.uniforms.nightMap,3);
   gl.activeTexture(gl.TEXTURE4);gl.bindTexture(gl.TEXTURE_2D,this.flightCloud||this.cloud);gl.uniform1i(this.uniforms.launchMap,4);
   gl.uniform2f(this.uniforms.resolution,w,h);gl.uniform1f(this.uniforms.skyOffset,this.flight===null?progress:this.flight*.1);gl.uniform1f(this.uniforms.flight,this.flight===null?-1:this.flight);gl.drawArrays(gl.TRIANGLE_STRIP,0,4);
-  if(this.lastPlanet!==scene.index){this.lastPlanet=scene.index;this.onChange({index:scene.index,planet:planets[scene.index]});}
+  if(this.lastPlanet!==scene.index){this.lastPlanet=scene.index;this.canvas.dataset.planet=planets[scene.index].name;this.onChange({index:scene.index,planet:planets[scene.index]});}
   this.onFrame?.({...scene,progress});
   if(!this.paused&&Math.abs(this.target-this.current)>.00002)this.schedule();
  }
